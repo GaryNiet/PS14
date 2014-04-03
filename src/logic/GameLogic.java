@@ -13,12 +13,13 @@ import characters.CharacterPH;
 public class GameLogic {
 	
 	List<CharacterPH> characterList = new ArrayList<>();
-	
+	ActionCalculator actionCalculator;
 	
 
 	public GameLogic()
 	{
 		init();
+		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
 		timer.scheduleAtFixedRate(timerTask, 0, 2*1000);
@@ -63,7 +64,7 @@ public class GameLogic {
 			for(CharacterPH character: characterList)
 			{
 				character.naturalHealthLoss();
-				ActionCalculator.calculateBestAction(character);
+				actionCalculator.calculateBestAction(character);
 			}
 			showTable();
 			

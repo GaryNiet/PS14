@@ -28,6 +28,20 @@ public class CharacterPH
 		preferences = new Preferences();
 	}
 	
+	public CharacterPH(CharacterPH character)
+	{
+		name = character.name;
+		health = character.health;
+		strength = character.strength;
+		intelligence = character.intelligence;
+		posX = character.posX;
+		posY = character.posY;
+		
+		//TODO
+		//copy preferences
+		preferences = new Preferences();
+	}
+	
 	public void naturalHealthLoss()
 	{
 		health -= 1;
