@@ -1,12 +1,20 @@
 package characters;
 
+import schedule.PrisonAction;
+
 public class CharacterPH
 {
 	String name;
+
+
 	int health;
 	int strength;
 	int intelligence;
 	int posX, posY;
+	Preferences preferences;
+
+
+	PrisonAction fixedAction;
 	
 	public CharacterPH(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
@@ -16,6 +24,13 @@ public class CharacterPH
 		intelligence = _intelligence;
 		posX = _posX;
 		posY = _posY;
+		
+		preferences = new Preferences();
+	}
+	
+	public void naturalHealthLoss()
+	{
+		health -= 1;
 	}
 	
 	public int getHealth() {
@@ -60,6 +75,18 @@ public class CharacterPH
 
 	public String getName() {
 		return name;
+	}
+	
+	public PrisonAction getFixedAction() {
+		return fixedAction;
+	}
+
+	public void setFixedAction(PrisonAction fixedAction) {
+		this.fixedAction = fixedAction;
+	}
+	
+	public Preferences getPreferences() {
+		return preferences;
 	}
 
 }

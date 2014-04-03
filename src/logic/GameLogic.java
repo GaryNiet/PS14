@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import aiMachine.ActionCalculator;
+
 import characters.CharacterPH;
 
 
@@ -43,9 +45,9 @@ public class GameLogic {
 
 	private void init()
 	{
-		CharacterPH character1 = new CharacterPH("first", 100, 10, 9, 0, 0);
-		CharacterPH character2 = new CharacterPH("second", 100, 8, 9, 0, 0);
-		CharacterPH character3 = new CharacterPH("third", 100, 7, 5, 0, 0);
+		CharacterPH character1 = new CharacterPH("first", 1000, 10, 9, 0, 0);
+		CharacterPH character2 = new CharacterPH("second", 1000, 8, 9, 0, 0);
+		CharacterPH character3 = new CharacterPH("third", 1000, 7, 5, 0, 0);
 		
 		characterList.add(character1);
 		characterList.add(character2);
@@ -56,8 +58,15 @@ public class GameLogic {
 	public class OnTimer extends TimerTask {
 
 		@Override
-		public void run() {
+		public void run()
+		{
+			for(CharacterPH character: characterList)
+			{
+				character.naturalHealthLoss();
+				ActionCalculator.calculateBestAction(character);
+			}
 			showTable();
+			
 			
 		}
 		
