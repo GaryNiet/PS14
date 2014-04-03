@@ -12,6 +12,15 @@ public class Preferences
 	{
 		Random random = new Random();
 		healthPreference = random.nextInt(50) + 1;
+		strengthPreference = random.nextInt(50) + 1;
+		intelligencePreference = random.nextInt(50) + 1;
+	}
+	
+	public Preferences(Preferences preference)
+	{
+		this.healthPreference = preference.healthPreference;
+		this.strengthPreference = preference.strengthPreference;
+		this.intelligencePreference = preference.intelligencePreference;
 	}
 
 	public int getHealthPreference() {

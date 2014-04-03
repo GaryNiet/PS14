@@ -6,7 +6,7 @@ public class StrengthAction extends PrisonAction
 {
 	public StrengthAction()
 	{
-		
+		name = "strength";
 	}
 	
 	public void resolve(CharacterPH character)

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import schedule.PrisonAction;
+
 import aiMachine.ActionCalculator;
 
 import characters.CharacterPH;
@@ -30,17 +32,17 @@ public class GameLogic {
 	private void showTable()
 	{
 		
-		String leftAlignFormat = "| %-24s | %-12d | %-14d | %-9d |%n";
+		String leftAlignFormat = "| %-24s | %-12d | %-14d | %-9d | %-17s |%n";
 		
-		System.out.format("+----------------------------------------------------------------------+%n");
-		System.out.printf("|            name          |   strength   |  intelligence  |   health  |%n");
-		System.out.format("+----------------------------------------------------------------------+%n");
+		System.out.format("+------------------------------------------------------------------------------------------+%n");
+		System.out.printf("|            name          |   strength   |  intelligence  |   health  |   action  |%n");
+		System.out.format("+------------------------------------------------------------------------------------------+%n");
 		for(CharacterPH character: characterList)
 		{
-			System.out.format(leftAlignFormat, character.getName(), character.getStrength(), character.getIntelligence(), character.getHealth());
+			System.out.format(leftAlignFormat, character.getName(), character.getStrength(), character.getIntelligence(), character.getHealth(), character.getFixedAction().name);
 			
 		}
-		System.out.format("+----------------------------------------------------------------------+%n");
+		System.out.format("+------------------------------------------------------------------------------------------+%n");
 	}
 
 
@@ -64,7 +66,11 @@ public class GameLogic {
 			for(CharacterPH character: characterList)
 			{
 				character.naturalHealthLoss();
-				actionCalculator.calculateBestAction(character);
+				
+				PrisonAction bestAction = actionCalculator.calculateBestAction(character);
+				bestAction.resolve(character);
+				character.setFixedAction(bestAction);
+				
 			}
 			showTable();
 			

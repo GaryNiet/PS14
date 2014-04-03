@@ -6,7 +6,7 @@ public class IntelligenceAction extends PrisonAction
 {
 	public IntelligenceAction()
 	{
-		
+		name = "intelligence";
 	}
 	
 	public void resolve(CharacterPH character)

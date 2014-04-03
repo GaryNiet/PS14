@@ -31,17 +31,24 @@ public class ActionCalculator
 	
 	public PrisonAction calculateBestAction(CharacterPH character)
 	{
-		CharacterPH dummyCharacter = new CharacterPH(character);
+		CharacterPH dummyCharacter;
 		PrisonAction bestAction = null;
 		int best = 0;
 		for(PrisonAction prisonAction: prisonActionList)
 		{
+			System.out.println(prisonAction.name);
 			
+			dummyCharacter = new CharacterPH(character);
+			prisonAction.resolve(dummyCharacter);
+			
+			if(calculateHappiness(dummyCharacter) > best)
+			{
+				best = calculateHappiness(dummyCharacter);
+				bestAction = prisonAction;
+			}
+			System.out.println(best);
 		}
 		
-		calculateHappiness(character);
-				
-				
 		return bestAction;		
 	}
 	

@@ -39,7 +39,7 @@ public class CharacterPH
 		
 		//TODO
 		//copy preferences
-		preferences = new Preferences();
+		preferences = new Preferences(character.preferences);
 	}
 	
 	public void naturalHealthLoss()
