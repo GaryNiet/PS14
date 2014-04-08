@@ -33,32 +33,53 @@ public class ActionCalculator
 	{
 		CharacterPH dummyCharacter;
 		PrisonAction bestAction = null;
-		int best = 0;
+		double best = 0;
 		for(PrisonAction prisonAction: prisonActionList)
 		{
-			System.out.println(prisonAction.name);
+			
+			//System.out.println(prisonAction.name);
 			
 			dummyCharacter = new CharacterPH(character);
 			prisonAction.resolve(dummyCharacter);
 			
-			if(calculateHappiness(dummyCharacter) > best)
+			
+			if(calculateHappiness(character, dummyCharacter) > best)
 			{
-				best = calculateHappiness(dummyCharacter);
+				
+				best = calculateHappiness(character, dummyCharacter);
+				
 				bestAction = prisonAction;
 			}
-			System.out.println(best);
+			
 		}
-		
+		//System.out.println(best);
 		return bestAction;		
 	}
 	
-	private int calculateHappiness(CharacterPH character)
+	private double calculateHappiness(CharacterPH characterBefore, CharacterPH characterAfter)
 	{
-		int healthPref = (character.getHealth()/1000) * character.getPreferences().getHealthPreference();
-		int strengthPref = character.getStrength() * character.getPreferences().getStrengthPreference();
-		int intelligencePref = character.getIntelligence() * character.getPreferences().getIntelligencePreference();
 		
 		
-		return healthPref + strengthPref + intelligencePref;
+		
+		//TODO trouver meilleure fonction
+		double charBHH = (double)characterBefore.getHealth() * characterBefore.getPreferences().getHealthPreference();
+		double charBSH = (double)characterBefore.getStrength() * characterBefore.getPreferences().getStrengthPreference();
+		double charBIH = (double)characterBefore.getIntelligence() * characterBefore.getPreferences().getIntelligencePreference();
+		double charAHH = (double)characterAfter.getHealth() * characterAfter.getPreferences().getHealthPreference();
+		double charASH = (double)characterAfter.getStrength() * characterAfter.getPreferences().getStrengthPreference();
+		double charAIH = (double)characterAfter.getIntelligence() * characterAfter.getPreferences().getIntelligencePreference();
+		
+		double charBH = charBHH + charBSH + charBIH;
+		double charAH = charAHH + charASH + charAIH;
+		
+//		System.out.println("sante B = " + charBHH);
+//		System.out.println("sante A = " + charAHH);
+//		System.out.println("force B = " + charBSH);
+//		System.out.println("force A = " + charASH);
+//		System.out.println("intel B = " + charBIH);
+//		System.out.println("intel A = " + charAIH);
+		
+		
+		return charAH - charBH;
 	}
 }

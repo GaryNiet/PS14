@@ -4,16 +4,16 @@ import java.util.Random;
 
 public class Preferences
 {
-	int healthPreference;
-	int strengthPreference;
-	int intelligencePreference;
+	double healthPreference;
+	double strengthPreference;
+	double intelligencePreference;
 	
 	public Preferences()
 	{
 		Random random = new Random();
-		healthPreference = random.nextInt(50) + 1;
-		strengthPreference = random.nextInt(50) + 1;
-		intelligencePreference = random.nextInt(50) + 1;
+		healthPreference = random.nextFloat() + 0.5;
+		strengthPreference = 11 + (random.nextFloat()-0.5)*3;
+		intelligencePreference = 11 + (random.nextFloat()-0.5)*3;
 	}
 	
 	public Preferences(Preferences preference)
@@ -23,15 +23,15 @@ public class Preferences
 		this.intelligencePreference = preference.intelligencePreference;
 	}
 
-	public int getHealthPreference() {
+	public double getHealthPreference() {
 		return healthPreference;
 	}
 
-	public int getStrengthPreference() {
+	public double getStrengthPreference() {
 		return strengthPreference;
 	}
 
-	public int getIntelligencePreference() {
+	public double getIntelligencePreference() {
 		return intelligencePreference;
 	}
 }

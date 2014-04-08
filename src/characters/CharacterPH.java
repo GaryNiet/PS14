@@ -1,6 +1,7 @@
 package characters;
 
 import schedule.PrisonAction;
+import schedule.Schedule;
 
 public class CharacterPH
 {
@@ -12,8 +13,7 @@ public class CharacterPH
 	int intelligence;
 	int posX, posY;
 	Preferences preferences;
-
-
+	Schedule schedule;
 	PrisonAction fixedAction;
 	
 	public CharacterPH(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
@@ -25,6 +25,7 @@ public class CharacterPH
 		posX = _posX;
 		posY = _posY;
 		
+		schedule = new Schedule();
 		preferences = new Preferences();
 	}
 	
@@ -37,9 +38,11 @@ public class CharacterPH
 		posX = character.posX;
 		posY = character.posY;
 		
-		//TODO
 		//copy preferences
 		preferences = new Preferences(character.preferences);
+		
+		//might be useless
+		schedule = new Schedule(character.schedule);
 	}
 	
 	public void naturalHealthLoss()
@@ -101,6 +104,10 @@ public class CharacterPH
 	
 	public Preferences getPreferences() {
 		return preferences;
+	}
+
+	public Schedule getSchedule() {
+		return schedule;
 	}
 
 }
