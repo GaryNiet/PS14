@@ -2,9 +2,9 @@ package schedule;
 
 import characters.CharacterPH;
 
-public class IntelligenceAction extends PrisonAction
+public class Learn extends PrisonAction
 {
-	public IntelligenceAction()
+	public Learn()
 	{
 		name = "intelligence";
 	}

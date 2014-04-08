@@ -2,10 +2,10 @@ package schedule;
 
 import characters.CharacterPH;
 
-public class HealthAction extends PrisonAction
+public class WellBeing extends PrisonAction
 {
 	
-	public HealthAction()
+	public WellBeing()
 	{
 		name = "health";
 	}

@@ -2,15 +2,14 @@ package places;
 
 import java.util.ArrayList;
 
-import schedule.IntelligenceAction;
+import schedule.Learn;
 
 public class Library extends Place
 {
 	public Library()
 	{
-		possibleActions = new ArrayList<>();
 		name = "Library";
-		possibleActions.add(new IntelligenceAction());
+		possibleActions.add(new Learn());
 	}
 	
 }

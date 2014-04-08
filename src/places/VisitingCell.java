@@ -4,12 +4,11 @@ import java.util.ArrayList;
 
 import schedule.WellBeing;
 
-public class Cafeteria extends Place
+public class VisitingCell extends Place
 {
-	public Cafeteria()
+	public VisitingCell()
 	{
-		name = "Cafeteria";
+		name = "visiting cell";
 		possibleActions.add(new WellBeing());
-		
 	}
 }

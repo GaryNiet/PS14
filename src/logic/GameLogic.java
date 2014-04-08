@@ -19,7 +19,7 @@ public class GameLogic {
 	int currentTime;
 	
 	//beware have to change this value
-	public final int timeZones = 3;
+	public final int timeZones = 9;
 	
 
 	public GameLogic()
