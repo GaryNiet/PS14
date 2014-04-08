@@ -1,41 +1,26 @@
 package aiMachine;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import schedule.HealthAction;
-import schedule.IntelligenceAction;
 import schedule.PrisonAction;
-import schedule.StrengthAction;
 import characters.CharacterPH;
 
 public class ActionCalculator
 {
-	List<PrisonAction> prisonActionList;
-	StrengthAction strengthAction;
-	IntelligenceAction intelligenceAction;
-	HealthAction healthAction;
 	
 	public ActionCalculator()
 	{
-		prisonActionList = new ArrayList<>();
 		
-		healthAction = new HealthAction();
-		strengthAction = new StrengthAction();
-		intelligenceAction = new IntelligenceAction();
-		
-		prisonActionList.add(healthAction);
-		prisonActionList.add(strengthAction);
-		prisonActionList.add(intelligenceAction);
 	}
 	
-	public PrisonAction calculateBestAction(CharacterPH character)
+	public PrisonAction calculateBestAction(CharacterPH character,  int currentTime)
 	{
 		CharacterPH dummyCharacter;
 		PrisonAction bestAction = null;
 		double best = 0;
-		for(PrisonAction prisonAction: prisonActionList)
+		for(PrisonAction prisonAction: character.getSchedule().getPlace(currentTime).possibleActions)
 		{
+			System.out.println("start");
+			System.out.println(character.getSchedule().getPlace(currentTime).possibleActions);
+			System.out.println("stop");
 			
 			//System.out.println(prisonAction.name);
 			

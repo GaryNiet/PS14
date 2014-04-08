@@ -18,7 +18,7 @@ public class GameLogic {
 	ActionCalculator actionCalculator;
 	int currentTime;
 	
-	//beware have to chage this value
+	//beware have to change this value
 	public final int timeZones = 3;
 	
 
@@ -28,7 +28,7 @@ public class GameLogic {
 		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, 2*100);
+		timer.scheduleAtFixedRate(timerTask, 0, 2*1000);
 		currentTime = 0;
 	}
 	
@@ -72,15 +72,16 @@ public class GameLogic {
 			for(CharacterPH character: characterList)
 			{
 				character.naturalHealthLoss();
-				passTime();
-				System.out.println(currentTime);
 				
-				PrisonAction bestAction = actionCalculator.calculateBestAction(character);
+				//System.out.println(currentTime);
+				
+				PrisonAction bestAction = actionCalculator.calculateBestAction(character, currentTime);
 				bestAction.resolve(character);
 				character.setFixedAction(bestAction);
 				
 			}
 			showTable();
+			passTime();
 			
 			
 		}
