@@ -6,7 +6,7 @@ public class Corrupt extends PrisonAction
 {
 	public Corrupt()
 	{
-		
+		name = "corrupt";
 	}
 
 	@Override

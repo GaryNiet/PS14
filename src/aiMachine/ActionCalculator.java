@@ -15,7 +15,7 @@ public class ActionCalculator
 	{
 		CharacterPH dummyCharacter;
 		PrisonAction bestAction = null;
-		double best = 0;
+		double best = -100000;
 		for(PrisonAction prisonAction: character.getSchedule().getPlace(currentTime).possibleActions)
 		{
 			System.out.println("start");
@@ -41,30 +41,11 @@ public class ActionCalculator
 		return bestAction;		
 	}
 	
+	
+	
 	private double calculateHappiness(CharacterPH characterBefore, CharacterPH characterAfter)
 	{
-		
-		
-		
-		//TODO trouver meilleure fonction
-		double charBHH = (double)characterBefore.getHealth() * characterBefore.getPreferences().getHealthPreference();
-		double charBSH = (double)characterBefore.getStrength() * characterBefore.getPreferences().getStrengthPreference();
-		double charBIH = (double)characterBefore.getIntelligence() * characterBefore.getPreferences().getIntelligencePreference();
-		double charAHH = (double)characterAfter.getHealth() * characterAfter.getPreferences().getHealthPreference();
-		double charASH = (double)characterAfter.getStrength() * characterAfter.getPreferences().getStrengthPreference();
-		double charAIH = (double)characterAfter.getIntelligence() * characterAfter.getPreferences().getIntelligencePreference();
-		
-		double charBH = charBHH + charBSH + charBIH;
-		double charAH = charAHH + charASH + charAIH;
-		
-//		System.out.println("sante B = " + charBHH);
-//		System.out.println("sante A = " + charAHH);
-//		System.out.println("force B = " + charBSH);
-//		System.out.println("force A = " + charASH);
-//		System.out.println("intel B = " + charBIH);
-//		System.out.println("intel A = " + charAIH);
-		
-		
-		return charAH - charBH;
+		return characterBefore.happiness() - characterAfter.happiness();
 	}
+	
 }

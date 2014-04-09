@@ -4,34 +4,23 @@ import java.util.Random;
 
 public class Preferences
 {
-	double healthPreference;
-	double strengthPreference;
-	double intelligencePreference;
+	double wellBeingPreference;
+	double evasionPreference;
+	double educationPreference;
 	
 	public Preferences()
 	{
-		Random random = new Random();
-		healthPreference = random.nextFloat() + 0.5;
-		strengthPreference = 11 + (random.nextFloat()-0.5)*3;
-		intelligencePreference = 11 + (random.nextFloat()-0.5)*3;
+		//Random random = new Random();
+		wellBeingPreference = 1;
+		evasionPreference	 = 1;
+		educationPreference = 1;
 	}
 	
 	public Preferences(Preferences preference)
 	{
-		this.healthPreference = preference.healthPreference;
-		this.strengthPreference = preference.strengthPreference;
-		this.intelligencePreference = preference.intelligencePreference;
+		this.wellBeingPreference = preference.wellBeingPreference;
+		this.evasionPreference = preference.evasionPreference;
+		this.educationPreference = preference.educationPreference;
 	}
 
-	public double getHealthPreference() {
-		return healthPreference;
-	}
-
-	public double getStrengthPreference() {
-		return strengthPreference;
-	}
-
-	public double getIntelligencePreference() {
-		return intelligencePreference;
-	}
 }

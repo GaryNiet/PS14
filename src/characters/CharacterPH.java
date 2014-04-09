@@ -12,6 +12,11 @@ public class CharacterPH
 	int strength;
 	int intelligence;
 	int posX, posY;
+	int money;
+	int materials;
+	int influence;
+	boolean weapon;
+	boolean tool;
 	Preferences preferences;
 	Schedule schedule;
 	PrisonAction fixedAction;
@@ -24,6 +29,7 @@ public class CharacterPH
 		intelligence = _intelligence;
 		posX = _posX;
 		posY = _posY;
+		
 		
 		schedule = new Schedule();
 		preferences = new Preferences();
@@ -43,6 +49,21 @@ public class CharacterPH
 		
 		//might be useless
 		schedule = new Schedule(character.schedule);
+	}
+	
+	public double happiness()
+	{
+		//well being takes into account:
+		//health over max health
+		//the more strength the better
+		//
+		double wellBeingHappiness = (double)health * preferences.wellBeingPreference;
+		
+		double evasionHappiness = (double)strength * preferences.evasionPreference;
+		double educationHappiness = (double)intelligence * preferences.educationPreference;
+		
+		
+		return wellBeingHappiness + evasionHappiness + educationHappiness;
 	}
 	
 	public void naturalHealthLoss()
@@ -108,6 +129,46 @@ public class CharacterPH
 
 	public Schedule getSchedule() {
 		return schedule;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
+	public int getMaterials() {
+		return materials;
+	}
+
+	public void setMaterials(int materials) {
+		this.materials = materials;
+	}
+
+	public int getInfluence() {
+		return influence;
+	}
+
+	public void setInfluence(int influence) {
+		this.influence = influence;
+	}
+
+	public boolean isWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(boolean weapon) {
+		this.weapon = weapon;
+	}
+
+	public boolean isTool() {
+		return tool;
+	}
+
+	public void setTool(boolean tool) {
+		this.tool = tool;
 	}
 
 }

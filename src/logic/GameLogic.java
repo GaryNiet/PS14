@@ -5,7 +5,14 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import schedule.Blackmail;
+import schedule.Corrupt;
+import schedule.Dig;
+import schedule.Evasion;
 import schedule.PrisonAction;
+import schedule.StealWeaponTool;
+import schedule.Train;
+import schedule.WellBeing;
 
 import aiMachine.ActionCalculator;
 
@@ -76,6 +83,8 @@ public class GameLogic {
 				//System.out.println(currentTime);
 				
 				PrisonAction bestAction = actionCalculator.calculateBestAction(character, currentTime);
+				
+				
 				bestAction.resolve(character);
 				character.setFixedAction(bestAction);
 				
