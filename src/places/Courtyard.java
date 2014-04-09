@@ -1,8 +1,9 @@
 package places;
 
-import java.util.ArrayList;
 
+import schedule.Sell;
 import schedule.Train;
+import schedule.WellBeing;
 
 public class Courtyard extends Place
 {
@@ -11,6 +12,8 @@ public class Courtyard extends Place
 	{
 		name = "Courtyard";
 		possibleActions.add(new Train());
+		possibleActions.add(new WellBeing());
+		possibleActions.add(new Sell());
 	}
 
 }

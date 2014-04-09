@@ -1,14 +1,13 @@
 package places;
 
-import java.util.ArrayList;
 
-import schedule.WellBeing;
+import schedule.StealWeaponTool;
 
 public class Kitchen extends Place
 {
 	public Kitchen()
 	{
 		name = "Kitchen";
-		possibleActions.add(new WellBeing());
+		possibleActions.add(new StealWeaponTool());
 	}
 }

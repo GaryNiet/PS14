@@ -27,11 +27,11 @@ public class ActionCalculator
 			dummyCharacter = new CharacterPH(character);
 			prisonAction.resolve(dummyCharacter);
 			
-			
-			if(calculateHappiness(character, dummyCharacter) > best)
+			double currentHappiness = calculateHappiness(character, dummyCharacter);
+			if(currentHappiness > best)
 			{
 				
-				best = calculateHappiness(character, dummyCharacter);
+				best = currentHappiness;
 				
 				bestAction = prisonAction;
 			}

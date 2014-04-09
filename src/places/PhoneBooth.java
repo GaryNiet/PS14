@@ -1,7 +1,7 @@
 package places;
 
-import java.util.ArrayList;
 
+import schedule.ResolveLegal;
 import schedule.WellBeing;
 
 public class PhoneBooth extends Place
@@ -10,5 +10,6 @@ public class PhoneBooth extends Place
 	{
 		name = "Phone booth";
 		possibleActions.add(new WellBeing());
+		possibleActions.add(new ResolveLegal());
 	}
 }

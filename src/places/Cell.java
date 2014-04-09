@@ -1,7 +1,7 @@
 package places;
 
-import java.util.ArrayList;
 
+import schedule.Steal;
 import schedule.WellBeing;
 
 public class Cell extends Place
@@ -10,5 +10,6 @@ public class Cell extends Place
 	{
 		name = "Cell";
 		possibleActions.add(new WellBeing());
+		possibleActions.add(new Steal());
 	}
 }

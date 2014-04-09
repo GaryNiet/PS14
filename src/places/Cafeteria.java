@@ -1,7 +1,7 @@
 package places;
 
-import java.util.ArrayList;
 
+import schedule.StealWeaponTool;
 import schedule.WellBeing;
 
 public class Cafeteria extends Place
@@ -10,6 +10,8 @@ public class Cafeteria extends Place
 	{
 		name = "Cafeteria";
 		possibleActions.add(new WellBeing());
+		possibleActions.add(new StealWeaponTool());
+		
 		
 	}
 }

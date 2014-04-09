@@ -10,9 +10,13 @@ public class Dig extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character) {
-		// TODO Auto-generated method stub
-		
+	public void resolve(CharacterPH character)
+	{
+		character.setHealth(character.getHealth()+1);
+		if(character.getHealth() > 100)
+		{
+			character.setHealth(100);
+		}
 	}
 	
 	

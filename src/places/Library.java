@@ -1,6 +1,5 @@
 package places;
 
-import java.util.ArrayList;
 
 import schedule.Learn;
 

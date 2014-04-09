@@ -7,6 +7,7 @@ import schedule.Attack;
 import schedule.Blackmail;
 import schedule.Corrupt;
 import schedule.Dig;
+import schedule.Evasion;
 import schedule.PrisonAction;
 
 public abstract class Place
@@ -22,6 +23,7 @@ public abstract class Place
 		possibleActions.add(new Blackmail());
 		possibleActions.add(new Corrupt());
 		possibleActions.add(new Dig());
+		possibleActions.add(new Evasion());
 	}
 	
 }

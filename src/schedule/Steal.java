@@ -10,8 +10,13 @@ public class Steal extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character) {
-		// TODO Auto-generated method stub
+	public void resolve(CharacterPH character)
+	{
+		character.setHealth(character.getHealth()+12);
+		if(character.getHealth() > 100)
+		{
+			character.setHealth(100);
+		}
 		
 	}
 }
