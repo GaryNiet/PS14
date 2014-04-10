@@ -12,12 +12,10 @@ public class Blackmail extends PrisonAction
 	@Override
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setHealth(character.getHealth()+1);
-		if(character.getHealth() > 100)
-		{
-			character.setInfluence(character.getInfluence() - 5);
-			
-		}
+		character.setInfluence(character.getInfluence() - 50);
+		System.out.println(character.getSchedule().getPlace(0));
+		//character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 5);
+	
 		
 	}
 	

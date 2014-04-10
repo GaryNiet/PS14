@@ -30,11 +30,21 @@ public class Schedule
 	
 	public Schedule(Schedule _schedule)
 	{
-		//TODO
+		timeTable = new Place[9];
+		timeTable[0] = _schedule.timeTable[0];
+		timeTable[1] = _schedule.timeTable[1];
+		timeTable[2] = _schedule.timeTable[2];
+		timeTable[3] = _schedule.timeTable[3];
+		timeTable[4] = _schedule.timeTable[4];
+		timeTable[5] = _schedule.timeTable[5];
+		timeTable[6] = _schedule.timeTable[6];
+		timeTable[7] = _schedule.timeTable[7];
+		timeTable[8] = _schedule.timeTable[8];
 	}
 	
 	public Place getPlace(int i)
 	{
+		
 		return timeTable[i];
 	}
 
