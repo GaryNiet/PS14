@@ -9,8 +9,9 @@ public class WellBeing extends PrisonAction
 	{
 		name = "health";
 	}
-	public void resolve(CharacterPH character)
+	public void resolve(CharacterPH character, int time)
 	{
+		
 		character.setHealth(character.getHealth()+12);
 		if(character.getHealth() > 100)
 		{

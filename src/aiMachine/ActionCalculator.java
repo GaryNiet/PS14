@@ -18,14 +18,14 @@ public class ActionCalculator
 		double best = -100000;
 		for(PrisonAction prisonAction: character.getSchedule().getPlace(currentTime).possibleActions)
 		{
-			System.out.println("start");
-			System.out.println(character.getSchedule().getPlace(currentTime).possibleActions);
-			System.out.println("stop");
+//			System.out.println("start");
+//			System.out.println(character.getSchedule().getPlace(currentTime).possibleActions);
+//			System.out.println("stop");
 			
 			//System.out.println(prisonAction.name);
 			
 			dummyCharacter = new CharacterPH(character);
-			prisonAction.resolve(dummyCharacter);
+			prisonAction.resolve(dummyCharacter, currentTime);
 			
 			double currentHappiness = calculateHappiness(character, dummyCharacter);
 			if(currentHappiness > best)

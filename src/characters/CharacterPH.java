@@ -57,11 +57,29 @@ public class CharacterPH
 		//health over max health
 		//the more strength the better
 		//
-		double wellBeingHappiness = (double)health * preferences.wellBeingPreference;
+		double wellBeingHappiness = (double)health;
+		if(health < 50)
+		{
+			wellBeingHappiness -= 50;
+		}
+		wellBeingHappiness += strength * 5;
+		wellBeingHappiness *= preferences.wellBeingPreference;
 		
-		double evasionHappiness = (double)strength * preferences.evasionPreference;
-		double educationHappiness = (double)intelligence * preferences.educationPreference;
+		//evasion happiness takes into account:
+		//amount of money, amount of influence
+		//dig progression
+		//resolve legal progression
+		// amount of materials
+		double evasionHappiness = (double)strength;
+		evasionHappiness += money;
+		evasionHappiness += influence;
+		evasionHappiness += materials * 0.5;
+		evasionHappiness *= preferences.evasionPreference;
 		
+		//education happiness takes into account:
+		//intelligence
+		double educationHappiness = (double)intelligence;
+		educationHappiness *= preferences.educationPreference;
 		
 		return wellBeingHappiness + evasionHappiness + educationHappiness;
 	}

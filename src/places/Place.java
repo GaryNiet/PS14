@@ -14,6 +14,8 @@ public abstract class Place
 {
 	public String name;
 	public List<PrisonAction> possibleActions;
+	public int guardAwareness;
+	public double attackSR, blackmailSR, corruptSR, digSR, evasionSR, resolveLegalSR, stealWeaponToolSR, sellMaterialsSR, stealSR;
 	
 	public Place()
 	{

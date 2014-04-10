@@ -8,6 +8,15 @@ public class Showers extends Place
 {
 	public Showers()
 	{
+		
+		stealSR = 1;
+		
+		attackSR = 1;
+		blackmailSR = 1;
+		corruptSR = 1;
+		digSR = 1;
+		
+		
 		name = "Showers";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());

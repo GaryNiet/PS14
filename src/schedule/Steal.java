@@ -10,7 +10,7 @@ public class Steal extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character)
+	public void resolve(CharacterPH character, int time)
 	{
 		character.setHealth(character.getHealth()+12);
 		if(character.getHealth() > 100)

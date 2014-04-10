@@ -85,7 +85,7 @@ public class GameLogic {
 				PrisonAction bestAction = actionCalculator.calculateBestAction(character, currentTime);
 				
 				
-				bestAction.resolve(character);
+				bestAction.resolve(character, currentTime);
 				character.setFixedAction(bestAction);
 				
 			}
