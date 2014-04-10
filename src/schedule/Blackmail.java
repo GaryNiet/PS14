@@ -4,6 +4,10 @@ import characters.CharacterPH;
 
 public class Blackmail extends PrisonAction
 {
+	
+	final int guardAwarenessChange = 5;
+	final int influenceChange = 50;
+	
 	public Blackmail()
 	{
 		name = "blackmail";
@@ -12,10 +16,14 @@ public class Blackmail extends PrisonAction
 	@Override
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setInfluence(character.getInfluence() - 50);
-		System.out.println(character.getSchedule().getPlace(0));
-		//character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 5);
-	
+		int influence = character.getInfluence();
+		if(influence >= influenceChange)
+		{
+			character.setInfluence(influence - influenceChange);
+			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - guardAwarenessChange);
+		
+		}
+		
 		
 	}
 	

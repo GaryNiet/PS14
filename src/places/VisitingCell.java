@@ -16,6 +16,8 @@ public class VisitingCell extends Place
 		corruptSR = 1;
 		digSR = 1;
 		
+		digAdvancement = 0;
+		
 		
 		name = "visiting cell";
 		possibleActions.add(new WellBeing());

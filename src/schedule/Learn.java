@@ -11,6 +11,6 @@ public class Learn extends PrisonAction
 	
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setIntelligence(character.getIntelligence()+1);
+		character.setIntelligence(character.getIntelligence() + 1/character.getIntelligence());
 	}
 }

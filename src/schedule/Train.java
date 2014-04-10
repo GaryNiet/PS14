@@ -11,6 +11,6 @@ public class Train extends PrisonAction
 	
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setStrength(character.getStrength()+1);
+		character.setStrength(character.getStrength()+1/character.getStrength());
 	}
 }

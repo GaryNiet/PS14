@@ -18,6 +18,8 @@ public class Courtyard extends Place
 		digSR = 1;
 		sellMaterialsSR = 1;
 		
+		digAdvancement = 0;
+		
 		name = "Courtyard";
 		possibleActions.add(new Train());
 		possibleActions.add(new WellBeing());

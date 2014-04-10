@@ -14,8 +14,10 @@ public abstract class Place
 {
 	public String name;
 	public List<PrisonAction> possibleActions;
+	//TODO this is not global
 	public int guardAwareness;
 	public double attackSR, blackmailSR, corruptSR, digSR, evasionSR, resolveLegalSR, stealWeaponToolSR, sellMaterialsSR, stealSR;
+	protected int digAdvancement;
 	
 	public Place()
 	{
@@ -106,6 +108,14 @@ public abstract class Place
 
 	public void setStealSR(double stealSR) {
 		this.stealSR = stealSR;
+	}
+
+	public int getDigAdvancement() {
+		return digAdvancement;
+	}
+
+	public void setDigAdvancement(int digAdvancement) {
+		this.digAdvancement = digAdvancement;
 	}
 	
 }

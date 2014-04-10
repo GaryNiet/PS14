@@ -18,7 +18,7 @@ public class ActionCalculator
 		double best = -100000;
 		for(PrisonAction prisonAction: character.getSchedule().getPlace(currentTime).possibleActions)
 		{
-//			System.out.println("start");
+			System.out.println("------------------------------"+ prisonAction.name + "--------------------------------------");
 //			System.out.println(character.getSchedule().getPlace(currentTime).possibleActions);
 //			System.out.println("stop");
 			
@@ -45,7 +45,7 @@ public class ActionCalculator
 	
 	private double calculateHappiness(CharacterPH characterBefore, CharacterPH characterAfter)
 	{
-		return characterBefore.happiness() - characterAfter.happiness();
+		return characterAfter.happiness() - characterBefore.happiness();
 	}
 	
 }

@@ -15,6 +15,8 @@ public class Kitchen extends Place
 		corruptSR = 1;
 		digSR = 1;
 		
+		digAdvancement = 0;
+		
 		
 		name = "Kitchen";
 		possibleActions.add(new StealWeaponTool());

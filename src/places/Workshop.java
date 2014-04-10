@@ -17,6 +17,8 @@ public class Workshop extends Place
 		corruptSR = 1;
 		digSR = 1;
 		
+		digAdvancement = 0;
+		
 		
 		name = "Workshop";
 		possibleActions.add(new Steal());

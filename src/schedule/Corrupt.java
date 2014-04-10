@@ -4,6 +4,9 @@ import characters.CharacterPH;
 
 public class Corrupt extends PrisonAction
 {
+	final int guardAwarenessChange = 5;
+	final int moneyChange = 50;
+	
 	public Corrupt()
 	{
 		name = "corrupt";
@@ -12,11 +15,12 @@ public class Corrupt extends PrisonAction
 	@Override
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setHealth(character.getHealth()+1);
-		if(character.getHealth() > 100)
-		{
-			character.setHealth(100);
-		}
+		int money = character.getMoney();
 		
+		if(money >= moneyChange)
+		{
+			character.setMoney(character.getMoney() - moneyChange);
+			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 5);
+		}
 	}
 }

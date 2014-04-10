@@ -16,6 +16,8 @@ public class Showers extends Place
 		corruptSR = 1;
 		digSR = 1;
 		
+		digAdvancement = 0;
+		
 		
 		name = "Showers";
 		possibleActions.add(new WellBeing());

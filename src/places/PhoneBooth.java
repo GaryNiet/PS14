@@ -16,6 +16,8 @@ public class PhoneBooth extends Place
 		corruptSR = 1;
 		digSR = 1;
 		
+		digAdvancement = 0;
+		
 		
 		name = "Phone booth";
 		possibleActions.add(new WellBeing());

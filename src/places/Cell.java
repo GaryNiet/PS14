@@ -17,7 +17,7 @@ public class Cell extends Place
 		stealSR = 1;
 		
 		
-		
+		digAdvancement = 0;
 		
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());

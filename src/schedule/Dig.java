@@ -12,11 +12,9 @@ public class Dig extends PrisonAction
 	@Override
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setHealth(character.getHealth()+1);
-		if(character.getHealth() > 100)
-		{
-			character.setHealth(100);
-		}
+		character.setHealth(character.getHealth()-2);
+		character.getSchedule().getPlace(time).setDigAdvancement(character.getSchedule().getPlace(time).getDigAdvancement() + 1 );
+		
 	}
 	
 	

@@ -12,11 +12,8 @@ public class Sell extends PrisonAction
 	@Override
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setHealth(character.getHealth()+1);
-		if(character.getHealth() > 100)
-		{
-			character.setHealth(100);
-		}
+		character.setMaterials(character.getMaterials() - 10);
+		character.setMoney(character.getMoney() + 5);
 		
 	}
 }

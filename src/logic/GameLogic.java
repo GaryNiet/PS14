@@ -44,24 +44,25 @@ public class GameLogic {
 	private void showTable()
 	{
 		
-		String leftAlignFormat = "| %-24s | %-12d | %-14d | %-9d | %-17s | %-17s |%n";
+		String leftAlignFormat = "| %-11s | %-6d | %-10d | %-4d | %-10s | %-9s | %-7d | %-5d | %-9d |%n";
 		
-		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
-		System.out.printf("|            name          |   strength   |  intelligence  |   health  |       action      |       place       |%n");
-		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------------------------------------------------------+%n");
+		System.out.printf("|    name     |strength|intelligence|health|   action   |   place   |influence| money | materials |%n");
+		System.out.format("+-------------------------------------------------------------------------------------------------+%n");
 		for(CharacterPH character: characterList)
 		{
-			System.out.format(leftAlignFormat, character.getName(), character.getStrength(), character.getIntelligence(), 
-					character.getHealth(), character.getFixedAction().name, character.getSchedule().getPlace(currentTime).name);
+			System.out.format(leftAlignFormat, character.getName(), (int)character.getStrength(), (int)character.getIntelligence(), 
+					character.getHealth(), character.getFixedAction().name, character.getSchedule().getPlace(currentTime).name,
+					character.getInfluence(), character.getMoney(), character.getMaterials());
 			
 		}
-		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------------------------------------------------------+%n");
 	}
 
 
 	private void init()
 	{
-		for(int i = 0; i<4; i++)
+		for(int i = 0; i<1; i++)
 		{
 			CharacterPH character1 = new CharacterPH("name" , 100, 10, 10, 0, 0);
 			characterList.add(character1);
@@ -78,9 +79,7 @@ public class GameLogic {
 		{
 			for(CharacterPH character: characterList)
 			{
-				character.naturalHealthLoss();
-				
-				//System.out.println(currentTime);
+				updateVariablesAndCheckIntegrity(character);
 				
 				PrisonAction bestAction = actionCalculator.calculateBestAction(character, currentTime);
 				
@@ -95,6 +94,11 @@ public class GameLogic {
 			
 		}
 		
+	}
+	
+	private void updateVariablesAndCheckIntegrity(CharacterPH character)
+	{
+		character.naturalHealthLoss();
 	}
 	
 	private void passTime()

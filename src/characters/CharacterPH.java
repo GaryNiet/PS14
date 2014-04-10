@@ -1,5 +1,6 @@
 package characters;
 
+import places.Place;
 import schedule.PrisonAction;
 import schedule.Schedule;
 
@@ -9,14 +10,15 @@ public class CharacterPH
 
 
 	int health;
-	int strength;
-	int intelligence;
+	double strength;
+	double intelligence;
 	int posX, posY;
 	int money;
 	int materials;
 	int influence;
 	boolean weapon;
 	boolean tool;
+	double legalAdvancement;
 	Preferences preferences;
 	Schedule schedule;
 	PrisonAction fixedAction;
@@ -30,7 +32,7 @@ public class CharacterPH
 		posX = _posX;
 		posY = _posY;
 		
-		
+		legalAdvancement =0;
 		schedule = new Schedule();
 		preferences = new Preferences();
 	}
@@ -47,7 +49,6 @@ public class CharacterPH
 		//copy preferences
 		preferences = new Preferences(character.preferences);
 		
-		//might be useless
 		schedule = new Schedule(character.schedule);
 	}
 	
@@ -57,13 +58,14 @@ public class CharacterPH
 		//health over max health
 		//the more strength the better
 		//
-		double wellBeingHappiness = (double)health;
-		if(health < 50)
+		double wellBeingHappiness = (double)health / 10;
+		if(health > 50)
 		{
-			wellBeingHappiness -= 50;
+			wellBeingHappiness += 15;
 		}
 		wellBeingHappiness += strength * 5;
 		wellBeingHappiness *= preferences.wellBeingPreference;
+		System.out.println("wellbeinghappiness " + wellBeingHappiness);
 		
 		//evasion happiness takes into account:
 		//amount of money, amount of influence
@@ -73,13 +75,21 @@ public class CharacterPH
 		double evasionHappiness = (double)strength;
 		evasionHappiness += money;
 		evasionHappiness += influence;
-		evasionHappiness += materials * 0.5;
+		evasionHappiness += (double)materials * 0.3;
+		for(Place place: schedule.getAllPlaces())
+		{
+			evasionHappiness += (double)place.getDigAdvancement();
+		}
 		evasionHappiness *= preferences.evasionPreference;
+		
+		System.out.println("evasionHappiness " + evasionHappiness);
 		
 		//education happiness takes into account:
 		//intelligence
 		double educationHappiness = (double)intelligence;
 		educationHappiness *= preferences.educationPreference;
+		
+		System.out.println("educationHappiness " + educationHappiness);
 		
 		return wellBeingHappiness + evasionHappiness + educationHappiness;
 	}
@@ -87,6 +97,20 @@ public class CharacterPH
 	public void naturalHealthLoss()
 	{
 		health -= 1;
+		checkHealthIntegrity();
+	}
+	
+	public void checkHealthIntegrity()
+	{
+		if(health > 100)
+		{
+			health = 100;
+		}
+		if(health <= 0)
+		{
+			//TODO die
+		}
+	
 	}
 	
 	public int getHealth() {
@@ -97,19 +121,19 @@ public class CharacterPH
 		this.health = health;
 	}
 
-	public int getStrength() {
+	public double getStrength() {
 		return strength;
 	}
 
-	public void setStrength(int strength) {
+	public void setStrength(double strength) {
 		this.strength = strength;
 	}
 
-	public int getIntelligence() {
+	public double getIntelligence() {
 		return intelligence;
 	}
 
-	public void setIntelligence(int intelligence) {
+	public void setIntelligence(double intelligence) {
 		this.intelligence = intelligence;
 	}
 
@@ -187,6 +211,14 @@ public class CharacterPH
 
 	public void setTool(boolean tool) {
 		this.tool = tool;
+	}
+
+	public double getLegalAdvancement() {
+		return legalAdvancement;
+	}
+
+	public void setLegalAdvancement(double legalAdvancement) {
+		this.legalAdvancement = legalAdvancement;
 	}
 
 }

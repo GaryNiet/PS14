@@ -17,6 +17,8 @@ public class Cafeteria extends Place
 		corruptSR = 1;
 		digSR = 1;
 		
+		digAdvancement = 0;
+		
 		name = "Cafeteria";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new StealWeaponTool());
