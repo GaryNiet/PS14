@@ -1,5 +1,6 @@
 package characters;
 
+import places.Cell;
 import places.Place;
 import schedule.PrisonAction;
 import schedule.Schedule;
@@ -22,6 +23,7 @@ public class CharacterPH
 	Preferences preferences;
 	Schedule schedule;
 	PrisonAction fixedAction;
+	Place currentPlace;
 	
 	public CharacterPH(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
@@ -32,37 +34,38 @@ public class CharacterPH
 		posX = _posX;
 		posY = _posY;
 		
-		legalAdvancement =0;
+		legalAdvancement =1;
 		materials = 0;
 		influence = 0;
 		money = 0;
 		
+		currentPlace = new Cell();
 		
 		schedule = new Schedule();
 		preferences = new Preferences();
 	}
 	
-	public CharacterPH(CharacterPH character)
+	public CharacterPH(CharacterPH _character)
 	{
-		name = character.name;
-		health = character.health;
-		strength = character.strength;
-		intelligence = character.intelligence;
-		posX = character.posX;
-		posY = character.posY;
+		name = _character.name;
+		health = _character.health;
+		strength = _character.strength;
+		intelligence = _character.intelligence;
+		posX = _character.posX;
+		posY = _character.posY;
 		
 		
 		
-		this.legalAdvancement = character.legalAdvancement;
-		this.materials = character.materials;
-		this.influence = character.influence;
-		this.money = character.money;
+		this.legalAdvancement = _character.legalAdvancement;
+		this.materials = _character.materials;
+		this.influence = _character.influence;
+		this.money = _character.money;
 		
 		
 		//copy preferences
-		preferences = new Preferences(character.preferences);
+		preferences = new Preferences(_character.preferences);
 		
-		schedule = new Schedule(character.schedule);
+		schedule = new Schedule(_character.schedule);
 	}
 	
 	public double happiness()
@@ -106,6 +109,8 @@ public class CharacterPH
 		//education happiness takes into account:
 		//intelligence
 		double educationHappiness = (double)intelligence;
+		
+		educationHappiness = educationHappiness + legalAdvancement;
 		educationHappiness *= preferences.educationPreference;
 		
 		System.out.println("educationHappiness " + educationHappiness);
@@ -238,6 +243,14 @@ public class CharacterPH
 
 	public void setLegalAdvancement(double legalAdvancement) {
 		this.legalAdvancement = legalAdvancement;
+	}
+
+	public Place getCurrentPlace() {
+		return currentPlace;
+	}
+
+	public void setCurrentPlace(Place currentPlace) {
+		this.currentPlace = currentPlace;
 	}
 
 }

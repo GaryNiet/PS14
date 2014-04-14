@@ -23,4 +23,22 @@ public class VisitingCell extends Place
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new ResolveLegal());
 	}
+	
+	public VisitingCell(VisitingCell _visitingCell)
+	{
+		
+		resolveLegalSR = _visitingCell.resolveLegalSR;
+		
+		attackSR = _visitingCell.attackSR;
+		blackmailSR = _visitingCell.blackmailSR;
+		corruptSR = _visitingCell.corruptSR;
+		digSR = _visitingCell.digSR;
+		
+		digAdvancement = _visitingCell.digAdvancement;
+		
+		
+		name = "visiting cell";
+		possibleActions.add(new WellBeing());
+		possibleActions.add(new ResolveLegal());
+	}
 }

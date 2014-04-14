@@ -22,7 +22,21 @@ public class Cafeteria extends Place
 		name = "Cafeteria";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new StealWeaponTool());
+	}
+	
+	public Cafeteria(Cafeteria _cafeteria)
+	{
+		stealWeaponToolSR = _cafeteria.stealWeaponToolSR;
 		
+		attackSR = _cafeteria.attackSR;
+		blackmailSR = _cafeteria.blackmailSR;
+		corruptSR = _cafeteria.corruptSR;
+		digSR = _cafeteria.digSR;
 		
+		digAdvancement = _cafeteria.digAdvancement;
+		
+		name = "Cafeteria";
+		possibleActions.add(new WellBeing());
+		possibleActions.add(new StealWeaponTool());
 	}
 }

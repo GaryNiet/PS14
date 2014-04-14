@@ -25,5 +25,21 @@ public class Courtyard extends Place
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Sell());
 	}
+	
+	public Courtyard(Courtyard _courtyard)
+	{
+		attackSR = _courtyard.attackSR;
+		blackmailSR = _courtyard.blackmailSR;
+		corruptSR = _courtyard.corruptSR;
+		digSR = _courtyard.digSR;
+		sellMaterialsSR = _courtyard.sellMaterialsSR;
+		
+		digAdvancement = _courtyard.digAdvancement;
+		
+		name = "Courtyard";
+		possibleActions.add(new Train());
+		possibleActions.add(new WellBeing());
+		possibleActions.add(new Sell());
+	}
 
 }

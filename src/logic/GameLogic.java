@@ -44,19 +44,20 @@ public class GameLogic {
 	private void showTable()
 	{
 		
-		String leftAlignFormat = "| %-11s | %-6d | %-10d | %-4d | %-10s | %-9s | %-7d | %-5d | %-9d |%n";
 		
-		System.out.format("+-------------------------------------------------------------------------------------------------+%n");
-		System.out.printf("|    name     |strength|intelligence|health|   action   |   place   |influence| money | materials |%n");
-		System.out.format("+-------------------------------------------------------------------------------------------------+%n");
+		String leftAlignFormat = "| %-11s | %-6d | %-10d | %-4d | %-10s | %-9s | %-10s | %-7d | %-5d | %-9d |%n";
+		
+		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
+		System.out.printf("|    name     |strength|intelligence|health|   action   | schedule  |currentPlace|influence| money | materials |%n");
+		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
 		for(CharacterPH character: characterList)
 		{
 			System.out.format(leftAlignFormat, character.getName(), (int)character.getStrength(), (int)character.getIntelligence(), 
-					character.getHealth(), character.getFixedAction().name, character.getSchedule().getPlace(currentTime).name,
+					character.getHealth(), character.getFixedAction().name, character.getSchedule().getPlace(currentTime).name, character.getCurrentPlace().name, 
 					character.getInfluence(), character.getMoney(), character.getMaterials());
 			
 		}
-		System.out.format("+-------------------------------------------------------------------------------------------------+%n");
+		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
 	}
 
 
@@ -66,6 +67,7 @@ public class GameLogic {
 		{
 			CharacterPH character1 = new CharacterPH("name" , 100, 10, 10, 0, 0);
 			characterList.add(character1);
+			System.out.println(character1.getSchedule().getPlace(3));
 		}
 		
 		
@@ -86,6 +88,7 @@ public class GameLogic {
 				
 				bestAction.resolve(character, currentTime);
 				character.setFixedAction(bestAction);
+				setCurrentPlace(character);
 				
 			}
 			showTable();
@@ -107,6 +110,15 @@ public class GameLogic {
 		if(currentTime > timeZones -1)
 		{
 			currentTime = 0;
+		}
+	}
+	
+	private void setCurrentPlace(CharacterPH character)
+	{
+		if(character.getSchedule().getPlace(currentTime).name == "free" || character.getSchedule().getPlace(currentTime).name == "job")
+		{
+			
+			character.setCurrentPlace(character.getSchedule().getPlace(1));
 		}
 	}
 }

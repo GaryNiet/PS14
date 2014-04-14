@@ -23,4 +23,21 @@ public class Workshop extends Place
 		name = "Workshop";
 		possibleActions.add(new Steal());
 	}
+	
+	public Workshop(Workshop _workshop)
+	{
+		
+		stealWeaponToolSR =_workshop.stealWeaponToolSR;
+		
+		attackSR = _workshop.attackSR;
+		blackmailSR = _workshop.blackmailSR;
+		corruptSR = _workshop.corruptSR;
+		digSR = _workshop.digSR;
+		
+		digAdvancement = _workshop.digAdvancement;
+		
+		
+		name = "Workshop";
+		possibleActions.add(new Steal());
+	}
 }

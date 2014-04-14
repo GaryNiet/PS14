@@ -22,6 +22,25 @@ public class Cell extends Place
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());
 	}
+	
+	public Cell(Cell _cell)
+	{
+		name = "Cell";
+		
+		attackSR = _cell.attackSR;
+		blackmailSR = _cell.blackmailSR;
+		corruptSR = _cell.corruptSR;
+		digSR = _cell.digSR;
+		stealSR = _cell.stealSR;
+		
+		
+		digAdvancement = _cell.digAdvancement;
+		
+		possibleActions.add(new WellBeing());
+		possibleActions.add(new Steal());
+	}
+	
+	
 
 	
 	

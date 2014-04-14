@@ -7,6 +7,8 @@ import java.util.List;
 import places.Cafeteria;
 import places.Cell;
 import places.Courtyard;
+import places.Free;
+import places.Job;
 import places.Kitchen;
 import places.Library;
 import places.PhoneBooth;
@@ -28,6 +30,8 @@ public class Schedule
 	VisitingCell visitingCell;
 	Kitchen kitchen;
 	Library library;
+	Free free;
+	Job job;
 	
 	public Schedule()
 	{
@@ -38,10 +42,10 @@ public class Schedule
 		timeTable[0] = cell;
 		timeTable[1] = showers;
 		timeTable[2] = cafeteria;
-		timeTable[3] = courtyard;
+		timeTable[3] = job;
 		timeTable[4] = cafeteria;
-		timeTable[5] = cell;
-		timeTable[6] = workshop;
+		timeTable[5] = job;
+		timeTable[6] = free;
 		timeTable[7] = showers;
 		timeTable[8] = cell;
 		
@@ -51,15 +55,17 @@ public class Schedule
 	{
 		allPlaces = new ArrayList<>();
 		
-		cell = _schedule.cell;
-		courtyard = _schedule.courtyard;
-		cafeteria = _schedule.cafeteria;
-		showers = _schedule.showers;
-		workshop = _schedule.workshop;
-		phoneBooth = _schedule.phoneBooth;
-		visitingCell = _schedule.visitingCell;
-		kitchen = _schedule.kitchen;
-		library = _schedule.library;
+		cell = new Cell(_schedule.cell);
+		courtyard = new Courtyard(_schedule.courtyard);
+		cafeteria = new Cafeteria(_schedule.cafeteria);
+		showers = new Showers(_schedule.showers);
+		workshop = new Workshop(_schedule.workshop);
+		phoneBooth = new PhoneBooth(_schedule.phoneBooth);
+		visitingCell = new VisitingCell(_schedule.visitingCell);
+		kitchen = new Kitchen(_schedule.kitchen);
+		library = new Library(_schedule.library);
+		free = new Free(_schedule.free);
+		job = new Job(_schedule.job);
 		
 		allPlaces.add(cell);
 		allPlaces.add(courtyard);
@@ -70,6 +76,8 @@ public class Schedule
 		allPlaces.add(visitingCell);
 		allPlaces.add(kitchen);
 		allPlaces.add(cell);
+		allPlaces.add(free);
+		allPlaces.add(job);
 		
 		timeTable = new Place[9];
 		timeTable[0] = _schedule.timeTable[0];
@@ -94,6 +102,8 @@ public class Schedule
 		visitingCell = new VisitingCell();
 		kitchen = new Kitchen();
 		library = new Library();
+		free = new Free();
+		job = new Job();
 		
 		allPlaces.add(cell);
 		allPlaces.add(courtyard);
@@ -104,6 +114,8 @@ public class Schedule
 		allPlaces.add(visitingCell);
 		allPlaces.add(kitchen);
 		allPlaces.add(cell);
+		allPlaces.add(free);
+		allPlaces.add(job);
 		
 	}
 	

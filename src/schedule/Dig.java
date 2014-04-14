@@ -13,7 +13,7 @@ public class Dig extends PrisonAction
 	public void resolve(CharacterPH character, int time)
 	{
 		character.setHealth(character.getHealth()-2);
-		character.getSchedule().getPlace(time).setDigAdvancement(character.getSchedule().getPlace(time).getDigAdvancement() + 1 );
+		character.getSchedule().getPlace(time).setDigAdvancement(character.getSchedule().getPlace(time).getDigAdvancement() +1);
 		
 	}
 	

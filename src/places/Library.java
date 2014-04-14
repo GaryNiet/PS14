@@ -20,4 +20,19 @@ public class Library extends Place
 		possibleActions.add(new Learn());
 	}
 	
+	public Library(Library _library)
+	{
+		
+		attackSR = _library.attackSR;
+		blackmailSR = _library.blackmailSR;
+		corruptSR = _library.corruptSR;
+		digSR = _library.digSR;
+		
+		digAdvancement = _library.digAdvancement;
+		
+		
+		name = "Library";
+		possibleActions.add(new Learn());
+	}
+	
 }

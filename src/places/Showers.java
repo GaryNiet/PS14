@@ -24,4 +24,22 @@ public class Showers extends Place
 		possibleActions.add(new Steal());
 	}
 	
+	public Showers(Showers _showers)
+	{
+		
+		stealSR = _showers.stealSR;
+		
+		attackSR = _showers.attackSR;
+		blackmailSR = _showers.blackmailSR;
+		corruptSR = _showers.corruptSR;
+		digSR = _showers.digSR;
+		
+		digAdvancement = _showers.digAdvancement;
+		
+		
+		name = "Showers";
+		possibleActions.add(new WellBeing());
+		possibleActions.add(new Steal());
+	}
+	
 }

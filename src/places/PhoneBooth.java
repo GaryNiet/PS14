@@ -23,4 +23,22 @@ public class PhoneBooth extends Place
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new ResolveLegal());
 	}
+	
+	public PhoneBooth(PhoneBooth _phoneBooth)
+	{
+		
+		resolveLegalSR = _phoneBooth.resolveLegalSR;
+		
+		attackSR = _phoneBooth.attackSR;
+		blackmailSR = _phoneBooth.blackmailSR;
+		corruptSR = _phoneBooth.corruptSR;
+		digSR = _phoneBooth.digSR;
+		
+		digAdvancement = _phoneBooth.digAdvancement;
+		
+		
+		name = "Phone booth";
+		possibleActions.add(new WellBeing());
+		possibleActions.add(new ResolveLegal());
+	}
 }

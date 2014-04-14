@@ -21,4 +21,21 @@ public class Kitchen extends Place
 		name = "Kitchen";
 		possibleActions.add(new StealWeaponTool());
 	}
+	
+	public Kitchen(Kitchen _kitchen)
+	{
+		
+		stealWeaponToolSR = _kitchen.stealWeaponToolSR;
+		
+		attackSR = _kitchen.attackSR;
+		blackmailSR = _kitchen.blackmailSR;
+		corruptSR = _kitchen.corruptSR;
+		digSR = _kitchen.digSR;
+		
+		digAdvancement = _kitchen.digAdvancement;
+		
+		
+		name = "Kitchen";
+		possibleActions.add(new StealWeaponTool());
+	}
 }
