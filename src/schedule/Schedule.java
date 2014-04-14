@@ -38,7 +38,7 @@ public class Schedule
 		timeTable[0] = cell;
 		timeTable[1] = showers;
 		timeTable[2] = cafeteria;
-		timeTable[3] = cell;
+		timeTable[3] = courtyard;
 		timeTable[4] = cafeteria;
 		timeTable[5] = cell;
 		timeTable[6] = workshop;
@@ -60,6 +60,16 @@ public class Schedule
 		visitingCell = _schedule.visitingCell;
 		kitchen = _schedule.kitchen;
 		library = _schedule.library;
+		
+		allPlaces.add(cell);
+		allPlaces.add(courtyard);
+		allPlaces.add(cafeteria);
+		allPlaces.add(showers);
+		allPlaces.add(workshop);
+		allPlaces.add(phoneBooth);
+		allPlaces.add(visitingCell);
+		allPlaces.add(kitchen);
+		allPlaces.add(cell);
 		
 		timeTable = new Place[9];
 		timeTable[0] = _schedule.timeTable[0];

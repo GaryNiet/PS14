@@ -21,6 +21,7 @@ public abstract class Place
 	
 	public Place()
 	{
+		digAdvancement = 0;
 		possibleActions = new ArrayList<>();
 		
 		//possibleActions.add(new Attack());
@@ -29,6 +30,7 @@ public abstract class Place
 		possibleActions.add(new Dig());
 		possibleActions.add(new Evasion());
 	}
+	
 
 	public int getGuardAwareness() {
 		return guardAwareness;

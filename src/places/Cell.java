@@ -22,4 +22,7 @@ public class Cell extends Place
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());
 	}
+
+	
+	
 }

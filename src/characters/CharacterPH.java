@@ -33,6 +33,11 @@ public class CharacterPH
 		posY = _posY;
 		
 		legalAdvancement =0;
+		materials = 0;
+		influence = 0;
+		money = 0;
+		
+		
 		schedule = new Schedule();
 		preferences = new Preferences();
 	}
@@ -46,6 +51,14 @@ public class CharacterPH
 		posX = character.posX;
 		posY = character.posY;
 		
+		
+		
+		this.legalAdvancement = character.legalAdvancement;
+		this.materials = character.materials;
+		this.influence = character.influence;
+		this.money = character.money;
+		
+		
 		//copy preferences
 		preferences = new Preferences(character.preferences);
 		
@@ -58,6 +71,9 @@ public class CharacterPH
 		//health over max health
 		//the more strength the better
 		//
+		
+		
+		
 		double wellBeingHappiness = (double)health / 10;
 		if(health > 50)
 		{
@@ -72,17 +88,20 @@ public class CharacterPH
 		//dig progression
 		//resolve legal progression
 		// amount of materials
+		
 		double evasionHappiness = (double)strength;
 		evasionHappiness += money;
 		evasionHappiness += influence;
-		evasionHappiness += (double)materials * 0.3;
+		evasionHappiness += (double)materials * 0.15;
+
 		for(Place place: schedule.getAllPlaces())
 		{
 			evasionHappiness += (double)place.getDigAdvancement();
 		}
+		
 		evasionHappiness *= preferences.evasionPreference;
 		
-		System.out.println("evasionHappiness " + evasionHappiness);
+		System.out.println("evasionHappiness total " + evasionHappiness);
 		
 		//education happiness takes into account:
 		//intelligence
