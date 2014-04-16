@@ -19,7 +19,7 @@ public class PhoneBooth extends Place
 		digAdvancement = 0;
 		
 		
-		name = "Phone booth";
+		name = "phone booth";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new ResolveLegal());
 	}
@@ -37,7 +37,7 @@ public class PhoneBooth extends Place
 		digAdvancement = _phoneBooth.digAdvancement;
 		
 		
-		name = "Phone booth";
+		name = "phone booth";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new ResolveLegal());
 	}

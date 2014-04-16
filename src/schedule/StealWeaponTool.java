@@ -13,7 +13,7 @@ public class StealWeaponTool extends PrisonAction
 {
 	public StealWeaponTool()
 	{
-		name = "steal weapon of tool";
+		name = "stealWT";
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public class Workshop extends Place
 		digAdvancement = 0;
 		
 		
-		name = "Workshop";
+		name = "workshop";
 		possibleActions.add(new Steal());
 	}
 	
@@ -37,7 +37,7 @@ public class Workshop extends Place
 		digAdvancement = _workshop.digAdvancement;
 		
 		
-		name = "Workshop";
+		name = "workshop";
 		possibleActions.add(new Steal());
 	}
 }

@@ -8,7 +8,7 @@ public class Cell extends Place
 {
 	public Cell()
 	{
-		name = "Cell";
+		name = "cell";
 		
 		attackSR = 1;
 		blackmailSR = 1;
@@ -25,7 +25,7 @@ public class Cell extends Place
 	
 	public Cell(Cell _cell)
 	{
-		name = "Cell";
+		name = "cell";
 		
 		attackSR = _cell.attackSR;
 		blackmailSR = _cell.blackmailSR;

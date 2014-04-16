@@ -9,6 +9,7 @@ public class Cafeteria extends Place
 	
 	public Cafeteria()
 	{
+		name = "cafeteria";
 		
 		stealWeaponToolSR = 1;
 		
@@ -19,13 +20,15 @@ public class Cafeteria extends Place
 		
 		digAdvancement = 0;
 		
-		name = "Cafeteria";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new StealWeaponTool());
 	}
 	
 	public Cafeteria(Cafeteria _cafeteria)
 	{
+		
+		name = "cafeteria";
+		
 		stealWeaponToolSR = _cafeteria.stealWeaponToolSR;
 		
 		attackSR = _cafeteria.attackSR;
@@ -35,7 +38,6 @@ public class Cafeteria extends Place
 		
 		digAdvancement = _cafeteria.digAdvancement;
 		
-		name = "Cafeteria";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new StealWeaponTool());
 	}

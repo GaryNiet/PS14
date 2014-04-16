@@ -16,7 +16,7 @@ public class Library extends Place
 		digAdvancement = 0;
 		
 		
-		name = "Library";
+		name = "library";
 		possibleActions.add(new Learn());
 	}
 	
@@ -31,7 +31,7 @@ public class Library extends Place
 		digAdvancement = _library.digAdvancement;
 		
 		
-		name = "Library";
+		name = "library";
 		possibleActions.add(new Learn());
 	}
 	

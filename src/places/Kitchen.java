@@ -18,7 +18,7 @@ public class Kitchen extends Place
 		digAdvancement = 0;
 		
 		
-		name = "Kitchen";
+		name = "kitchen";
 		possibleActions.add(new StealWeaponTool());
 	}
 	
@@ -35,7 +35,7 @@ public class Kitchen extends Place
 		digAdvancement = _kitchen.digAdvancement;
 		
 		
-		name = "Kitchen";
+		name = "kitchen";
 		possibleActions.add(new StealWeaponTool());
 	}
 }

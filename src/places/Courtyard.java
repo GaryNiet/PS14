@@ -11,6 +11,7 @@ public class Courtyard extends Place
 	
 	public Courtyard()
 	{
+		name = "courtyard";
 		
 		attackSR = 1;
 		blackmailSR = 1;
@@ -20,7 +21,6 @@ public class Courtyard extends Place
 		
 		digAdvancement = 0;
 		
-		name = "Courtyard";
 		possibleActions.add(new Train());
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Sell());
@@ -28,6 +28,9 @@ public class Courtyard extends Place
 	
 	public Courtyard(Courtyard _courtyard)
 	{
+		
+		name = "courtyard";
+		
 		attackSR = _courtyard.attackSR;
 		blackmailSR = _courtyard.blackmailSR;
 		corruptSR = _courtyard.corruptSR;
@@ -36,7 +39,6 @@ public class Courtyard extends Place
 		
 		digAdvancement = _courtyard.digAdvancement;
 		
-		name = "Courtyard";
 		possibleActions.add(new Train());
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Sell());

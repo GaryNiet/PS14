@@ -6,18 +6,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import places.Free;
-
-import schedule.Blackmail;
-import schedule.Corrupt;
-import schedule.Dig;
-import schedule.Evasion;
 import schedule.PrisonAction;
-import schedule.StealWeaponTool;
-import schedule.Train;
-import schedule.WellBeing;
-
+import aiMachine.AIValidator;
 import aiMachine.ActionCalculator;
-
 import characters.CharacterPH;
 
 
@@ -26,6 +17,7 @@ public class GameLogic {
 	List<CharacterPH> characterList = new ArrayList<>();
 	ActionCalculator actionCalculator;
 	int currentTime;
+	AIValidator aiValidator;
 	
 	//beware have to change this value
 	public final int timeZones = 9;
@@ -38,6 +30,7 @@ public class GameLogic {
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
 		timer.scheduleAtFixedRate(timerTask, 0, 2*1000);
+		aiValidator = new AIValidator();
 		currentTime = 0;
 	}
 	
@@ -60,6 +53,9 @@ public class GameLogic {
 			
 		}
 		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
+		aiValidator.showUsage();
+		
+		
 	}
 
 
@@ -69,7 +65,6 @@ public class GameLogic {
 		{
 			CharacterPH character1 = new CharacterPH("name" , 100, 10, 10, 0, 0);
 			characterList.add(character1);
-			System.out.println(character1.getSchedule().getPlace(3));
 		}
 		
 		
@@ -91,6 +86,7 @@ public class GameLogic {
 				bestAction.resolve(character, currentTime);
 				character.setFixedAction(bestAction);
 				setCurrentPlace(character, bestAction);
+				aiValidator.update(character.getCurrentPlace(), character.getFixedAction());
 				
 			}
 			showTable();

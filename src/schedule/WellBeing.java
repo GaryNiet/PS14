@@ -17,7 +17,7 @@ public class WellBeing extends PrisonAction
 	
 	public WellBeing()
 	{
-		name = "health";
+		name = "wellbeing";
 	}
 	public void resolve(CharacterPH character, int time)
 	{

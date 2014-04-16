@@ -19,7 +19,7 @@ public class Showers extends Place
 		digAdvancement = 0;
 		
 		
-		name = "Showers";
+		name = "showers";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());
 	}
@@ -37,7 +37,7 @@ public class Showers extends Place
 		digAdvancement = _showers.digAdvancement;
 		
 		
-		name = "Showers";
+		name = "showers";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());
 	}

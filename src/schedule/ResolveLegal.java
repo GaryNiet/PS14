@@ -16,7 +16,7 @@ public class ResolveLegal extends PrisonAction
 {
 	public ResolveLegal()
 	{
-		name = "resolve legal";
+		name = "resolveLegal";
 	}
 
 	@Override
