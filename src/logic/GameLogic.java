@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import places.Free;
+
 import schedule.Blackmail;
 import schedule.Corrupt;
 import schedule.Dig;
@@ -88,7 +90,7 @@ public class GameLogic {
 				
 				bestAction.resolve(character, currentTime);
 				character.setFixedAction(bestAction);
-				setCurrentPlace(character);
+				setCurrentPlace(character, bestAction);
 				
 			}
 			showTable();
@@ -113,12 +115,20 @@ public class GameLogic {
 		}
 	}
 	
-	private void setCurrentPlace(CharacterPH character)
+	private void setCurrentPlace(CharacterPH character, PrisonAction action)
 	{
-		if(character.getSchedule().getPlace(currentTime).name == "free" || character.getSchedule().getPlace(currentTime).name == "job")
+		if(character.getSchedule().getPlace(currentTime).name == "free")
 		{
 			
-			character.setCurrentPlace(character.getSchedule().getPlace(1));
+			character.setCurrentPlace(Free.chosePlace(action));
+		}
+		else if(character.getSchedule().getPlace(currentTime).name == "job")
+		{
+			character.setCurrentPlace(Free.chosePlace(action));
+		}
+		else
+		{
+			character.setCurrentPlace(character.getSchedule().getPlace(currentTime));
 		}
 	}
 }

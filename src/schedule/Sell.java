@@ -1,5 +1,15 @@
 package schedule;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import places.Cafeteria;
+import places.Cell;
+import places.Courtyard;
+import places.PhoneBooth;
+import places.Place;
+import places.Showers;
+import places.VisitingCell;
 import characters.CharacterPH;
 
 public class Sell extends PrisonAction
@@ -19,5 +29,13 @@ public class Sell extends PrisonAction
 		}
 		
 		
+	}
+	
+	public static List<Place> getPlaces()
+	{
+		List<Place> placeList = new ArrayList<>();
+		placeList.add(new Courtyard());
+		
+		return placeList;
 	}
 }
