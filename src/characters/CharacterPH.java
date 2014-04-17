@@ -37,7 +37,7 @@ public class CharacterPH
 		legalAdvancement =1;
 		materials = 0;
 		influence = 0;
-		money = 0;
+		money = 100;
 		
 		currentPlace = new Cell();
 		
@@ -70,47 +70,65 @@ public class CharacterPH
 	
 	public double happiness()
 	{
-		//well being takes into account:
-		//health over max health
-		//the more strength the better
-		//
 		
 		
 		
-		double wellBeingHappiness = (double)health / 10;
-		if(health > 50)
+		double wellBeingHappiness = (double)health / 20;
+		if(health > 70)
+		{
+			wellBeingHappiness += 10;
+		}
+		else if(health > 50)
 		{
 			wellBeingHappiness += 15;
 		}
-		wellBeingHappiness += strength * 5;
+		else if(health > 20)
+		{
+			wellBeingHappiness += 20;
+		}
+		wellBeingHappiness += strength * 12;
+		
 		wellBeingHappiness *= preferences.wellBeingPreference;
 		System.out.println("wellbeinghappiness " + wellBeingHappiness);
 		
-		//evasion happiness takes into account:
-		//amount of money, amount of influence
-		//dig progression
-		//resolve legal progression
-		// amount of materials
 		
-		double evasionHappiness = (double)strength;
+		
+		
+		
+		
+		
+		double evasionHappiness = (double)strength * 10;
 		evasionHappiness += money;
 		evasionHappiness += influence;
-		evasionHappiness += (double)materials * 0.15;
+		evasionHappiness += (double)materials * 0.015;
+		if(weapon)
+		{
+			evasionHappiness += 10;
+		}
 
 		for(Place place: schedule.getAllPlaces())
 		{
 			evasionHappiness += (double)place.getDigAdvancement();
+			evasionHappiness += (101 - (double)place.getGuardAwareness())*400000;
 		}
 		
 		evasionHappiness *= preferences.evasionPreference;
 		
+		
+		
 		System.out.println("evasionHappiness total " + evasionHappiness);
 		
-		//education happiness takes into account:
-		//intelligence
-		double educationHappiness = (double)intelligence;
 		
-		educationHappiness = educationHappiness + legalAdvancement;
+		
+		
+		
+		
+		
+		
+		
+		
+		double educationHappiness = (double)intelligence * 50;
+		educationHappiness = educationHappiness + legalAdvancement * 50;
 		educationHappiness *= preferences.educationPreference;
 		
 		System.out.println("educationHappiness " + educationHappiness);

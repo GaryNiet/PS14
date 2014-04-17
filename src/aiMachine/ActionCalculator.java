@@ -36,6 +36,7 @@ public class ActionCalculator
 				prisonAction.resolve(dummyCharacter, currentTime);
 				
 				double currentHappiness = calculateHappiness(copyCharacter, dummyCharacter);
+				System.out.println("result " + currentHappiness);
 				if(currentHappiness > best)
 				{
 					
@@ -43,6 +44,7 @@ public class ActionCalculator
 					
 					bestAction = prisonAction;
 				}
+				
 			}
 
 			

@@ -10,10 +10,10 @@ public class Preferences
 	
 	public Preferences()
 	{
-		//Random random = new Random();
-		wellBeingPreference = 1;
-		evasionPreference	 = 1;
-		educationPreference = 1;
+		Random random = new Random();
+		wellBeingPreference = 10 + random.nextFloat() * 100;
+		evasionPreference	 = 10 + random.nextFloat()*100;
+		educationPreference = 10 + random.nextFloat()*100;
 	}
 	
 	public Preferences(Preferences preference)

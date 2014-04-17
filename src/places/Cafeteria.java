@@ -36,6 +36,7 @@ public class Cafeteria extends Place
 		corruptSR = _cafeteria.corruptSR;
 		digSR = _cafeteria.digSR;
 		
+		guardAwareness = _cafeteria.guardAwareness;
 		digAdvancement = _cafeteria.digAdvancement;
 		
 		possibleActions.add(new WellBeing());

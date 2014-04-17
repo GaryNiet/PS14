@@ -21,6 +21,7 @@ public abstract class Place
 	
 	public Place()
 	{
+		guardAwareness = 100;
 		digAdvancement = 0;
 		possibleActions = new ArrayList<>();
 		

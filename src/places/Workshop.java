@@ -35,7 +35,7 @@ public class Workshop extends Place
 		digSR = _workshop.digSR;
 		
 		digAdvancement = _workshop.digAdvancement;
-		
+		guardAwareness = _workshop.guardAwareness;
 		
 		name = "workshop";
 		possibleActions.add(new Steal());

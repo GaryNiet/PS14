@@ -11,12 +11,12 @@ public class Learn extends PrisonAction
 {
 	public Learn()
 	{
-		name = "intelligence";
+		name = "learn";
 	}
 	
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setIntelligence(character.getIntelligence() + 1/character.getIntelligence());
+		character.setIntelligence(character.getIntelligence() + 1/(character.getIntelligence()*0.3));
 	}
 	
 	public static List<Place> getPlaces()

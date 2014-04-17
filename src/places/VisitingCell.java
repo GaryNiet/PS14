@@ -35,7 +35,7 @@ public class VisitingCell extends Place
 		digSR = _visitingCell.digSR;
 		
 		digAdvancement = _visitingCell.digAdvancement;
-		
+		guardAwareness = _visitingCell.guardAwareness;
 		
 		name = "visiting cell";
 		possibleActions.add(new WellBeing());

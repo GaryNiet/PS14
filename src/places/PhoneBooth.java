@@ -35,7 +35,7 @@ public class PhoneBooth extends Place
 		digSR = _phoneBooth.digSR;
 		
 		digAdvancement = _phoneBooth.digAdvancement;
-		
+		guardAwareness = _phoneBooth.guardAwareness;
 		
 		name = "phone booth";
 		possibleActions.add(new WellBeing());

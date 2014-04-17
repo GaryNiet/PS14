@@ -33,7 +33,7 @@ public class Kitchen extends Place
 		digSR = _kitchen.digSR;
 		
 		digAdvancement = _kitchen.digAdvancement;
-		
+		guardAwareness = _kitchen.guardAwareness;
 		
 		name = "kitchen";
 		possibleActions.add(new StealWeaponTool());

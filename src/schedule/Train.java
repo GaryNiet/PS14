@@ -16,12 +16,12 @@ public class Train extends PrisonAction
 {
 	public Train()
 	{
-		name = "strength";
+		name = "train";
 	}
 	
 	public void resolve(CharacterPH character, int time)
 	{
-		character.setStrength(character.getStrength()+1/character.getStrength());
+		character.setStrength(character.getStrength()+1/(character.getStrength()*0.3));
 	}
 	
 	public static List<Place> getPlaces()

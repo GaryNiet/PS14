@@ -78,7 +78,6 @@ public class AIValidator
 		{
 			if(action.name.equals(actionTester.name))
 			{
-				System.out.println(place.name);
 				if(place.name.equals("cell"))
 				{
 					actionTester.setCell(actionTester.getCell() + 1);

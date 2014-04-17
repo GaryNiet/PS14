@@ -37,6 +37,7 @@ public class Courtyard extends Place
 		digSR = _courtyard.digSR;
 		sellMaterialsSR = _courtyard.sellMaterialsSR;
 		
+		guardAwareness = _courtyard.guardAwareness;
 		digAdvancement = _courtyard.digAdvancement;
 		
 		possibleActions.add(new Train());

@@ -35,7 +35,7 @@ public class Showers extends Place
 		digSR = _showers.digSR;
 		
 		digAdvancement = _showers.digAdvancement;
-		
+		guardAwareness = _showers.guardAwareness;
 		
 		name = "showers";
 		possibleActions.add(new WellBeing());

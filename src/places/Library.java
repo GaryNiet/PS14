@@ -29,7 +29,7 @@ public class Library extends Place
 		digSR = _library.digSR;
 		
 		digAdvancement = _library.digAdvancement;
-		
+		guardAwareness = _library.guardAwareness;
 		
 		name = "library";
 		possibleActions.add(new Learn());

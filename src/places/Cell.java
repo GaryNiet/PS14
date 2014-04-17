@@ -33,6 +33,8 @@ public class Cell extends Place
 		digSR = _cell.digSR;
 		stealSR = _cell.stealSR;
 		
+		guardAwareness = _cell.guardAwareness;
+		
 		
 		digAdvancement = _cell.digAdvancement;
 		
