@@ -32,8 +32,12 @@ public class ActionCalculator
 				
 				dummyCharacter = new CharacterPH(character);
 				copyCharacter = new CharacterPH(character);
-				
+				if(prisonAction.name.equals("corrupt"))
+				{
+					System.out.println(" ");
+				}
 				prisonAction.resolve(dummyCharacter, currentTime);
+				
 				
 				double currentHappiness = calculateHappiness(copyCharacter, dummyCharacter);
 				System.out.println("result " + currentHappiness);

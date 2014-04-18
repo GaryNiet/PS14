@@ -89,7 +89,7 @@ public class CharacterPH
 		wellBeingHappiness += strength * 12;
 		
 		wellBeingHappiness *= preferences.wellBeingPreference;
-		System.out.println("wellbeinghappiness " + wellBeingHappiness);
+		//System.out.println("wellbeinghappiness " + wellBeingHappiness);
 		
 		
 		
@@ -108,6 +108,7 @@ public class CharacterPH
 
 		for(Place place: schedule.getAllPlaces())
 		{
+			System.out.println(place.name + ": " + place.getGuardAwareness());
 			evasionHappiness += (double)place.getDigAdvancement();
 			evasionHappiness += (101 - (double)place.getGuardAwareness())*400000;
 		}
@@ -116,7 +117,7 @@ public class CharacterPH
 		
 		
 		
-		System.out.println("evasionHappiness total " + evasionHappiness);
+		//System.out.println("evasionHappiness total " + evasionHappiness);
 		
 		
 		
@@ -131,7 +132,7 @@ public class CharacterPH
 		educationHappiness = educationHappiness + legalAdvancement * 50;
 		educationHappiness *= preferences.educationPreference;
 		
-		System.out.println("educationHappiness " + educationHappiness);
+		//System.out.println("educationHappiness " + educationHappiness);
 		
 		return wellBeingHappiness + evasionHappiness + educationHappiness;
 	}

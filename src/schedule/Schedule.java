@@ -75,20 +75,18 @@ public class Schedule
 		allPlaces.add(phoneBooth);
 		allPlaces.add(visitingCell);
 		allPlaces.add(kitchen);
-		allPlaces.add(cell);
-		allPlaces.add(free);
-		allPlaces.add(job);
+		allPlaces.add(library);
 		
 		timeTable = new Place[9];
-		timeTable[0] = _schedule.timeTable[0];
-		timeTable[1] = _schedule.timeTable[1];
-		timeTable[2] = _schedule.timeTable[2];
-		timeTable[3] = _schedule.timeTable[3];
-		timeTable[4] = _schedule.timeTable[4];
-		timeTable[5] = _schedule.timeTable[5];
-		timeTable[6] = _schedule.timeTable[6];
-		timeTable[7] = _schedule.timeTable[7];
-		timeTable[8] = _schedule.timeTable[8];
+		timeTable[0] = cell;
+		timeTable[1] = showers;
+		timeTable[2] = cafeteria;
+		timeTable[3] = job;
+		timeTable[4] = cafeteria;
+		timeTable[5] = job;
+		timeTable[6] = free;
+		timeTable[7] = showers;
+		timeTable[8] = cell;
 	}
 	
 	private void initPlaces()
@@ -113,9 +111,7 @@ public class Schedule
 		allPlaces.add(phoneBooth);
 		allPlaces.add(visitingCell);
 		allPlaces.add(kitchen);
-		allPlaces.add(cell);
-		allPlaces.add(free);
-		allPlaces.add(job);
+		allPlaces.add(library);
 		
 	}
 	
