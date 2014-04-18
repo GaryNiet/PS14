@@ -37,4 +37,5 @@ public class WellBeing extends PrisonAction
 		
 		return placeList;
 	}
+
 }

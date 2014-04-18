@@ -34,5 +34,7 @@ public class ResolveLegal extends PrisonAction
 		
 		return placeList;
 	}
+
+
 	
 }

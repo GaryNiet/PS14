@@ -25,7 +25,7 @@ public abstract class Place
 		digAdvancement = 0;
 		possibleActions = new ArrayList<>();
 		
-		//possibleActions.add(new Attack());
+		possibleActions.add(new Attack());
 		possibleActions.add(new Blackmail());
 		possibleActions.add(new Corrupt());
 		possibleActions.add(new Dig());

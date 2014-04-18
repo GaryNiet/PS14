@@ -38,6 +38,8 @@ public class CharacterPH
 		materials = 0;
 		influence = 0;
 		money = 100;
+		weapon = false;
+		tool = false;
 		
 		currentPlace = new Cell();
 		
@@ -60,6 +62,8 @@ public class CharacterPH
 		this.materials = _character.materials;
 		this.influence = _character.influence;
 		this.money = _character.money;
+		this.weapon = _character.weapon;
+		this.tool = _character.tool;
 		
 		
 		//copy preferences
@@ -86,10 +90,10 @@ public class CharacterPH
 		{
 			wellBeingHappiness += 20;
 		}
-		wellBeingHappiness += strength * 12;
+		wellBeingHappiness += strength * 10;
 		
 		wellBeingHappiness *= preferences.wellBeingPreference;
-		//System.out.println("wellbeinghappiness " + wellBeingHappiness);
+		System.out.println("wellbeinghappiness " + wellBeingHappiness);
 		
 		
 		
@@ -97,10 +101,10 @@ public class CharacterPH
 		
 		
 		
-		double evasionHappiness = (double)strength * 10;
+		double evasionHappiness = (double)strength * 8;
 		evasionHappiness += money;
 		evasionHappiness += influence;
-		evasionHappiness += (double)materials * 0.015;
+		evasionHappiness += (double)materials * 0.09;
 		if(weapon)
 		{
 			evasionHappiness += 10;
@@ -108,16 +112,15 @@ public class CharacterPH
 
 		for(Place place: schedule.getAllPlaces())
 		{
-			System.out.println(place.name + ": " + place.getGuardAwareness());
-			evasionHappiness += (double)place.getDigAdvancement();
-			evasionHappiness += (101 - (double)place.getGuardAwareness())*400000;
+			evasionHappiness += (double)place.getDigAdvancement()*0.5;
+			evasionHappiness += (100 - (double)place.getGuardAwareness())*1.5;
 		}
-		
 		evasionHappiness *= preferences.evasionPreference;
 		
 		
 		
-		//System.out.println("evasionHappiness total " + evasionHappiness);
+		
+		System.out.println("evasionHappiness total " + evasionHappiness);
 		
 		
 		
@@ -132,7 +135,7 @@ public class CharacterPH
 		educationHappiness = educationHappiness + legalAdvancement * 50;
 		educationHappiness *= preferences.educationPreference;
 		
-		//System.out.println("educationHappiness " + educationHappiness);
+		System.out.println("educationHappiness " + educationHappiness);
 		
 		return wellBeingHappiness + evasionHappiness + educationHappiness;
 	}
@@ -236,8 +239,8 @@ public class CharacterPH
 		return influence;
 	}
 
-	public void setInfluence(int influence) {
-		this.influence = influence;
+	public void setInfluence(int d) {
+		this.influence = d;
 	}
 
 	public boolean isWeapon() {

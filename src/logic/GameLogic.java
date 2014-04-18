@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,6 +19,7 @@ public class GameLogic {
 	ActionCalculator actionCalculator;
 	int currentTime;
 	AIValidator aiValidator;
+	Random random;
 	
 	//beware have to change this value
 	public final int timeZones = 9;
@@ -26,6 +28,8 @@ public class GameLogic {
 	public GameLogic()
 	{
 		init();
+
+		random = new Random();
 		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
@@ -61,10 +65,11 @@ public class GameLogic {
 
 	private void init()
 	{
-		for(int i = 0; i<1; i++)
+		for(int i = 0; i<10; i++)
 		{
 			CharacterPH character1 = new CharacterPH("name" , 100, 10, 10, 0, 0);
 			characterList.add(character1);
+			Variables.setCharacterList(characterList);
 		}
 		
 		
@@ -82,9 +87,10 @@ public class GameLogic {
 				
 				PrisonAction bestAction = actionCalculator.calculateBestAction(character, currentTime);
 				
-				bestAction.resolve(character, currentTime);
+				
 				character.setFixedAction(bestAction);
 				setCurrentPlace(character, bestAction);
+				bestAction.resolve(character, currentTime);
 				aiValidator.update(character.getCurrentPlace(), character.getFixedAction());
 				
 			}
@@ -95,6 +101,13 @@ public class GameLogic {
 		}
 		
 	}
+	
+
+	
+
+	
+
+
 	
 	private void updateVariablesAndCheckIntegrity(CharacterPH character)
 	{

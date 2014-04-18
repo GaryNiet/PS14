@@ -55,5 +55,7 @@ public class Blackmail extends PrisonAction
 		
 		return placeList;
 	}
+
+
 	
 }
