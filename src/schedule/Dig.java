@@ -23,7 +23,7 @@ public class Dig extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character, int time)
+	public void resolve(CharacterPH character, int time, boolean isReal)
 	{
 		character.setHealth(character.getHealth()-2);
 		character.getSchedule().getPlace(time).setDigAdvancement(character.getSchedule().getPlace(time).getDigAdvancement() +1);

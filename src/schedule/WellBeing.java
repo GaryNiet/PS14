@@ -19,10 +19,10 @@ public class WellBeing extends PrisonAction
 	{
 		name = "wellbeing";
 	}
-	public void resolve(CharacterPH character, int time)
+	public void resolve(CharacterPH character, int time, boolean isReal)
 	{
 		
-		character.setHealth(character.getHealth()+10);
+		character.setHealth(character.getHealth()+30);
 		character.checkHealthIntegrity();
 	}
 	public static List<Place> getPlaces()

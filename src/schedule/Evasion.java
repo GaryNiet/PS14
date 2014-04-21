@@ -23,7 +23,7 @@ public class Evasion extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character, int time)
+	public void resolve(CharacterPH character, int time, boolean isReal)
 	{
 		//TODO
 		character.setHealth(character.getHealth()+1);

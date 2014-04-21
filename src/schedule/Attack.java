@@ -31,17 +31,33 @@ public class Attack extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character, int time)
+	public void resolve(CharacterPH character, int time, boolean isReal)
 	{
+		
 		CharacterPH victim = choseVictim(character, Variables.getCharacterList());
+		if(!isReal)
+		{
+			victim = new CharacterPH(victim);
+		}
+		
 		CharacterPH winner = calculateWinner(character, victim);
+		
+		if(isReal)
+		{
+			System.out.println("--------------------------------------------" + character.getName() + " attacks " + victim.getName() + " and " + winner.getName() + " is the winner");
+		}
+		
 		if(winner == character)
 		{
 			character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
+			victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
+			victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
 		}
 		else
 		{
 			victim.setInfluence(victim.getInfluence() + (int)calculateFightWinnings(victim, character));
+			character.setInfluence(character.getInfluence() - Variables.getLostinfluenceonlostfight());
+			character.setHealth(character.getHealth() - Variables.getLosthealthonlostfight());
 		}
 		
 
@@ -99,16 +115,19 @@ public class Attack extends PrisonAction
 		int weaponEquiped = 0;
 		for(CharacterPH victim: characterList)
 		{
-			 winnings = calculateFightWinnings(character, victim);
-			 if(character.isWeapon())
-				 weaponEquiped = Variables.getWeaponBonus();
-			 test = (int) ((int) ProbabilityCalculator.winChance(character.getStrength() + weaponEquiped, Variables.getFightRandom(), victim.getStrength(), Variables.getFightRandom() + 2) * winnings);
-			 
-			 if(test > best)
-			 {
-				 best = test;
-				 bestVictim = victim;
-			 }
+			if(!character.getName().equals(victim.getName()))
+			{
+				 winnings = calculateFightWinnings(character, victim);
+				 if(character.isWeapon())
+					 weaponEquiped = Variables.getWeaponBonus();
+				 test = (int) ((int) ProbabilityCalculator.winChance(character.getStrength() + weaponEquiped, Variables.getFightRandom(), victim.getStrength(), Variables.getFightRandom() + 2) * winnings);
+				 
+				 if(test > best)
+				 {
+					 best = test;
+					 bestVictim = victim;
+				 }
+			}
 		}
 		
 		return bestVictim;
@@ -118,9 +137,28 @@ public class Attack extends PrisonAction
 	
 	private static double calculateFightWinnings(CharacterPH winner, CharacterPH loser)
 	{
-		double rewardMultiplier = winner.getStrength() / loser.getStrength();
-		return rewardMultiplier * Variables.getfightWinningsMultiplier();
+		//System.out.println("attacker: " + winner.getName() + " victim: " + loser.getName());
+		double rewardMultiplier;
 		
+		if(winner.getStrength() == loser.getStrength())
+		{
+			rewardMultiplier = 1;
+		}
+		else
+		{
+			if(winner.getStrength() < loser.getStrength())
+			{
+				rewardMultiplier = loser.getStrength() - winner.getStrength() * Variables.getWeakestwinsfightmultiplier();
+			}
+			else
+			{
+				rewardMultiplier = Variables.getStrongerwinsfightmultiplier() / (winner.getStrength() - loser.getStrength());
+			}
+			
+			
+		}
+		//System.out.println("in the hopes of winning " + rewardMultiplier * Variables.getfightWinningsMultiplier());
+		return rewardMultiplier * Variables.getfightWinningsMultiplier();
 	}
 
 	

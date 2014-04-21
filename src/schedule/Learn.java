@@ -14,7 +14,7 @@ public class Learn extends PrisonAction
 		name = "learn";
 	}
 	
-	public void resolve(CharacterPH character, int time)
+	public void resolve(CharacterPH character, int time, boolean isReal)
 	{
 		character.setIntelligence(character.getIntelligence() + 1/(character.getIntelligence()*0.3));
 	}

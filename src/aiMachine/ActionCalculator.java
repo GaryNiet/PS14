@@ -24,7 +24,7 @@ public class ActionCalculator
 		for(PrisonAction prisonAction: character.getSchedule().getPlace(currentTime).possibleActions)
 		{
 			{
-				System.out.println("------------------------------"+ prisonAction.name + "--------------------------------------");
+				//System.out.println("------------------------------"+ prisonAction.name + "--------------------------------------");
 				//System.out.println(character.getSchedule().getPlace(currentTime).possibleActions);
 //				System.out.println("stop");
 				
@@ -32,15 +32,12 @@ public class ActionCalculator
 				
 				dummyCharacter = new CharacterPH(character);
 				copyCharacter = new CharacterPH(character);
-				if(prisonAction.name.equals("corrupt"))
-				{
-					System.out.println(" ");
-				}
-				prisonAction.resolve(dummyCharacter, currentTime);
+				
+				prisonAction.resolve(dummyCharacter, currentTime, false);
 				
 				
 				double currentHappiness = calculateHappiness(copyCharacter, dummyCharacter);
-				System.out.println("result " + currentHappiness);
+				//System.out.println("result " + currentHappiness);
 				if(currentHappiness > best)
 				{
 					

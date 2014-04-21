@@ -65,12 +65,27 @@ public class GameLogic {
 
 	private void init()
 	{
-		for(int i = 0; i<10; i++)
-		{
-			CharacterPH character1 = new CharacterPH("name" , 100, 10, 10, 0, 0);
-			characterList.add(character1);
-			Variables.setCharacterList(characterList);
-		}
+		
+		CharacterPH character1 = new CharacterPH("george" , 100, 12, 10, 0, 0);
+		characterList.add(character1);
+		CharacterPH character2 = new CharacterPH("foreman" , 100, 13, 10, 0, 0);
+		characterList.add(character2);
+		CharacterPH character3 = new CharacterPH("snip" , 100, 11, 10, 0, 0);
+		characterList.add(character3);
+		CharacterPH character4 = new CharacterPH("sprool" , 100, 8, 10, 0, 0);
+		characterList.add(character4);
+		CharacterPH character5 = new CharacterPH("tuck" , 100, 1, 15, 0, 0);
+		characterList.add(character5);
+//		CharacterPH character6 = new CharacterPH("duck" , 100, 3, 10, 0, 0);
+//		characterList.add(character6);
+//		CharacterPH character7 = new CharacterPH("schnaps" , 7, 10, 10, 0, 0);
+//		characterList.add(character7);
+//		CharacterPH character8 = new CharacterPH("large" , 10, 10, 10, 0, 0);
+//		characterList.add(character8);
+		
+		
+		Variables.setCharacterList(characterList);
+		
 		
 		
 	}
@@ -90,7 +105,7 @@ public class GameLogic {
 				
 				character.setFixedAction(bestAction);
 				setCurrentPlace(character, bestAction);
-				bestAction.resolve(character, currentTime);
+				bestAction.resolve(character, currentTime, true);
 				aiValidator.update(character.getCurrentPlace(), character.getFixedAction());
 				
 			}

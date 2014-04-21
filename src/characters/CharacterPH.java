@@ -1,5 +1,6 @@
 package characters;
 
+import logic.Variables;
 import places.Cell;
 import places.Place;
 import schedule.PrisonAction;
@@ -93,7 +94,7 @@ public class CharacterPH
 		wellBeingHappiness += strength * 10;
 		
 		wellBeingHappiness *= preferences.wellBeingPreference;
-		System.out.println("wellbeinghappiness " + wellBeingHappiness);
+		//System.out.println("wellbeinghappiness " + wellBeingHappiness);
 		
 		
 		
@@ -112,15 +113,15 @@ public class CharacterPH
 
 		for(Place place: schedule.getAllPlaces())
 		{
-			evasionHappiness += (double)place.getDigAdvancement()*0.5;
-			evasionHappiness += (100 - (double)place.getGuardAwareness())*1.5;
+			evasionHappiness += (double)place.getDigAdvancement()*Variables.getDigadvancementimportance();
+			evasionHappiness += (100 - (double)place.getGuardAwareness())*Variables.getGuardawarenessimportance();
 		}
 		evasionHappiness *= preferences.evasionPreference;
 		
 		
 		
 		
-		System.out.println("evasionHappiness total " + evasionHappiness);
+		//System.out.println("evasionHappiness total " + evasionHappiness);
 		
 		
 		
@@ -131,11 +132,11 @@ public class CharacterPH
 		
 		
 		
-		double educationHappiness = (double)intelligence * 50;
+		double educationHappiness = (double)intelligence * 60;
 		educationHappiness = educationHappiness + legalAdvancement * 50;
 		educationHappiness *= preferences.educationPreference;
 		
-		System.out.println("educationHappiness " + educationHappiness);
+		//System.out.println("educationHappiness " + educationHappiness);
 		
 		return wellBeingHappiness + evasionHappiness + educationHappiness;
 	}
@@ -241,6 +242,10 @@ public class CharacterPH
 
 	public void setInfluence(int d) {
 		this.influence = d;
+		if(influence < 0)
+		{
+			influence = 0;
+		}
 	}
 
 	public boolean isWeapon() {
