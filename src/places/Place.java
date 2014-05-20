@@ -121,4 +121,9 @@ public abstract class Place
 		this.digAdvancement = digAdvancement;
 	}
 	
+	public List<PrisonAction> getPossibleActions()
+	{
+		return possibleActions;
+	}
+	
 }

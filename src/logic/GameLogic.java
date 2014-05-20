@@ -42,7 +42,7 @@ public class GameLogic {
 		aiValidator = new AIValidator();
 		currentTime = 0;
 		
-		userInterface = new UserInterface();
+		userInterface = new UserInterface(this);
 		userInterface.setTitle("test");
 		userInterface.setSize(1024, 768);
 		userInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -167,5 +167,15 @@ public class GameLogic {
 		{
 			character.setCurrentPlace(character.getSchedule().getPlace(currentTime));
 		}
+	}
+	
+	public CharacterPH getCharacter(int index)
+	{
+		return characterList.get(index);
+	}
+	
+	public int getTime()
+	{
+		return currentTime;
 	}
 }

@@ -5,6 +5,8 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import logic.GameLogic;
 import net.miginfocom.swing.MigLayout;
 
 @SuppressWarnings("serial")
@@ -15,12 +17,14 @@ public class UserInterface extends JFrame
 	ScheduleBox scheduleBox;
 	InfoBox infoBox;
 	MigLayout mainLayout;
+	GameLogic gameLogic;
 	
-	public UserInterface()
+	public UserInterface(GameLogic _gameLogic)
 	{
+		gameLogic = _gameLogic;
 		panel = new JPanel(new MigLayout("fill"));
 		gameMap = new GameMap();
-		scheduleBox = new ScheduleBox();
+		scheduleBox = new ScheduleBox(this);
 		infoBox = new InfoBox();
 		
 		
@@ -30,8 +34,8 @@ public class UserInterface extends JFrame
 		panel.add(scheduleBox, "w 30%, dock east");
 		
 		panel.add(gameMap, "x 0, y 0, w 717, h 611");
-		panel.add(infoBox, "x 0, y 611, w 1024, h 153");
-		panel.add(scheduleBox, "x 718, y 0, w 307, h 611");
+		panel.add(infoBox, "x 0, y 611, w 717, h 153");
+		panel.add(scheduleBox, "x 718, y 0, w 307, h 764");
 		
 		gameMap.setBackground(Color.green);
 		infoBox.setBackground(Color.red);
@@ -43,7 +47,11 @@ public class UserInterface extends JFrame
 		this.add(panel);
 		
 		pack();
-		System.out.println(gameMap.getBounds());
 		scheduleBox.set();
+	}
+	
+	public GameLogic getGameLogic()
+	{
+		return gameLogic;
 	}
 }

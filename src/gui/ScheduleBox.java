@@ -3,14 +3,9 @@ package gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.Rectangle2D.Double;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,15 +13,21 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
 
+import schedule.PrisonAction;
+
 
 @SuppressWarnings("serial")
 public class ScheduleBox extends JComponent
 {
+	UserInterface parent;
+	
 	Border border;
 
-	final int buttonQte = 9;
+	final int buttonQte = 11;
 	int width;
 	int height;
+	
+	List<PrisonAction> possibleActions;
 	
 	
 	Rectangle2D button0to6;
@@ -45,8 +46,9 @@ public class ScheduleBox extends JComponent
 	
 	List<Rectangle2D> buttonList;
 
-	public ScheduleBox()
+	public ScheduleBox(UserInterface _parent)
 	{
+		parent = _parent;
 
 		border = BorderFactory.createLineBorder(Color.black);
 		this.setBorder(border);
@@ -62,6 +64,7 @@ public class ScheduleBox extends JComponent
 		button23to24 = new Rectangle2D.Double();
 		
 		optionButton = new Rectangle2D.Double();
+		pressedButton = button23to24;
 		
 		
 		
@@ -108,12 +111,21 @@ public class ScheduleBox extends JComponent
 	{
 		Graphics2D g1 = (Graphics2D)g;
 		setRectangles();
+		getPossibleActions();
 		for(Rectangle2D rect: buttonList)
 		{
 			g1.setPaint(Color.black);
 			g1.draw(rect);
 			g1.setPaint(Color.red);
 			g1.draw(optionButton);
+			int spacing  = 1;
+			for(PrisonAction action: possibleActions)
+			{
+
+				g1.drawString(action.name, 10, (int) optionButton.getBounds2D().getY() + 12 * spacing);
+				spacing++;
+			}
+			
 		}
      }
 	
@@ -127,9 +139,9 @@ public class ScheduleBox extends JComponent
 			{
 				rect.setFrame(0, index *this.height/(buttonQte+2), this.width, this.height/(buttonQte+2));
 				index++;
-				optionButton.setFrame(0, index *this.height/(buttonQte+2), this.width, (this.height/(buttonQte+2))*2);
+				optionButton.setFrame(0, index *this.height/(buttonQte+2), this.width, (this.height/(buttonQte+2))*4);
 				
-				index += 2;
+				index += 4;
 				
 			}
 			else
@@ -139,6 +151,11 @@ public class ScheduleBox extends JComponent
 			}
 		}
 		this.repaint();
+	}
+	
+	private void getPossibleActions()
+	{
+		possibleActions = parent.getGameLogic().getCharacter(0).getSchedule().getPlace(buttonList.indexOf(pressedButton)).getPossibleActions();
 	}
 
 	
