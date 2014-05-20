@@ -1,10 +1,14 @@
 package logic;
 
+import gui.UserInterface;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.swing.JFrame;
 
 import places.Free;
 import schedule.PrisonAction;
@@ -20,6 +24,7 @@ public class GameLogic {
 	int currentTime;
 	AIValidator aiValidator;
 	Random random;
+	UserInterface userInterface;
 	
 	//beware have to change this value
 	public final int timeZones = 9;
@@ -36,6 +41,12 @@ public class GameLogic {
 		timer.scheduleAtFixedRate(timerTask, 0, 2*1000);
 		aiValidator = new AIValidator();
 		currentTime = 0;
+		
+		userInterface = new UserInterface();
+		userInterface.setTitle("test");
+		userInterface.setSize(1024, 768);
+		userInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		userInterface.setVisible(true);
 	}
 	
 
@@ -66,8 +77,11 @@ public class GameLogic {
 	private void init()
 	{
 		
+		for(int i = 0; i<5; i++)
+		{
 		CharacterPH character1 = new CharacterPH("george" , 100, 12, 10, 0, 0);
 		characterList.add(character1);
+		}
 		CharacterPH character2 = new CharacterPH("foreman" , 100, 13, 10, 0, 0);
 		characterList.add(character2);
 		CharacterPH character3 = new CharacterPH("snip" , 100, 11, 10, 0, 0);
@@ -106,10 +120,10 @@ public class GameLogic {
 				character.setFixedAction(bestAction);
 				setCurrentPlace(character, bestAction);
 				bestAction.resolve(character, currentTime, true);
-				aiValidator.update(character.getCurrentPlace(), character.getFixedAction());
+				//aiValidator.update(character.getCurrentPlace(), character.getFixedAction());
 				
 			}
-			showTable();
+			//showTable();
 			passTime();
 			
 			

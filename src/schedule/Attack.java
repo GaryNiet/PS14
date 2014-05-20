@@ -44,7 +44,7 @@ public class Attack extends PrisonAction
 		
 		if(isReal)
 		{
-			System.out.println("--------------------------------------------" + character.getName() + " attacks " + victim.getName() + " and " + winner.getName() + " is the winner");
+			//System.out.println("--------------------------------------------" + character.getName() + " attacks " + victim.getName() + " and " + winner.getName() + " is the winner");
 		}
 		
 		if(winner == character)
