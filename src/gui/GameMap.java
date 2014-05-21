@@ -98,7 +98,7 @@ public class GameMap extends JPanel{
 	
 	public void placePlayer()
 	{
-		System.out.println(getCurrentPlace());
+		//System.out.println(getCurrentPlace());
 		player.setFrame( getCurrentPlace().getPosX(), getCurrentPlace().getPosY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
 	}
 	

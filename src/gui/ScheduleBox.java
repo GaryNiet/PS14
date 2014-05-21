@@ -29,6 +29,7 @@ public class ScheduleBox extends JComponent
 	int height;
 	
 	List<PrisonAction> possibleActions;
+	List<Rectangle2D> actionButtonList;
 	
 	
 	Rectangle2D button0to6;
@@ -70,6 +71,7 @@ public class ScheduleBox extends JComponent
 		
 		
 		buttonList = new ArrayList<>();
+		actionButtonList = new ArrayList<>();
 		
 		
 		buttonList.add(button0to6);
@@ -102,6 +104,15 @@ public class ScheduleBox extends JComponent
 			}
 		}
 		
+		for(Rectangle2D rect: actionButtonList)
+		{
+			if(rect.contains(me.getPoint()))
+			{
+				int index = actionButtonList.indexOf(rect);
+				System.out.println(possibleActions.get(index));
+			}
+		}
+		
 		setRectangles();
 		
 		
@@ -121,11 +132,13 @@ public class ScheduleBox extends JComponent
 			g1.setPaint(Color.red);
 			g1.draw(optionButton);
 			int spacing  = 1;
+			actionButtonList.clear();
 			for(PrisonAction action: possibleActions)
 			{
 
 				g1.drawString(action.name, 10, (int) optionButton.getBounds2D().getY() + buttonSpacing * spacing);
 				Rectangle2D actionButton = new Rectangle2D.Double(0,optionButton.getBounds2D().getY() + buttonSpacing * (spacing-1), 100, buttonSpacing);
+				actionButtonList.add(actionButton);
 				g1.draw(actionButton);
 				spacing++;
 			}
