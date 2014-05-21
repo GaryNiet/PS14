@@ -58,4 +58,9 @@ public class UserInterface extends JFrame
 	public InfoBox getInfoBox() {
 		return infoBox;
 	}
+	
+	public void showAction()
+	{
+		gameMap.showAction();
+	}
 }

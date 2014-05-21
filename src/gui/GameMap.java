@@ -98,7 +98,7 @@ public class GameMap extends JPanel{
 	
 	public void placePlayer()
 	{
-		//System.out.println(getCurrentPlace());
+		
 		player.setFrame( getCurrentPlace().getPosX(), getCurrentPlace().getPosY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
 	}
 	
@@ -111,6 +111,12 @@ public class GameMap extends JPanel{
 	private Place getCurrentPlace()
 	{
 		return parent.gameLogic.getCharacter().getCurrentPlace();
+	}
+	
+	public void showAction()
+	{
+		System.out.println(parent.getGameLogic().getTime());
+		System.out.println(parent.gameLogic.getCharacter().getSchedule().getAction(parent.getGameLogic().getTime()));
 	}
 
 }

@@ -36,20 +36,22 @@ public class GameLogic {
 	public GameLogic()
 	{
 		init();
-
-		random = new Random();
-		actionCalculator = new ActionCalculator();
-		OnTimer timerTask = new OnTimer();
-		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, 2*1000);
-		aiValidator = new AIValidator();
-		currentTime = 0;
 		
 		userInterface = new UserInterface(this);
 		userInterface.setTitle("test");
 		userInterface.setSize(1024, 768);
 		userInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		userInterface.setVisible(true);
+
+		random = new Random();
+		actionCalculator = new ActionCalculator();
+		OnTimer timerTask = new OnTimer();
+		Timer timer = new Timer("Clock");
+		timer.scheduleAtFixedRate(timerTask, 0, 5*1000);
+		aiValidator = new AIValidator();
+		currentTime = 0;
+		
+		
 	}
 	
 
@@ -127,6 +129,7 @@ public class GameLogic {
 				
 			}
 			//showTable();
+			userInterface.showAction();
 			passTime();
 			
 			

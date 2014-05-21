@@ -20,6 +20,7 @@ import places.Workshop;
 public class Schedule
 {
 	Place[] timeTable;
+	PrisonAction[] actionTimeTable;
 	List<Place> allPlaces;
 	Cell cell;
 	Courtyard courtyard;
@@ -48,6 +49,17 @@ public class Schedule
 		timeTable[6] = free;
 		timeTable[7] = showers;
 		timeTable[8] = cell;
+		
+		actionTimeTable = new PrisonAction[9];
+		actionTimeTable[0] = new Blackmail();
+		actionTimeTable[1] = new Blackmail();
+		actionTimeTable[2] = new Blackmail();
+		actionTimeTable[3] = new Blackmail();
+		actionTimeTable[4] = new Blackmail();
+		actionTimeTable[5] = new Blackmail();
+		actionTimeTable[6] = new Blackmail();
+		actionTimeTable[7] = new Blackmail();
+		actionTimeTable[8] = new Blackmail();
 		
 	}
 	
@@ -119,6 +131,16 @@ public class Schedule
 	{
 		
 		return timeTable[i];
+	}
+	
+	public PrisonAction getAction(int i)
+	{
+		return actionTimeTable[i];
+	}
+	
+	public void setAction(int i, PrisonAction action)
+	{
+		actionTimeTable[i] = action;
 	}
 	
 	public List<Place> getAllPlaces()

@@ -13,6 +13,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
 
+import places.Place;
+
 import schedule.PrisonAction;
 
 
@@ -24,9 +26,14 @@ public class ScheduleBox extends JComponent
 	Border border;
 
 	final int buttonQte = 11;
-	final int buttonSpacing = 12;
+	final int buttonSpacing = 20;
 	int width;
 	int height;
+	
+	String[] scheduleButtons;
+	
+		
+	
 	
 	List<PrisonAction> possibleActions;
 	List<Rectangle2D> actionButtonList;
@@ -35,7 +42,7 @@ public class ScheduleBox extends JComponent
 	Rectangle2D button0to6;
 	Rectangle2D button6to7;
 	Rectangle2D button7to8;
-	Rectangle2D button9to12;
+	Rectangle2D button8to12;
 	Rectangle2D button12to13;
 	Rectangle2D button13to17;
 	Rectangle2D button17to22;
@@ -58,12 +65,23 @@ public class ScheduleBox extends JComponent
 		button0to6 = new Rectangle2D.Double();
 		button6to7 = new Rectangle2D.Double();
 		button7to8 = new Rectangle2D.Double();
-		button9to12 = new Rectangle2D.Double();
+		button8to12 = new Rectangle2D.Double();
 		button12to13 = new Rectangle2D.Double();
 		button13to17 = new Rectangle2D.Double();
 		button17to22 = new Rectangle2D.Double();
 		button22to23 = new Rectangle2D.Double();
 		button23to24 = new Rectangle2D.Double();
+		
+		scheduleButtons = new String[9];
+		scheduleButtons[0] = "0000to0600";
+		scheduleButtons[1] = "0600to0700";
+		scheduleButtons[2] = "0700to0800";
+		scheduleButtons[3] = "0800to1200"; 
+		scheduleButtons[4] = "1200to1300"; 
+		scheduleButtons[5] = "1300to1700"; 
+		scheduleButtons[6] = "1700to2200"; 
+		scheduleButtons[7] = "2200to2300"; 
+		scheduleButtons[8] = "2300to2400";
 		
 		optionButton = new Rectangle2D.Double();
 		pressedButton = button23to24;
@@ -77,7 +95,7 @@ public class ScheduleBox extends JComponent
 		buttonList.add(button0to6);
 		buttonList.add(button6to7);
 		buttonList.add(button7to8);
-		buttonList.add(button9to12);
+		buttonList.add(button8to12);
 		buttonList.add(button12to13);
 		buttonList.add(button13to17);
 		buttonList.add(button17to22);
@@ -109,7 +127,7 @@ public class ScheduleBox extends JComponent
 			if(rect.contains(me.getPoint()))
 			{
 				int index = actionButtonList.indexOf(rect);
-				System.out.println(possibleActions.get(index));
+				setCharacterAction(index);
 			}
 		}
 		
@@ -125,14 +143,19 @@ public class ScheduleBox extends JComponent
 		super.paintComponent(g1);
 		setRectangles();
 		getPossibleActions();
+		int i = 0;
 		for(Rectangle2D rect: buttonList)
 		{
 			g1.setPaint(Color.black);
 			g1.draw(rect);
+			g1.drawString(scheduleButtons[i], (int)rect.getBounds2D().getX(), (int)rect.getBounds2D().getY()+12);
 			g1.setPaint(Color.red);
 			g1.draw(optionButton);
 			int spacing  = 1;
 			actionButtonList.clear();
+			
+			i++;
+			
 			for(PrisonAction action: possibleActions)
 			{
 
@@ -149,7 +172,6 @@ public class ScheduleBox extends JComponent
 	private void setRectangles()
 	{
 		int index = 0;
-		buttonList.remove(optionButton);
 		for(Rectangle2D rect: buttonList)
 		{
 			if(rect == pressedButton)
@@ -173,6 +195,11 @@ public class ScheduleBox extends JComponent
 	private void getPossibleActions()
 	{
 		possibleActions = parent.getGameLogic().getCharacter().getSchedule().getPlace(buttonList.indexOf(pressedButton)).getPossibleActions();
+	}
+	
+	private void setCharacterAction(int index)
+	{
+		parent.getGameLogic().getCharacter().getSchedule().setAction(index, possibleActions.get(index));
 	}
 
 	
