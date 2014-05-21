@@ -6,7 +6,7 @@ import places.Place;
 import schedule.PrisonAction;
 import schedule.Schedule;
 
-public class CharacterPH
+public abstract class Character
 {
 	String name;
 
@@ -21,12 +21,11 @@ public class CharacterPH
 	boolean weapon;
 	boolean tool;
 	double legalAdvancement;
-	Preferences preferences;
 	Schedule schedule;
 	PrisonAction fixedAction;
 	Place currentPlace;
 	
-	public CharacterPH(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
+	public Character(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
 		name = _name;
 		health = _health;
@@ -45,101 +44,8 @@ public class CharacterPH
 		currentPlace = new Cell();
 		
 		schedule = new Schedule();
-		preferences = new Preferences();
 	}
 	
-	public CharacterPH(CharacterPH _character)
-	{
-		name = _character.name;
-		health = _character.health;
-		strength = _character.strength;
-		intelligence = _character.intelligence;
-		posX = _character.posX;
-		posY = _character.posY;
-		
-		
-		
-		this.legalAdvancement = _character.legalAdvancement;
-		this.materials = _character.materials;
-		this.influence = _character.influence;
-		this.money = _character.money;
-		this.weapon = _character.weapon;
-		this.tool = _character.tool;
-		
-		
-		//copy preferences
-		preferences = new Preferences(_character.preferences);
-		
-		schedule = new Schedule(_character.schedule);
-	}
-	
-	public double happiness()
-	{
-		
-		
-		
-		double wellBeingHappiness = (double)health / 20;
-		if(health > 70)
-		{
-			wellBeingHappiness += 10;
-		}
-		else if(health > 50)
-		{
-			wellBeingHappiness += 15;
-		}
-		else if(health > 20)
-		{
-			wellBeingHappiness += 20;
-		}
-		wellBeingHappiness += strength * 10;
-		
-		wellBeingHappiness *= preferences.wellBeingPreference;
-		//System.out.println("wellbeinghappiness " + wellBeingHappiness);
-		
-		
-		
-		
-		
-		
-		
-		double evasionHappiness = (double)strength * 8;
-		evasionHappiness += money;
-		evasionHappiness += influence;
-		evasionHappiness += (double)materials * 0.09;
-		if(weapon)
-		{
-			evasionHappiness += 10;
-		}
-
-		for(Place place: schedule.getAllPlaces())
-		{
-			evasionHappiness += (double)place.getDigAdvancement()*Variables.getDigadvancementimportance();
-			evasionHappiness += (100 - (double)place.getGuardAwareness())*Variables.getGuardawarenessimportance();
-		}
-		evasionHappiness *= preferences.evasionPreference;
-		
-		
-		
-		
-		//System.out.println("evasionHappiness total " + evasionHappiness);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		double educationHappiness = (double)intelligence * 60;
-		educationHappiness = educationHappiness + legalAdvancement * 50;
-		educationHappiness *= preferences.educationPreference;
-		
-		//System.out.println("educationHappiness " + educationHappiness);
-		
-		return wellBeingHappiness + evasionHappiness + educationHappiness;
-	}
 	
 	public void naturalHealthLoss()
 	{
@@ -212,9 +118,6 @@ public class CharacterPH
 		this.fixedAction = fixedAction;
 	}
 	
-	public Preferences getPreferences() {
-		return preferences;
-	}
 
 	public Schedule getSchedule() {
 		return schedule;
@@ -279,5 +182,4 @@ public class CharacterPH
 	public void setCurrentPlace(Place currentPlace) {
 		this.currentPlace = currentPlace;
 	}
-
 }

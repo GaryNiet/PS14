@@ -9,6 +9,11 @@ public class Showers extends Place
 	public Showers()
 	{
 		
+		posX = 550;
+		posY = 40;
+		sizeX = 90;
+		sizeY = 200;
+		
 		stealSR = 1;
 		
 		attackSR = 1;

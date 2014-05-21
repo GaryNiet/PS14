@@ -2,7 +2,7 @@ package logic;
 
 import java.util.List;
 
-import characters.CharacterPH;
+import characters.AICharacter;
 
 public class Variables
 {
@@ -16,9 +16,11 @@ public class Variables
 	final static int strongerWinsFightMultiplier = 2;
 	final static double digAdvancementImportance = 1;
 	final static double guardAwarenessImportance = 12;
+	final static int playerWidth = 10;
+	final static int playerHeight = 10;
 	
 	
-	static List<CharacterPH> characterList;
+	static List<AICharacter> characterList;
 	
 	public static int getWeaponBonus()
 	{
@@ -35,12 +37,12 @@ public class Variables
 		return fightWinningsMultiplier;
 	}
 
-	public static void setCharacterList(List<CharacterPH> _characterList) {
+	public static void setCharacterList(List<AICharacter> _characterList) {
 		characterList = _characterList;
 		
 	}
 	
-	public static List<CharacterPH> getCharacterList()
+	public static List<AICharacter> getCharacterList()
 	{
 		return characterList;
 	}
@@ -67,5 +69,13 @@ public class Variables
 
 	public static double getGuardawarenessimportance() {
 		return guardAwarenessImportance;
+	}
+
+	public static int getPlayerwidth() {
+		return playerWidth;
+	}
+
+	public static int getPlayerheight() {
+		return playerHeight;
 	}
 }

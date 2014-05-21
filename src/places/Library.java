@@ -8,6 +8,12 @@ public class Library extends Place
 	public Library()
 	{
 		
+		posX = 330;
+		posY = 210;
+		sizeX = 175;
+		sizeY = 160;
+		
+		
 		attackSR = 1;
 		blackmailSR = 1;
 		corruptSR = 1;

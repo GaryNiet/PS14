@@ -9,6 +9,11 @@ public class Cafeteria extends Place
 	
 	public Cafeteria()
 	{
+		posX = 30;
+		posY = 200;
+		sizeX = 120;
+		sizeY = 370;
+		
 		name = "cafeteria";
 		
 		stealWeaponToolSR = 1;

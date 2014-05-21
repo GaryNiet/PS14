@@ -5,7 +5,7 @@ import java.util.List;
 
 import places.Library;
 import places.Place;
-import characters.CharacterPH;
+import characters.AICharacter;
 
 public class Learn extends PrisonAction
 {
@@ -14,7 +14,7 @@ public class Learn extends PrisonAction
 		name = "learn";
 	}
 	
-	public void resolve(CharacterPH character, int time, boolean isReal)
+	public void resolve(AICharacter character, int time, boolean isReal)
 	{
 		character.setIntelligence(character.getIntelligence() + 1/(character.getIntelligence()*0.3));
 	}

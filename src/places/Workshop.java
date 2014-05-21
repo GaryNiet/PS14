@@ -10,6 +10,12 @@ public class Workshop extends Place
 	public Workshop()
 	{
 		
+		posX = 215;
+		posY = 420;
+		sizeX = 250;
+		sizeY = 140;
+		
+		
 		stealWeaponToolSR =1;
 		
 		attackSR = 1;

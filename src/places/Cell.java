@@ -8,6 +8,12 @@ public class Cell extends Place
 {
 	public Cell()
 	{
+		
+		posX = 20;
+		posY = 20;
+		sizeX = 200;
+		sizeY = 120;
+		
 		name = "cell";
 		
 		attackSR = 1;

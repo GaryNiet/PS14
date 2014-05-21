@@ -10,7 +10,7 @@ import places.PhoneBooth;
 import places.Place;
 import places.Showers;
 import places.VisitingCell;
-import characters.CharacterPH;
+import characters.AICharacter;
 
 public class Sell extends PrisonAction
 {
@@ -20,7 +20,7 @@ public class Sell extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character, int time, boolean isReal)
+	public void resolve(AICharacter character, int time, boolean isReal)
 	{
 		if(character.getMaterials() >= 10)
 		{

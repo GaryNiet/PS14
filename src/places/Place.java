@@ -19,6 +19,11 @@ public abstract class Place
 	public double attackSR, blackmailSR, corruptSR, digSR, evasionSR, resolveLegalSR, stealWeaponToolSR, sellMaterialsSR, stealSR;
 	protected int digAdvancement;
 	
+	protected int posX;
+	protected int posY;
+	protected int sizeX;
+	protected int sizeY;
+	
 	public Place()
 	{
 		guardAwareness = 100;
@@ -124,6 +129,26 @@ public abstract class Place
 	public List<PrisonAction> getPossibleActions()
 	{
 		return possibleActions;
+	}
+
+
+	public int getPosX() {
+		return posX;
+	}
+
+
+	public int getPosY() {
+		return posY;
+	}
+
+
+	public int getSizeX() {
+		return sizeX;
+	}
+
+
+	public int getSizeY() {
+		return sizeY;
 	}
 	
 }

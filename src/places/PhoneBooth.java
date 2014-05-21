@@ -8,6 +8,11 @@ public class PhoneBooth extends Place
 {
 	public PhoneBooth()
 	{
+		posX = 200;
+		posY = 180;
+		sizeX = 70;
+		sizeY = 70;
+		
 		
 		resolveLegalSR = 1;
 		

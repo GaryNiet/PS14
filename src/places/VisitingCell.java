@@ -8,6 +8,10 @@ public class VisitingCell extends Place
 {
 	public VisitingCell()
 	{
+		posX = 490;
+		posY = 400;
+		sizeX = 180;
+		sizeY = 200;
 		
 		resolveLegalSR = 1;
 		

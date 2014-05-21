@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.Color;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,9 +22,10 @@ public class UserInterface extends JFrame
 	{
 		gameLogic = _gameLogic;
 		panel = new JPanel(new MigLayout("fill"));
-		gameMap = new GameMap();
-		scheduleBox = new ScheduleBox(this);
 		infoBox = new InfoBox();
+		gameMap = new GameMap(this);
+		scheduleBox = new ScheduleBox(this);
+		
 		
 		
 		
@@ -53,5 +53,9 @@ public class UserInterface extends JFrame
 	public GameLogic getGameLogic()
 	{
 		return gameLogic;
+	}
+
+	public InfoBox getInfoBox() {
+		return infoBox;
 	}
 }

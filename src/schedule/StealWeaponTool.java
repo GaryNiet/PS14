@@ -7,7 +7,7 @@ import places.Cafeteria;
 import places.Kitchen;
 import places.Place;
 import places.Workshop;
-import characters.CharacterPH;
+import characters.AICharacter;
 
 public class StealWeaponTool extends PrisonAction
 {
@@ -17,7 +17,7 @@ public class StealWeaponTool extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character, int time, boolean isReal)
+	public void resolve(AICharacter character, int time, boolean isReal)
 	{
 		character.setWeapon(true);
 		character.setTool(true);

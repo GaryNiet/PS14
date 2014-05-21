@@ -11,6 +11,12 @@ public class Courtyard extends Place
 	
 	public Courtyard()
 	{
+		
+		posX = 250;
+		posY = 10;
+		sizeX = 250;
+		sizeY = 150;
+		
 		name = "courtyard";
 		
 		attackSR = 1;

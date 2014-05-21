@@ -1,7 +1,7 @@
 package aiMachine;
 
 import schedule.PrisonAction;
-import characters.CharacterPH;
+import characters.AICharacter;
 
 public class ActionCalculator
 {
@@ -11,10 +11,10 @@ public class ActionCalculator
 		
 	}
 	
-	public PrisonAction calculateBestAction(CharacterPH character,  int currentTime)
+	public PrisonAction calculateBestAction(AICharacter character,  int currentTime)
 	{
-		CharacterPH dummyCharacter;
-		CharacterPH copyCharacter;
+		AICharacter dummyCharacter;
+		AICharacter copyCharacter;
 		
 		PrisonAction bestAction = null;
 		double best = -100000;
@@ -30,8 +30,8 @@ public class ActionCalculator
 				
 				//System.out.println(prisonAction.name);
 				
-				dummyCharacter = new CharacterPH(character);
-				copyCharacter = new CharacterPH(character);
+				dummyCharacter = new AICharacter(character);
+				copyCharacter = new AICharacter(character);
 				
 				prisonAction.resolve(dummyCharacter, currentTime, false);
 				
@@ -56,7 +56,7 @@ public class ActionCalculator
 	
 	
 	
-	private double calculateHappiness(CharacterPH characterBefore, CharacterPH characterAfter)
+	private double calculateHappiness(AICharacter characterBefore, AICharacter characterAfter)
 	{
 		return characterAfter.happiness() - characterBefore.happiness();
 	}

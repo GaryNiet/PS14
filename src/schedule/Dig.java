@@ -13,7 +13,7 @@ import places.Place;
 import places.Showers;
 import places.VisitingCell;
 import places.Workshop;
-import characters.CharacterPH;
+import characters.AICharacter;
 
 public class Dig extends PrisonAction
 {
@@ -23,7 +23,7 @@ public class Dig extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character, int time, boolean isReal)
+	public void resolve(AICharacter character, int time, boolean isReal)
 	{
 		character.setHealth(character.getHealth()-2);
 		character.getSchedule().getPlace(time).setDigAdvancement(character.getSchedule().getPlace(time).getDigAdvancement() +1);

@@ -10,7 +10,7 @@ import places.PhoneBooth;
 import places.Place;
 import places.Showers;
 import places.VisitingCell;
-import characters.CharacterPH;
+import characters.AICharacter;
 
 public class WellBeing extends PrisonAction
 {
@@ -19,7 +19,7 @@ public class WellBeing extends PrisonAction
 	{
 		name = "wellbeing";
 	}
-	public void resolve(CharacterPH character, int time, boolean isReal)
+	public void resolve(AICharacter character, int time, boolean isReal)
 	{
 		
 		character.setHealth(character.getHealth()+30);

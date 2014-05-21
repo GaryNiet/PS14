@@ -13,7 +13,7 @@ import places.Place;
 import places.Showers;
 import places.VisitingCell;
 import places.Workshop;
-import characters.CharacterPH;
+import characters.AICharacter;
 
 public class Corrupt extends PrisonAction
 {
@@ -26,7 +26,7 @@ public class Corrupt extends PrisonAction
 	}
 
 	@Override
-	public void resolve(CharacterPH character, int time, boolean isReal)
+	public void resolve(AICharacter character, int time, boolean isReal)
 	{
 		int money = character.getMoney();
 		

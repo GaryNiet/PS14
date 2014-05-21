@@ -14,17 +14,20 @@ import places.Free;
 import schedule.PrisonAction;
 import aiMachine.AIValidator;
 import aiMachine.ActionCalculator;
-import characters.CharacterPH;
+import characters.AICharacter;
+import characters.PlayerCharacter;
 
 
 public class GameLogic {
 	
-	List<CharacterPH> characterList = new ArrayList<>();
+	List<AICharacter> characterList = new ArrayList<>();
+	PlayerCharacter playerCharacter;
 	ActionCalculator actionCalculator;
 	int currentTime;
 	AIValidator aiValidator;
 	Random random;
 	UserInterface userInterface;
+	
 	
 	//beware have to change this value
 	public final int timeZones = 9;
@@ -60,7 +63,7 @@ public class GameLogic {
 		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
 		System.out.printf("|    name     |strength|intelligence|health|   action   | schedule  |currentPlace|influence| money | materials |%n");
 		System.out.format("+--------------------------------------------------------------------------------------------------------------+%n");
-		for(CharacterPH character: characterList)
+		for(AICharacter character: characterList)
 		{
 			System.out.format(leftAlignFormat, character.getName(), (int)character.getStrength(), (int)character.getIntelligence(), 
 					character.getHealth(), character.getFixedAction().name, character.getSchedule().getPlace(currentTime).name, character.getCurrentPlace().name, 
@@ -76,19 +79,19 @@ public class GameLogic {
 
 	private void init()
 	{
-		
+		playerCharacter = new PlayerCharacter("player", 100, 100, 100, 50, 50);
 		for(int i = 0; i<5; i++)
 		{
-		CharacterPH character1 = new CharacterPH("george" , 100, 12, 10, 0, 0);
+		AICharacter character1 = new AICharacter("george" , 100, 12, 10, 0, 0);
 		characterList.add(character1);
 		}
-		CharacterPH character2 = new CharacterPH("foreman" , 100, 13, 10, 0, 0);
+		AICharacter character2 = new AICharacter("foreman" , 100, 13, 10, 0, 0);
 		characterList.add(character2);
-		CharacterPH character3 = new CharacterPH("snip" , 100, 11, 10, 0, 0);
+		AICharacter character3 = new AICharacter("snip" , 100, 11, 10, 0, 0);
 		characterList.add(character3);
-		CharacterPH character4 = new CharacterPH("sprool" , 100, 8, 10, 0, 0);
+		AICharacter character4 = new AICharacter("sprool" , 100, 8, 10, 0, 0);
 		characterList.add(character4);
-		CharacterPH character5 = new CharacterPH("tuck" , 100, 1, 15, 0, 0);
+		AICharacter character5 = new AICharacter("tuck" , 100, 1, 15, 0, 0);
 		characterList.add(character5);
 //		CharacterPH character6 = new CharacterPH("duck" , 100, 3, 10, 0, 0);
 //		characterList.add(character6);
@@ -110,7 +113,7 @@ public class GameLogic {
 		@Override
 		public void run()
 		{
-			for(CharacterPH character: characterList)
+			for(AICharacter character: characterList)
 			{
 				updateVariablesAndCheckIntegrity(character);
 				
@@ -138,7 +141,7 @@ public class GameLogic {
 
 
 	
-	private void updateVariablesAndCheckIntegrity(CharacterPH character)
+	private void updateVariablesAndCheckIntegrity(AICharacter character)
 	{
 		character.naturalHealthLoss();
 	}
@@ -152,7 +155,7 @@ public class GameLogic {
 		}
 	}
 	
-	private void setCurrentPlace(CharacterPH character, PrisonAction action)
+	private void setCurrentPlace(AICharacter character, PrisonAction action)
 	{
 		if(character.getSchedule().getPlace(currentTime).name == "free")
 		{
@@ -169,9 +172,9 @@ public class GameLogic {
 		}
 	}
 	
-	public CharacterPH getCharacter(int index)
+	public PlayerCharacter getCharacter()
 	{
-		return characterList.get(index);
+		return playerCharacter;
 	}
 	
 	public int getTime()

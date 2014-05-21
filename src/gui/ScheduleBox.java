@@ -24,6 +24,7 @@ public class ScheduleBox extends JComponent
 	Border border;
 
 	final int buttonQte = 11;
+	final int buttonSpacing = 12;
 	int width;
 	int height;
 	
@@ -110,6 +111,7 @@ public class ScheduleBox extends JComponent
 	public void paint(Graphics g)
 	{
 		Graphics2D g1 = (Graphics2D)g;
+		super.paintComponent(g1);
 		setRectangles();
 		getPossibleActions();
 		for(Rectangle2D rect: buttonList)
@@ -122,7 +124,9 @@ public class ScheduleBox extends JComponent
 			for(PrisonAction action: possibleActions)
 			{
 
-				g1.drawString(action.name, 10, (int) optionButton.getBounds2D().getY() + 12 * spacing);
+				g1.drawString(action.name, 10, (int) optionButton.getBounds2D().getY() + buttonSpacing * spacing);
+				Rectangle2D actionButton = new Rectangle2D.Double(0,optionButton.getBounds2D().getY() + buttonSpacing * (spacing-1), 100, buttonSpacing);
+				g1.draw(actionButton);
 				spacing++;
 			}
 			
@@ -155,7 +159,7 @@ public class ScheduleBox extends JComponent
 	
 	private void getPossibleActions()
 	{
-		possibleActions = parent.getGameLogic().getCharacter(0).getSchedule().getPlace(buttonList.indexOf(pressedButton)).getPossibleActions();
+		possibleActions = parent.getGameLogic().getCharacter().getSchedule().getPlace(buttonList.indexOf(pressedButton)).getPossibleActions();
 	}
 
 	

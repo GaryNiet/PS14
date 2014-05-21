@@ -8,6 +8,12 @@ public class Kitchen extends Place
 	public Kitchen()
 	{
 		
+		posX = 190;
+		posY = 280;
+		sizeX = 110;
+		sizeY = 90;
+		
+		
 		stealWeaponToolSR = 1;
 		
 		attackSR = 1;
