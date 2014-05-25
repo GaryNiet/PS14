@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -15,7 +16,19 @@ import javax.swing.border.Border;
 
 import places.Place;
 
+import schedule.Attack;
+import schedule.Blackmail;
+import schedule.Corrupt;
+import schedule.Dig;
+import schedule.Evasion;
+import schedule.Learn;
 import schedule.PrisonAction;
+import schedule.ResolveLegal;
+import schedule.Sell;
+import schedule.Steal;
+import schedule.StealWeaponTool;
+import schedule.Train;
+import schedule.WellBeing;
 
 
 @SuppressWarnings("serial")
@@ -29,6 +42,8 @@ public class ScheduleBox extends JComponent
 	final int buttonSpacing = 20;
 	int width;
 	int height;
+	int freeTime;
+	int showDropMenu;
 	
 	String[] scheduleButtons;
 	
@@ -58,6 +73,9 @@ public class ScheduleBox extends JComponent
 	public ScheduleBox(UserInterface _parent)
 	{
 		parent = _parent;
+		
+		freeTime = 0;
+		showDropMenu = 0;
 
 		border = BorderFactory.createLineBorder(Color.black);
 		this.setBorder(border);
@@ -119,6 +137,13 @@ public class ScheduleBox extends JComponent
 			if(rect.contains(me.getPoint()))
 			{
 				pressedButton = rect;
+				freeTime = 0;
+				int index = buttonList.indexOf(rect);
+				if(index == 6)
+				{
+					freeTime = index;
+				}
+				
 			}
 		}
 		
@@ -127,7 +152,8 @@ public class ScheduleBox extends JComponent
 			if(rect.contains(me.getPoint()))
 			{
 				int index = actionButtonList.indexOf(rect);
-				setCharacterAction(index);
+				setCharacterAction(buttonList.indexOf(pressedButton), index);
+				showDropMenu = index;
 			}
 		}
 		
@@ -151,21 +177,36 @@ public class ScheduleBox extends JComponent
 			g1.drawString(scheduleButtons[i], (int)rect.getBounds2D().getX(), (int)rect.getBounds2D().getY()+12);
 			g1.setPaint(Color.red);
 			g1.draw(optionButton);
-			int spacing  = 1;
+			
 			actionButtonList.clear();
 			
 			i++;
-			
-			for(PrisonAction action: possibleActions)
-			{
 
-				g1.drawString(action.name, 10, (int) optionButton.getBounds2D().getY() + buttonSpacing * spacing);
-				Rectangle2D actionButton = new Rectangle2D.Double(0,optionButton.getBounds2D().getY() + buttonSpacing * (spacing-1), 100, buttonSpacing);
-				actionButtonList.add(actionButton);
-				g1.draw(actionButton);
-				spacing++;
+		}
+		
+		int spacing  = 1;
+		for(PrisonAction action: possibleActions)
+		{
+			
+			g1.drawString(action.name, 10, (int) optionButton.getBounds2D().getY() + buttonSpacing * spacing);
+			Rectangle2D actionButton = new Rectangle2D.Double(0,optionButton.getBounds2D().getY() + buttonSpacing * (spacing-1), 100, buttonSpacing);
+			actionButtonList.add(actionButton);
+			g1.draw(actionButton);
+			
+			
+			if(freeTime != 0 && showDropMenu == spacing - 1)
+			{
+				int spacing2 = 0;
+				for(Place place: getPossiblePlaces(action))
+				{
+					g1.draw(new Rectangle2D.Double(100,optionButton.getBounds2D().getY() + buttonSpacing * (spacing-1) + spacing2 * buttonSpacing, 100, buttonSpacing));
+					g1.drawString(place.name, 100,(int)optionButton.getBounds2D().getY() + buttonSpacing * (spacing) + spacing2 * buttonSpacing);
+					spacing2++;
+				}
+				
 			}
 			
+			spacing++;
 		}
      }
 	
@@ -197,9 +238,63 @@ public class ScheduleBox extends JComponent
 		possibleActions = parent.getGameLogic().getCharacter().getSchedule().getPlace(buttonList.indexOf(pressedButton)).getPossibleActions();
 	}
 	
-	private void setCharacterAction(int index)
+	private List<Place> getPossiblePlaces(PrisonAction action)
 	{
-		parent.getGameLogic().getCharacter().getSchedule().setAction(index, possibleActions.get(index));
+		List<Place> places = new ArrayList<>();
+		
+		
+		if(action instanceof WellBeing)
+		{
+			places = WellBeing.getPlaces();
+		}
+		else if(action instanceof Learn)
+		{
+			places =  Learn.getPlaces();
+		}
+		else if(action instanceof Steal)
+		{
+			places =  Steal.getPlaces();
+		}
+		else if(action instanceof ResolveLegal)
+		{
+			places =  ResolveLegal.getPlaces();
+		}
+		else if(action instanceof Train)
+		{
+			places = Train.getPlaces();
+		}
+		else if(action instanceof Sell)
+		{
+			places = Sell.getPlaces();
+		}
+		else if(action instanceof StealWeaponTool)
+		{
+			places = StealWeaponTool.getPlaces();
+		}
+		else if(action instanceof Blackmail)
+		{
+			places = Blackmail.getPlaces();
+		}
+		else if(action instanceof Corrupt)
+		{
+			places = Corrupt.getPlaces();
+		}
+		else if(action instanceof Dig)
+		{
+			places = Dig.getPlaces();
+		}
+		else
+		{
+			places = Evasion.getPlaces();
+		}
+		
+		return places;
+	}
+
+	
+	private void setCharacterAction(int scheduleIndex, int actionIndex)
+	{
+		parent.getGameLogic().getCharacter().getSchedule().setAction(scheduleIndex, possibleActions.get(actionIndex));
 	}
 
 	

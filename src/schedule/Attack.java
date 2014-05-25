@@ -80,6 +80,7 @@ public class Attack extends PrisonAction
 		return placeList;
 	}
 	
+	
 	private AICharacter calculateWinner(AICharacter character1, AICharacter character2)
 	{
 		if(fightCapacity(character1)>fightCapacity(character2))
