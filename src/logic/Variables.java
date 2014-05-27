@@ -3,6 +3,7 @@ package logic;
 import java.util.List;
 
 import characters.AICharacter;
+import characters.PlayerCharacter;
 
 public class Variables
 {
@@ -21,6 +22,7 @@ public class Variables
 	
 	
 	static List<AICharacter> characterList;
+	static PlayerCharacter playerCharacter;
 	
 	public static int getWeaponBonus()
 	{
@@ -77,5 +79,13 @@ public class Variables
 
 	public static int getPlayerheight() {
 		return playerHeight;
+	}
+
+	public static PlayerCharacter getPlayerCharacter() {
+		return playerCharacter;
+	}
+
+	public static void setPlayerCharacter(PlayerCharacter playerCharacter) {
+		Variables.playerCharacter = playerCharacter;
 	}
 }

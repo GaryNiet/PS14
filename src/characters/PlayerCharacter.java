@@ -1,10 +1,40 @@
 package characters;
 
+import places.Cell;
+import places.Free;
+import places.Kitchen;
+import places.Place;
+
 public class PlayerCharacter extends Character
 {
+	
+	Place freeChoice;
 	public PlayerCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
 		super(_name,_health,_strength,  _intelligence, _posX, _posY);
+		job = this.schedule.getAllPlaces().get(8);
+		this.freeChoice = new Cell();
 		
+	}
+	
+	public void setCurrentPlace(Place currentPlace)
+	{
+		if(currentPlace instanceof Free)
+		{
+			this.currentPlace = this.freeChoice;
+		}
+		else
+		{
+			this.currentPlace = currentPlace;
+		}
+		
+	}
+
+	public Place getFreeChoice() {
+		return freeChoice;
+	}
+
+	public void setFreeChoice(Place freeChoice) {
+		this.freeChoice = freeChoice;
 	}
 }

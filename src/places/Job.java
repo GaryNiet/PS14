@@ -3,6 +3,8 @@ package places;
 
 import java.util.Random;
 
+import logic.Variables;
+
 import schedule.Blackmail;
 import schedule.Corrupt;
 import schedule.Dig;
@@ -38,6 +40,15 @@ public class Job extends Place
 		possibleActions.add(new StealWeaponTool());
 		possibleActions.add(new Train());
 		possibleActions.add(new Sell());
+	}
+	
+	public int getPosX() {
+		return Variables.getPlayerCharacter().getJob().getPosX();
+	}
+
+
+	public int getPosY() {
+		return Variables.getPlayerCharacter().getJob().getPosY();
 	}
 	
 	public static Place chosePlace(PrisonAction action)

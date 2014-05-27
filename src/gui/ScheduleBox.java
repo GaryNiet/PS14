@@ -45,6 +45,8 @@ public class ScheduleBox extends JComponent
 	int freeTime;
 	int showDropMenu;
 	
+	
+	
 	String[] scheduleButtons;
 	
 		
@@ -52,6 +54,8 @@ public class ScheduleBox extends JComponent
 	
 	List<PrisonAction> possibleActions;
 	List<Rectangle2D> actionButtonList;
+	List<Rectangle2D> freePlaceList;
+	List<Place> possiblePlaces;
 	
 	
 	Rectangle2D button0to6;
@@ -108,7 +112,8 @@ public class ScheduleBox extends JComponent
 		
 		buttonList = new ArrayList<>();
 		actionButtonList = new ArrayList<>();
-		
+		freePlaceList = new ArrayList<>();
+		possiblePlaces = new ArrayList<>();
 		
 		buttonList.add(button0to6);
 		buttonList.add(button6to7);
@@ -157,6 +162,16 @@ public class ScheduleBox extends JComponent
 			}
 		}
 		
+		for(Rectangle2D rect: freePlaceList)
+		{
+			System.out.println(freePlaceList.size());
+			if(rect.contains(me.getPoint()))
+			{
+				int index = freePlaceList.indexOf(rect);
+				parent.getGameLogic().getCharacter().setFreeChoice(possiblePlaces.get(index));
+			}
+		}
+		
 		setRectangles();
 		
 		
@@ -197,10 +212,16 @@ public class ScheduleBox extends JComponent
 			if(freeTime != 0 && showDropMenu == spacing - 1)
 			{
 				int spacing2 = 0;
+				possiblePlaces.clear();
+				freePlaceList.clear();
 				for(Place place: getPossiblePlaces(action))
 				{
-					g1.draw(new Rectangle2D.Double(100,optionButton.getBounds2D().getY() + buttonSpacing * (spacing-1) + spacing2 * buttonSpacing, 100, buttonSpacing));
+					
+					possiblePlaces.add(place);
+					Rectangle2D newRect = new Rectangle2D.Double(100,optionButton.getBounds2D().getY() + buttonSpacing * (spacing-1) + spacing2 * buttonSpacing, 100, buttonSpacing);
+					g1.draw(newRect);
 					g1.drawString(place.name, 100,(int)optionButton.getBounds2D().getY() + buttonSpacing * (spacing) + spacing2 * buttonSpacing);
+					freePlaceList.add(newRect);
 					spacing2++;
 				}
 				

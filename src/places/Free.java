@@ -2,6 +2,8 @@ package places;
 
 import java.util.Random;
 
+import logic.Variables;
+
 import schedule.Blackmail;
 import schedule.Corrupt;
 import schedule.Dig;
@@ -43,6 +45,7 @@ public class Free extends Place
 		possibleActions.add(new Train());
 		possibleActions.add(new Sell());
 	}
+	
 	
 	public static Place chosePlace(PrisonAction action)
 	{

@@ -82,6 +82,9 @@ public class GameLogic {
 	private void init()
 	{
 		playerCharacter = new PlayerCharacter("player", 100, 100, 100, 50, 50);
+		
+		Variables.setPlayerCharacter(playerCharacter);
+		
 		for(int i = 0; i<5; i++)
 		{
 		AICharacter character1 = new AICharacter("george" , 100, 12, 10, 0, 0);
@@ -124,12 +127,16 @@ public class GameLogic {
 				
 				character.setFixedAction(bestAction);
 				setCurrentPlace(character, bestAction);
+				setXY();
 				bestAction.resolve(character, currentTime, true);
 				//aiValidator.update(character.getCurrentPlace(), character.getFixedAction());
 				
 			}
 			//showTable();
+			playerCharacter.setCurrentPlace(playerCharacter.getSchedule().getPlace(currentTime));
 			userInterface.showAction();
+			System.out.println(playerCharacter.getFreeChoice());
+			
 			passTime();
 			
 			
@@ -149,6 +156,18 @@ public class GameLogic {
 		character.naturalHealthLoss();
 	}
 	
+	private void setXY()
+	{
+		for(AICharacter ai: characterList)
+		{
+			ai.setPosX(ai.getCurrentPlace().getPosX());
+			ai.setPosY(ai.getCurrentPlace().getPosY());
+		}
+		
+	}
+
+
+
 	private void passTime()
 	{
 		currentTime += 1;
@@ -178,6 +197,11 @@ public class GameLogic {
 	public PlayerCharacter getCharacter()
 	{
 		return playerCharacter;
+	}
+	
+	public List<AICharacter> getAICharacters()
+	{
+		return characterList;
 	}
 	
 	public int getTime()

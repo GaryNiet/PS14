@@ -1,7 +1,10 @@
 package characters;
 
+import java.util.Random;
+
 import logic.Variables;
 import places.Cell;
+import places.Free;
 import places.Place;
 import schedule.PrisonAction;
 import schedule.Schedule;
@@ -24,6 +27,13 @@ public abstract class Character
 	Schedule schedule;
 	PrisonAction fixedAction;
 	Place currentPlace;
+	Place job;
+	double roamX;
+	double roamY;
+	double roamDirection;
+	int roamLimit;
+	int resetRoam;
+	Random random;
 	
 	public Character(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
@@ -34,6 +44,10 @@ public abstract class Character
 		posX = _posX;
 		posY = _posY;
 		
+		random = new Random();
+		roamLimit = 0;
+		
+		roamDirection = 0;
 		legalAdvancement =1;
 		materials = 0;
 		influence = 0;
@@ -41,10 +55,24 @@ public abstract class Character
 		weapon = false;
 		tool = false;
 		
+		
+		
 		currentPlace = new Cell();
+		
 		
 		schedule = new Schedule();
 	}
+	
+	public void updateRoam()
+	{
+		
+		roamDirection += (random.nextFloat()-0.3)/10;
+		
+		roamX += Math.cos(roamDirection)/15;
+		roamY += Math.sin(roamDirection)/15;
+		
+	}
+	
 	
 	
 	public void naturalHealthLoss()
@@ -179,7 +207,56 @@ public abstract class Character
 		return currentPlace;
 	}
 
-	public void setCurrentPlace(Place currentPlace) {
+	public void setCurrentPlace(Place currentPlace)
+	{
+
 		this.currentPlace = currentPlace;
+		
+	}
+
+
+	public double getRoamX() {
+		return roamX;
+	}
+
+
+	public void setRoamX(int roamX) {
+		this.roamX = roamX;
+	}
+
+
+	public double getRoamY() {
+		return roamY;
+	}
+
+
+	public void setRoamY(int roamY) {
+		this.roamY = roamY;
+	}
+
+
+	public double getRoamDirection() {
+		return roamDirection;
+	}
+
+
+	public void setRoamDirection(int roamDirection) {
+		this.roamDirection = roamDirection;
+	}
+
+	public int getRoamLimit() {
+		return roamLimit;
+	}
+
+	public void setRoamLimit(int roamLimit) {
+		this.roamLimit = roamLimit;
+	}
+
+	public Place getJob() {
+		return job;
+	}
+
+	public void setJob(Place job) {
+		this.job = job;
 	}
 }

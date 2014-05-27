@@ -21,6 +21,9 @@ public class Schedule
 {
 	Place[] timeTable;
 	PrisonAction[] actionTimeTable;
+	
+	Place freePlace;
+	
 	List<Place> allPlaces;
 	Cell cell;
 	Courtyard courtyard;
