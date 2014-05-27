@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -21,20 +20,7 @@ import javax.swing.JComponent;
 import javax.swing.border.Border;
 
 import places.Place;
-
-import schedule.Attack;
-import schedule.Blackmail;
-import schedule.Corrupt;
-import schedule.Dig;
-import schedule.Evasion;
-import schedule.Learn;
 import schedule.PrisonAction;
-import schedule.ResolveLegal;
-import schedule.Sell;
-import schedule.Steal;
-import schedule.StealWeaponTool;
-import schedule.Train;
-import schedule.WellBeing;
 
 @SuppressWarnings("serial")
 public class ScheduleBox extends JComponent
@@ -213,6 +199,8 @@ public class ScheduleBox extends JComponent
 			g1.setPaint(Color.black);
 			g1.drawString(scheduleButtons[i], (int) rect.getBounds2D().getX(),
 					(int) rect.getBounds2D().getY() + 12);
+			
+			
 			g1.setPaint(Color.red);
 			g1.draw(optionButton);
 

@@ -26,7 +26,6 @@ public class GameMap extends JPanel{
 	
 	Border border;
 	UserInterface parent;
-	InfoBox infoBox;
 	
 	List<Rectangle2D> placeList;
 	Rectangle2D player;
@@ -40,7 +39,6 @@ public class GameMap extends JPanel{
 	public GameMap(UserInterface _parent)
 	{
 		parent = _parent;
-		infoBox = parent.getInfoBox();
 		
 		
 		random = new Random();
@@ -88,7 +86,6 @@ public class GameMap extends JPanel{
 				if(place.contains(me.getPoint()))
 				{
 					int placeIndex = placeList.indexOf(place);
-					infoBox.fillInfo(allPlaces().get(placeIndex));
 				}
 				
 			}
