@@ -24,13 +24,6 @@ public class Train extends PrisonAction
 		character.setStrength(character.getStrength()+1/(character.getStrength()*0.3));
 	}
 	
-	public static List<Place> getPlaces()
-	{
-		List<Place> placeList = new ArrayList<>();
-		placeList.add(new Courtyard());
-		
-		return placeList;
-	}
 
 
 }

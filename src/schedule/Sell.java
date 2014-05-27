@@ -31,13 +31,7 @@ public class Sell extends PrisonAction
 		
 	}
 	
-	public static List<Place> getPlaces()
-	{
-		List<Place> placeList = new ArrayList<>();
-		placeList.add(new Courtyard());
-		
-		return placeList;
-	}
+
 
 
 }

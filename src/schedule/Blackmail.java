@@ -39,22 +39,7 @@ public class Blackmail extends PrisonAction
 		
 		
 	}
-	
-	public static List<Place> getPlaces()
-	{
-		List<Place> placeList = new ArrayList<>();
-		placeList.add(new Cell());
-		placeList.add(new Courtyard());
-		placeList.add(new Cafeteria());
-		placeList.add(new Showers());
-		placeList.add(new VisitingCell());
-		placeList.add(new PhoneBooth());
-		placeList.add(new Workshop());
-		placeList.add(new Kitchen());
-		placeList.add(new Library());
-		
-		return placeList;
-	}
+
 
 
 	

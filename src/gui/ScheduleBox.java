@@ -297,44 +297,7 @@ public class ScheduleBox extends JComponent
 
 	private List<Place> getPossiblePlaces(PrisonAction action)
 	{
-		List<Place> places = new ArrayList<>();
-
-		if (action instanceof WellBeing)
-		{
-			places = WellBeing.getPlaces();
-		} else if (action instanceof Learn)
-		{
-			places = Learn.getPlaces();
-		} else if (action instanceof Steal)
-		{
-			places = Steal.getPlaces();
-		} else if (action instanceof ResolveLegal)
-		{
-			places = ResolveLegal.getPlaces();
-		} else if (action instanceof Train)
-		{
-			places = Train.getPlaces();
-		} else if (action instanceof Sell)
-		{
-			places = Sell.getPlaces();
-		} else if (action instanceof StealWeaponTool)
-		{
-			places = StealWeaponTool.getPlaces();
-		} else if (action instanceof Blackmail)
-		{
-			places = Blackmail.getPlaces();
-		} else if (action instanceof Corrupt)
-		{
-			places = Corrupt.getPlaces();
-		} else if (action instanceof Dig)
-		{
-			places = Dig.getPlaces();
-		} else
-		{
-			places = Evasion.getPlaces();
-		}
-
-		return places;
+		return action.getAllPlaces();
 	}
 
 	private void setCharacterAction(int scheduleIndex, int actionIndex)

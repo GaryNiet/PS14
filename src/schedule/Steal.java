@@ -25,14 +25,7 @@ public class Steal extends PrisonAction
 		character.setMaterials(character.getMaterials() + 10);
 	}
 	
-	public static List<Place> getPlaces()
-	{
-		List<Place> placeList = new ArrayList<>();
-		placeList.add(new Cell());
-		placeList.add(new Showers());
-		
-		return placeList;
-	}
+
 
 
 }

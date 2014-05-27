@@ -26,14 +26,7 @@ public class ResolveLegal extends PrisonAction
 		
 	}
 	
-	public static List<Place> getPlaces()
-	{
-		List<Place> placeList = new ArrayList<>();
-		placeList.add(new VisitingCell());
-		placeList.add(new PhoneBooth());
-		
-		return placeList;
-	}
+
 
 
 	

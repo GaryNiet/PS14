@@ -19,13 +19,7 @@ public class Learn extends PrisonAction
 		character.setIntelligence(character.getIntelligence() + 1/(character.getIntelligence()*0.3));
 	}
 	
-	public static List<Place> getPlaces()
-	{
-		List<Place> placeList = new ArrayList<>();
-		placeList.add(new Library());
-		
-		return placeList;
-	}
+
 
 
 }

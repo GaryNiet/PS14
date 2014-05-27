@@ -24,15 +24,7 @@ public class StealWeaponTool extends PrisonAction
 		
 	}
 	
-	public static List<Place> getPlaces()
-	{
-		List<Place> placeList = new ArrayList<>();
-		placeList.add(new Kitchen());
-		placeList.add(new Workshop());
-		placeList.add(new Cafeteria());
-		
-		return placeList;
-	}
+
 
 
 }

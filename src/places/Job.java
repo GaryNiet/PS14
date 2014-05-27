@@ -54,53 +54,7 @@ public class Job extends Place
 	public static Place chosePlace(PrisonAction action)
 	{
 		Random random = new Random();
-		Place place = null;
-		
-		
-		if(action instanceof WellBeing)
-		{
-			place = WellBeing.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof Learn)
-		{
-			place =  Learn.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof Steal)
-		{
-			place =  Steal.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof ResolveLegal)
-		{
-			place =  ResolveLegal.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof Train)
-		{
-			place = Train.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof Sell)
-		{
-			place = Sell.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof StealWeaponTool)
-		{
-			place = StealWeaponTool.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof Blackmail)
-		{
-			place = Blackmail.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof Corrupt)
-		{
-			place = Corrupt.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else if(action instanceof Dig)
-		{
-			place = Dig.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
-		else
-		{
-			place = Evasion.getPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
-		}
+		Place place = action.getAllPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
 		
 		return place;
 		

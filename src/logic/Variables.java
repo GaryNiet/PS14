@@ -2,6 +2,9 @@ package logic;
 
 import java.util.List;
 
+import places.Place;
+import schedule.Schedule;
+
 import characters.AICharacter;
 import characters.PlayerCharacter;
 
@@ -19,6 +22,8 @@ public class Variables
 	final static double guardAwarenessImportance = 12;
 	final static int playerWidth = 10;
 	final static int playerHeight = 10;
+	
+	final static Schedule schedule = new Schedule();
 	
 	
 	static List<AICharacter> characterList;
@@ -87,5 +92,10 @@ public class Variables
 
 	public static void setPlayerCharacter(PlayerCharacter playerCharacter) {
 		Variables.playerCharacter = playerCharacter;
+	}
+
+	public static Schedule getSchedule()
+	{
+		return schedule;
 	}
 }
