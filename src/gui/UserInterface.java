@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import logic.GameLogic;
+import logic.Variables;
 import net.miginfocom.swing.MigLayout;
 
 @SuppressWarnings("serial")
@@ -28,14 +29,13 @@ public class UserInterface extends JFrame
 		
 		
 		
+		panel.add(gameMap, "w 75%, h 75%");
+		panel.add(infoBox, "h 25%, dock south");
+		panel.add(scheduleBox, "w 25%, dock east");
 		
-		panel.add(gameMap, "w 70%, h 80%");
-		panel.add(infoBox, "h 20%, dock south");
-		panel.add(scheduleBox, "w 30%, dock east");
-		
-		panel.add(gameMap, "x 0, y 0, w 717, h 611");
-		panel.add(infoBox, "x 0, y 611, w 717, h 153");
-		panel.add(scheduleBox, "x 718, y 0, w 307, h 764");
+		panel.add(gameMap, "x 0, y 0, w 768, h 576");
+		panel.add(infoBox, "x 0, y 576, w 768, h 192");
+		panel.add(scheduleBox, "x 768, y -48, w 256, h 720");
 		
 		gameMap.setBackground(Color.green);
 		infoBox.setBackground(Color.red);

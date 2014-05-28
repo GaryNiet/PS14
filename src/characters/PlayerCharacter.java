@@ -2,10 +2,9 @@ package characters;
 
 import places.Cell;
 import places.Free;
-import places.Kitchen;
 import places.Place;
 
-public class PlayerCharacter extends Character
+public class PlayerCharacter extends AbstractCharacter
 {
 	
 	Place freeChoice;

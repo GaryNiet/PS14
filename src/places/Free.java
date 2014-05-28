@@ -50,7 +50,7 @@ public class Free extends Place
 	public static Place chosePlace(PrisonAction action)
 	{
 		Random random = new Random();
-		Place place = action.getAllPlaces().get(random.nextInt(WellBeing.getPlaces().size()));
+		Place place = action.getAllPlaces().get(random.nextInt(action.getAllPlaces().size()));
 		
 		return place;
 		

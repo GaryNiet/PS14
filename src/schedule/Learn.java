@@ -14,7 +14,7 @@ public class Learn extends PrisonAction
 		name = "learn";
 	}
 	
-	public void resolve(AICharacter character, int time, boolean isReal)
+	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)
 	{
 		character.setIntelligence(character.getIntelligence() + 1/(character.getIntelligence()*0.3));
 	}

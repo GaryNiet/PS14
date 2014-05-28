@@ -3,10 +3,9 @@ package characters;
 import logic.Variables;
 import places.Cell;
 import places.Place;
-import schedule.PrisonAction;
 import schedule.Schedule;
 
-public class AICharacter extends Character
+public class AICharacter extends AbstractCharacter
 {
 
 	Preferences preferences;

@@ -13,11 +13,12 @@ import places.Place;
 import places.Showers;
 import places.VisitingCell;
 import characters.AICharacter;
+import characters.AbstractCharacter;
 
 public abstract class PrisonAction
 {
 	public String name;
-	public abstract void resolve(AICharacter character, int time, boolean isReal);
+	public abstract void resolve(AbstractCharacter character, int time, boolean isReal);
 	
 	public List<Place> getAllPlaces()
 	{
@@ -38,6 +39,7 @@ public abstract class PrisonAction
 		
 		return returnList;
 	}
+
 	
 }
 

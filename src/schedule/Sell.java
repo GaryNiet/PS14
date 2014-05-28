@@ -20,7 +20,7 @@ public class Sell extends PrisonAction
 	}
 
 	@Override
-	public void resolve(AICharacter character, int time, boolean isReal)
+	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)
 	{
 		if(character.getMaterials() >= 10)
 		{

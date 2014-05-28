@@ -20,7 +20,7 @@ public class Steal extends PrisonAction
 	}
 
 	@Override
-	public void resolve(AICharacter character, int time, boolean isReal)
+	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)
 	{
 		character.setMaterials(character.getMaterials() + 10);
 	}

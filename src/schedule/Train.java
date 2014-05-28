@@ -19,7 +19,7 @@ public class Train extends PrisonAction
 		name = "train";
 	}
 	
-	public void resolve(AICharacter character, int time, boolean isReal)
+	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)
 	{
 		character.setStrength(character.getStrength()+1/(character.getStrength()*0.3));
 	}

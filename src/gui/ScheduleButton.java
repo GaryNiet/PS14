@@ -13,10 +13,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ScheduleButton extends JPanel
 {
-	double x, y, width, height;
-	Rectangle2D testRect;
 
 	private BufferedImage paper;
 	private TexturePaint paperTex;
@@ -24,8 +23,12 @@ public class ScheduleButton extends JPanel
 	private Rectangle2D rect;
 	private String label;
 
-	public ScheduleButton()
+	public ScheduleButton(String name)
 	{
+		
+		this.setVisible(true);
+		rect = new Rectangle2D.Double();
+		label = name;
 		loadImages();
 	}
 
@@ -45,17 +48,26 @@ public class ScheduleButton extends JPanel
 	
 	public void paint(Graphics g)
 	{
-		
 		Graphics2D g1 = (Graphics2D) g;
 		super.paintComponent(g1);
-		paperTex = new TexturePaint(paper, new Rectangle(0, 0, (int)this.width, (int)this.height));
-		
+		paperTex = new TexturePaint(paper, new Rectangle(0, 0, (int)this.getBounds().getWidth(), (int)this.getBounds().getHeight()));
 		g1.setPaint(paperTex);
+		
+		
+		setRect();
+		
 		g1.draw(rect);
 		g1.fillRect((int)rect.getX(), (int)rect.getY(), (int)rect.getWidth(), (int)rect.getHeight());
 		g1.setPaint(Color.black);
 		g1.drawString(label, (int) rect.getBounds2D().getX(),
 				(int) rect.getBounds2D().getY() + 12);
+		
+	}
+	
+	private void setRect()
+	{
+		rect.setFrame(this.getBounds().getX(), this.getBounds().getY(), this.getBounds().getWidth(), this.getBounds().getHeight());
+
 	}
 
 }

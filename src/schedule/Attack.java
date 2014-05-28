@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 import logic.Variables;
 import places.Cafeteria;
 import places.Cell;
@@ -17,6 +19,8 @@ import places.VisitingCell;
 import places.Workshop;
 import aiMachine.ProbabilityCalculator;
 import characters.AICharacter;
+import characters.AbstractCharacter;
+import characters.PlayerCharacter;
 
 public class Attack extends PrisonAction
 {
@@ -31,16 +35,17 @@ public class Attack extends PrisonAction
 	}
 
 	@Override
-	public void resolve(AICharacter character, int time, boolean isReal)
+	public void resolve(AbstractCharacter character, int time, boolean isReal)
 	{
 		
-		AICharacter victim = choseVictim(character, Variables.getCharacterList());
-		if(!isReal)
-		{
-			victim = new AICharacter(victim);
-		}
+		AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
 		
-		AICharacter winner = calculateWinner(character, victim);
+//		if(!isReal)
+//		{
+//			victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
+//		}
+		
+		AbstractCharacter winner = calculateWinner(character, victim);
 		
 		if(isReal)
 		{
@@ -64,9 +69,14 @@ public class Attack extends PrisonAction
 		
 	}
 	
+	public void resolve(PlayerCharacter player, int time, boolean isReal)
+	{
+		//TODO
+	}
 	
 	
-	private AICharacter calculateWinner(AICharacter character1, AICharacter character2)
+	
+	private characters.AbstractCharacter calculateWinner(characters.AbstractCharacter character1, characters.AbstractCharacter character2)
 	{
 		if(fightCapacity(character1)>fightCapacity(character2))
 		{
@@ -78,7 +88,7 @@ public class Attack extends PrisonAction
 		}
 	}
 	
-	private int fightCapacity(AICharacter character)
+	private int fightCapacity(characters.AbstractCharacter character)
 	{
 		if(character.isWeapon())
 		{
@@ -92,14 +102,14 @@ public class Attack extends PrisonAction
 	}
 	
 	
-	public static AICharacter choseVictim(AICharacter character, List<AICharacter> characterList)
+	public static characters.AbstractCharacter choseVictim(characters.AbstractCharacter character, List<characters.AbstractCharacter> characterList)
 	{
-		AICharacter bestVictim = null;
+		AbstractCharacter bestVictim = null;
 		int best = -10000;// = winnings * probability of winning
 		int test;
 		double winnings;
 		int weaponEquiped = 0;
-		for(AICharacter victim: characterList)
+		for(characters.AbstractCharacter victim: characterList)
 		{
 			if(!character.getName().equals(victim.getName()))
 			{
@@ -121,7 +131,7 @@ public class Attack extends PrisonAction
 	}
 	
 	
-	private static double calculateFightWinnings(AICharacter winner, AICharacter loser)
+	private static double calculateFightWinnings(characters.AbstractCharacter winner, characters.AbstractCharacter loser)
 	{
 		//System.out.println("attacker: " + winner.getName() + " victim: " + loser.getName());
 		double rewardMultiplier;
@@ -146,6 +156,7 @@ public class Attack extends PrisonAction
 		//System.out.println("in the hopes of winning " + rewardMultiplier * Variables.getfightWinningsMultiplier());
 		return rewardMultiplier * Variables.getfightWinningsMultiplier();
 	}
+
 
 	
 

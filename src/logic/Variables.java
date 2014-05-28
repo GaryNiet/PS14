@@ -1,11 +1,13 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import places.Place;
 import schedule.Schedule;
 
 import characters.AICharacter;
+import characters.AbstractCharacter;
 import characters.PlayerCharacter;
 
 public class Variables
@@ -23,11 +25,17 @@ public class Variables
 	final static int playerWidth = 10;
 	final static int playerHeight = 10;
 	
+	final static int rightWidth1024 = 768;
+	final static int leftWidth1024 = 256;
+	final static int topHeight1024 = 576;
+	final static int bottomHeight1024 = 192;
+	
 	final static Schedule schedule = new Schedule();
 	
 	
 	static List<AICharacter> characterList;
 	static PlayerCharacter playerCharacter;
+	static List<AbstractCharacter> allCharacters;
 	
 	public static int getWeaponBonus()
 	{
@@ -97,5 +105,38 @@ public class Variables
 	public static Schedule getSchedule()
 	{
 		return schedule;
+	}
+
+	public static int getRightwidth1024()
+	{
+		return rightWidth1024;
+	}
+
+	public static int getLeftwidth1024()
+	{
+		return leftWidth1024;
+	}
+
+	public static int getTopheight1024()
+	{
+		return topHeight1024;
+	}
+
+	public static int getBottomheight1024()
+	{
+		return bottomHeight1024;
+	}
+	
+	public static List<AbstractCharacter> getAllCharacters()
+	{
+		allCharacters = new ArrayList<>();
+		for(AICharacter aiCharacter: characterList)
+		{
+			allCharacters.add(aiCharacter);
+			
+		}
+		allCharacters.add(playerCharacter);
+		return allCharacters;
+		
 	}
 }

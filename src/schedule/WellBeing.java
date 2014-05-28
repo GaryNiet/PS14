@@ -19,23 +19,15 @@ public class WellBeing extends PrisonAction
 	{
 		name = "wellbeing";
 	}
-	public void resolve(AICharacter character, int time, boolean isReal)
+	
+	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)
 	{
 		
 		character.setHealth(character.getHealth()+30);
 		character.checkHealthIntegrity();
 	}
-	public static List<Place> getPlaces()
-	{
-		List<Place> placeList = new ArrayList<>();
-		placeList.add(new Cell());
-		placeList.add(new Courtyard());
-		placeList.add(new Cafeteria());
-		placeList.add(new Showers());
-		placeList.add(new VisitingCell());
-		placeList.add(new PhoneBooth());
-		
-		return placeList;
-	}
+	
+
+
 
 }

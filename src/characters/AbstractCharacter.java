@@ -2,14 +2,12 @@ package characters;
 
 import java.util.Random;
 
-import logic.Variables;
 import places.Cell;
-import places.Free;
 import places.Place;
 import schedule.PrisonAction;
 import schedule.Schedule;
 
-public abstract class Character
+public abstract class AbstractCharacter
 {
 	String name;
 
@@ -35,7 +33,7 @@ public abstract class Character
 	int resetRoam;
 	Random random;
 	
-	public Character(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
+	public AbstractCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
 		name = _name;
 		health = _health;
