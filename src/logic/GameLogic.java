@@ -90,7 +90,7 @@ public class GameLogic {
 
 	private void init()
 	{
-		playerCharacter = new PlayerCharacter("player", 4, 4, 100, 50, 50);
+		playerCharacter = new PlayerCharacter("player", 100, 100, 100, 50, 50);
 		
 		Variables.setPlayerCharacter(playerCharacter);
 		
@@ -150,15 +150,7 @@ public class GameLogic {
 			
 			userInterface.showAction();
 			//System.out.println(playerCharacter.getFreeChoice());
-			System.out.println(playerCharacter.getName());
-			System.out.println(playerCharacter.getStrength());
-			System.out.println(playerCharacter.getIntelligence());
-			System.out.println(playerCharacter.getHealth());
-			System.out.println(playerCharacter.getSchedule().getAction(currentTime));
-			System.out.println(playerCharacter.getSchedule().getPlace(currentTime));
-			System.out.println(playerCharacter.getInfluence());
-			System.out.println(playerCharacter.getMoney());
-			System.out.println(playerCharacter.getMaterials());
+			
 			
 			
 			

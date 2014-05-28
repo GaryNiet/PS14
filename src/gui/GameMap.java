@@ -115,6 +115,14 @@ public class GameMap extends JPanel{
 			index++;
 		}
 		
+		
+		
+		g1.drawString("health: " + Variables.getPlayerCharacter().getHealth(), 0, 15);
+		g1.drawString("strength: " + Variables.getPlayerCharacter().getStrength(), 100, 15);
+		g1.drawString("intelligence: " + Variables.getPlayerCharacter().getIntelligence(), 200, 15);
+		g1.drawString("money: " + Variables.getPlayerCharacter().getMoney(), 500, 15);
+		g1.drawString("influence: " + Variables.getPlayerCharacter().getInfluence(), 600, 15);
+		
 		//draws player
 		g1.draw(player);
 		this.repaint();
