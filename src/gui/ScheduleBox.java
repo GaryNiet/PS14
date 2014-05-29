@@ -33,15 +33,10 @@ public class ScheduleBox extends JComponent
 	final int buttonSpacing = 20;
 	int width;
 	int height;
-	int freeTime;
-	int showDropMenu;
 
-	String[] scheduleButtons;
+	
 
-	List<PrisonAction> possibleActions;
-	List<Rectangle2D> actionButtonList;
-	List<Rectangle2D> freePlaceList;
-	List<Place> possiblePlaces;
+	
 
 	ScheduleButton button0to6;
 	ScheduleButton button6to7;
@@ -64,8 +59,6 @@ public class ScheduleBox extends JComponent
 	{
 		parent = _parent;
 
-		freeTime = 0;
-		showDropMenu = 0;
 
 
 		border = BorderFactory.createLineBorder(Color.black);
@@ -86,9 +79,6 @@ public class ScheduleBox extends JComponent
 		pressedButton = button23to24;
 
 		buttonList = new ArrayList<>();
-		actionButtonList = new ArrayList<>();
-		freePlaceList = new ArrayList<>();
-		possiblePlaces = new ArrayList<>();
 
 		buttonList.add(button0to6);
 		buttonList.add(button6to7);
@@ -117,10 +107,7 @@ public class ScheduleBox extends JComponent
 			if (rect.getBounds().contains(me.getPoint()))
 			{
 				pressedButton = rect;
-				freeTime = 0;
 				optionButton.setIndex(buttonList.indexOf(rect));
-				
-
 			}
 		}
 		
@@ -141,11 +128,6 @@ public class ScheduleBox extends JComponent
 		for (ScheduleButton rect : buttonList)
 		{
 			rect.paint(g);
-			
-			g1.setPaint(Color.red);
-			
-
-			actionButtonList.clear();
 
 		}
 		
