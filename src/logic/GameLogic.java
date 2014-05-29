@@ -93,6 +93,7 @@ public class GameLogic {
 		playerCharacter = new PlayerCharacter("player", 100, 100, 100, 50, 50);
 		
 		Variables.setPlayerCharacter(playerCharacter);
+		Variables.setGameLogic(this);
 		
 		for(int i = 0; i<5; i++)
 		{

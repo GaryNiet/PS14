@@ -12,15 +12,11 @@ import places.Place;
 
 @SuppressWarnings("serial")
 public class InfoBox extends JPanel {
-	Border border;
-	JPanel panel;
 	String name;
 	
 	
 	public InfoBox()
 	{
-		border = BorderFactory.createLineBorder(Color.black);
-		this.setBorder(border);
 		name = new String();
 		
 	}
@@ -38,7 +34,13 @@ public class InfoBox extends JPanel {
 		Graphics2D g1 = (Graphics2D)g;
 		super.paintComponent(g1);
 		g1.drawString(name, 10, 10);
+		paintCharacterInfo(g1);
 		
+	}
+	
+	public void paintCharacterInfo(Graphics2D g1)
+	{
+		g1.drawString("characterInfo", 10, 50);
 	}
 	
 	

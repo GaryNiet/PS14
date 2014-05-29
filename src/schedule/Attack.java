@@ -40,10 +40,14 @@ public class Attack extends PrisonAction
 		
 		AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
 		
-//		if(!isReal)
-//		{
-//			victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
-//		}
+		if(!isReal)
+		{
+			victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
+		}
+		else
+		{
+			victim = (AICharacter)victim;
+		}
 		
 		AbstractCharacter winner = calculateWinner(character, victim);
 		

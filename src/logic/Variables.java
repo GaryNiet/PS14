@@ -37,6 +37,8 @@ public class Variables
 	static PlayerCharacter playerCharacter;
 	static List<AbstractCharacter> allCharacters;
 	
+	static GameLogic gameLogic;
+	
 	public static int getWeaponBonus()
 	{
 		return weaponBonus;
@@ -138,5 +140,15 @@ public class Variables
 		allCharacters.add(playerCharacter);
 		return allCharacters;
 		
+	}
+
+	public static GameLogic getGameLogic()
+	{
+		return gameLogic;
+	}
+
+	public static void setGameLogic(GameLogic gameLogic)
+	{
+		Variables.gameLogic = gameLogic;
 	}
 }
