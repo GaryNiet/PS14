@@ -53,7 +53,7 @@ public class ScheduleBox extends JComponent
 	ScheduleButton button22to23;
 	ScheduleButton button23to24;
 
-	Rectangle2D optionButton;
+	OptionButton optionButton;
 
 	ScheduleButton pressedButton;
 
@@ -82,7 +82,7 @@ public class ScheduleBox extends JComponent
 		button23to24 = new ScheduleButton("netzdj");
 
 
-		optionButton = new Rectangle2D.Double();
+		optionButton = new OptionButton();
 		pressedButton = button23to24;
 
 		buttonList = new ArrayList<>();
@@ -118,35 +118,13 @@ public class ScheduleBox extends JComponent
 			{
 				pressedButton = rect;
 				freeTime = 0;
-				int index = buttonList.indexOf(rect);
-				if (index == 6)
-				{
-					freeTime = index;
-				}
+				optionButton.setIndex(buttonList.indexOf(rect));
+				
 
 			}
 		}
-
-		for (Rectangle2D rect : actionButtonList)
-		{
-			if (rect.contains(me.getPoint()))
-			{
-				int index = actionButtonList.indexOf(rect);
-				setCharacterAction(buttonList.indexOf(pressedButton), index);
-				showDropMenu = index;
-			}
-		}
-
-		for (Rectangle2D rect : freePlaceList)
-		{
-			//System.out.println(freePlaceList.size());
-			if (rect.contains(me.getPoint()))
-			{
-				int index = freePlaceList.indexOf(rect);
-				parent.getGameLogic().getCharacter()
-						.setFreeChoice(possiblePlaces.get(index));
-			}
-		}
+		
+		optionButton.mouseClickReaction(me);
 
 		setRectangles();
 
@@ -158,10 +136,8 @@ public class ScheduleBox extends JComponent
 		super.paintComponent(g1);
 		setRectangles();
 		
+		optionButton.paint(g);
 		
-		
-		
-		getPossibleActions();
 		for (ScheduleButton rect : buttonList)
 		{
 			rect.paint(g);
@@ -172,46 +148,7 @@ public class ScheduleBox extends JComponent
 			actionButtonList.clear();
 
 		}
-
-		int spacing = 1;
-		for (PrisonAction action : possibleActions)
-		{
-
-			g1.drawString(action.name, 10, (int) optionButton.getBounds2D()
-					.getY() + buttonSpacing * spacing);
-			Rectangle2D actionButton = new Rectangle2D.Double(0, optionButton
-					.getBounds2D().getY() + buttonSpacing * (spacing - 1), 100,
-					buttonSpacing);
-			actionButtonList.add(actionButton);
-			g1.draw(actionButton);
-
-			if (freeTime != 0 && showDropMenu == spacing - 1)
-			{
-				int spacing2 = 0;
-				possiblePlaces.clear();
-				freePlaceList.clear();
-				for (Place place : getPossiblePlaces(action))
-				{
-
-					possiblePlaces.add(place);
-					Rectangle2D newRect = new Rectangle2D.Double(100,
-							optionButton.getBounds2D().getY() + buttonSpacing
-									* (spacing - 1) + spacing2 * buttonSpacing,
-							100, buttonSpacing);
-					g1.draw(newRect);
-					g1.drawString(place.name, 100, (int) optionButton
-							.getBounds2D().getY()
-							+ buttonSpacing
-							* (spacing)
-							+ spacing2 * buttonSpacing);
-					freePlaceList.add(newRect);
-					spacing2++;
-				}
-
-			}
-
-			spacing++;
-		}
+		
 	}
 
 	private void setRectangles()
@@ -225,7 +162,7 @@ public class ScheduleBox extends JComponent
 				rect.setBounds(0, index * this.height / (buttonQte),
 						this.width, this.height / (buttonQte));
 				index++;
-				optionButton.setFrame(0, index * this.height / (buttonQte),
+				optionButton.setBounds(0, index * this.height / (buttonQte),
 						this.width, (this.height / (buttonQte)) * 4);
 
 				index += 6;
@@ -240,23 +177,8 @@ public class ScheduleBox extends JComponent
 		this.repaint();
 	}
 
-	private void getPossibleActions()
-	{
-		possibleActions = parent.getGameLogic().getCharacter().getSchedule()
-				.getPlace(buttonList.indexOf(pressedButton))
-				.getPossibleActions();
-	}
 
-	private List<Place> getPossiblePlaces(PrisonAction action)
-	{
-		return action.getAllPlaces();
-	}
 
-	private void setCharacterAction(int scheduleIndex, int actionIndex)
-	{
-		parent.getGameLogic().getCharacter().getSchedule()
-				.setAction(scheduleIndex, possibleActions.get(actionIndex));
-	}
 
 	public void set()
 	{

@@ -39,6 +39,7 @@ public class OptionButton extends JPanel
 		actionButtonList = new ArrayList<>();
 		freePlaceList = new ArrayList<>();
 		possiblePlaces = new ArrayList<>();
+		possibleActions = new ArrayList<>();
 
 
 		this.addMouseListener(new MouseAdapter()
@@ -56,9 +57,10 @@ public class OptionButton extends JPanel
 		{
 			if (rect.contains(me.getPoint()))
 			{
+
 				int actionIndex = actionButtonList.indexOf(rect);
 				setCharacterAction(index, actionIndex);
-				showDropMenu = index;
+				showDropMenu = actionIndex;
 			}
 		}
 
@@ -68,8 +70,7 @@ public class OptionButton extends JPanel
 			if (rect.contains(me.getPoint()))
 			{
 				int placeIndex = freePlaceList.indexOf(rect);
-				Variables.getGameLogic().getCharacter()
-						.setFreeChoice(possiblePlaces.get(index));
+				Variables.getGameLogic().getCharacter().setFreeChoice(possiblePlaces.get(placeIndex));
 			}
 		}
 
@@ -80,12 +81,13 @@ public class OptionButton extends JPanel
 		
 		Graphics2D g1 = (Graphics2D) g;
 		super.paintComponent(g1);
-		
+		setRect();
 		
 		int spacing = 1;
+		actionButtonList.clear();
+		getPossibleActions();
 		for (PrisonAction action : possibleActions)
 		{
-
 			g1.drawString(action.name, 10, (int) button.getBounds2D()
 					.getY() + buttonSpacing * spacing);
 			Rectangle2D actionButton = new Rectangle2D.Double(0, button
@@ -121,10 +123,13 @@ public class OptionButton extends JPanel
 
 			spacing++;
 		}
+		
+		
 	}
 
 	private void setCharacterAction(int scheduleIndex, int actionIndex)
 	{
+		System.out.println("si: " + scheduleIndex + " ai: " + actionIndex);
 		Variables.getGameLogic().getCharacter().getSchedule()
 				.setAction(scheduleIndex, possibleActions.get(actionIndex));
 	}
@@ -138,6 +143,16 @@ public class OptionButton extends JPanel
 	private List<Place> getPossiblePlaces(PrisonAction action)
 	{
 		return action.getAllPlaces();
+	}
+	
+	private void setRect()
+	{
+		button.setFrame(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+	}
+	
+	public void setIndex(int _index)
+	{
+		index = _index;
 	}
 
 }
