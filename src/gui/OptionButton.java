@@ -10,6 +10,8 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import characters.AICharacter;
+
 import logic.Variables;
 import places.Place;
 import schedule.PrisonAction;
@@ -23,23 +25,30 @@ public class OptionButton extends JPanel
 	
 	Rectangle2D button;
 	boolean showsCharacters;
+	boolean eraseFlag;
 
 	List<Rectangle2D> actionButtonList;
 	List<Rectangle2D> freePlaceList;
 	List<Place> possiblePlaces;
 	List<PrisonAction> possibleActions;
+	List<AICharacter> aiCharacters;
+	List<Rectangle2D> aiCharactersG;
 
 	int index;
 	int showDropMenu;
 
 	OptionButton()
 	{
+		showsCharacters = false;
+		
 		button = new Rectangle2D.Double();
 
 		actionButtonList = new ArrayList<>();
 		freePlaceList = new ArrayList<>();
 		possiblePlaces = new ArrayList<>();
 		possibleActions = new ArrayList<>();
+		aiCharacters = new ArrayList<>();
+		aiCharactersG = new ArrayList<>();
 
 
 		this.addMouseListener(new MouseAdapter()
@@ -53,26 +62,55 @@ public class OptionButton extends JPanel
 
 	protected void mouseClickReaction(MouseEvent me)
 	{
-		for (Rectangle2D rect : actionButtonList)
+		if(showsCharacters == false)
 		{
-			if (rect.contains(me.getPoint()))
+			for (Rectangle2D rect : actionButtonList)
 			{
-
-				int actionIndex = actionButtonList.indexOf(rect);
-				setCharacterAction(index, actionIndex);
-				showDropMenu = actionIndex;
+				if (rect.contains(me.getPoint()))
+				{
+					int actionIndex = actionButtonList.indexOf(rect);
+					if(actionIndex == 0)
+					{
+						showsCharacters = true;
+						aiCharacters = Variables.getCharacterList();
+					}
+					setCharacterAction(index, actionIndex);
+					showDropMenu = actionIndex;
+				}
+			}
+	
+			for (Rectangle2D rect : freePlaceList)
+			{
+				// System.out.println(freePlaceList.size());
+				if (rect.contains(me.getPoint()))
+				{
+					int placeIndex = freePlaceList.indexOf(rect);
+					Variables.getGameLogic().getCharacter().setFreeChoice(possiblePlaces.get(placeIndex));
+				}
 			}
 		}
-
-		for (Rectangle2D rect : freePlaceList)
+		else
 		{
-			// System.out.println(freePlaceList.size());
-			if (rect.contains(me.getPoint()))
+			for (Rectangle2D rect: aiCharactersG)
 			{
-				int placeIndex = freePlaceList.indexOf(rect);
-				Variables.getGameLogic().getCharacter().setFreeChoice(possiblePlaces.get(placeIndex));
+				if(rect.contains(me.getPoint()))
+				{
+					int characterIndex = aiCharactersG.indexOf(rect);
+					Variables.getPlayerCharacter().setvictim(aiCharacters.get(characterIndex));
+					showsCharacters = false;
+					
+				}
+				
+			}
+
+			if(showsCharacters == false)
+			{
+				aiCharacters = new ArrayList<>();
+				aiCharactersG = new ArrayList<>();
 			}
 		}
+		
+		
 
 	}
 
@@ -83,45 +121,66 @@ public class OptionButton extends JPanel
 		super.paintComponent(g1);
 		setRect();
 		
-		int spacing = 1;
-		actionButtonList.clear();
-		getPossibleActions();
-		for (PrisonAction action : possibleActions)
+		
+		if(showsCharacters == true)
 		{
-			g1.drawString(action.name, 10, (int) button.getBounds2D()
-					.getY() + buttonSpacing * spacing);
-			Rectangle2D actionButton = new Rectangle2D.Double(0, button
-					.getBounds2D().getY() + buttonSpacing * (spacing - 1), 100,
-					buttonSpacing);
-			actionButtonList.add(actionButton);
-			g1.draw(actionButton);
-
-			if (index == 6 && showDropMenu == spacing - 1)
+			int spacing = 1;
+			for(AICharacter aiCharacter: aiCharacters)
 			{
-				int spacing2 = 0;
-				possiblePlaces.clear();
-				freePlaceList.clear();
-				for (Place place : getPossiblePlaces(action))
-				{
-
-					possiblePlaces.add(place);
-					Rectangle2D newRect = new Rectangle2D.Double(100,
-							button.getBounds2D().getY() + buttonSpacing
-									* (spacing - 1) + spacing2 * buttonSpacing,
-							100, buttonSpacing);
-					g1.draw(newRect);
-					g1.drawString(place.name, 100, (int) button
-							.getBounds2D().getY()
-							+ buttonSpacing
-							* (spacing)
-							+ spacing2 * buttonSpacing);
-					freePlaceList.add(newRect);
-					spacing2++;
-				}
-
+				
+				g1.drawString(aiCharacter.getName(), 10, (int) button.getBounds2D()
+						.getY() + buttonSpacing * spacing);
+				Rectangle2D characterButton = new Rectangle2D.Double(0, button
+						.getBounds2D().getY() + buttonSpacing * (spacing - 1), 100,
+						buttonSpacing);
+				aiCharactersG.add(characterButton);
+				g1.draw(characterButton);
+				
+				spacing++;
 			}
-
-			spacing++;
+		}
+		else
+		{
+			int spacing = 1;
+			actionButtonList.clear();
+			getPossibleActions();
+			for (PrisonAction action : possibleActions)
+			{
+				g1.drawString(action.name, 10, (int) button.getBounds2D()
+						.getY() + buttonSpacing * spacing);
+				Rectangle2D actionButton = new Rectangle2D.Double(0, button
+						.getBounds2D().getY() + buttonSpacing * (spacing - 1), 100,
+						buttonSpacing);
+				actionButtonList.add(actionButton);
+				g1.draw(actionButton);
+	
+				if (index == 6 && showDropMenu == spacing - 1)
+				{
+					int spacing2 = 0;
+					possiblePlaces.clear();
+					freePlaceList.clear();
+					for (Place place : getPossiblePlaces(action))
+					{
+	
+						possiblePlaces.add(place);
+						Rectangle2D newRect = new Rectangle2D.Double(100,
+								button.getBounds2D().getY() + buttonSpacing
+										* (spacing - 1) + spacing2 * buttonSpacing,
+								100, buttonSpacing);
+						g1.draw(newRect);
+						g1.drawString(place.name, 100, (int) button
+								.getBounds2D().getY()
+								+ buttonSpacing
+								* (spacing)
+								+ spacing2 * buttonSpacing);
+						freePlaceList.add(newRect);
+						spacing2++;
+					}
+	
+				}
+	
+				spacing++;
+			}
 		}
 		
 		

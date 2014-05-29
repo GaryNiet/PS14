@@ -32,6 +32,8 @@ public abstract class AbstractCharacter
 	int roamLimit;
 	int resetRoam;
 	Random random;
+	Animation animation;
+	
 	
 	public AbstractCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
@@ -53,7 +55,7 @@ public abstract class AbstractCharacter
 		weapon = false;
 		tool = false;
 		
-		
+		animation = new Animation(this);
 		
 		currentPlace = new Cell();
 		
@@ -64,10 +66,7 @@ public abstract class AbstractCharacter
 	public void updateRoam()
 	{
 		
-		roamDirection += (random.nextFloat()-0.3)/10;
-		
-		roamX += Math.cos(roamDirection)/15;
-		roamY += Math.sin(roamDirection)/15;
+		animation.updateRoam(currentPlace);
 		
 	}
 	
@@ -256,5 +255,10 @@ public abstract class AbstractCharacter
 
 	public void setJob(Place job) {
 		this.job = job;
+	}
+
+	public Animation getAnimation()
+	{
+		return animation;
 	}
 }

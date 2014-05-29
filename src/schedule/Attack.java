@@ -37,46 +37,63 @@ public class Attack extends PrisonAction
 	@Override
 	public void resolve(AbstractCharacter character, int time, boolean isReal)
 	{
-		
-		AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
-		
-		if(!isReal)
+		if(character instanceof PlayerCharacter)
 		{
-			victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
+			AbstractCharacter victim = ((PlayerCharacter)character).getVictim();
+			AbstractCharacter winner = calculateWinner(character, victim);
+			
+			if(winner == character)
+			{
+				character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
+				victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
+				victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
+			}
+			else
+			{
+				victim.setInfluence(victim.getInfluence() + (int)calculateFightWinnings(victim, character));
+				character.setInfluence(character.getInfluence() - Variables.getLostinfluenceonlostfight());
+				character.setHealth(character.getHealth() - Variables.getLosthealthonlostfight());
+			}
+			
 		}
 		else
 		{
-			victim = (AICharacter)victim;
+			AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
+			
+			if(!isReal)
+			{
+				victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
+			}
+			else
+			{
+				victim = (AICharacter)victim;
+			}
+			
+			AbstractCharacter winner = calculateWinner(character, victim);
+			
+			if(isReal)
+			{
+				//System.out.println("--------------------------------------------" + character.getName() + " attacks " + victim.getName() + " and " + winner.getName() + " is the winner");
+			}
+			
+			if(winner == character)
+			{
+				character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
+				victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
+				victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
+			}
+			else
+			{
+				victim.setInfluence(victim.getInfluence() + (int)calculateFightWinnings(victim, character));
+				character.setInfluence(character.getInfluence() - Variables.getLostinfluenceonlostfight());
+				character.setHealth(character.getHealth() - Variables.getLosthealthonlostfight());
+			}
 		}
-		
-		AbstractCharacter winner = calculateWinner(character, victim);
-		
-		if(isReal)
-		{
-			//System.out.println("--------------------------------------------" + character.getName() + " attacks " + victim.getName() + " and " + winner.getName() + " is the winner");
-		}
-		
-		if(winner == character)
-		{
-			character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
-			victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
-			victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
-		}
-		else
-		{
-			victim.setInfluence(victim.getInfluence() + (int)calculateFightWinnings(victim, character));
-			character.setInfluence(character.getInfluence() - Variables.getLostinfluenceonlostfight());
-			character.setHealth(character.getHealth() - Variables.getLosthealthonlostfight());
-		}
-		
 
 		
 	}
 	
-	public void resolve(PlayerCharacter player, int time, boolean isReal)
-	{
-		//TODO
-	}
+
 	
 	
 	

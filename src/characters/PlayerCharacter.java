@@ -8,6 +8,8 @@ public class PlayerCharacter extends AbstractCharacter
 {
 	
 	Place freeChoice;
+	AICharacter victim;
+	
 	public PlayerCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
 		super(_name,_health,_strength,  _intelligence, _posX, _posY);
@@ -35,5 +37,15 @@ public class PlayerCharacter extends AbstractCharacter
 
 	public void setFreeChoice(Place freeChoice) {
 		this.freeChoice = freeChoice;
+	}
+	
+	public void setvictim(AICharacter _victim)
+	{
+		victim = _victim;
+	}
+	
+	public AICharacter getVictim()
+	{
+		return victim;
 	}
 }
