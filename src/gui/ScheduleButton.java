@@ -22,6 +22,7 @@ public class ScheduleButton extends JPanel
 	
 	private Rectangle2D rect;
 	private String label;
+	private boolean highLighted;
 
 	public ScheduleButton(String name)
 	{
@@ -29,6 +30,7 @@ public class ScheduleButton extends JPanel
 		this.setVisible(true);
 		rect = new Rectangle2D.Double();
 		label = name;
+		highLighted = false;
 		loadImages();
 	}
 
@@ -53,6 +55,11 @@ public class ScheduleButton extends JPanel
 		paperTex = new TexturePaint(paper, new Rectangle(0, 0, (int)this.getBounds().getWidth(), (int)this.getBounds().getHeight()));
 		g1.setPaint(paperTex);
 		
+		if(highLighted == true)
+		{
+			g1.setPaint(Color.green);
+		}
+		
 		
 		setRect();
 		
@@ -68,6 +75,11 @@ public class ScheduleButton extends JPanel
 	{
 		rect.setFrame(this.getBounds().getX(), this.getBounds().getY(), this.getBounds().getWidth(), this.getBounds().getHeight());
 
+	}
+	
+	public void setHighlight(boolean change)
+	{
+		highLighted = change;
 	}
 
 }

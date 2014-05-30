@@ -50,7 +50,7 @@ public class GameLogic {
 		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, 5*1000);
+		timer.scheduleAtFixedRate(timerTask, 0, 20*1000);
 		aiValidator = new AIValidator();
 		currentTime = 0;
 		
@@ -149,7 +149,7 @@ public class GameLogic {
 			updateVariablesAndCheckIntegrity(playerCharacter);
 			
 			
-			userInterface.showAction();
+			userInterface.pulse(currentTime);
 			//System.out.println(playerCharacter.getFreeChoice());
 			
 			

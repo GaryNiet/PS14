@@ -168,5 +168,14 @@ public class ScheduleBox extends JComponent
 		height = this.getHeight();
 		this.repaint();
 	}
+	
+	public void pulse(int currentTime)
+	{
+		for(ScheduleButton button : buttonList)
+		{
+			button.setHighlight(false);
+		}
+		buttonList.get(currentTime).setHighlight(true);
+	}
 
 }

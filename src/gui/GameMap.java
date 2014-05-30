@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import characters.AICharacter;
+import characters.AbstractCharacter;
 
 import logic.Variables;
 
@@ -76,22 +77,28 @@ public class GameMap extends JPanel{
 	
 	private void mouseClickReaction(MouseEvent me)
 	{
-		if(player.contains(me.getPoint()))
+		
+		for(Rectangle2D place: placeList)
 		{
-			//infoBox.fillInfo(Character character);
-		}
-		else
-		{
-			for(Rectangle2D place: placeList)
+			if(place.contains(me.getPoint()))
 			{
-				if(place.contains(me.getPoint()))
-				{
-					int placeIndex = placeList.indexOf(place);
-					infoBox.fillInfo(allPlaces().get(placeIndex));
-				}
-				
+				int placeIndex = placeList.indexOf(place);
+				infoBox.fillInfo(allPlaces().get(placeIndex));
+			}
+			
+		}
+		
+		
+		for(Rectangle2D characterRect: aiRectangles)
+		{
+			if(characterRect.contains(me.getPoint()))
+			{
+				int characterIndex = aiRectangles.indexOf(characterRect);
+				infoBox.fillInfo((AbstractCharacter)Variables.getCharacterList().get(characterIndex));
+				System.out.println(characterIndex);
 			}
 		}
+		
 	}
 	
 	public void paint(Graphics g)

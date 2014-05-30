@@ -11,8 +11,6 @@ public class Animation
 	double aimX;
 	double aimY;
 	double norm;
-	double diffX;
-	double diffY;
 	
 	Random random;
 	AbstractCharacter character;
@@ -22,40 +20,35 @@ public class Animation
 		character = parent;
 		roamX = 10;
 		roamY = 10;
-		aimX = 10;
-		aimY = 10;
-		norm =0;
+		aimX = 11;
+		aimY = 11;
+		norm =1;
 		random = new Random();
 	}
 	
 	public void updateRoam(Place place)
 	{
-		double distX = roamX - aimX;
-		double distY = roamY - aimY;
+		double distX = roamX - (double)aimX;
+		double distY = roamY - (double)aimY;
 		
-		//norm = Math.sqrt(diffX*diffX + diffY * diffY);
-		//double divisionX = diffX / Math.sqrt(Math.abs(diffX*diffX + diffY * diffY));
+		norm = Math.sqrt(Math.abs(distX*distX + distY * distY));
+		double divisionX = distX / norm;
+		double divisionY = distY / norm;
 		
-		
-		if(distX < 20 && distX > -20 && distY < 20 && distY > -20)
+		if(norm <= 10 && norm >= -10)
 		{
 			choseRandomSpot(place);
 		}
 		
-		roamX -= diffX / 1000;
-		roamY -= diffY  / 1000;
+		roamX -= divisionX/50;
+		roamY -= divisionY/50;
 
 	}
 	
 	private void choseRandomSpot(Place place)
 	{
-		
-		
 		aimX = random.nextInt(place.getSizeX());
 		aimY = random.nextInt(place.getSizeY());
-		
-		diffX = roamX - aimX;
-		diffY = roamY - aimY;
 	}
 
 	public double getRoamX()

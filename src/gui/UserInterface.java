@@ -59,8 +59,10 @@ public class UserInterface extends JFrame
 		return infoBox;
 	}
 	
-	public void showAction()
+	public void pulse(int currentTime)
 	{
 		gameMap.showAction();
+		scheduleBox.pulse(currentTime);
+		
 	}
 }

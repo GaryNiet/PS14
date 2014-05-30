@@ -213,5 +213,7 @@ public class OptionButton extends JPanel
 	{
 		index = _index;
 	}
+	
+	
 
 }
