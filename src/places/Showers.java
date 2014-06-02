@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.Steal;
 import schedule.WellBeing;
 
@@ -9,10 +10,13 @@ public class Showers extends Place
 	public Showers()
 	{
 		
-		posX = 550;
-		posY = 40;
-		sizeX = 90;
-		sizeY = 200;
+		
+		posX = (int) (0.537 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.052 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.0878 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.2604) * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		
+		
 		
 		stealSR = 1;
 		

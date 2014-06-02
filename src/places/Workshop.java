@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.Steal;
 import schedule.WellBeing;
 
@@ -14,6 +15,11 @@ public class Workshop extends Place
 		posY = 420;
 		sizeX = 250;
 		sizeY = 140;
+		
+		posX = (int) (0.2099 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.5468 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.2441 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.206) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		
 		stealWeaponToolSR =1;

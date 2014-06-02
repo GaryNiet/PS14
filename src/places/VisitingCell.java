@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.ResolveLegal;
 import schedule.WellBeing;
 
@@ -8,10 +9,11 @@ public class VisitingCell extends Place
 {
 	public VisitingCell()
 	{
-		posX = 490;
-		posY = 400;
-		sizeX = 180;
-		sizeY = 200;
+		
+		posX = (int) (0.4785 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.5208 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.175 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.2604) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		resolveLegalSR = 1;
 		

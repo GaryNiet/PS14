@@ -19,7 +19,7 @@ public class UserInterface extends JFrame
 	MigLayout mainLayout;
 	GameLogic gameLogic;
 	
-	public UserInterface(GameLogic _gameLogic)
+	public UserInterface(GameLogic _gameLogic, double resolutionMultiplier)
 	{
 		gameLogic = _gameLogic;
 		panel = new JPanel(new MigLayout("fill"));
@@ -35,13 +35,14 @@ public class UserInterface extends JFrame
 		panel.add(scheduleBox, "w 25%, dock east");
 		
 		
-		String string = new String("x 0, y 0, w " + Variables.getRightwidth1024() + ", h " + Variables.getTopheight1024());
+		
+		String string = new String("x 0, y 0, w " + Variables.getRightwidth1024() * resolutionMultiplier + ", h " + Variables.getTopheight1024()* resolutionMultiplier);
 		panel.add(gameMap, string);
 		
-		string = "x 0, y " + Variables.getTopheight1024() + ", w " + Variables.getRightwidth1024() + ", h " + Variables.getBottomheight1024();
+		string = "x 0, y " + Variables.getTopheight1024()* resolutionMultiplier + ", w " + Variables.getRightwidth1024()* resolutionMultiplier + ", h " + Variables.getBottomheight1024()* resolutionMultiplier;
 		panel.add(infoBox, string);
 		
-		string = "x " + Variables.getRightwidth1024() + ", y " + Variables.getShouldbe0() + ", w " + Variables.getLeftwidth1024() + ", h " + Variables.getScheduleheight1024();
+		string = "x " + Variables.getRightwidth1024()* resolutionMultiplier + ", y " + Variables.getShouldbe0()* resolutionMultiplier + ", w " + Variables.getLeftwidth1024()* resolutionMultiplier + ", h " + Variables.getScheduleheight1024()* resolutionMultiplier;
 		panel.add(scheduleBox, string);
 		
 		gameMap.setBackground(Color.green);

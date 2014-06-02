@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.StealWeaponTool;
 
 public class Kitchen extends Place
@@ -8,10 +9,11 @@ public class Kitchen extends Place
 	public Kitchen()
 	{
 		
-		posX = 190;
-		posY = 280;
-		sizeX = 110;
-		sizeY = 90;
+		
+		posX = (int) (0.1855 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.3646 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) ((0.1074) * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.117) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		
 		stealWeaponToolSR = 1;

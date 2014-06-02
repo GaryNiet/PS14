@@ -40,9 +40,11 @@ public class GameLogic {
 	{
 		init();
 		
-		userInterface = new UserInterface(this);
+		double resolutionMultiplier = Variables.getResolutionmultiplier();
+		
+		userInterface = new UserInterface(this, resolutionMultiplier);
 		userInterface.setTitle("test");
-		userInterface.setSize(1024, 768);
+		userInterface.setSize((int)(Variables.getXresolution()* resolutionMultiplier), (int)(Variables.getYresolution()* resolutionMultiplier));
 		userInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		userInterface.setVisible(true);
 

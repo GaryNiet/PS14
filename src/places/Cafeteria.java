@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.StealWeaponTool;
 import schedule.WellBeing;
 
@@ -9,10 +10,10 @@ public class Cafeteria extends Place
 	
 	public Cafeteria()
 	{
-		posX = 30;
-		posY = 200;
-		sizeX = 120;
-		sizeY = 370;
+		posX = (int) (0.03 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.26 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.117 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.482) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		name = "cafeteria";
 		

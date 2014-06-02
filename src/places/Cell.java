@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.Steal;
 import schedule.WellBeing;
 
@@ -9,10 +10,11 @@ public class Cell extends Place
 	public Cell()
 	{
 		
-		posX = 20;
-		posY = 20;
-		sizeX = 200;
-		sizeY = 120;
+		
+		posX = (int) (0.02 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.026 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.1953 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.156) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		name = "cell";
 		

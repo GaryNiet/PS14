@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.ResolveLegal;
 import schedule.WellBeing;
 
@@ -8,10 +9,11 @@ public class PhoneBooth extends Place
 {
 	public PhoneBooth()
 	{
-		posX = 200;
-		posY = 180;
-		sizeX = 70;
-		sizeY = 70;
+		
+		posX = (int) (0.195 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.234 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.068 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.0911) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		
 		resolveLegalSR = 1;

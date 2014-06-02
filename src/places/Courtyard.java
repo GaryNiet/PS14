@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.Sell;
 import schedule.Train;
 import schedule.WellBeing;
@@ -13,9 +14,11 @@ public class Courtyard extends Place
 	{
 		
 		posX = 250;
-		posY = 10;
-		sizeX = 250;
-		sizeY = 150;
+		
+		posX = (int) (0.2441 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.013 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.2441 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.1953) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		name = "courtyard";
 		

@@ -25,12 +25,17 @@ public class Variables
 	final static int playerWidth = 15;
 	final static int playerHeight = 20;
 	
+	final static int xResolution = 1024;
+	final static int yResolution = 768;
+	
 	final static int rightWidth1024 = 768;
 	final static int leftWidth1024 = 256;
 	final static int topHeight1024 = 576;
 	final static int bottomHeight1024 = 192;
 	final static int scheduleHeight1024 = 816;
 	final static int shouldBe0 = -48;
+	
+	final static double resolutionMultiplier = 1.5;
 	
 	
 	
@@ -165,5 +170,20 @@ public class Variables
 	public static int getShouldbe0()
 	{
 		return shouldBe0;
+	}
+
+	public static int getXresolution()
+	{
+		return xResolution;
+	}
+
+	public static int getYresolution()
+	{
+		return yResolution;
+	}
+
+	public static double getResolutionmultiplier()
+	{
+		return resolutionMultiplier;
 	}
 }

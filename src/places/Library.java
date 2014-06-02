@@ -1,6 +1,7 @@
 package places;
 
 
+import logic.Variables;
 import schedule.Learn;
 
 public class Library extends Place
@@ -8,10 +9,12 @@ public class Library extends Place
 	public Library()
 	{
 		
-		posX = 330;
-		posY = 210;
-		sizeX = 175;
-		sizeY = 160;
+		
+		
+		posX = (int) (0.3222 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.273 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.1708 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.208) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		
 		attackSR = 1;
