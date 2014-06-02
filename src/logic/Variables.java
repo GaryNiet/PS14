@@ -22,13 +22,18 @@ public class Variables
 	final static int strongerWinsFightMultiplier = 2;
 	final static double digAdvancementImportance = 1;
 	final static double guardAwarenessImportance = 12;
-	final static int playerWidth = 10;
-	final static int playerHeight = 10;
+	final static int playerWidth = 15;
+	final static int playerHeight = 20;
 	
 	final static int rightWidth1024 = 768;
 	final static int leftWidth1024 = 256;
 	final static int topHeight1024 = 576;
 	final static int bottomHeight1024 = 192;
+	final static int scheduleHeight1024 = 816;
+	final static int shouldBe0 = -48;
+	
+	
+	
 	
 	final static Schedule schedule = new Schedule();
 	
@@ -150,5 +155,15 @@ public class Variables
 	public static void setGameLogic(GameLogic gameLogic)
 	{
 		Variables.gameLogic = gameLogic;
+	}
+
+	public static int getScheduleheight1024()
+	{
+		return scheduleHeight1024;
+	}
+
+	public static int getShouldbe0()
+	{
+		return shouldBe0;
 	}
 }

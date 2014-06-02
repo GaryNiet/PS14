@@ -30,12 +30,19 @@ public class UserInterface extends JFrame
 		
 		
 		panel.add(gameMap, "w 75%, h 75%");
+		
 		panel.add(infoBox, "h 25%, dock south");
 		panel.add(scheduleBox, "w 25%, dock east");
 		
-		panel.add(gameMap, "x 0, y 0, w 768, h 576");
-		panel.add(infoBox, "x 0, y 576, w 768, h 192");
-		panel.add(scheduleBox, "x 768, y -48, w 256, h 720");
+		
+		String string = new String("x 0, y 0, w " + Variables.getRightwidth1024() + ", h " + Variables.getTopheight1024());
+		panel.add(gameMap, string);
+		
+		string = "x 0, y " + Variables.getTopheight1024() + ", w " + Variables.getRightwidth1024() + ", h " + Variables.getBottomheight1024();
+		panel.add(infoBox, string);
+		
+		string = "x " + Variables.getRightwidth1024() + ", y " + Variables.getShouldbe0() + ", w " + Variables.getLeftwidth1024() + ", h " + Variables.getScheduleheight1024();
+		panel.add(scheduleBox, string);
 		
 		gameMap.setBackground(Color.green);
 		infoBox.setBackground(Color.red);
@@ -43,11 +50,12 @@ public class UserInterface extends JFrame
 		
 		
 		
-		
 		this.add(panel);
 		
 		pack();
 		scheduleBox.set();
+		
+		
 	}
 	
 	public GameLogic getGameLogic()
