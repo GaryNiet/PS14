@@ -26,8 +26,16 @@ import characters.AbstractCharacter;
 
 import logic.Variables;
 
+import places.Cafeteria;
+import places.Cell;
+import places.Courtyard;
+import places.Kitchen;
+import places.Library;
+import places.PhoneBooth;
 import places.Place;
 import places.Showers;
+import places.VisitingCell;
+import places.Workshop;
 
 @SuppressWarnings("serial")
 public class GameMap extends JPanel{
@@ -95,58 +103,58 @@ public class GameMap extends JPanel{
 	
 	private void initNodes()
 	{
-		Node newNode = new Node((int) (0.212 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		Node newNode = new Node((int) (0.212 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Cell());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.24 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.24 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Courtyard());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.28 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.20 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.28 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.20 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Courtyard());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.20 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.20 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Courtyard());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.585 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.585 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Courtyard());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.63 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.63 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Showers());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.28 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.28 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), null);
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.315 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.315 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Library());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.26 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.26 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new PhoneBooth());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.19 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.19 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new PhoneBooth());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.14 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.14 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Cafeteria());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.18 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.18 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Kitchen());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.14 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.14 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Cafeteria());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), null);
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.49 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.49 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Library());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.565 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.565 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new VisitingCell());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()), null);
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.45 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		newNode = new Node((int) (0.45 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Workshop());
 		nodes.add(newNode);
 		
 		nodes.get(0).addNode(nodes.get(1));
@@ -330,6 +338,11 @@ public class GameMap extends JPanel{
 		System.out.println(parent.gameLogic.getCharacter().getSchedule().getAction(parent.getGameLogic().getTime()));
 		System.out.println(parent.getGameLogic().getCharacter().getCurrentPlace());
 		System.out.println("x: " + parent.getGameLogic().getCharacter().getCurrentPlace().getPosX());
+	}
+
+	public List<Node> getNodes()
+	{
+		return nodes;
 	}
 
 }

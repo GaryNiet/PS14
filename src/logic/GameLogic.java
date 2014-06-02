@@ -179,8 +179,14 @@ public class GameLogic {
 	{
 		for(AICharacter ai: aiCharacterList)
 		{
+			if(ai.getPosX() != ai.getCurrentPlace().getPosX())
+			{
+				ai.getAnimation().setMoving(true);
+			}
+
 			ai.setPosX(ai.getCurrentPlace().getPosX());
 			ai.setPosY(ai.getCurrentPlace().getPosY());
+			
 		}
 		
 	}
@@ -226,5 +232,12 @@ public class GameLogic {
 	public int getTime()
 	{
 		return currentTime;
+	}
+
+
+
+	public UserInterface getUserInterface()
+	{
+		return userInterface;
 	}
 }

@@ -74,4 +74,14 @@ public class UserInterface extends JFrame
 		scheduleBox.pulse(currentTime);
 		
 	}
+
+	public GameMap getGameMap()
+	{
+		return gameMap;
+	}
+
+	public ScheduleBox getScheduleBox()
+	{
+		return scheduleBox;
+	}
 }

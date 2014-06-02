@@ -8,18 +8,29 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import places.Place;
+
 @SuppressWarnings("serial")
 public class Node extends JPanel
 {
 	List<Node> nodeList;
 	int posX;
 	int posY;
+	Place place;
 	
-	public Node(int x, int y)
+	
+	public Node()
+	{
+		
+	}
+	
+	public Node(int x, int y,Place _place)
 	{
 		posX = x;
 		posY = y;
 		nodeList = new ArrayList<>();
+
+		place = _place;
 	}
 	
 	public void addNode(Node node)
@@ -35,5 +46,15 @@ public class Node extends JPanel
 		
 		
 		g1.fill(new Rectangle2D.Double(posX,posY, 10,10));
+	}
+	
+	public List<Node> getNodes()
+	{
+		return nodeList;
+	}
+	
+	public Place getPlace()
+	{
+		return place;
 	}
 }
