@@ -149,6 +149,51 @@ public class GameMap extends JPanel{
 		newNode = new Node((int) (0.45 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
 		nodes.add(newNode);
 		
+		nodes.get(0).addNode(nodes.get(1));
+		nodes.get(1).addNode(nodes.get(0));
+		nodes.get(1).addNode(nodes.get(2));
+		nodes.get(1).addNode(nodes.get(3));
+		nodes.get(1).addNode(nodes.get(4));
+		nodes.get(2).addNode(nodes.get(1));
+		nodes.get(2).addNode(nodes.get(3));
+		nodes.get(2).addNode(nodes.get(4));
+		nodes.get(2).addNode(nodes.get(6));
+		nodes.get(3).addNode(nodes.get(1));
+		nodes.get(3).addNode(nodes.get(2));
+		nodes.get(3).addNode(nodes.get(4));
+		nodes.get(3).addNode(nodes.get(13));
+		nodes.get(4).addNode(nodes.get(1));
+		nodes.get(4).addNode(nodes.get(2));
+		nodes.get(4).addNode(nodes.get(3));
+		nodes.get(4).addNode(nodes.get(5));
+		nodes.get(5).addNode(nodes.get(4));
+		nodes.get(6).addNode(nodes.get(2));
+		nodes.get(6).addNode(nodes.get(7));
+		nodes.get(6).addNode(nodes.get(8));
+		nodes.get(7).addNode(nodes.get(14));
+		nodes.get(7).addNode(nodes.get(6));
+		nodes.get(8).addNode(nodes.get(6));
+		nodes.get(8).addNode(nodes.get(9));
+		nodes.get(9).addNode(nodes.get(10));
+		nodes.get(9).addNode(nodes.get(8));
+		nodes.get(10).addNode(nodes.get(9));
+		nodes.get(10).addNode(nodes.get(12));
+		nodes.get(11).addNode(nodes.get(12));
+		nodes.get(12).addNode(nodes.get(10));
+		nodes.get(12).addNode(nodes.get(11));
+		nodes.get(13).addNode(nodes.get(3));
+		nodes.get(13).addNode(nodes.get(14));
+		nodes.get(13).addNode(nodes.get(15));
+		nodes.get(13).addNode(nodes.get(16));
+		nodes.get(14).addNode(nodes.get(13));
+		nodes.get(14).addNode(nodes.get(7));
+		nodes.get(15).addNode(nodes.get(13));
+		nodes.get(16).addNode(nodes.get(13));
+		nodes.get(16).addNode(nodes.get(17));
+		nodes.get(17).addNode(nodes.get(16));
+		
+		
+		
 	}
 	
 	private void loadImages()
