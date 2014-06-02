@@ -10,10 +10,10 @@ public class VisitingCell extends Place
 	public VisitingCell()
 	{
 		
-		posX = (int) (0.4785 * Variables.getXresolution() * Variables.getResolutionmultiplier());
-		posY = (int) (0.5208 * Variables.getYresolution() * Variables.getResolutionmultiplier());
-		sizeX = (int) (0.175 * Variables.getXresolution() * Variables.getResolutionmultiplier());
-		sizeY = (int) ((0.2604) * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		posX = (int) (0.5685 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.3608 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.155 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.3004) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		resolveLegalSR = 1;
 		

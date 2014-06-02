@@ -41,6 +41,8 @@ public class GameMap extends JPanel{
 	List<Rectangle2D> aiRectangles;
 	Random random;
 	
+	List<Node> nodes;
+	
 	private BufferedImage floor;
 	private TexturePaint floorTex;
 	private BufferedImage shower;
@@ -61,7 +63,8 @@ public class GameMap extends JPanel{
 		
 		placeList = new ArrayList<>();
 		aiRectangles = new ArrayList<>();
-		
+		nodes = new ArrayList<>();
+		initNodes();
 		
 		loadImages();
 		
@@ -80,12 +83,71 @@ public class GameMap extends JPanel{
 			aiRectangles.add(new Rectangle2D.Double(0,0, Variables.getPlayerwidth(), Variables.getPlayerheight()));
 		}
 		
+		
 		this.addMouseListener(new MouseAdapter() { 
 	          public void mousePressed(MouseEvent me)
 	          { 
 	            mouseClickReaction(me);
 	          } 
 	        }); 
+		
+	}
+	
+	private void initNodes()
+	{
+		Node newNode = new Node((int) (0.212 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.24 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.28 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.20 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.20 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.585 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.63 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.28 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.315 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.26 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.19 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.14 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.18 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.14 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.49 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.565 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
+		
+		newNode = new Node((int) (0.45 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()));
+		nodes.add(newNode);
 		
 	}
 	
@@ -161,6 +223,12 @@ public class GameMap extends JPanel{
 			
 			g1.fill(place);
 			i++;
+		}
+		
+		g1.setPaint(Color.red);
+		for(Node node: nodes)
+		{
+			node.paint(g);
 		}
 		
 		int index = 0;

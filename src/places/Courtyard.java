@@ -13,11 +13,10 @@ public class Courtyard extends Place
 	public Courtyard()
 	{
 		
-		posX = 250;
 		
 		posX = (int) (0.2441 * Variables.getXresolution() * Variables.getResolutionmultiplier());
 		posY = (int) (0.013 * Variables.getYresolution() * Variables.getResolutionmultiplier());
-		sizeX = (int) (0.2441 * Variables.getXresolution() * Variables.getResolutionmultiplier());
+		sizeX = (int) (0.3441 * Variables.getXresolution() * Variables.getResolutionmultiplier());
 		sizeY = (int) ((0.1953) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		name = "courtyard";

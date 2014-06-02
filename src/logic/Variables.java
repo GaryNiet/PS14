@@ -35,7 +35,7 @@ public class Variables
 	final static int scheduleHeight1024 = 816;
 	final static int shouldBe0 = -48;
 	
-	final static double resolutionMultiplier = 1.5;
+	final static double resolutionMultiplier = 1;
 	
 	
 	
