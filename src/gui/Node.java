@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import places.Cell;
 import places.Place;
 
 @SuppressWarnings("serial")
@@ -17,6 +18,7 @@ public class Node extends JPanel
 	int posX;
 	int posY;
 	Place place;
+	boolean explored;
 	
 	
 	public Node()
@@ -31,6 +33,7 @@ public class Node extends JPanel
 		nodeList = new ArrayList<>();
 
 		place = _place;
+		explored = false;
 	}
 	
 	public void addNode(Node node)
@@ -66,5 +69,15 @@ public class Node extends JPanel
 	public int getPosY()
 	{
 		return posY;
+	}
+
+	public boolean isExplored()
+	{
+		return explored;
+	}
+
+	public void setExplored(boolean explored)
+	{
+		this.explored = explored;
 	}
 }

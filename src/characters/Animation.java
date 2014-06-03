@@ -3,8 +3,11 @@ package characters;
 import gui.Node;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
+import java.util.Stack;
 
 import logic.Variables;
 
@@ -43,15 +46,17 @@ public class Animation
 		lastNode = new Node();
 	}
 	
-	public void updateRoam(Place place)
+	public synchronized void updateRoam(Place place)
 	{
 		if(moving == true)
 		{
+			if(path.size() != 0)
+			{
+				aimX = -(character.getCurrentPlace().getPosX() - path.get(0).getPosX());
+				aimY = -(character.getCurrentPlace().getPosY() - path.get(0).getPosY());
+			}
 			
-			createPath();
 			
-			aimX = lastNode.getPosX();
-			aimY = lastNode.getPosY();
 			
 			double distX = roamX - (double)aimX;
 			double distY = roamY - (double)aimY; 
@@ -60,14 +65,26 @@ public class Animation
 			double divisionX = distX / norm;
 			double divisionY = distY / norm;
 			
-			
-			double destDistX = roamX - lastNode.getPosX();
-			double destDistY = roamY - lastNode.getPosY(); 
-			double distToDest = Math.sqrt(Math.abs(destDistX*destDistX + destDistY * destDistY));
-			if(distToDest <= 10 && distToDest >= -10)
+			if(norm <= 10 && norm >= -10)
 			{
-				moving = false;
+				if(path.size() != 0)
+				{
+					path.remove(0);
+				}
+				else
+				{
+					moving = false;
+				}
 			}
+			
+			
+//			double destDistX = roamX - lastNode.getPosX();
+//			double destDistY = roamY - lastNode.getPosY(); 
+//			double distToDest = Math.sqrt(Math.abs(destDistX*destDistX + destDistY * destDistY));
+//			if(distToDest <= 10 && distToDest >= -10)
+//			{
+//				moving = false;
+//			}
 			
 			roamX -= divisionX/20;
 			roamY -= divisionY/20;
@@ -93,10 +110,75 @@ public class Animation
 
 	}
 	
-	private void createPath()
+	private synchronized void createPath()
 	{
+		path.clear();
+
+		firstNode.setExplored(true);
+		
+		Stack<Node> s=new Stack<>();
+		s.push(firstNode);
+		firstNode.setExplored(true);
+
+		while(!s.isEmpty())
+		{
+			Node n=(Node)s.peek();
+			
+			if(n.getPosX() == lastNode.getPosX() && n.getPosY() == lastNode.getPosY())
+			{
+				while(!s.isEmpty())
+				{
+					path.add(0, s.pop());
+				}
+			}
+			
+			Node child=getUnvisitedChildNode(n);
+			
+			if(child!=null)
+			{
+				child.setExplored(true);
+				s.push(child);
+			}
+			else
+			{
+				if(s.size() > 0)
+				{
+					s.pop();
+				}
+				
+			}
+		}
+		
+		// Clear visited property of nodes
+		for(Node node: getNodeList())
+		{
+			node.setExplored(false);
+		}
 		
 	}
+	
+	private Node getUnvisitedChildNode(Node node)
+	{
+
+		List<Node> nodes = new ArrayList<>();
+		for(Node childNode: node.getNodes())
+		{
+			if(childNode.isExplored() == false)
+			{
+				nodes.add(childNode);
+			}
+		}
+		if(nodes.size()>0)
+		{
+			return nodes.get(0);
+		}
+		else
+		{
+			return null;
+		}
+		
+	}
+	
 	
 	private void choseRandomSpot(Place place)
 	{
@@ -108,11 +190,13 @@ public class Animation
 	{
 		Node returnNode = new Node();
 		
+		int distance = 10000;
 		for(Node node: Variables.getGameLogic().getUserInterface().getGameMap().getNodes())
 		{
-			int distance = 10000;
-			if((node.getPosX() + node.getPosY()) < distance)
+			int dist = (int) (Math.abs((character.getPosX() + roamX) - node.getPosX()) + Math.abs((character.getPosY() + roamY) - node.getPosY()));
+			if(dist < distance)
 			{
+				distance = dist;
 				returnNode = node;
 			}
 		}
@@ -123,12 +207,20 @@ public class Animation
 	{
 		Node returnNode = new Node();
 		
-		for(Node node: Variables.getGameLogic().getUserInterface().getGameMap().getNodes())
+		for(Node node: getNodeList())
 		{
-			if(node.getPlace() == character.currentPlace)
+			if(node.getPlace() != null)
 			{
-				returnNode = node;
+				System.out.println(character.currentPlace.name);
+				if(node.getPlace().getPosX() == character.currentPlace.getPosX())
+				{
+					returnNode = node;
+					System.out.println(returnNode.getPosX());
+					return returnNode;
+				}
 			}
+			
+
 		}
 		return returnNode;
 	}
@@ -163,11 +255,25 @@ public class Animation
 			firstNode = findFirstNode();
 			lastNode = findLastNode();
 			
+
+			createPath();
+			System.out.println("size: "+path.size());
 			
 			roamX += character.getPosX() - character.getCurrentPlace().getPosX();
 			roamY += character.getPosY() - character.getCurrentPlace().getPosY();
 		}
 		
+	}
+	
+	private List<Node> getNodeList()
+	{
+//		System.out.println("_____________________________________________________________");
+//		for(Node node: Variables.getGameLogic().getUserInterface().getGameMap().getNodes())
+//		{
+//			System.out.println(node.getPosX() + " " + node.getPosY());
+//		}
+//		System.out.println("_____________________________________________________________");
+		return Variables.getGameLogic().getUserInterface().getGameMap().getNodes();
 	}
 
 

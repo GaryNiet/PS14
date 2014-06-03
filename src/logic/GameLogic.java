@@ -47,12 +47,13 @@ public class GameLogic {
 		userInterface.setSize((int)(Variables.getXresolution()* resolutionMultiplier), (int)(Variables.getYresolution()* resolutionMultiplier));
 		userInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		userInterface.setVisible(true);
+		
 
 		random = new Random();
 		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, 40*1000);
+		timer.scheduleAtFixedRate(timerTask, 0, 20*1000);
 		aiValidator = new AIValidator();
 		currentTime = 0;
 		
