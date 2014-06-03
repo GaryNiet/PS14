@@ -3,12 +3,10 @@ package gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.TexturePaint;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.Rectangle2D.Double;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,15 +15,10 @@ import java.util.List;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import characters.AICharacter;
-import characters.AbstractCharacter;
-
 import logic.Variables;
-
 import places.Cafeteria;
 import places.Cell;
 import places.Courtyard;
@@ -36,6 +29,8 @@ import places.Place;
 import places.Showers;
 import places.VisitingCell;
 import places.Workshop;
+import characters.AICharacter;
+import characters.AbstractCharacter;
 
 @SuppressWarnings("serial")
 public class GameMap extends JPanel{

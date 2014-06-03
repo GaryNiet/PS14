@@ -3,9 +3,7 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import places.Place;
 import schedule.Schedule;
-
 import characters.AICharacter;
 import characters.AbstractCharacter;
 import characters.PlayerCharacter;
@@ -24,93 +22,100 @@ public class Variables
 	final static double guardAwarenessImportance = 12;
 	final static int playerWidth = 15;
 	final static int playerHeight = 20;
-	
+
 	final static int xResolution = 1024;
 	final static int yResolution = 768;
-	
+
 	final static int rightWidth1024 = 768;
 	final static int leftWidth1024 = 256;
 	final static int topHeight1024 = 576;
 	final static int bottomHeight1024 = 192;
 	final static int scheduleHeight1024 = 816;
 	final static int shouldBe0 = -48;
-	
+
 	final static double resolutionMultiplier = 1;
-	
-	
-	
-	
+
 	final static Schedule schedule = new Schedule();
-	
-	
+
 	static List<AICharacter> characterList;
 	static PlayerCharacter playerCharacter;
 	static List<AbstractCharacter> allCharacters;
-	
+
 	static GameLogic gameLogic;
-	
+
 	public static int getWeaponBonus()
 	{
 		return weaponBonus;
 	}
-	
+
 	public static int getFightRandom()
 	{
 		return fightRandom;
 	}
-	
+
 	public static int getfightWinningsMultiplier()
 	{
 		return fightWinningsMultiplier;
 	}
 
-	public static void setCharacterList(List<AICharacter> _characterList) {
+	public static void setCharacterList(List<AICharacter> _characterList)
+	{
 		characterList = _characterList;
-		
+
 	}
-	
+
 	public static List<AICharacter> getCharacterList()
 	{
 		return characterList;
 	}
 
-	public static int getLostinfluenceonlostfight() {
+	public static int getLostinfluenceonlostfight()
+	{
 		return lostInfluenceOnLostFight;
 	}
 
-	public static int getLosthealthonlostfight() {
+	public static int getLosthealthonlostfight()
+	{
 		return lostHealthOnLostFight;
 	}
 
-	public static int getWeakestwinsfightmultiplier() {
+	public static int getWeakestwinsfightmultiplier()
+	{
 		return weakestWinsFightMultiplier;
 	}
 
-	public static int getStrongerwinsfightmultiplier() {
+	public static int getStrongerwinsfightmultiplier()
+	{
 		return strongerWinsFightMultiplier;
 	}
 
-	public static double getDigadvancementimportance() {
+	public static double getDigadvancementimportance()
+	{
 		return digAdvancementImportance;
 	}
 
-	public static double getGuardawarenessimportance() {
+	public static double getGuardawarenessimportance()
+	{
 		return guardAwarenessImportance;
 	}
 
-	public static int getPlayerwidth() {
+	public static int getPlayerwidth()
+	{
 		return playerWidth;
 	}
 
-	public static int getPlayerheight() {
+	public static int getPlayerheight()
+	{
 		return playerHeight;
 	}
 
-	public static PlayerCharacter getPlayerCharacter() {
+	public static PlayerCharacter getPlayerCharacter()
+	{
 		return playerCharacter;
 	}
 
-	public static void setPlayerCharacter(PlayerCharacter playerCharacter) {
+	public static void setPlayerCharacter(PlayerCharacter playerCharacter)
+	{
 		Variables.playerCharacter = playerCharacter;
 	}
 
@@ -138,18 +143,18 @@ public class Variables
 	{
 		return bottomHeight1024;
 	}
-	
+
 	public static List<AbstractCharacter> getAllCharacters()
 	{
 		allCharacters = new ArrayList<>();
-		for(AICharacter aiCharacter: characterList)
+		for (AICharacter aiCharacter : characterList)
 		{
 			allCharacters.add(aiCharacter);
-			
+
 		}
 		allCharacters.add(playerCharacter);
 		return allCharacters;
-		
+
 	}
 
 	public static GameLogic getGameLogic()
