@@ -52,7 +52,7 @@ public class GameLogic {
 		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, 20*1000);
+		timer.scheduleAtFixedRate(timerTask, 0, 40*1000);
 		aiValidator = new AIValidator();
 		currentTime = 0;
 		
@@ -181,7 +181,7 @@ public class GameLogic {
 		{
 			if(ai.getPosX() != ai.getCurrentPlace().getPosX())
 			{
-				ai.getAnimation().setMoving(true);
+				ai.getAnimation().setMoving();
 			}
 
 			ai.setPosX(ai.getCurrentPlace().getPosX());

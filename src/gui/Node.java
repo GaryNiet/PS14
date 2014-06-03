@@ -57,4 +57,14 @@ public class Node extends JPanel
 	{
 		return place;
 	}
+
+	public int getPosX()
+	{
+		return posX;
+	}
+
+	public int getPosY()
+	{
+		return posY;
+	}
 }
