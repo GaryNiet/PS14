@@ -132,7 +132,7 @@ public class Animation
 				}
 			}
 			
-			Node child=getUnvisitedChildNode(n);
+			Node child=getUnvisitedChildNode(n, lastNode);
 			
 			if(child!=null)
 			{
@@ -157,7 +157,7 @@ public class Animation
 		
 	}
 	
-	private Node getUnvisitedChildNode(Node node)
+	private Node getUnvisitedChildNode(Node node, Node lastNode)
 	{
 
 		List<Node> nodes = new ArrayList<>();
@@ -170,13 +170,30 @@ public class Animation
 		}
 		if(nodes.size()>0)
 		{
-			return nodes.get(0);
+			int distance = 10000;
+			Node returnNode = new Node();
+			for(Node bestNode: nodes)
+			{
+				if(nodeDistance(bestNode, lastNode) < distance)
+				{
+					distance = nodeDistance(node, lastNode);
+					returnNode = bestNode;
+						
+				}
+				
+			}
+			return returnNode;
 		}
 		else
 		{
 			return null;
 		}
 		
+	}
+	
+	private int nodeDistance(Node nodeStart, Node nodeDest)
+	{
+		return Math.abs(nodeStart.getPosX() - nodeDest.getPosX()) + Math.abs(nodeStart.getPosY() - nodeDest.getPosY());
 	}
 	
 	
