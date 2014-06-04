@@ -36,7 +36,7 @@ public class ActionCalculator
 				prisonAction.resolve(dummyCharacter, currentTime, false);
 				
 				
-				double currentHappiness = calculateHappiness(copyCharacter, dummyCharacter);
+				double currentHappiness = calculateHappiness(character, dummyCharacter, prisonAction, currentTime);
 				//System.out.println("result " + currentHappiness);
 				if(currentHappiness > best)
 				{
@@ -56,9 +56,9 @@ public class ActionCalculator
 	
 	
 	
-	private double calculateHappiness(AICharacter characterBefore, AICharacter characterAfter)
+	private double calculateHappiness(AICharacter characterBefore, AICharacter characterAfter, PrisonAction action, int time)
 	{
-		return characterAfter.happiness() - characterBefore.happiness();
+		return (characterAfter.happiness() - characterBefore.happiness()) * action.successRate(characterBefore, time);
 	}
 	
 }

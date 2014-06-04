@@ -1,22 +1,9 @@
 package schedule;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 import logic.Variables;
-import places.Cafeteria;
-import places.Cell;
-import places.Courtyard;
-import places.Kitchen;
-import places.Library;
-import places.PhoneBooth;
-import places.Place;
-import places.Showers;
-import places.VisitingCell;
-import places.Workshop;
 import aiMachine.ProbabilityCalculator;
 import characters.AICharacter;
 import characters.AbstractCharacter;
@@ -58,39 +45,58 @@ public class Attack extends PrisonAction
 		}
 		else
 		{
-			AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
-			
-			if(!isReal)
+			if(isReal == false)
 			{
-				victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
+				attackReaction(character, isReal);
 			}
-			else
+			else if(isReal == true && success(character, time) == true)
 			{
-				victim = (AICharacter)victim;
+				attackReaction(character, isReal);
 			}
-			
-			AbstractCharacter winner = calculateWinner(character, victim);
-			
-			if(isReal)
+			else if(isReal == true)
 			{
-				//System.out.println("--------------------------------------------" + character.getName() + " attacks " + victim.getName() + " and " + winner.getName() + " is the winner");
-			}
-			
-			if(winner == character)
-			{
-				character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
-				victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
-				victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
-			}
-			else
-			{
-				victim.setInfluence(victim.getInfluence() + (int)calculateFightWinnings(victim, character));
-				character.setInfluence(character.getInfluence() - Variables.getLostinfluenceonlostfight());
-				character.setHealth(character.getHealth() - Variables.getLosthealthonlostfight());
+				AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
+				character.setHealth(character.getHealth() - 10);
+				victim.setHealth(victim.getHealth() - 10);
+				
 			}
 		}
 
 		
+	}
+
+	private void attackReaction(AbstractCharacter character, boolean isReal)
+	{
+		AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
+		
+		if(!isReal)
+		{
+			victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
+		}
+		else
+		{
+			victim = (AICharacter)victim;
+		}
+		
+		AbstractCharacter winner = calculateWinner(character, victim);
+		
+		if(isReal)
+		{
+			//System.out.println("--------------------------------------------" + character.getName() + " attacks " + victim.getName() + " and " + winner.getName() + " is the winner");
+		}
+		
+		if(winner == character)
+		{
+			character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
+			victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
+			victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
+		}
+		else
+		{
+			victim.setInfluence(victim.getInfluence() + (int)calculateFightWinnings(victim, character));
+			character.setInfluence(character.getInfluence() - Variables.getLostinfluenceonlostfight());
+			character.setHealth(character.getHealth() - Variables.getLosthealthonlostfight());
+		}
 	}
 	
 
@@ -176,6 +182,23 @@ public class Attack extends PrisonAction
 		}
 		//System.out.println("in the hopes of winning " + rewardMultiplier * Variables.getfightWinningsMultiplier());
 		return rewardMultiplier * Variables.getfightWinningsMultiplier();
+	}
+
+	@Override
+	protected boolean success(AbstractCharacter character, int time)
+	{
+		if(random.nextFloat() < successRate(character, time))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public double successRate(AbstractCharacter character, int time)
+	{
+		double successRate = character.getSchedule().getPlace(time).getAttackSR() * (character.getIntelligence()) * (character.getInfluence()) * character.getStrength();
+		return successRate;
 	}
 
 

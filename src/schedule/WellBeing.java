@@ -11,6 +11,7 @@ import places.Place;
 import places.Showers;
 import places.VisitingCell;
 import characters.AICharacter;
+import characters.AbstractCharacter;
 
 public class WellBeing extends PrisonAction
 {
@@ -25,6 +26,18 @@ public class WellBeing extends PrisonAction
 		
 		character.setHealth(character.getHealth()+30);
 		character.checkHealthIntegrity();
+	}
+
+	@Override
+	protected boolean success(AbstractCharacter character, int time)
+	{
+		return true;
+	}
+
+	@Override
+	public double successRate(AbstractCharacter character, int time)
+	{
+		return 1;
 	}
 	
 

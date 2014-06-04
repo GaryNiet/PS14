@@ -14,6 +14,7 @@ import places.Showers;
 import places.VisitingCell;
 import places.Workshop;
 import characters.AICharacter;
+import characters.AbstractCharacter;
 
 public class Blackmail extends PrisonAction
 {
@@ -30,15 +31,39 @@ public class Blackmail extends PrisonAction
 	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)
 	{
 		int influence = character.getInfluence();
-		if(influence >= influenceChange)
+		if(influence >= influenceChange && isReal == false)
 		{
 			character.setInfluence(influence - influenceChange);
 			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - guardAwarenessChange);
 		
 		}
+		else if(influence >= influenceChange && isReal == true && success(character, time) == true)
+		{
+			character.setInfluence(influence - influenceChange);
+			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - guardAwarenessChange);
+		}
 		
 		
 	}
+
+	@Override
+	protected boolean success(AbstractCharacter character, int time)
+	{
+		if(random.nextFloat() < successRate(character, time))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public double successRate(AbstractCharacter character, int time)
+	{
+		double successRate = character.getSchedule().getPlace(time).getBlackmailSR() * (character.getIntelligence()/20);
+		return successRate;
+	}
+	
+
 
 
 

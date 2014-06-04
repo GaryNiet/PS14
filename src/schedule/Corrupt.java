@@ -14,6 +14,7 @@ import places.Showers;
 import places.VisitingCell;
 import places.Workshop;
 import characters.AICharacter;
+import characters.AbstractCharacter;
 
 public class Corrupt extends PrisonAction
 {
@@ -30,11 +31,33 @@ public class Corrupt extends PrisonAction
 	{
 		int money = character.getMoney();
 		
-		if(money >= moneyChange)
+		if(money >= moneyChange && isReal == false)
 		{
 			character.setMoney(character.getMoney() - moneyChange);
 			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 5);
 		}
+		else if(money >= moneyChange && isReal == true && success(character, time) == true)
+		{
+			character.setMoney(character.getMoney() - moneyChange);
+			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 5);
+		}
+	}
+
+	@Override
+	protected boolean success(AbstractCharacter character, int time)
+	{
+		if(random.nextFloat() < successRate(character, time))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public double successRate(AbstractCharacter character, int time)
+	{
+		double successRate = character.getSchedule().getPlace(time).getCorruptSR() * (character.getIntelligence()/20);
+		return successRate;
 	}
 	
 

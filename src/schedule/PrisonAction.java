@@ -2,6 +2,7 @@ package schedule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import logic.Variables;
 
@@ -19,6 +20,8 @@ public abstract class PrisonAction
 {
 	public String name;
 	public abstract void resolve(AbstractCharacter character, int time, boolean isReal);
+	Random random = new Random();
+	double randomDraw;
 	
 	public List<Place> getAllPlaces()
 	{
@@ -39,7 +42,9 @@ public abstract class PrisonAction
 		
 		return returnList;
 	}
-
+	
+	protected abstract boolean success(AbstractCharacter character, int time);
+	public abstract double successRate(AbstractCharacter character, int time);
 	
 }
 
