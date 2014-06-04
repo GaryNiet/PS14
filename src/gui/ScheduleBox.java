@@ -54,15 +54,15 @@ public class ScheduleBox extends JComponent
 		border = BorderFactory.createLineBorder(Color.black);
 		this.setBorder(border);
 
-		button0to6 = new ScheduleButton("invisible");
-		button6to7 = new ScheduleButton("qewf");
-		button7to8 = new ScheduleButton("qwef");
-		button8to12 = new ScheduleButton("verbqeb");
-		button12to13 = new ScheduleButton("qerbq");
-		button13to17 = new ScheduleButton("bqerbrn");
-		button17to22 = new ScheduleButton("brnr");
-		button22to23 = new ScheduleButton("rsner");
-		button23to24 = new ScheduleButton("netzdj");
+		button0to6 = new ScheduleButton("Cell");
+		button6to7 = new ScheduleButton("Showers");
+		button7to8 = new ScheduleButton("Cafeteria");
+		button8to12 = new ScheduleButton("Job");
+		button12to13 = new ScheduleButton("Cafeteria");
+		button13to17 = new ScheduleButton("Job");
+		button17to22 = new ScheduleButton("Free");
+		button22to23 = new ScheduleButton("Showers");
+		button23to24 = new ScheduleButton("Cell");
 
 
 		optionButton = new OptionButton();

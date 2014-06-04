@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -64,9 +65,10 @@ public class ScheduleButton extends JPanel
 		
 		g1.draw(rect);
 		g1.fillRect((int)rect.getX(), (int)rect.getY(), (int)rect.getWidth(), (int)rect.getHeight());
-		g1.setPaint(Color.black);
+		g1.setPaint(Color.white);
+		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		g1.drawString(label, (int) rect.getBounds2D().getX(),
-				(int) rect.getBounds2D().getY() + 12);
+				(int) rect.getBounds2D().getY() + 15);
 		
 	}
 	

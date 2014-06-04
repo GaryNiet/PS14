@@ -18,6 +18,7 @@ import aiMachine.AIValidator;
 import aiMachine.ActionCalculator;
 import characters.AICharacter;
 import characters.AbstractCharacter;
+import characters.CharacterGenerator;
 import characters.PlayerCharacter;
 
 public class GameLogic
@@ -94,26 +95,13 @@ public class GameLogic
 		Variables.setPlayerCharacter(playerCharacter);
 		Variables.setGameLogic(this);
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 10; i++)
 		{
-			AICharacter character1 = new AICharacter("george", 2, 12, 10, 0,
+			AICharacter character1 = new AICharacter(CharacterGenerator.generateName(), 2, 12, 10, 0,
 					0);
 			aiCharacterList.add(character1);
 		}
-		AICharacter character2 = new AICharacter("foreman", 2, 13, 10, 0, 0);
-		aiCharacterList.add(character2);
-		AICharacter character3 = new AICharacter("snip", 10, 11, 10, 0, 0);
-		aiCharacterList.add(character3);
-		AICharacter character4 = new AICharacter("sprool", 1, 8, 10, 0, 0);
-		aiCharacterList.add(character4);
-		AICharacter character5 = new AICharacter("tuck", 1, 1, 15, 0, 0);
-		aiCharacterList.add(character5);
-		// CharacterPH character6 = new CharacterPH("duck" , 100, 3, 10, 0, 0);
-		// aiCharacterList.add(character6);
-		// CharacterPH character7 = new CharacterPH("schnaps" , 7, 10, 10, 0,
-		// 0);
-		// aiCharacterList.add(character7);
-		// CharacterPH character8 = new CharacterPH("large" , 10, 10, 10, 0, 0);
+		
 		// aiCharacterList.add(character8);
 
 		Variables.setCharacterList(aiCharacterList);
@@ -174,9 +162,9 @@ public class GameLogic
 	
 	private synchronized void checkForNewPrisoner()
 	{
-		if(random.nextInt(3) == 0)
+		if(random.nextInt(30) == 0)
 		{
-			AICharacter newCharacter = new AICharacter("pitbull", 100, 100, 100, 0,0);
+			AICharacter newCharacter = new AICharacter(CharacterGenerator.generateName(), 100, 100, 100, 0,0);
 			aiCharacterList.add(newCharacter);
 			userInterface.getGameMap().addCharacter(newCharacter);
 		}

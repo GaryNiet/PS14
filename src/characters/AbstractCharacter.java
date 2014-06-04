@@ -42,14 +42,16 @@ public abstract class AbstractCharacter
 	
 	public AbstractCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
+		random = new Random();
+		
 		name = _name;
-		health = _health;
-		strength = _strength;
-		intelligence = _intelligence;
+		health = 100;
+		strength = random.nextInt(6) + 3;
+		intelligence = random.nextInt(6) + 3;
 		posX = _posX;
 		posY = _posY;
 		
-		random = new Random();
+		
 		roamLimit = 0;
 		
 		roamDirection = 0;
