@@ -2,6 +2,8 @@ package places;
 
 import java.util.Random;
 
+import characters.AICharacter;
+
 import schedule.Learn;
 import schedule.PrisonAction;
 import schedule.ResolveLegal;
@@ -39,13 +41,20 @@ public class Free extends Place
 		possibleActions.add(new Sell());
 	}
 
-	public static Place chosePlace(PrisonAction action)
+	public static Place chosePlace(PrisonAction action, AICharacter character, int time)
 	{
-		Random random = new Random();
-		Place place = action.getAllPlaces().get(
-				random.nextInt(action.getAllPlaces().size()));
+		int max = 0;
+		Place bestPlace = new Cell();
+		
+		for(Place place: action.getAllPlaces())
+		{
+			if(action.successRate(character, time)>max)
+			{
+				bestPlace = place;
+			}
+		}
 
-		return place;
+		return bestPlace;
 
 	}
 

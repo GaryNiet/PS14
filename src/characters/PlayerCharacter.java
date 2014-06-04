@@ -1,5 +1,7 @@
 package characters;
 
+import java.util.Iterator;
+
 import places.Cell;
 import places.Free;
 import places.Place;
@@ -48,4 +50,6 @@ public class PlayerCharacter extends AbstractCharacter
 	{
 		return victim;
 	}
+
+
 }

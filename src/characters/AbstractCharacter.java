@@ -1,8 +1,13 @@
 package characters;
 
+import java.util.Iterator;
 import java.util.Random;
 
+import logic.GameLogic;
+import logic.Variables;
+
 import places.Cell;
+import places.Job;
 import places.Place;
 import schedule.PrisonAction;
 import schedule.Schedule;
@@ -59,6 +64,7 @@ public abstract class AbstractCharacter
 		
 		currentPlace = new Cell();
 		
+		job = Job.getRandomJob();
 		
 		schedule = new Schedule();
 	}
@@ -78,15 +84,11 @@ public abstract class AbstractCharacter
 		checkHealthIntegrity();
 	}
 	
-	public void checkHealthIntegrity()
+	public synchronized void checkHealthIntegrity()
 	{
 		if(health > 100)
 		{
 			health = 100;
-		}
-		if(health <= 0)
-		{
-			//TODO die
 		}
 	
 	}

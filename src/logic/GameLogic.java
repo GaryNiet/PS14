@@ -3,6 +3,7 @@ package logic;
 import gui.UserInterface;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
@@ -11,6 +12,7 @@ import java.util.TimerTask;
 import javax.swing.JFrame;
 
 import places.Free;
+import places.Job;
 import schedule.PrisonAction;
 import aiMachine.AIValidator;
 import aiMachine.ActionCalculator;
@@ -94,17 +96,17 @@ public class GameLogic
 
 		for (int i = 0; i < 5; i++)
 		{
-			AICharacter character1 = new AICharacter("george", 100, 12, 10, 0,
+			AICharacter character1 = new AICharacter("george", 2, 12, 10, 0,
 					0);
 			aiCharacterList.add(character1);
 		}
-		AICharacter character2 = new AICharacter("foreman", 100, 13, 10, 0, 0);
+		AICharacter character2 = new AICharacter("foreman", 2, 13, 10, 0, 0);
 		aiCharacterList.add(character2);
-		AICharacter character3 = new AICharacter("snip", 100, 11, 10, 0, 0);
+		AICharacter character3 = new AICharacter("snip", 10, 11, 10, 0, 0);
 		aiCharacterList.add(character3);
-		AICharacter character4 = new AICharacter("sprool", 100, 8, 10, 0, 0);
+		AICharacter character4 = new AICharacter("sprool", 1, 8, 10, 0, 0);
 		aiCharacterList.add(character4);
-		AICharacter character5 = new AICharacter("tuck", 100, 1, 15, 0, 0);
+		AICharacter character5 = new AICharacter("tuck", 1, 1, 15, 0, 0);
 		aiCharacterList.add(character5);
 		// CharacterPH character6 = new CharacterPH("duck" , 100, 3, 10, 0, 0);
 		// aiCharacterList.add(character6);
@@ -122,10 +124,15 @@ public class GameLogic
 	{
 
 		@Override
-		public void run()
+		public synchronized void run()
 		{
-			for (AICharacter character : aiCharacterList)
+			checkForNewPrisoner();
+			Iterator iter = aiCharacterList.iterator();
+			
+			while(iter.hasNext())
 			{
+				AICharacter character = (AICharacter) iter.next(); 
+				checkforDeath(character, iter);
 				updateVariablesAndCheckIntegrity(character);
 
 				PrisonAction bestAction = actionCalculator.calculateBestAction(
@@ -137,9 +144,9 @@ public class GameLogic
 				bestAction.resolve(character, currentTime, true);
 				// aiValidator.update(character.getCurrentPlace(),
 				// character.getFixedAction());
-
+				
 			}
-
+			
 			showTable();
 
 			playerCharacter.setCurrentPlace(playerCharacter.getSchedule()
@@ -156,6 +163,26 @@ public class GameLogic
 		}
 
 	}
+	
+	private void checkforDeath(AICharacter character, Iterator iter)
+	{
+		if(character.getHealth() < 1)
+		{
+			iter.remove();
+		}
+	}
+	
+	private synchronized void checkForNewPrisoner()
+	{
+		if(random.nextInt(3) == 0)
+		{
+			AICharacter newCharacter = new AICharacter("pitbull", 100, 100, 100, 0,0);
+			aiCharacterList.add(newCharacter);
+			userInterface.getGameMap().addCharacter(newCharacter);
+		}
+	}
+	
+
 
 	private void updateVariablesAndCheckIntegrity(AbstractCharacter character)
 	{
@@ -192,10 +219,12 @@ public class GameLogic
 		if (character.getSchedule().getPlace(currentTime).name == "free")
 		{
 
-			character.setCurrentPlace(Free.chosePlace(action));
+			character.setCurrentPlace(Free.chosePlace(action, character,
+					currentTime));
 		} else if (character.getSchedule().getPlace(currentTime).name == "job")
 		{
-			character.setCurrentPlace(Free.chosePlace(action));
+			character.setCurrentPlace(Job.chosePlace(action, character,
+					currentTime));
 		} else
 		{
 			character.setCurrentPlace(character.getSchedule().getPlace(

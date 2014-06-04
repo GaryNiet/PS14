@@ -2,6 +2,8 @@ package places;
 
 import java.util.Random;
 
+import characters.AbstractCharacter;
+
 import logic.Variables;
 import schedule.PrisonAction;
 import schedule.Sell;
@@ -10,6 +12,9 @@ import schedule.StealWeaponTool;
 import schedule.Train;
 import schedule.WellBeing;
 
+
+
+	
 public class Job extends Place
 {
 	public Job()
@@ -33,6 +38,21 @@ public class Job extends Place
 		possibleActions.add(new Train());
 		possibleActions.add(new Sell());
 	}
+	
+	public static Place getRandomJob()
+	{
+		Random random = new Random();
+		
+		Place[] jobs = new Place[4];
+		jobs[0] = new Kitchen();
+		jobs[1] = new Workshop();
+		jobs[2] = new Courtyard();
+		jobs[3] = new Cell();
+		
+		return jobs[random.nextInt(3)];
+		
+	}
+	
 
 	public int getPosX()
 	{
@@ -44,13 +64,11 @@ public class Job extends Place
 		return Variables.getPlayerCharacter().getJob().getPosY();
 	}
 
-	public static Place chosePlace(PrisonAction action)
+	public static Place chosePlace(PrisonAction action, AbstractCharacter character, int time)
 	{
-		Random random = new Random();
-		Place place = action.getAllPlaces().get(
-				random.nextInt(action.getAllPlaces().size()));
+		
 
-		return place;
+		return character.getJob();
 
 	}
 }

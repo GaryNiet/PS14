@@ -240,7 +240,7 @@ public class GameMap extends JPanel{
 		
 	}
 	
-	public void paint(Graphics g)
+	public synchronized void paint(Graphics g)
 	{
 		placePlayer();
 		
@@ -338,6 +338,11 @@ public class GameMap extends JPanel{
 	public List<Node> getNodes()
 	{
 		return nodes;
+	}
+
+	public void addCharacter(AICharacter newCharacter)
+	{
+		aiRectangles.add(new Rectangle2D.Double(0,0, Variables.getPlayerwidth(), Variables.getPlayerheight()));
 	}
 
 }
