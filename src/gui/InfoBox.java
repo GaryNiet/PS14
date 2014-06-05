@@ -31,21 +31,21 @@ public class InfoBox extends JPanel
 	{
 		state = states.PLACE;
 		place = _place;
-		this.repaint();
+		
 	}
 
 	public void fillInfo(AbstractCharacter _character)
 	{
 		state = states.CHARACTER;
 		character = _character;
-		this.repaint();
+		
 	}
 
 	public void fillInfo(PrisonAction _action)
 	{
 		state = states.ACTION;
 		action = _action;
-		this.repaint();
+		
 	}
 
 	public void paint(Graphics g)

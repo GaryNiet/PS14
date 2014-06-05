@@ -1,12 +1,19 @@
 package gui;
 
 import java.awt.Color;
+import java.util.Iterator;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import schedule.PrisonAction;
+import characters.AICharacter;
+
 import logic.GameLogic;
 import logic.Variables;
+import logic.GameLogic.OnTimer;
 import net.miginfocom.swing.MigLayout;
 
 @SuppressWarnings("serial")
@@ -56,6 +63,10 @@ public class UserInterface extends JFrame
 		pack();
 		scheduleBox.set();
 		
+		OnTimer timerTask = new OnTimer();
+		Timer timer = new Timer("Clock");
+		timer.scheduleAtFixedRate(timerTask, 0, 16);
+		
 		
 	}
 	
@@ -66,6 +77,21 @@ public class UserInterface extends JFrame
 
 	public InfoBox getInfoBox() {
 		return infoBox;
+	}
+	
+	public class OnTimer extends TimerTask
+	{
+
+		@Override
+		public synchronized void run()
+		{
+			gameMap.repaint();
+			infoBox.repaint();
+			scheduleBox.repaint();
+			
+
+		}
+
 	}
 	
 	public void pulse(int currentTime)

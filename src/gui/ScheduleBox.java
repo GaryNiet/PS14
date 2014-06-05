@@ -146,7 +146,7 @@ public class ScheduleBox extends JComponent
 				index++;
 			}
 		}
-		this.repaint();
+		
 	}
 
 
@@ -156,7 +156,7 @@ public class ScheduleBox extends JComponent
 	{
 		width = this.getWidth();
 		height = this.getHeight();
-		this.repaint();
+		
 	}
 	
 	public void pulse(int currentTime)

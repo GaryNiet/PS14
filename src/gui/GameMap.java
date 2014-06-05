@@ -234,7 +234,7 @@ public class GameMap extends JPanel{
 			{
 				int characterIndex = aiRectangles.indexOf(characterRect);
 				infoBox.fillInfo((AbstractCharacter)Variables.getCharacterList().get(characterIndex));
-				System.out.println(characterIndex);
+				//System.out.println(characterIndex);
 			}
 		}
 		
@@ -299,7 +299,6 @@ public class GameMap extends JPanel{
 		
 		//draws player
 		g1.draw(player);
-		this.repaint();
 		
 	}
 	

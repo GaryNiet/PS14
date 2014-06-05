@@ -82,8 +82,8 @@ public class Animation
 			// moving = false;
 			// }
 
-			roamX -= divisionX / 20;
-			roamY -= divisionY / 20;
+			roamX -= divisionX/1.5;
+			roamY -= divisionY/1.5;
 
 		} else
 		{
@@ -99,8 +99,8 @@ public class Animation
 				choseRandomSpot(place);
 			}
 
-			roamX -= divisionX / 50;
-			roamY -= divisionY / 50;
+			roamX -= divisionX / 2;
+			roamY -= divisionY / 2;
 		}
 
 	}
