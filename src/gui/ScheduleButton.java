@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.TexturePaint;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -21,18 +22,25 @@ public class ScheduleButton extends JPanel
 	private BufferedImage paper;
 	private TexturePaint paperTex;
 	
+	private boolean drawOptions;
+	
 	private Rectangle2D rect;
 	private String label;
 	private boolean highLighted;
+	private OptionButton options;
+	
+	int index;
 
-	public ScheduleButton(String name)
+	public ScheduleButton(String name, int _index)
 	{
-		
+		index = _index;
+		drawOptions = false;
 		this.setVisible(true);
 		rect = new Rectangle2D.Double();
 		label = name;
 		highLighted = false;
 		loadImages();
+		options = new OptionButton();
 	}
 
 	private void loadImages()
@@ -70,6 +78,14 @@ public class ScheduleButton extends JPanel
 		g1.drawString(label, (int) rect.getBounds2D().getX(),
 				(int) rect.getBounds2D().getY() + 15);
 		
+		
+		if(drawOptions == true)
+		{
+			options.setIndex(index-1);
+			options.setBounds((int)rect.getX(), (int) ((int)rect.getY() + rect.getHeight()), (int)rect.getWidth(), (int)rect.getHeight());
+			options.paint(g);
+		}
+		
 	}
 	
 	private void setRect()
@@ -82,5 +98,36 @@ public class ScheduleButton extends JPanel
 	{
 		highLighted = change;
 	}
+
+	public int getIndex()
+	{
+		return index;
+	}
+
+	public boolean isDrawOptions()
+	{
+		return drawOptions;
+	}
+
+	public void setDrawOptions(boolean drawOptions)
+	{
+		this.drawOptions = drawOptions;
+	}
+	
+	protected void mouseClickReaction(MouseEvent me)
+	{
+		options.mouseClickReaction(me);
+	}
+
+	public OptionButton getOptions()
+	{
+		return options;
+	}
+
+	public void setOptions(OptionButton options)
+	{
+		this.options = options;
+	}
+
 
 }

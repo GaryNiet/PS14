@@ -1,9 +1,12 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,7 @@ public class OptionButton extends JPanel
 	Rectangle2D button;
 	boolean showsCharacters;
 	boolean eraseFlag;
+	ScheduleButton parent;
 
 	List<Rectangle2D> actionButtonList;
 	List<Rectangle2D> freePlaceList;
@@ -64,16 +68,21 @@ public class OptionButton extends JPanel
 	{
 		if(showsCharacters == false)
 		{
+
 			for (Rectangle2D rect : actionButtonList)
 			{
-				if (rect.contains(me.getPoint()))
+				System.out.println(rect);
+				if (rect.contains(me.getPoint()));
 				{
+					System.out.println("passes here");
 					int actionIndex = actionButtonList.indexOf(rect);
 					if(actionIndex == 0)
 					{
+						
 						showsCharacters = true;
 						aiCharacters = Variables.getCharacterList();
 					}
+					System.out.println("pass5");
 					setCharacterAction(index, actionIndex);
 					showDropMenu = actionIndex;
 				}
@@ -111,7 +120,6 @@ public class OptionButton extends JPanel
 		}
 		
 		
-
 	}
 
 	public void paint(Graphics g)
@@ -146,6 +154,14 @@ public class OptionButton extends JPanel
 			getPossibleActions();
 			for (PrisonAction action : possibleActions)
 			{
+				if(action.getClass() == Variables.getPlayerCharacter().getSchedule().getAction(index).getClass())
+				{
+					g1.setPaint(Color.red);
+				}
+				else
+				{
+					g1.setPaint(Color.black);
+				}
 				g1.drawString(action.name, 10, (int) button.getBounds2D()
 						.getY() + buttonSpacing * spacing);
 				Rectangle2D actionButton = new Rectangle2D.Double(0, button

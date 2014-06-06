@@ -21,11 +21,11 @@ public class Courtyard extends Place
 		
 		name = "courtyard";
 		
-		attackSR = 1;
-		blackmailSR = 1;
-		corruptSR = 1;
-		digSR = 1;
-		sellMaterialsSR = 1;
+		attackSR = 0.6;
+		blackmailSR = 0.4;
+		corruptSR = 0.4;
+		digSR = 0.6;
+		sellMaterialsSR = 0.8;
 		
 		digAdvancement = 0;
 		

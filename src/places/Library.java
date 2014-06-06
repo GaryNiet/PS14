@@ -17,10 +17,10 @@ public class Library extends Place
 		sizeY = (int) ((0.208) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		
-		attackSR = 1;
-		blackmailSR = 1;
-		corruptSR = 1;
-		digSR = 1;
+		attackSR = 0.3;
+		blackmailSR = 0.6;
+		corruptSR = 0.6;
+		digSR = 0.1;
 		
 		digAdvancement = 0;
 		

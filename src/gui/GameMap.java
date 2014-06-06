@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.TexturePaint;
@@ -251,13 +252,12 @@ public class GameMap extends JPanel{
 		g1.setPaint(floorTex);
 		g1.fill(this.getBounds());
 		
-		g1.setPaint(Color.green);
 		
 		//draws places
 		int i = 0;
 		for(Rectangle2D place: placeList)
 		{
-			g1.setPaint(Color.green);
+			g1.setPaint(Color.black);
 			if(i==3)
 			{
 				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
@@ -282,7 +282,7 @@ public class GameMap extends JPanel{
 		int index = 0;
 		for(AICharacter ai: Variables.getCharacterList())
 		{
-			g1.setPaint(Color.black);
+			g1.setPaint(Color.white);
 			ai.updateRoam();
 			aiRectangles.get(index).setFrame(ai.getPosX() + ai.getAnimation().getRoamX(), ai.getPosY() + ai.getAnimation().getRoamY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
 			g1.draw(aiRectangles.get(index));
@@ -290,12 +290,15 @@ public class GameMap extends JPanel{
 		}
 		
 		
-		g1.setPaint(Color.white);
+		g1.setPaint(Color.cyan);
+		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+		
 		g1.drawString("health: " + Variables.getPlayerCharacter().getHealth(), 0, 15);
 		g1.drawString("strength: " + Variables.getPlayerCharacter().getStrength(), 100, 15);
-		g1.drawString("intelligence: " + Variables.getPlayerCharacter().getIntelligence(), 200, 15);
+		g1.drawString("intelligence: " + Variables.getPlayerCharacter().getIntelligence(), 220, 15);
 		g1.drawString("money: " + Variables.getPlayerCharacter().getMoney(), 500, 15);
 		g1.drawString("influence: " + Variables.getPlayerCharacter().getInfluence(), 600, 15);
+		g1.drawString("materials: " + Variables.getPlayerCharacter().getMaterials(), 500, 30);
 		
 		//draws player
 		g1.draw(player);
@@ -304,8 +307,9 @@ public class GameMap extends JPanel{
 	
 	public void placePlayer()
 	{
+		getPlayer().getAnimation().updateRoam(getCurrentPlace());
+		player.setFrame( getPlayer().getPosX() + getPlayer().getAnimation().getRoamX() , getPlayer().getPosY() + getPlayer().getAnimation().getRoamY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
 		
-		player.setFrame( getCurrentPlace().getPosX(), getCurrentPlace().getPosY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
 	}
 	
 	public List<Place> allPlaces()
@@ -321,17 +325,7 @@ public class GameMap extends JPanel{
 	
 	public void showAction()
 	{
-		
-		for(AICharacter ai: Variables.getCharacterList())
-		{
-			ai.setRoamX((int)(random.nextFloat()*ai.getCurrentPlace().getSizeX()));
-			ai.setRoamY((int)(random.nextFloat()*ai.getCurrentPlace().getSizeY()));
-		}
-		
-		System.out.println(parent.getGameLogic().getTime());
-		System.out.println(parent.gameLogic.getCharacter().getSchedule().getAction(parent.getGameLogic().getTime()));
-		System.out.println(parent.getGameLogic().getCharacter().getCurrentPlace());
-		System.out.println("x: " + parent.getGameLogic().getCharacter().getCurrentPlace().getPosX());
+
 	}
 
 	public List<Node> getNodes()
@@ -342,6 +336,11 @@ public class GameMap extends JPanel{
 	public void addCharacter(AICharacter newCharacter)
 	{
 		aiRectangles.add(new Rectangle2D.Double(0,0, Variables.getPlayerwidth(), Variables.getPlayerheight()));
+	}
+	
+	private AbstractCharacter getPlayer()
+	{
+		return parent.getGameLogic().getCharacter();
 	}
 
 }

@@ -18,11 +18,11 @@ public class Cell extends Place
 		
 		name = "cell";
 		
-		attackSR = 1;
-		blackmailSR = 1;
-		corruptSR = 1;
-		digSR = 1;
-		stealSR = 1;
+		attackSR = 0.6;
+		blackmailSR = 0.3;
+		corruptSR = 0.3;
+		digSR = 0.7;
+		stealSR = 0.5;
 		
 		
 		digAdvancement = 0;

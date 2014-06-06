@@ -18,8 +18,8 @@ public class Variables
 	final static int lostHealthOnLostFight = 8;
 	final static int weakestWinsFightMultiplier = 3;
 	final static int strongerWinsFightMultiplier = 2;
-	final static double digAdvancementImportance = 1;
-	final static double guardAwarenessImportance = 12;
+	final static double digAdvancementImportance = 0.7;
+	final static double guardAwarenessImportance = 14;
 	final static int playerWidth = 15;
 	final static int playerHeight = 20;
 

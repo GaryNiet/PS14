@@ -34,12 +34,12 @@ public class Corrupt extends PrisonAction
 		if(money >= moneyChange && isReal == false)
 		{
 			character.setMoney(character.getMoney() - moneyChange);
-			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 5);
+			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 3);
 		}
 		else if(money >= moneyChange && isReal == true && success(character, time) == true)
 		{
 			character.setMoney(character.getMoney() - moneyChange);
-			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 5);
+			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 3);
 		}
 	}
 

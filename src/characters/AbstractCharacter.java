@@ -31,13 +31,11 @@ public abstract class AbstractCharacter
 	PrisonAction fixedAction;
 	Place currentPlace;
 	Place job;
-	double roamX;
-	double roamY;
-	double roamDirection;
-	int roamLimit;
 	int resetRoam;
 	Random random;
 	Animation animation;
+	
+	boolean isEscaped;
 	
 	
 	public AbstractCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
@@ -52,15 +50,13 @@ public abstract class AbstractCharacter
 		posY = _posY;
 		
 		
-		roamLimit = 0;
-		
-		roamDirection = 0;
 		legalAdvancement =1;
 		materials = 0;
 		influence = 0;
 		money = 100;
 		weapon = false;
 		tool = false;
+		isEscaped = false;
 		
 		animation = new Animation(this);
 		
@@ -216,42 +212,6 @@ public abstract class AbstractCharacter
 	}
 
 
-	public double getRoamX() {
-		return roamX;
-	}
-
-
-	public void setRoamX(int roamX) {
-		this.roamX = roamX;
-	}
-
-
-	public double getRoamY() {
-		return roamY;
-	}
-
-
-	public void setRoamY(int roamY) {
-		this.roamY = roamY;
-	}
-
-
-	public double getRoamDirection() {
-		return roamDirection;
-	}
-
-
-	public void setRoamDirection(int roamDirection) {
-		this.roamDirection = roamDirection;
-	}
-
-	public int getRoamLimit() {
-		return roamLimit;
-	}
-
-	public void setRoamLimit(int roamLimit) {
-		this.roamLimit = roamLimit;
-	}
 
 	public Place getJob() {
 		return job;
@@ -264,5 +224,15 @@ public abstract class AbstractCharacter
 	public Animation getAnimation()
 	{
 		return animation;
+	}
+
+	public boolean isEscaped()
+	{
+		return isEscaped;
+	}
+
+	public void setEscaped(boolean isEscaped)
+	{
+		this.isEscaped = isEscaped;
 	}
 }

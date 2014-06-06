@@ -73,10 +73,6 @@ public class Attack extends PrisonAction
 		{
 			victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
 		}
-		else
-		{
-			victim = (AICharacter)victim;
-		}
 		
 		AbstractCharacter winner = calculateWinner(character, victim);
 		
@@ -197,7 +193,7 @@ public class Attack extends PrisonAction
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		double successRate = character.getSchedule().getPlace(time).getAttackSR() * (character.getIntelligence()) * (character.getInfluence()) * character.getStrength();
+		double successRate = character.getSchedule().getPlace(time).getAttackSR() * (character.getIntelligence()/20) * (character.getStrength()/20);
 		return successRate;
 	}
 

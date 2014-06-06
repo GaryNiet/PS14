@@ -16,12 +16,12 @@ public class PhoneBooth extends Place
 		sizeY = (int) ((0.0911) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		
-		resolveLegalSR = 1;
+		resolveLegalSR = 0.4;
 		
-		attackSR = 1;
-		blackmailSR = 1;
-		corruptSR = 1;
-		digSR = 1;
+		attackSR = 0.3;
+		blackmailSR = 0.2;
+		corruptSR = 0.2;
+		digSR = 0.1;
 		
 		digAdvancement = 0;
 		

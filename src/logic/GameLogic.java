@@ -53,7 +53,7 @@ public class GameLogic
 		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, 20 * 1000);
+		timer.scheduleAtFixedRate(timerTask, 0, 15 * 1000);
 		aiValidator = new AIValidator();
 		currentTime = 0;
 
@@ -62,14 +62,14 @@ public class GameLogic
 	private void showTable()
 	{
 
-		String leftAlignFormat = "| %-11s | %-6d | %-10d | %-4d | %-10s | %-9s | %-10s | %-7d | %-5d | %-9d |%n";
+		String leftAlignFormat = "| %-20s | %-6d | %-10d | %-4d | %-10s | %-9s | %-10s | %-7d | %-5d | %-9d |%n";
 
 		System.out
-				.format("+--------------------------------------------------------------------------------------------------------------+%n");
+				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
 		System.out
-				.printf("|    name     |strength|intelligence|health|   action   | schedule  |currentPlace|influence| money | materials |%n");
+				.printf("|         name         |strength|intelligence|health|   action   | schedule  |currentPlace|influence| money | materials |%n");
 		System.out
-				.format("+--------------------------------------------------------------------------------------------------------------+%n");
+				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
 		for (AbstractCharacter character : aiCharacterList)
 		{
 
@@ -83,7 +83,7 @@ public class GameLogic
 
 		}
 		System.out
-				.format("+--------------------------------------------------------------------------------------------------------------+%n");
+				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
 		// aiValidator.showUsage();
 
 	}
@@ -128,14 +128,18 @@ public class GameLogic
 
 				character.setFixedAction(bestAction);
 				setCurrentPlace(character, bestAction);
-				setXY();
+				
+				
 				bestAction.resolve(character, currentTime, true);
 				// aiValidator.update(character.getCurrentPlace(),
 				// character.getFixedAction());
 				
 			}
 			
+			
 			showTable();
+			
+			
 
 			playerCharacter.setCurrentPlace(playerCharacter.getSchedule()
 					.getPlace(currentTime));
@@ -144,6 +148,8 @@ public class GameLogic
 			updateVariablesAndCheckIntegrity(playerCharacter);
 
 			userInterface.pulse(currentTime);
+			
+			setXY();
 			// System.out.println(playerCharacter.getFreeChoice());
 
 			passTime();
@@ -190,6 +196,15 @@ public class GameLogic
 			ai.setPosY(ai.getCurrentPlace().getPosY());
 
 		}
+		
+		if (playerCharacter.getPosX() != playerCharacter.getCurrentPlace().getPosX())
+		{
+			playerCharacter.getAnimation().setMoving();
+		}
+
+		playerCharacter.setPosX(playerCharacter.getCurrentPlace().getPosX());
+		playerCharacter.setPosY(playerCharacter.getCurrentPlace().getPosY());
+		
 
 	}
 

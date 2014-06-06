@@ -47,6 +47,8 @@ public class Animation
 	{
 		if (moving == true)
 		{
+			
+			
 			if (path.size() != 0)
 			{
 				aimX = -(character.getCurrentPlace().getPosX() - path.get(0)
@@ -57,6 +59,8 @@ public class Animation
 
 			double distX = roamX - (double) aimX;
 			double distY = roamY - (double) aimY;
+			
+			
 
 			norm = Math.sqrt(Math.abs(distX * distX + distY * distY));
 			double divisionX = distX / norm;
@@ -72,15 +76,12 @@ public class Animation
 					moving = false;
 				}
 			}
-
-			// double destDistX = roamX - lastNode.getPosX();
-			// double destDistY = roamY - lastNode.getPosY();
-			// double distToDest = Math.sqrt(Math.abs(destDistX*destDistX +
-			// destDistY * destDistY));
-			// if(distToDest <= 10 && distToDest >= -10)
-			// {
-			// moving = false;
-			// }
+			
+			if(character instanceof PlayerCharacter)
+			{
+				
+				
+			}
 
 			roamX -= divisionX/1.5;
 			roamY -= divisionY/1.5;
@@ -89,6 +90,8 @@ public class Animation
 		{
 			double distX = roamX - (double) aimX;
 			double distY = roamY - (double) aimY;
+			
+			
 
 			norm = Math.sqrt(Math.abs(distX * distX + distY * distY));
 			double divisionX = distX / norm;
@@ -193,8 +196,9 @@ public class Animation
 
 	private void choseRandomSpot(Place place)
 	{
-		aimX = random.nextInt(place.getSizeX());
-		aimY = random.nextInt(place.getSizeY());
+		//TODO corriger pour job
+		aimX = random.nextInt(character.currentPlace.getSizeX());
+		aimY = random.nextInt(character.currentPlace.getSizeY());
 	}
 
 	public Node findFirstNode()
@@ -274,7 +278,6 @@ public class Animation
 			lastNode = findLastNode();
 
 			createPath();
-			System.out.println("size: " + path.size());
 
 			roamX += character.getPosX()
 					- character.getCurrentPlace().getPosX();

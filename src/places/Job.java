@@ -53,15 +53,17 @@ public class Job extends Place
 		
 	}
 	
+	
+	
 
-	public int getPosX()
+	public int getSizeX()
 	{
-		return Variables.getPlayerCharacter().getJob().getPosX();
+		return Variables.getPlayerCharacter().getJob().getSizeX();
 	}
 
-	public int getPosY()
+	public int getSizeY()
 	{
-		return Variables.getPlayerCharacter().getJob().getPosY();
+		return Variables.getPlayerCharacter().getJob().getSizeY();
 	}
 
 	public static Place chosePlace(PrisonAction action, AbstractCharacter character, int time)

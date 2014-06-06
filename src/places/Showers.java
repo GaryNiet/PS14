@@ -18,12 +18,12 @@ public class Showers extends Place
 		
 		
 		
-		stealSR = 1;
+		stealSR = 0.8;
 		
-		attackSR = 1;
-		blackmailSR = 1;
-		corruptSR = 1;
-		digSR = 1;
+		attackSR = 0.9;
+		blackmailSR = 0.4;
+		corruptSR = 0.4;
+		digSR = 0.1;
 		
 		digAdvancement = 0;
 		

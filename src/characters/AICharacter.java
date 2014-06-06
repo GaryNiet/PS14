@@ -76,7 +76,7 @@ public class AICharacter extends AbstractCharacter
 		{
 			wellBeingHappiness += 20;
 		}
-		wellBeingHappiness += strength * 10;
+		wellBeingHappiness += strength * 2;
 		
 		wellBeingHappiness *= preferences.wellBeingPreference;
 		//System.out.println("wellbeinghappiness " + wellBeingHappiness);
@@ -87,19 +87,23 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		
-		double evasionHappiness = (double)strength * 8;
+		double evasionHappiness = (double)strength * 1.5;
 		evasionHappiness += money;
 		evasionHappiness += influence;
 		evasionHappiness += (double)materials * 0.09;
 		if(weapon)
 		{
-			evasionHappiness += 10;
+			evasionHappiness += 2;
 		}
 
 		for(Place place: schedule.getAllPlaces())
 		{
 			evasionHappiness += (double)place.getDigAdvancement()*Variables.getDigadvancementimportance();
 			evasionHappiness += (100 - (double)place.getGuardAwareness())*Variables.getGuardawarenessimportance();
+		}
+		if(isEscaped == true)
+		{
+			evasionHappiness += 10000;
 		}
 		evasionHappiness *= preferences.evasionPreference;
 		
@@ -117,7 +121,7 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		
-		double educationHappiness = (double)intelligence * 60;
+		double educationHappiness = (double)intelligence * 7;
 		educationHappiness = educationHappiness + legalAdvancement * 50;
 		educationHappiness *= preferences.educationPreference;
 		

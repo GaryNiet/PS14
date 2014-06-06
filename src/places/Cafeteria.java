@@ -17,12 +17,12 @@ public class Cafeteria extends Place
 		
 		name = "cafeteria";
 		
-		stealWeaponToolSR = 1;
+		stealWeaponToolSR = 0.3;
 		
-		attackSR = 1;
-		blackmailSR = 1;
-		corruptSR = 1;
-		digSR = 1;
+		attackSR = 0.2;
+		blackmailSR = 0.2;
+		corruptSR = 0.2;
+		digSR = 0.1;
 		
 		digAdvancement = 0;
 		

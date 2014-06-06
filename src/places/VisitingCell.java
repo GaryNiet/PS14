@@ -15,12 +15,12 @@ public class VisitingCell extends Place
 		sizeX = (int) (0.155 * Variables.getXresolution() * Variables.getResolutionmultiplier());
 		sizeY = (int) ((0.3004) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
-		resolveLegalSR = 1;
+		resolveLegalSR = 0.6;
 		
-		attackSR = 1;
-		blackmailSR = 1;
-		corruptSR = 1;
-		digSR = 1;
+		attackSR = 0.2;
+		blackmailSR = 0.1;
+		corruptSR = 0.1;
+		digSR = 0.1;
 		
 		digAdvancement = 0;
 		

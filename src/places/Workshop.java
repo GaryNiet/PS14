@@ -22,12 +22,12 @@ public class Workshop extends Place
 		sizeY = (int) ((0.206) * Variables.getYresolution() * Variables
 				.getResolutionmultiplier());
 
-		stealWeaponToolSR = 1;
+		stealWeaponToolSR = 0.9;
 
-		attackSR = 1;
-		blackmailSR = 1;
-		corruptSR = 1;
-		digSR = 1;
+		attackSR = 0.2;
+		blackmailSR = 0.4;
+		corruptSR = 0.4;
+		digSR = 0.2;
 
 		digAdvancement = 0;
 
