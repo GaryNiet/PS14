@@ -170,4 +170,9 @@ public class UserInterface extends JFrame
 	{
 		info = _info;
 	}
+	
+	public WarningWindow getWarningWindow()
+	{
+		return warningWindow;
+	}
 }

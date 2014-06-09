@@ -14,11 +14,13 @@ public class WarningWindow extends JPanel
 {
 	UserInterface parent;
 	Rectangle2D okButton;
+	String text;
 	
 	public WarningWindow(UserInterface _parent)
 	{
 		parent = _parent;
 		okButton = new Rectangle2D.Double();
+		text = "";
 		
 		
 		
@@ -36,12 +38,20 @@ public class WarningWindow extends JPanel
 		g1.fill(new Rectangle.Double(0,0, 500,500));
 		g1.setPaint(Color.black);
 		g1.fill(okButton);
+		g1.drawString(text, 10, 10);
 		
 	}
 	
 	private void setButtonSpace()
 	{
 		okButton.setFrame(this.getWidth()*6/8, this.getHeight()*6/8, this.getWidth()/8, this.getHeight()/8);
+	}
+	
+	public void setImage(String string)
+	{
+		text = string;
+		parent.setInfo(true);
+		
 	}
 
 	public void mouseClickReaction(MouseEvent me)
