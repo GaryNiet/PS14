@@ -34,6 +34,7 @@ public abstract class AbstractCharacter
 	int resetRoam;
 	Random random;
 	Animation animation;
+	double speed;
 	
 	boolean isEscaped;
 	
@@ -42,6 +43,7 @@ public abstract class AbstractCharacter
 	{
 		random = new Random();
 		
+		speed = (random.nextDouble() + 2) / 1.7;
 		name = _name;
 		health = 100;
 		strength = random.nextInt(6) + 3;

@@ -52,9 +52,9 @@ public class Animation
 			if (path.size() != 0)
 			{
 				aimX = -(character.getCurrentPlace().getPosX() - path.get(0)
-						.getPosX());
+						.getPosX() + ((random.nextFloat()-0.5) * 50));
 				aimY = -(character.getCurrentPlace().getPosY() - path.get(0)
-						.getPosY());
+						.getPosY() + ((random.nextFloat()-0.5) * 50));
 			}
 
 			double distX = roamX - (double) aimX;
@@ -77,14 +77,10 @@ public class Animation
 				}
 			}
 			
-			if(character instanceof PlayerCharacter)
-			{
-				
-				
-			}
 
-			roamX -= divisionX/1.5;
-			roamY -= divisionY/1.5;
+
+			roamX -= divisionX/character.speed;
+			roamY -= divisionY/character.speed;
 
 		} else
 		{

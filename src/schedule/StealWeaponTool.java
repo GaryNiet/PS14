@@ -3,12 +3,15 @@ package schedule;
 import java.util.ArrayList;
 import java.util.List;
 
+import logic.Variables;
+
 import places.Cafeteria;
 import places.Kitchen;
 import places.Place;
 import places.Workshop;
 import characters.AICharacter;
 import characters.AbstractCharacter;
+import characters.PlayerCharacter;
 
 public class StealWeaponTool extends PrisonAction
 {
@@ -29,6 +32,7 @@ public class StealWeaponTool extends PrisonAction
 		{
 			character.setWeapon(true);
 			character.setTool(true);
+			informPlayer(character, time);
 		}
 		
 	}
@@ -41,6 +45,15 @@ public class StealWeaponTool extends PrisonAction
 			return true;
 		}
 		return false;
+	}
+	
+	private void informPlayer(AbstractCharacter character, int time)
+	{
+		if(character instanceof PlayerCharacter)
+		{
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you know own a weapon");
+				Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
 	}
 
 	@Override
