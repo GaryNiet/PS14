@@ -88,12 +88,12 @@ public class GameMap extends JPanel{
 		}
 		
 		
-		this.addMouseListener(new MouseAdapter() { 
-	          public void mousePressed(MouseEvent me)
-	          { 
-	            mouseClickReaction(me);
-	          } 
-	        }); 
+//		this.addMouseListener(new MouseAdapter() { 
+//	          public void mousePressed(MouseEvent me)
+//	          { 
+//	            mouseClickReaction(me);
+//	          } 
+//	        }); 
 		
 	}
 	
@@ -215,7 +215,7 @@ public class GameMap extends JPanel{
 		}
 	}
 	
-	private void mouseClickReaction(MouseEvent me)
+	public void mouseClickReaction(MouseEvent me)
 	{
 		
 		for(Rectangle2D place: placeList)

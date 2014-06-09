@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,15 +27,19 @@ public class UserInterface extends JFrame
 	InfoBox infoBox;
 	MigLayout mainLayout;
 	GameLogic gameLogic;
+	WarningWindow warningWindow;
+	
+	boolean info;
 	
 	public UserInterface(GameLogic _gameLogic, double resolutionMultiplier)
 	{
+		info = false;
 		gameLogic = _gameLogic;
 		panel = new JPanel(new MigLayout("fill"));
 		infoBox = new InfoBox();
 		gameMap = new GameMap(this);
 		scheduleBox = new ScheduleBox(this);
-		
+		warningWindow = new WarningWindow(this);
 		
 		
 		panel.add(gameMap, "w 75%, h 75%");
@@ -52,6 +58,9 @@ public class UserInterface extends JFrame
 		string = "x " + Variables.getRightwidth1024()* resolutionMultiplier + ", y " + Variables.getShouldbe0()* resolutionMultiplier + ", w " + Variables.getLeftwidth1024()* resolutionMultiplier + ", h " + Variables.getScheduleheight1024()* resolutionMultiplier;
 		panel.add(scheduleBox, string);
 		
+		string = "x " + (Variables.getXresolution()/3)* resolutionMultiplier + ", y " + Variables.getYresolution()/3* resolutionMultiplier + ", w " + Variables.getXresolution()/3* resolutionMultiplier + ", h " + Variables.getYresolution()/3* resolutionMultiplier;
+		panel.add(warningWindow, string);
+		
 		gameMap.setBackground(Color.green);
 		infoBox.setBackground(Color.red);
 		scheduleBox.setBackground(Color.black);
@@ -68,8 +77,46 @@ public class UserInterface extends JFrame
 		timer.scheduleAtFixedRate(timerTask, 0, 16);
 		
 		
+		this.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mousePressed(MouseEvent e)
+			{
+				mouseClickReaction(e);
+			}
+		});
+
 	}
 	
+
+	
+	protected void mouseClickReaction(MouseEvent e)
+	{
+		if(info == true)
+		{
+			if(warningWindow.getBounds().contains(e.getPoint()))
+			{
+				warningWindow.mouseClickReaction(e);
+			}
+		}
+		else
+		{
+			if(gameMap.getBounds().contains(e.getPoint()))
+			{
+				gameMap.mouseClickReaction(e);
+			}
+		}
+		
+		if(scheduleBox.getBounds().contains(e.getPoint()))
+		{
+			scheduleBox. mouseClickReaction(e);
+		}
+		
+		
+	}
+
+
+
 	public GameLogic getGameLogic()
 	{
 		return gameLogic;
@@ -85,9 +132,17 @@ public class UserInterface extends JFrame
 		@Override
 		public synchronized void run()
 		{
-			gameMap.repaint();
-			infoBox.repaint();
-			scheduleBox.repaint();
+			if(info == true)
+			{
+
+				warningWindow.repaint();
+			}
+			else
+			{
+				gameMap.repaint();
+				infoBox.repaint();
+				scheduleBox.repaint();
+			}
 			
 
 		}
@@ -109,5 +164,10 @@ public class UserInterface extends JFrame
 	public ScheduleBox getScheduleBox()
 	{
 		return scheduleBox;
+	}
+	
+	public void setInfo(boolean _info)
+	{
+		info = _info;
 	}
 }

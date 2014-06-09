@@ -12,6 +12,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
 
+import logic.Variables;
+
 @SuppressWarnings("serial")
 public class ScheduleBox extends JComponent
 {
@@ -23,7 +25,6 @@ public class ScheduleBox extends JComponent
 	final int buttonSpacing = 20;
 	int width;
 	int height;
-	int offset;
 
 	
 
@@ -39,6 +40,7 @@ public class ScheduleBox extends JComponent
 	ScheduleButton button22to23;
 	ScheduleButton button23to24;
 
+	OptionButton optionButton;
 
 	ScheduleButton pressedButton;
 
@@ -47,7 +49,6 @@ public class ScheduleBox extends JComponent
 
 	public ScheduleBox(UserInterface _parent)
 	{
-		offset = -1;
 		parent = _parent;
 
 
@@ -55,17 +56,18 @@ public class ScheduleBox extends JComponent
 		border = BorderFactory.createLineBorder(Color.black);
 		this.setBorder(border);
 
-		button0to6 = new ScheduleButton("Cell", 1);
-		button6to7 = new ScheduleButton("Showers", 2);
-		button7to8 = new ScheduleButton("Cafeteria", 3);
-		button8to12 = new ScheduleButton("Job", 4);
-		button12to13 = new ScheduleButton("Cafeteria", 5);
-		button13to17 = new ScheduleButton("Job", 6);
-		button17to22 = new ScheduleButton("Free", 7);
-		button22to23 = new ScheduleButton("Showers", 8);
-		button23to24 = new ScheduleButton("Cell", 9);
+		button0to6 = new ScheduleButton("Cell");
+		button6to7 = new ScheduleButton("Showers");
+		button7to8 = new ScheduleButton("Cafeteria");
+		button8to12 = new ScheduleButton("Job");
+		button12to13 = new ScheduleButton("Cafeteria");
+		button13to17 = new ScheduleButton("Job");
+		button17to22 = new ScheduleButton("Free");
+		button22to23 = new ScheduleButton("Showers");
+		button23to24 = new ScheduleButton("Cell");
 
 
+		optionButton = new OptionButton();
 		pressedButton = button23to24;
 
 		buttonList = new ArrayList<>();
@@ -80,34 +82,35 @@ public class ScheduleBox extends JComponent
 		buttonList.add(button22to23);
 		buttonList.add(button23to24);
 
-		this.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent me)
-			{
-				mouseClickReaction(me);
-			}
-		});
+
 
 	}
 
 	void mouseClickReaction(MouseEvent me)
 	{
+		System.out.println(me.getPoint().getX());
+		me.translatePoint(-this.getBounds().x, -this.getBounds().y -25);
 		for (ScheduleButton rect : buttonList)
 		{
 			if (rect.getBounds().contains(me.getPoint()))
 			{
-				pressedButton = rect;
-				for (ScheduleButton rect2 : buttonList)
+				if(buttonList.indexOf(rect) == Variables.getGameLogic().getTime() || buttonList.indexOf(rect) == Variables.getGameLogic().getTime()-1)
 				{
-					rect2.setDrawOptions(false);
+					parent.setInfo(true);
+					
+					
 				}
-				rect.setDrawOptions(true);
+				else
+				{
+					pressedButton = rect;
+					optionButton.setIndex(buttonList.indexOf(rect));
+				}
+					
 				
 			}
-			pressedButton.mouseClickReaction(me);
 		}
 		
-		
+		optionButton.mouseClickReaction(me);
 
 		setRectangles();
 
@@ -119,7 +122,7 @@ public class ScheduleBox extends JComponent
 		super.paintComponent(g1);
 		setRectangles();
 		
-
+		optionButton.paint(g);
 		
 		for (ScheduleButton rect : buttonList)
 		{
@@ -133,33 +136,25 @@ public class ScheduleBox extends JComponent
 	{
 		int index = 1;
 		for (ScheduleButton rect : buttonList)
-		{ 
+		{
+			
 			if (rect == pressedButton)
 			{
-				
-				
-				
 				rect.setBounds(0, index * this.height / (buttonQte),
 						this.width, this.height / (buttonQte));
 				index++;
-				
+				optionButton.setBounds(0, index * this.height / (buttonQte),
+						this.width, (this.height / (buttonQte)) * 4);
 
-
-				
 				index += 6;
-					
-				
 
 			} else
 			{
-				
-				
-				rect.setBounds(0, (index) * this.height / (buttonQte),
+				rect.setBounds(0, index * this.height / (buttonQte),
 						this.width, this.height / (buttonQte));
 				index++;
 			}
 		}
-		
 	}
 
 
@@ -169,19 +164,15 @@ public class ScheduleBox extends JComponent
 	{
 		width = this.getWidth();
 		height = this.getHeight();
-		
 	}
 	
 	public void pulse(int currentTime)
 	{
-		offset++;
-		offset = offset%9;
 		for(ScheduleButton button : buttonList)
 		{
 			button.setHighlight(false);
 		}
 		buttonList.get(currentTime).setHighlight(true);
-		
 	}
 
 }
