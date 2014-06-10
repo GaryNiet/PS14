@@ -1,16 +1,5 @@
 package schedule;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import places.Cafeteria;
-import places.Cell;
-import places.Courtyard;
-import places.PhoneBooth;
-import places.Place;
-import places.Showers;
-import places.VisitingCell;
-import characters.AICharacter;
 import characters.AbstractCharacter;
 
 public class Steal extends PrisonAction
@@ -27,11 +16,11 @@ public class Steal extends PrisonAction
 	{
 		if(isReal == false)
 		{
-			character.setMaterials(character.getMaterials() + 10);
+			character.setMaterials((int) (character.getMaterials() + (character.getIntelligence()/20.0 * character.getStrength()/20.0) * 30));
 		}
 		else if(isReal == true && success(character, time) == true)
 		{
-			character.setMaterials(character.getMaterials() + 10);
+			character.setMaterials((int) (character.getMaterials() + (character.getIntelligence()/20 * character.getStrength()/20) * 30));
 		}
 	}
 
@@ -48,7 +37,7 @@ public class Steal extends PrisonAction
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		double successRate = (character.getIntelligence()/20) * character.getSchedule().getPlace(time).getStealSR();
+		double successRate = (character.getIntelligence()/20) * character.getSchedule().getPlace(time).getStealSR() * 1.5;
 		return successRate;
 	}
 	

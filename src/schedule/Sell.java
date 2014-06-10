@@ -1,16 +1,5 @@
 package schedule;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import places.Cafeteria;
-import places.Cell;
-import places.Courtyard;
-import places.PhoneBooth;
-import places.Place;
-import places.Showers;
-import places.VisitingCell;
-import characters.AICharacter;
 import characters.AbstractCharacter;
 
 public class Sell extends PrisonAction
@@ -25,15 +14,36 @@ public class Sell extends PrisonAction
 	@Override
 	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)
 	{
-		if(character.getMaterials() >= 10 && isReal == false)
+		if(isReal == false)
 		{
-			character.setMaterials(character.getMaterials() - 10);
-			character.setMoney(character.getMoney() + 5);
+			int sold = (int) (15 * character.getIntelligence()/20);
+			
+			if(character.getMaterials() <= sold)
+			{
+				character.setMoney((int) (character.getMaterials() * 0.5));
+				character.setMaterials(0);
+			}
+			else
+			{
+				character.setMaterials(character.getMaterials() - sold);
+				character.setMoney((int) (sold * 0.5));
+			}
+			
 		}
 		else if(isReal == true && success(character, time) == true)
 		{
-			character.setMaterials(character.getMaterials() - 10);
-			character.setMoney(character.getMoney() + 5);
+			int sold = (int) (15 * character.getIntelligence()/20);
+			
+			if(character.getMaterials() <= sold)
+			{
+				character.setMoney((int) (character.getMaterials() * 0.5));
+				character.setMaterials(0);
+			}
+			else
+			{
+				character.setMaterials(character.getMaterials() - sold);
+				character.setMoney((int) (sold * 0.5));
+			}
 		}
 		
 		

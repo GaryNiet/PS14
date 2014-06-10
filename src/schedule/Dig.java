@@ -1,21 +1,6 @@
 package schedule;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import logic.Variables;
-
-import places.Cafeteria;
-import places.Cell;
-import places.Courtyard;
-import places.Kitchen;
-import places.Library;
-import places.PhoneBooth;
-import places.Place;
-import places.Showers;
-import places.VisitingCell;
-import places.Workshop;
-import characters.AICharacter;
 import characters.AbstractCharacter;
 import characters.PlayerCharacter;
 
@@ -33,14 +18,14 @@ public class Dig extends PrisonAction
 	{
 		if(isReal == false)
 		{
-			character.setHealth(character.getHealth()-2);
-			character.getSchedule().getPlace(time).setDigAdvancement(character.getSchedule().getPlace(time).getDigAdvancement() +1);
+			character.setHealth((int) (character.getHealth()-(5 / (character.getStrength()/20))));
+			character.getSchedule().getPlace(time).setDigAdvancement((int) (character.getSchedule().getPlace(time).getDigAdvancement() +(character.getStrength())));
 			
 		}
 		else if(isReal == true && success(character, time) == true)
 		{
-			character.setHealth(character.getHealth()-2);
-			character.getSchedule().getPlace(time).setDigAdvancement(character.getSchedule().getPlace(time).getDigAdvancement() +1);
+			character.setHealth((int) (character.getHealth()-(5 / (character.getStrength()/20))));
+			character.getSchedule().getPlace(time).setDigAdvancement((int) (character.getSchedule().getPlace(time).getDigAdvancement() +(character.getStrength())));
 			informPlayer(character, time);
 		}
 	}
@@ -66,7 +51,7 @@ public class Dig extends PrisonAction
 	{
 		if(character instanceof PlayerCharacter)
 		{
-			if(character.getSchedule().getPlace(time).getDigAdvancement() >= 100)
+			if(character.getSchedule().getPlace(time).getDigAdvancement() >= Variables.getDigsuccesslimit())
 			{
 				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("there's a hole in the wall now");
 				Variables.getGameLogic().getUserInterface().setInfo(true);

@@ -1,15 +1,6 @@
 package schedule;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import logic.Variables;
-
-import places.Cafeteria;
-import places.Kitchen;
-import places.Place;
-import places.Workshop;
-import characters.AICharacter;
 import characters.AbstractCharacter;
 import characters.PlayerCharacter;
 
@@ -53,7 +44,7 @@ public class StealWeaponTool extends PrisonAction
 	{
 		if(character instanceof PlayerCharacter)
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you know own a weapon");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you now own a weapon");
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

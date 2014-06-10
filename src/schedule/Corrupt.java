@@ -1,19 +1,5 @@
 package schedule;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import places.Cafeteria;
-import places.Cell;
-import places.Courtyard;
-import places.Kitchen;
-import places.Library;
-import places.PhoneBooth;
-import places.Place;
-import places.Showers;
-import places.VisitingCell;
-import places.Workshop;
-import characters.AICharacter;
 import characters.AbstractCharacter;
 
 public class Corrupt extends PrisonAction

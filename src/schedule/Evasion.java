@@ -1,19 +1,6 @@
 package schedule;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import places.Cafeteria;
-import places.Cell;
-import places.Courtyard;
-import places.Kitchen;
-import places.Library;
-import places.PhoneBooth;
-import places.Place;
-import places.Showers;
-import places.VisitingCell;
-import places.Workshop;
-import characters.AICharacter;
+import logic.Variables;
 import characters.AbstractCharacter;
 
 public class Evasion extends PrisonAction
@@ -54,7 +41,7 @@ public class Evasion extends PrisonAction
 	public double successRate(AbstractCharacter character, int time)
 	{
 		double placeSuccessRate = character.getSchedule().getPlace(time).getEvasionSR();
-		if(character.getSchedule().getPlace(time).getDigAdvancement() >= 100)
+		if(character.getSchedule().getPlace(time).getDigAdvancement() >= Variables.getDigsuccesslimit())
 		{
 			placeSuccessRate += 0.2;
 		}

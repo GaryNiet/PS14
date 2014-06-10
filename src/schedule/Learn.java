@@ -1,11 +1,5 @@
 package schedule;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import places.Library;
-import places.Place;
-import characters.AICharacter;
 import characters.AbstractCharacter;
 
 public class Learn extends PrisonAction

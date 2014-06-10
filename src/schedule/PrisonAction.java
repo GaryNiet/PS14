@@ -5,15 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import logic.Variables;
-
-import places.Cafeteria;
-import places.Cell;
-import places.Courtyard;
-import places.PhoneBooth;
 import places.Place;
-import places.Showers;
-import places.VisitingCell;
-import characters.AICharacter;
 import characters.AbstractCharacter;
 
 public abstract class PrisonAction

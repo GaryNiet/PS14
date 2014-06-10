@@ -53,7 +53,7 @@ public class GameLogic
 		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, 15 * 1000);
+		timer.scheduleAtFixedRate(timerTask, 0, 3 * 1000);
 		aiValidator = new AIValidator();
 		currentTime = 0;
 
@@ -84,7 +84,7 @@ public class GameLogic
 		}
 		System.out
 				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
-		// aiValidator.showUsage();
+		 aiValidator.showUsage();
 
 	}
 
@@ -131,8 +131,8 @@ public class GameLogic
 				
 				
 				bestAction.resolve(character, currentTime, true);
-				// aiValidator.update(character.getCurrentPlace(),
-				// character.getFixedAction());
+				 aiValidator.update(character.getCurrentPlace(),
+				 character.getFixedAction());
 				
 			}
 			

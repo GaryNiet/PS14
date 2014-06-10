@@ -18,8 +18,8 @@ public class Variables
 	final static int lostHealthOnLostFight = 8;
 	final static int weakestWinsFightMultiplier = 3;
 	final static int strongerWinsFightMultiplier = 2;
-	final static double digAdvancementImportance = 0.7;
-	final static double guardAwarenessImportance = 14;
+	final static double digAdvancementImportance = 0.2;
+	final static double guardAwarenessImportance = 18;
 	final static int playerWidth = 15;
 	final static int playerHeight = 20;
 
@@ -32,6 +32,7 @@ public class Variables
 	final static int bottomHeight1024 = 192;
 	final static int scheduleHeight1024 = 816;
 	final static int shouldBe0 = -48;
+	final static int digSuccessLimit = 500;
 
 	final static double resolutionMultiplier = 1;
 
@@ -190,5 +191,10 @@ public class Variables
 	public static double getResolutionmultiplier()
 	{
 		return resolutionMultiplier;
+	}
+
+	public static int getDigsuccesslimit()
+	{
+		return digSuccessLimit;
 	}
 }

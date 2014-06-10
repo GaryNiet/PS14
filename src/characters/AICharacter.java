@@ -63,7 +63,7 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		
-		double wellBeingHappiness = (double)health / 20;
+		double wellBeingHappiness = (double)health / 25;
 		if(health > 70)
 		{
 			wellBeingHappiness += 10;
@@ -76,7 +76,7 @@ public class AICharacter extends AbstractCharacter
 		{
 			wellBeingHappiness += 20;
 		}
-		wellBeingHappiness += strength * 2;
+		wellBeingHappiness += strength;
 		
 		wellBeingHappiness *= preferences.wellBeingPreference;
 		//System.out.println("wellbeinghappiness " + wellBeingHappiness);
@@ -87,10 +87,10 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		
-		double evasionHappiness = (double)strength * 1.5;
+		double evasionHappiness = (double)strength * 0.7;
 		evasionHappiness += money;
 		evasionHappiness += influence;
-		evasionHappiness += (double)materials * 0.09;
+		evasionHappiness += (double)materials * 0.6;
 		if(weapon)
 		{
 			evasionHappiness += 2;

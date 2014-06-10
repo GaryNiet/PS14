@@ -1,9 +1,5 @@
 package places;
 
-import java.util.Random;
-
-import characters.AICharacter;
-
 import schedule.Learn;
 import schedule.PrisonAction;
 import schedule.ResolveLegal;
@@ -12,6 +8,7 @@ import schedule.Steal;
 import schedule.StealWeaponTool;
 import schedule.Train;
 import schedule.WellBeing;
+import characters.AICharacter;
 
 public class Free extends Place
 {
