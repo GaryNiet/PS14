@@ -67,7 +67,7 @@ public class ScheduleBox extends JComponent
 		button23to24 = new ScheduleButton("Cell");
 
 
-		optionButton = new OptionButton();
+		optionButton = new OptionButton(this);
 		pressedButton = button23to24;
 
 		buttonList = new ArrayList<>();
@@ -173,6 +173,12 @@ public class ScheduleBox extends JComponent
 			button.setHighlight(false);
 		}
 		buttonList.get(currentTime).setHighlight(true);
+	}
+
+	public void mouseOverReaction(MouseEvent e)
+	{
+		optionButton.mouseOverReaction(e);
+		
 	}
 
 }

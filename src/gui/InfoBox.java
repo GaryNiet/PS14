@@ -69,7 +69,7 @@ public class InfoBox extends JPanel
 
 	public void paintAction(Graphics2D g1)
 	{
-
+		g1.drawString(action.name, 10, 10);
 	}
 
 	public void paintPlace(Graphics2D g1)

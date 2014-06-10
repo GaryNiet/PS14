@@ -84,10 +84,28 @@ public class UserInterface extends JFrame
 			{
 				mouseClickReaction(e);
 			}
+			
+			
 		});
-
+		
+		this.addMouseMotionListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseMoved(MouseEvent e)
+			{
+				motion(e);
+			}
+		});
+		
 	}
 	
+	protected void motion(MouseEvent e)
+	{
+		if(scheduleBox.getBounds().contains(e.getPoint()))
+		{
+			scheduleBox.mouseOverReaction(e);
+		}
+	}
 
 	
 	protected void mouseClickReaction(MouseEvent e)

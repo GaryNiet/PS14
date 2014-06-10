@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
@@ -19,6 +20,7 @@ import schedule.PrisonAction;
 @SuppressWarnings("serial")
 public class OptionButton extends JPanel
 {
+	ScheduleBox parent;
 	
 	final int buttonQte = 16;
 	final int buttonSpacing = 20;
@@ -37,8 +39,9 @@ public class OptionButton extends JPanel
 	int index;
 	int showDropMenu;
 
-	OptionButton()
+	OptionButton(ScheduleBox _parent)
 	{
+		parent= _parent;
 		showsCharacters = false;
 		
 		button = new Rectangle2D.Double();
@@ -57,7 +60,35 @@ public class OptionButton extends JPanel
 			{
 				mouseClickReaction(me);
 			}
+			
+				
 		});
+		
+		
+		
+		
+	}
+	
+	protected void mouseOver(MouseEvent e)
+	{
+		System.out.println("thing");
+	}
+	
+	
+	protected void mouseOverReaction(MouseEvent e)
+	{
+		e.translatePoint((int)(-parent.getBounds().getX()), 25);
+		for (Rectangle2D rect : actionButtonList)
+		{
+
+			if (rect.getBounds().contains(e.getPoint()))
+			{
+				int actionIndex = actionButtonList.indexOf(rect);
+				
+				Variables.getGameLogic().getUserInterface().getInfoBox().fillInfo(possibleActions.get(actionIndex));
+			}
+		}
+		
 	}
 
 	protected void mouseClickReaction(MouseEvent me)
@@ -133,6 +164,7 @@ public class OptionButton extends JPanel
 				Rectangle2D characterButton = new Rectangle2D.Double(0, button
 						.getBounds2D().getY() + buttonSpacing * (spacing - 1), 100,
 						buttonSpacing);
+
 				aiCharactersG.add(characterButton);
 				g1.draw(characterButton);
 				
@@ -152,7 +184,17 @@ public class OptionButton extends JPanel
 						.getBounds2D().getY() + buttonSpacing * (spacing - 1), 100,
 						buttonSpacing);
 				actionButtonList.add(actionButton);
+				if(Variables.getPlayerCharacter().getSchedule().getAction(index).name.equals(action.name))
+				{
+					g1.setPaint(Color.red);
+				}
+				else
+				{
+					g1.setPaint(Color.black);
+				}
 				g1.draw(actionButton);
+				
+				g1.setPaint(Color.black);
 	
 				if (index == 6 && showDropMenu == spacing - 1)
 				{
@@ -188,7 +230,7 @@ public class OptionButton extends JPanel
 
 	private void setCharacterAction(int scheduleIndex, int actionIndex)
 	{
-		System.out.println("si: " + scheduleIndex + " ai: " + actionIndex);
+		//System.out.println("si: " + scheduleIndex + " ai: " + actionIndex);
 		Variables.getGameLogic().getCharacter().getSchedule()
 				.setAction(scheduleIndex, possibleActions.get(actionIndex));
 	}
@@ -213,6 +255,8 @@ public class OptionButton extends JPanel
 	{
 		index = _index;
 	}
+
+
 	
 	
 
