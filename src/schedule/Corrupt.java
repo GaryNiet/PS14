@@ -24,6 +24,8 @@ public class Corrupt extends PrisonAction
 	public Corrupt()
 	{
 		name = "corrupt";
+		
+		information = "this lowers the guard awareness in the current location at the cost of money";
 	}
 
 	@Override

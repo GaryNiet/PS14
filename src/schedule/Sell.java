@@ -18,6 +18,8 @@ public class Sell extends PrisonAction
 	public Sell()
 	{
 		name = "sell";
+		
+		information = "you might get some money out of that useless materials";
 	}
 
 	@Override

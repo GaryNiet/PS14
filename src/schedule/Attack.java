@@ -19,6 +19,8 @@ public class Attack extends PrisonAction
 	{
 		name = "attack";
 		random = new Random();
+		
+		information = "this lets you attack another player";
 	}
 
 	@Override

@@ -18,6 +18,8 @@ public class Steal extends PrisonAction
 	public Steal()
 	{
 		name = "steal";
+		
+		information = "steal some materials while no one is watching";
 	}
 
 	@Override

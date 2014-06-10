@@ -61,6 +61,7 @@ public class OptionButton extends JPanel
 				mouseClickReaction(me);
 			}
 			
+			
 				
 		});
 		
@@ -68,24 +69,45 @@ public class OptionButton extends JPanel
 		
 		
 	}
-	
-	protected void mouseOver(MouseEvent e)
-	{
-		System.out.println("thing");
-	}
+
 	
 	
 	protected void mouseOverReaction(MouseEvent e)
 	{
 		e.translatePoint((int)(-parent.getBounds().getX()), 25);
-		for (Rectangle2D rect : actionButtonList)
+		if(showsCharacters == false)
 		{
-
-			if (rect.getBounds().contains(e.getPoint()))
+			for (Rectangle2D rect : actionButtonList)
 			{
-				int actionIndex = actionButtonList.indexOf(rect);
+	
+				if (rect.getBounds().contains(e.getPoint()))
+				{
+					int actionIndex = actionButtonList.indexOf(rect);
+					
+					Variables.getGameLogic().getUserInterface().getInfoBox().fillInfo(possibleActions.get(actionIndex));
+				}
+			}
+			
+			for (Rectangle2D rect : freePlaceList)
+			{
+				if (rect.contains(e.getPoint()))
+				{
+					int placeIndex = freePlaceList.indexOf(rect);
+					Variables.getGameLogic().getUserInterface().getInfoBox().fillInfo(possiblePlaces.get(placeIndex));
+				}
+			}
+		}
+		else
+		{
+			for (Rectangle2D rect: aiCharactersG)
+			{
+				if(rect.contains(e.getPoint()))
+				{
+					int characterIndex = aiCharactersG.indexOf(rect);
+					Variables.getGameLogic().getUserInterface().getInfoBox().fillInfo(aiCharacters.get(characterIndex));
+					
+				}
 				
-				Variables.getGameLogic().getUserInterface().getInfoBox().fillInfo(possibleActions.get(actionIndex));
 			}
 		}
 		

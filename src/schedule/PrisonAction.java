@@ -22,6 +22,7 @@ public abstract class PrisonAction
 	public abstract void resolve(AbstractCharacter character, int time, boolean isReal);
 	Random random = new Random();
 	double randomDraw;
+	String information;
 	
 	public List<Place> getAllPlaces()
 	{
@@ -41,6 +42,12 @@ public abstract class PrisonAction
 		
 		
 		return returnList;
+	}
+	
+	
+	public String getInformation()
+	{
+		return information;
 	}
 	
 	protected abstract boolean success(AbstractCharacter character, int time);

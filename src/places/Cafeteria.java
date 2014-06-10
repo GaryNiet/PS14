@@ -28,6 +28,8 @@ public class Cafeteria extends Place
 		
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new StealWeaponTool());
+		
+		information = "This is where prisonners eat. Guard presence is  quite sparse";
 	}
 	
 	public Cafeteria(Cafeteria _cafeteria)

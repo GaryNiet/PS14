@@ -13,6 +13,8 @@ public class Learn extends PrisonAction
 	public Learn()
 	{
 		name = "learn";
+		
+		information = "read some books. become a smarter human being";
 	}
 	
 	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)

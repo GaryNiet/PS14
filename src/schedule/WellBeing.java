@@ -19,6 +19,8 @@ public class WellBeing extends PrisonAction
 	public WellBeing()
 	{
 		name = "wellbeing";
+		
+		information = "resting can become useful sometimes";
 	}
 	
 	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)

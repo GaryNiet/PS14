@@ -32,6 +32,8 @@ public class Courtyard extends Place
 		possibleActions.add(new Train());
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Sell());
+		
+		information = "the courtyard is the only outdoors place in the prison";
 	}
 	
 	public Courtyard(Courtyard _courtyard)

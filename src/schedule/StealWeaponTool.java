@@ -18,6 +18,8 @@ public class StealWeaponTool extends PrisonAction
 	public StealWeaponTool()
 	{
 		name = "stealWT";
+		
+		information = "try and get some tool of weapon to give you an edge in combat";
 	}
 
 	@Override

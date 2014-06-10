@@ -24,6 +24,8 @@ public class Dig extends PrisonAction
 	public Dig()
 	{
 		name = "dig";
+		
+		information = "this digs an escape route in the current location";
 	}
 
 	@Override
@@ -64,9 +66,9 @@ public class Dig extends PrisonAction
 	{
 		if(character instanceof PlayerCharacter)
 		{
-			if(character.getSchedule().getPlace(time).getDigAdvancement() >= 0.1)
+			if(character.getSchedule().getPlace(time).getDigAdvancement() >= 100)
 			{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("digAdvacement finished");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("there's a hole in the wall now");
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 			}
 		}

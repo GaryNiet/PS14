@@ -26,6 +26,8 @@ public class Free extends Place
 		possibleActions.add(new StealWeaponTool());
 		possibleActions.add(new Train());
 		possibleActions.add(new Sell());
+		
+		information = "";
 	}
 
 	public Free(Free free)
@@ -39,6 +41,8 @@ public class Free extends Place
 		possibleActions.add(new StealWeaponTool());
 		possibleActions.add(new Train());
 		possibleActions.add(new Sell());
+		
+		information = "";
 	}
 
 	public static Place chosePlace(PrisonAction action, AICharacter character, int time)

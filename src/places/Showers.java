@@ -31,6 +31,8 @@ public class Showers extends Place
 		name = "showers";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());
+		
+		information = "naked people rarely hide weapons";
 	}
 	
 	public Showers(Showers _showers)

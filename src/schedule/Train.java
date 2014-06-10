@@ -18,6 +18,8 @@ public class Train extends PrisonAction
 	public Train()
 	{
 		name = "train";
+		
+		information = "stornger people win more fights";
 	}
 	
 	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)

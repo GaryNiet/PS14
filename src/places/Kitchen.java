@@ -28,6 +28,8 @@ public class Kitchen extends Place
 		
 		name = "kitchen";
 		possibleActions.add(new StealWeaponTool());
+		
+		information = "This is the place where the food is prepare. with KNIVES!";
 	}
 	
 	public Kitchen(Kitchen _kitchen)

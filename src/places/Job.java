@@ -26,6 +26,8 @@ public class Job extends Place
 		possibleActions.add(new StealWeaponTool());
 		possibleActions.add(new Train());
 		possibleActions.add(new Sell());
+		
+		information = "";
 	}
 
 	public Job(Job _job)

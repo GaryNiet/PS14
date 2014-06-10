@@ -28,6 +28,8 @@ public class VisitingCell extends Place
 		name = "visiting cell";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new ResolveLegal());
+		
+		information = "outside contact";
 	}
 	
 	public VisitingCell(VisitingCell _visitingCell)

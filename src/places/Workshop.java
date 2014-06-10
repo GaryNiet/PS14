@@ -33,6 +33,8 @@ public class Workshop extends Place
 
 		name = "workshop";
 		possibleActions.add(new Steal());
+		
+		information = "potential weapons all over the place, but heavily guarded";
 	}
 
 	public Workshop(Workshop _workshop)

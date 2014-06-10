@@ -27,6 +27,8 @@ public class Library extends Place
 		
 		name = "library";
 		possibleActions.add(new Learn());
+		
+		information = "low guard presence and relatively quiet";
 	}
 	
 	public Library(Library _library)

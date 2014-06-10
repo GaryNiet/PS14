@@ -18,6 +18,8 @@ public class ResolveLegal extends PrisonAction
 	public ResolveLegal()
 	{
 		name = "resolveLegal";
+		
+		information = "try and get out, the right way";
 	}
 
 	@Override

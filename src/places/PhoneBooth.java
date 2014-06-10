@@ -29,6 +29,8 @@ public class PhoneBooth extends Place
 		name = "phone booth";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new ResolveLegal());
+		
+		information = "noisy and heavily guarded, this is the only access to phones though";
 	}
 	
 	public PhoneBooth(PhoneBooth _phoneBooth)

@@ -24,6 +24,8 @@ public abstract class Place
 	protected int sizeX;
 	protected int sizeY;
 	
+	String information;
+	
 	public Place()
 	{
 		guardAwareness = 100;
@@ -149,6 +151,12 @@ public abstract class Place
 
 	public int getSizeY() {
 		return sizeY;
+	}
+
+
+	public String getInformation()
+	{
+		return information;
 	}
 	
 }

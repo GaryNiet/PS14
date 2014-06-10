@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import logic.Variables;
+
 import places.Place;
 import schedule.PrisonAction;
 import characters.AbstractCharacter;
@@ -70,11 +72,22 @@ public class InfoBox extends JPanel
 	public void paintAction(Graphics2D g1)
 	{
 		g1.drawString(action.name, 10, 10);
+		g1.drawString(action.getInformation(), 10, 30);
 	}
 
 	public void paintPlace(Graphics2D g1)
 	{
 		g1.drawString(place.name, 10, 10);
+		g1.drawString(place.getInformation(), 10, 30);
+		int digAdvancement = 0;
+		for(Place digPlace: Variables.getPlayerCharacter().getSchedule().getAllPlaces())
+		{
+			if(digPlace.name.equals(place.name))
+			{
+				digAdvancement = digPlace.getDigAdvancement();
+			}
+		}
+		g1.drawString("dig advancement: " + digAdvancement , 10, 50);
 	}
 
 	public void paintCharacter(Graphics2D g1)

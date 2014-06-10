@@ -25,6 +25,8 @@ public class Blackmail extends PrisonAction
 	public Blackmail()
 	{
 		name = "blackmail";
+		
+		information = "this lowers the guard awareness in the current location at the cost of influence";
 	}
 
 	@Override
