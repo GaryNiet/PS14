@@ -216,6 +216,7 @@ public class GameMap extends JPanel{
 	
 	public void mouseClickReaction(MouseEvent me)
 	{
+		me.translatePoint(0, -25);
 		
 		for(Rectangle2D place: placeList)
 		{
@@ -230,8 +231,10 @@ public class GameMap extends JPanel{
 		
 		for(Rectangle2D characterRect: aiRectangles)
 		{
+			
 			if(characterRect.contains(me.getPoint()))
 			{
+				System.out.println("clicked");
 				int characterIndex = aiRectangles.indexOf(characterRect);
 				infoBox.fillInfo((AbstractCharacter)Variables.getCharacterList().get(characterIndex));
 				//System.out.println(characterIndex);

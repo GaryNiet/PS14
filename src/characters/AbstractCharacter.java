@@ -237,4 +237,9 @@ public abstract class AbstractCharacter
 	{
 		this.isEscaped = isEscaped;
 	}
+	
+	public void setSpeed()
+	{
+		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/18;
+	}
 }

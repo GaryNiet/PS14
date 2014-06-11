@@ -31,6 +31,7 @@ public class GameLogic
 	AIValidator aiValidator;
 	Random random;
 	UserInterface userInterface;
+	OnTimer timerTask;
 
 	// beware have to change this value
 	public final int timeZones = 9;
@@ -51,11 +52,11 @@ public class GameLogic
 
 		random = new Random();
 		actionCalculator = new ActionCalculator();
-		OnTimer timerTask = new OnTimer();
-		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, Variables.getGameSpeed() * 1000);
+		timerTask = new OnTimer();
 		aiValidator = new AIValidator();
 		currentTime = 0;
+
+		timerTask.start();
 
 	}
 
@@ -84,7 +85,7 @@ public class GameLogic
 		}
 		System.out
 				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
-		 //aiValidator.showUsage();
+		// aiValidator.showUsage();
 
 	}
 
@@ -95,88 +96,96 @@ public class GameLogic
 		Variables.setPlayerCharacter(playerCharacter);
 		Variables.setGameLogic(this);
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 15; i++)
 		{
-			AICharacter character1 = new AICharacter(CharacterGenerator.generateName(), 2, 12, 10, 0,
-					0);
+			AICharacter character1 = new AICharacter(
+					CharacterGenerator.generateName(), 2, 12, 10, 0, 0);
 			aiCharacterList.add(character1);
 		}
-		
+
 		// aiCharacterList.add(character8);
 
 		Variables.setCharacterList(aiCharacterList);
 
 	}
 
-	public class OnTimer extends TimerTask
+	public class OnTimer extends Thread
 	{
 
 		@Override
 		public synchronized void run()
 		{
-			checkForNewPrisoner();
-			Iterator iter = aiCharacterList.iterator();
-			
-			while(iter.hasNext())
+
+			while (true)
 			{
-				AICharacter character = (AICharacter) iter.next(); 
-				checkforDeath(character, iter);
-				updateVariablesAndCheckIntegrity(character);
+				checkForNewPrisoner();
+				Iterator iter = aiCharacterList.iterator();
 
-				PrisonAction bestAction = actionCalculator.calculateBestAction(
-						character, currentTime);
+				while (iter.hasNext())
+				{
+					AICharacter character = (AICharacter) iter.next();
+					checkforDeath(character, iter);
+					updateVariablesAndCheckIntegrity(character);
 
-				character.setFixedAction(bestAction);
-				setCurrentPlace(character, bestAction);
-				
-				
-				bestAction.resolve(character, currentTime, true);
-				 aiValidator.update(character.getCurrentPlace(),
-				 character.getFixedAction());
-				
+					PrisonAction bestAction = actionCalculator
+							.calculateBestAction(character, currentTime);
+
+					character.setFixedAction(bestAction);
+					setCurrentPlace(character, bestAction);
+
+					bestAction.resolve(character, currentTime, true);
+					aiValidator.update(character.getCurrentPlace(),
+							character.getFixedAction());
+
+				}
+
+				showTable();
+
+				playerCharacter.setCurrentPlace(playerCharacter.getSchedule()
+						.getPlace(currentTime));
+				playerCharacter.getSchedule().getAction(currentTime)
+						.resolve(playerCharacter, currentTime, true);
+				updateVariablesAndCheckIntegrity(playerCharacter);
+
+				userInterface.pulse(currentTime);
+
+				setXY();
+				// System.out.println(playerCharacter.getFreeChoice());
+
+				passTime();
+
+				try
+				{
+					Thread.sleep(Variables.getGameSpeed()*1000);
+				} catch (InterruptedException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			
-			
-			showTable();
-			
-			
-
-			playerCharacter.setCurrentPlace(playerCharacter.getSchedule()
-					.getPlace(currentTime));
-			playerCharacter.getSchedule().getAction(currentTime)
-					.resolve(playerCharacter, currentTime, true);
-			updateVariablesAndCheckIntegrity(playerCharacter);
-
-			userInterface.pulse(currentTime);
-			
-			setXY();
-			// System.out.println(playerCharacter.getFreeChoice());
-
-			passTime();
 
 		}
 
 	}
-	
+
 	private void checkforDeath(AICharacter character, Iterator iter)
 	{
-		if(character.getHealth() < 1)
+		if (character.getHealth() < 1)
 		{
 			iter.remove();
 		}
 	}
-	
+
 	private synchronized void checkForNewPrisoner()
 	{
-		if(random.nextInt(30) == 0)
+		if (random.nextInt(30) == 0)
 		{
-			AICharacter newCharacter = new AICharacter(CharacterGenerator.generateName(), 100, 100, 100, 0,0);
+			AICharacter newCharacter = new AICharacter(
+					CharacterGenerator.generateName(), 100, 100, 100, 0, 0);
 			aiCharacterList.add(newCharacter);
 			userInterface.getGameMap().addCharacter(newCharacter);
 		}
 	}
-	
-
 
 	private void updateVariablesAndCheckIntegrity(AbstractCharacter character)
 	{
@@ -196,15 +205,15 @@ public class GameLogic
 			ai.setPosY(ai.getCurrentPlace().getPosY());
 
 		}
-		
-		if (playerCharacter.getPosX() != playerCharacter.getCurrentPlace().getPosX())
+
+		if (playerCharacter.getPosX() != playerCharacter.getCurrentPlace()
+				.getPosX())
 		{
 			playerCharacter.getAnimation().setMoving();
 		}
 
 		playerCharacter.setPosX(playerCharacter.getCurrentPlace().getPosX());
 		playerCharacter.setPosY(playerCharacter.getCurrentPlace().getPosY());
-		
 
 	}
 
@@ -253,5 +262,27 @@ public class GameLogic
 	public UserInterface getUserInterface()
 	{
 		return userInterface;
+	}
+
+	public void speedUp()
+	{
+		Variables.setGameSpeed(Variables.getGameSpeed() - 1);
+		for(AbstractCharacter character: aiCharacterList)
+		{
+			character.setSpeed();
+		}
+		
+		playerCharacter.setSpeed();
+	}
+	
+	public void speedDown()
+	{
+		Variables.setGameSpeed(Variables.getGameSpeed() + 1);
+		for(AbstractCharacter character: aiCharacterList)
+		{
+			character.setSpeed();
+		}
+		
+		playerCharacter.setSpeed();
 	}
 }

@@ -54,6 +54,8 @@ public class Free extends Place
 				bestPlace = place;
 			}
 		}
+		
+		
 
 		return bestPlace;
 
