@@ -251,7 +251,7 @@ public class OptionButton extends JPanel
 	private void getPossibleActions()
 	{
 		possibleActions = Variables.getGameLogic().getCharacter().getSchedule()
-				.getPlace(index).getPossibleActions();
+				.getPlace(index).getPossibleActions(Variables.getGameLogic().getCharacter());
 		
 		if(index == 3 || index == 5)
 		{

@@ -21,7 +21,7 @@ public class ActionCalculator
 		
 		
 		
-		for(PrisonAction prisonAction: character.getSchedule().getPlace(currentTime).possibleActions)
+		for(PrisonAction prisonAction: character.getSchedule().getPlace(currentTime).getPossibleActions(character))
 		{
 			{
 				//System.out.println("------------------------------"+ prisonAction.name + "--------------------------------------");

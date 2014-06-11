@@ -131,8 +131,9 @@ public abstract class Place
 		this.digAdvancement = digAdvancement;
 	}
 	
-	public List<PrisonAction> getPossibleActions()
+	public List<PrisonAction> getPossibleActions(AbstractCharacter character)
 	{
+		
 		return possibleActions;
 	}
 
@@ -160,6 +161,12 @@ public abstract class Place
 	public String getInformation()
 	{
 		return information;
+	}
+
+
+	public List<PrisonAction> getActions()
+	{
+		return possibleActions;
 	}
 
 

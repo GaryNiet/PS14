@@ -77,13 +77,13 @@ public class Job extends Place
 
 	}
 	
-	public List<PrisonAction> getPossibleActions()
+	public List<PrisonAction> getPossibleActions(AbstractCharacter character)
 	{
-		return possibleActions;
+		return character.getJob().getPossibleActions(character);
 	}
 	
 	public List<PrisonAction> jobActions(AbstractCharacter character)
 	{
-		return character.getJob().getPossibleActions();
+		return character.getJob().getPossibleActions(character);
 	}
 }

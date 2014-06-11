@@ -22,7 +22,7 @@ public abstract class PrisonAction
 		
 		for(Place place: Variables.getSchedule().getAllPlaces())
 		{
-			for(PrisonAction action: place.getPossibleActions())
+			for(PrisonAction action: place.getActions())
 			{
 				if(action.getClass() == this.getClass())
 				{
