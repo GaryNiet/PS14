@@ -53,7 +53,7 @@ public class GameLogic
 		actionCalculator = new ActionCalculator();
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
-		timer.scheduleAtFixedRate(timerTask, 0, 3 * 1000);
+		timer.scheduleAtFixedRate(timerTask, 0, Variables.getGameSpeed() * 1000);
 		aiValidator = new AIValidator();
 		currentTime = 0;
 
@@ -84,7 +84,7 @@ public class GameLogic
 		}
 		System.out
 				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
-		 aiValidator.showUsage();
+		 //aiValidator.showUsage();
 
 	}
 

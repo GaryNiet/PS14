@@ -79,8 +79,8 @@ public class Animation
 			
 
 
-			roamX -= divisionX/character.speed;
-			roamY -= divisionY/character.speed;
+			roamX -= divisionX/character.movementPeriod;
+			roamY -= divisionY/character.movementPeriod;
 
 		} else
 		{

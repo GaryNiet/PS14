@@ -33,6 +33,7 @@ public class Variables
 	final static int scheduleHeight1024 = 816;
 	final static int shouldBe0 = -48;
 	final static int digSuccessLimit = 500;
+	final static int gameSpeed = 2;
 
 	final static double resolutionMultiplier = 1;
 
@@ -43,6 +44,12 @@ public class Variables
 	static List<AbstractCharacter> allCharacters;
 
 	static GameLogic gameLogic;
+	
+	
+	public static int getGameSpeed()
+	{
+		return gameSpeed;
+	}
 
 	public static int getWeaponBonus()
 	{

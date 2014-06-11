@@ -3,6 +3,9 @@ package places;
 import java.util.ArrayList;
 import java.util.List;
 
+import characters.AbstractCharacter;
+import characters.PlayerCharacter;
+
 import schedule.Attack;
 import schedule.Blackmail;
 import schedule.Corrupt;
@@ -158,5 +161,7 @@ public abstract class Place
 	{
 		return information;
 	}
+
+
 	
 }

@@ -87,7 +87,7 @@ public class ScheduleBox extends JComponent
 
 	void mouseClickReaction(MouseEvent me)
 	{
-		System.out.println(me.getPoint().getX());
+		//System.out.println(me.getPoint().getX());
 		me.translatePoint(-this.getBounds().x, -this.getBounds().y -25);
 		for (ScheduleButton rect : buttonList)
 		{

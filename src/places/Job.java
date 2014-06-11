@@ -1,5 +1,6 @@
 package places;
 
+import java.util.List;
 import java.util.Random;
 
 import characters.AbstractCharacter;
@@ -74,5 +75,15 @@ public class Job extends Place
 
 		return character.getJob();
 
+	}
+	
+	public List<PrisonAction> getPossibleActions()
+	{
+		return possibleActions;
+	}
+	
+	public List<PrisonAction> jobActions(AbstractCharacter character)
+	{
+		return character.getJob().getPossibleActions();
 	}
 }
