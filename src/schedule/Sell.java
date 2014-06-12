@@ -1,5 +1,6 @@
 package schedule;
 
+import logic.Variables;
 import characters.AbstractCharacter;
 
 public class Sell extends PrisonAction
@@ -48,6 +49,7 @@ public class Sell extends PrisonAction
 		
 		
 	}
+	
 
 	@Override
 	protected boolean success(AbstractCharacter character, int time)

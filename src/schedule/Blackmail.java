@@ -1,5 +1,6 @@
 package schedule;
 
+import logic.Variables;
 import characters.AbstractCharacter;
 
 public class Blackmail extends PrisonAction
@@ -29,9 +30,20 @@ public class Blackmail extends PrisonAction
 		{
 			character.setInfluence(influence - influenceChange);
 			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - guardAwarenessChange);
+			informPlayer(character, time);
+			
 		}
 		
 		
+	}
+	
+	private void informPlayer(AbstractCharacter character, int time)
+	{
+		if(character == Variables.getPlayerCharacter())
+		{
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("blackmail successful");
+				Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
 	}
 
 	@Override

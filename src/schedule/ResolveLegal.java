@@ -1,5 +1,6 @@
 package schedule;
 
+import logic.Variables;
 import characters.AbstractCharacter;
 
 public class ResolveLegal extends PrisonAction
@@ -21,6 +22,10 @@ public class ResolveLegal extends PrisonAction
 		else if(isReal == true && success(character, time) == true)
 		{
 			character.setLegalAdvancement(character.getLegalAdvancement() + (1/character.getLegalAdvancement()) * character.getIntelligence());
+			if(character.getLegalAdvancement() >= 50)
+			{
+				informPlayer(character, time);
+			}
 		}
 	}
 
@@ -39,6 +44,15 @@ public class ResolveLegal extends PrisonAction
 	{
 		double successRate = (character.getIntelligence()/20) * character.getSchedule().getPlace(time).getResolveLegalSR();
 		return successRate;
+	}
+	
+	private void informPlayer(AbstractCharacter character, int time)
+	{
+		if(character == Variables.getPlayerCharacter())
+		{
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you are free to go");
+				Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
 	}
 	
 

@@ -29,6 +29,8 @@ public class Dig extends PrisonAction
 			informPlayer(character, time);
 		}
 	}
+	
+	
 
 	@Override
 	protected boolean success(AbstractCharacter character, int time)

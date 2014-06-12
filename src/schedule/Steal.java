@@ -1,5 +1,6 @@
 package schedule;
 
+import logic.Variables;
 import characters.AbstractCharacter;
 
 public class Steal extends PrisonAction
@@ -21,6 +22,7 @@ public class Steal extends PrisonAction
 		else if(isReal == true && success(character, time) == true)
 		{
 			character.setMaterials((int) (character.getMaterials() + (character.getIntelligence()/20 * character.getStrength()/20) * 30));
+			informPlayer(character, time);
 		}
 	}
 
@@ -41,6 +43,14 @@ public class Steal extends PrisonAction
 		return successRate;
 	}
 	
+	private void informPlayer(AbstractCharacter character, int time)
+	{
+		if(character == Variables.getPlayerCharacter())
+		{
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("stole materials");
+				Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
+	}
 
 
 

@@ -24,6 +24,7 @@ public class Evasion extends PrisonAction
 		else if(isReal == true && success(character, time) == true)
 		{
 			character.setEscaped(true);
+			informPlayer(character, time);
 		}
 	}
 
@@ -47,6 +48,15 @@ public class Evasion extends PrisonAction
 		}
 		double successRate = placeSuccessRate * character.getInfluence()/1000 * character.getStrength()/20 * character.getIntelligence()/20;
 		return successRate;
+	}
+	
+	private void informPlayer(AbstractCharacter character, int time)
+	{
+		if(character == Variables.getPlayerCharacter())
+		{
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you are out");
+				Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
 	}
 	
 

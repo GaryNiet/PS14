@@ -26,24 +26,36 @@ public class Attack extends PrisonAction
 	@Override
 	public void resolve(AbstractCharacter character, int time, boolean isReal)
 	{
-		if(character instanceof PlayerCharacter)
+		
+		if(character == Variables.getPlayerCharacter())
 		{
 			AbstractCharacter victim = ((PlayerCharacter)character).getVictim();
 			AbstractCharacter winner = calculateWinner(character, victim);
 			
-			if(winner == character)
+			if(success(character, time) == true)
 			{
-				character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
-				victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
-				victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
-				informPlayer(character, time);
+				if(winner == character)
+				{
+					character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
+					victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
+					victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
+					informPlayerVictory(character, time);
+				}
+				else
+				{
+					victim.setInfluence(victim.getInfluence() + (int)calculateFightWinnings(victim, character));
+					character.setInfluence(character.getInfluence() - Variables.getLostinfluenceonlostfight());
+					character.setHealth(character.getHealth() - Variables.getLosthealthonlostfight());
+					character.setWeapon(false);
+					informPlayerDefeat(character, time);
+				}
 			}
 			else
 			{
-				victim.setInfluence(victim.getInfluence() + (int)calculateFightWinnings(victim, character));
-				character.setInfluence(character.getInfluence() - Variables.getLostinfluenceonlostfight());
-				character.setHealth(character.getHealth() - Variables.getLosthealthonlostfight());
-				character.setWeapon(false);
+				character.setHealth(character.getHealth() - 10);
+				victim.setHealth(victim.getHealth() - 10);
+				informPlayerUnsuccessful(character, time);
+				
 			}
 			
 		}
@@ -62,6 +74,7 @@ public class Attack extends PrisonAction
 				AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
 				character.setHealth(character.getHealth() - 10);
 				victim.setHealth(victim.getHealth() - 10);
+				
 			}
 			
 			
@@ -70,11 +83,29 @@ public class Attack extends PrisonAction
 		
 	}
 	
-	private void informPlayer(AbstractCharacter character, int time)
+	private void informPlayerVictory(AbstractCharacter character, int time)
 	{
-		if(character instanceof PlayerCharacter)
+		if(character == Variables.getPlayerCharacter())
 		{
 				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("attack successful");
+				Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
+	}
+	
+	private void informPlayerUnsuccessful(AbstractCharacter character, int time)
+	{
+		if(character == Variables.getPlayerCharacter())
+		{
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("attack successful");
+				Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
+	}
+	
+	private void informPlayerDefeat(AbstractCharacter character, int time)
+	{
+		if(character == Variables.getPlayerCharacter())
+		{
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you lost the fight");
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

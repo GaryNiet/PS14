@@ -1,5 +1,6 @@
 package schedule;
 
+import logic.Variables;
 import characters.AbstractCharacter;
 
 public class Corrupt extends PrisonAction
@@ -28,6 +29,16 @@ public class Corrupt extends PrisonAction
 		{
 			character.setMoney(character.getMoney() - moneyChange);
 			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - 3);
+			informPlayer(character, time);
+		}
+	}
+	
+	private void informPlayer(AbstractCharacter character, int time)
+	{
+		if(character == Variables.getPlayerCharacter())
+		{
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("corruption successful");
+				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
 
