@@ -33,6 +33,8 @@ public class GameLogic
 	UserInterface userInterface;
 	OnTimer timerTask;
 
+	boolean makeWait;
+
 	// beware have to change this value
 	public final int timeZones = 9;
 
@@ -55,6 +57,7 @@ public class GameLogic
 		timerTask = new OnTimer();
 		aiValidator = new AIValidator();
 		currentTime = 0;
+		makeWait = false;
 
 		timerTask.start();
 
@@ -153,17 +156,35 @@ public class GameLogic
 				// System.out.println(playerCharacter.getFreeChoice());
 
 				passTime();
-
-				try
+				for (int i = 0; i < 10; i++)
 				{
-					Thread.sleep(Variables.getGameSpeed()*1000);
-				} catch (InterruptedException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					try
+					{
+						Thread.sleep(Variables.getGameSpeed() * 100);
+					} catch (InterruptedException e)
+					{
+						e.printStackTrace();
+					}
+					if(makeWait == true)
+					{
+						makeWait = false;
+						try
+						{
+							this.wait();
+						} catch (InterruptedException e)
+						{
+							e.printStackTrace();
+						}
+					}
 				}
 			}
+			
+			
 
+		}
+		public synchronized void free()
+		{
+			this.notifyAll();
 		}
 
 	}
@@ -267,22 +288,37 @@ public class GameLogic
 	public void speedUp()
 	{
 		Variables.setGameSpeed(Variables.getGameSpeed() - 1);
-		for(AbstractCharacter character: aiCharacterList)
+		for (AbstractCharacter character : aiCharacterList)
 		{
 			character.setSpeed();
 		}
-		
+
 		playerCharacter.setSpeed();
 	}
-	
+
 	public void speedDown()
 	{
 		Variables.setGameSpeed(Variables.getGameSpeed() + 1);
-		for(AbstractCharacter character: aiCharacterList)
+		for (AbstractCharacter character : aiCharacterList)
 		{
 			character.setSpeed();
 		}
-		
+
 		playerCharacter.setSpeed();
+	}
+
+	public synchronized OnTimer getTimerTask()
+	{
+		return timerTask;
+	}
+
+	public boolean isMakeWait()
+	{
+		return makeWait;
+	}
+
+	public void setMakeWait(boolean makeWait)
+	{
+		this.makeWait = makeWait;
 	}
 }

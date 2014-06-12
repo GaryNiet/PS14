@@ -215,6 +215,15 @@ public class UserInterface extends JFrame
 	
 	public void setInfo(boolean _info)
 	{
+		if(_info == true)
+		{
+			gameLogic.setMakeWait(true);
+		}
+		else
+		{
+			gameLogic.getTimerTask().free();
+		}
+		
 		info = _info;
 	}
 	

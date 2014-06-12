@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -38,6 +39,9 @@ public class WarningWindow extends JPanel
 		g1.fill(new Rectangle.Double(0,0, 500,500));
 		g1.setPaint(Color.black);
 		g1.fill(okButton);
+		g1.setPaint(Color.white);
+		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+		g1.drawString("ok", (int)okButton.getBounds().getX() + 20, (int)okButton.getBounds().getY() + 20);
 		g1.drawString(text, 10, 10);
 		
 	}

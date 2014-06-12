@@ -27,7 +27,8 @@ public class ScheduleBox extends JComponent
 
 	
 
-	
+	QuickWarning quickWarning;
+	int qwIndex;
 
 	ScheduleButton button0to6;
 	ScheduleButton button6to7;
@@ -50,7 +51,7 @@ public class ScheduleBox extends JComponent
 	{
 		parent = _parent;
 
-
+		quickWarning = new QuickWarning();
 
 		border = BorderFactory.createLineBorder(Color.black);
 		this.setBorder(border);
@@ -96,7 +97,8 @@ public class ScheduleBox extends JComponent
 				if(buttonList.indexOf(rect) == Variables.getGameLogic().getTime() || buttonList.indexOf(rect) == Variables.getGameLogic().getTime()-1)
 				{
 					parent.setInfo(true);
-					
+					qwIndex = buttonList.indexOf(rect);
+					quickWarning.opacity = 500;
 					
 				}
 				else
@@ -123,11 +125,19 @@ public class ScheduleBox extends JComponent
 		
 		optionButton.paint(g);
 		
+		int index = 1;
 		for (ScheduleButton rect : buttonList)
-		{
+		{	
 			rect.paint(g);
-
+			if(qwIndex == index -1)
+			{
+				quickWarning.setBounds(0, index * this.height / (buttonQte), this.width, this.height / (buttonQte));
+				quickWarning.paint(g);
+			}
+			index++;
 		}
+		
+		
 		
 	}
 
