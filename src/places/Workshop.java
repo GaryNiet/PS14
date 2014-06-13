@@ -1,5 +1,6 @@
 package places;
 
+import characters.AbstractCharacter;
 import logic.Variables;
 import schedule.Steal;
 
@@ -32,6 +33,7 @@ public class Workshop extends Place
 		digAdvancement = 0;
 
 		name = "workshop";
+		jobName = "assembling line";
 		possibleActions.add(new Steal());
 		
 		information = "potential weapons all over the place, but heavily guarded";
@@ -52,5 +54,14 @@ public class Workshop extends Place
 
 		name = "workshop";
 		possibleActions.add(new Steal());
+	}
+	
+	public boolean isDoable(AbstractCharacter character)
+	{
+		if(character.getStrength() > 5 && character.getIntelligence() > 5)
+		{
+			return true;
+		}
+		return false;
 	}
 }

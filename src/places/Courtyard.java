@@ -1,6 +1,7 @@
 package places;
 
 
+import characters.AbstractCharacter;
 import logic.Variables;
 import schedule.Sell;
 import schedule.Train;
@@ -20,6 +21,7 @@ public class Courtyard extends Place
 		sizeY = (int) ((0.1953) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		name = "courtyard";
+		jobName = "stock management";
 		
 		attackSR = 0.6;
 		blackmailSR = 0.4;
@@ -53,6 +55,15 @@ public class Courtyard extends Place
 		possibleActions.add(new Train());
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Sell());
+	}
+	
+	public boolean isDoable(AbstractCharacter character)
+	{
+		if(character.getStrength() > 5 && character.getIntelligence() > 5)
+		{
+			return true;
+		}
+		return false;
 	}
 
 }

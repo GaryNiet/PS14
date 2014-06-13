@@ -28,9 +28,11 @@ public abstract class Place
 	protected int sizeY;
 	
 	String information;
+	String jobName;
 	
 	public Place()
 	{
+		jobName = "";
 		guardAwareness = 100;
 		digAdvancement = 0;
 		possibleActions = new ArrayList<>();
@@ -167,6 +169,18 @@ public abstract class Place
 	public List<PrisonAction> getActions()
 	{
 		return possibleActions;
+	}
+
+
+	public boolean isDoable(AbstractCharacter character)
+	{
+		return true;
+	}
+
+
+	public String getJobName()
+	{
+		return jobName;
 	}
 
 

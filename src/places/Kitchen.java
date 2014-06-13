@@ -1,6 +1,7 @@
 package places;
 
 
+import characters.AbstractCharacter;
 import logic.Variables;
 import schedule.StealWeaponTool;
 
@@ -27,6 +28,7 @@ public class Kitchen extends Place
 		
 		
 		name = "kitchen";
+		jobName = "kitchen attendant";
 		possibleActions.add(new StealWeaponTool());
 		
 		information = "This is the place where the food is prepare. with KNIVES!";
@@ -47,5 +49,14 @@ public class Kitchen extends Place
 		
 		name = "kitchen";
 		possibleActions.add(new StealWeaponTool());
+	}
+	
+	public boolean isDoable(AbstractCharacter character)
+	{
+		if(character.getStrength() > 5 && character.getIntelligence() > 5)
+		{
+			return true;
+		}
+		return false;
 	}
 }

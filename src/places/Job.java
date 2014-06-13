@@ -1,23 +1,27 @@
 package places;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import characters.AbstractCharacter;
-
 import logic.Variables;
+import schedule.ChangeJob;
 import schedule.PrisonAction;
 import schedule.Sell;
 import schedule.Steal;
 import schedule.StealWeaponTool;
 import schedule.Train;
 import schedule.WellBeing;
+import characters.AbstractCharacter;
 
 
 
 	
 public class Job extends Place
 {
+	
+	static Place[] jobs;
+	
 	public Job()
 	{
 		name = "job";
@@ -29,6 +33,12 @@ public class Job extends Place
 		possibleActions.add(new Sell());
 		
 		information = "";
+		
+		jobs = new Place[4];
+		jobs[3] = new Kitchen();
+		jobs[1] = new Workshop();
+		jobs[2] = new Courtyard();
+		jobs[0] = new Cell();
 	}
 
 	public Job(Job _job)
@@ -46,18 +56,15 @@ public class Job extends Place
 	{
 		Random random = new Random();
 		
-		Place[] jobs = new Place[4];
-		jobs[0] = new Kitchen();
-		jobs[1] = new Workshop();
-		jobs[2] = new Courtyard();
-		jobs[3] = new Cell();
-		
 		return jobs[random.nextInt(3)];
 		
 	}
 	
 	
-	
+	public static Place[] getJobs()
+	{
+		return jobs;
+	}
 
 	public int getSizeX()
 	{
@@ -72,7 +79,6 @@ public class Job extends Place
 	public static Place chosePlace(PrisonAction action, AbstractCharacter character, int time)
 	{
 		
-
 		return character.getJob();
 
 	}
@@ -84,6 +90,8 @@ public class Job extends Place
 	
 	public List<PrisonAction> jobActions(AbstractCharacter character)
 	{
-		return character.getJob().getPossibleActions(character);
+		List<PrisonAction> list = new ArrayList<>(character.getJob().getPossibleActions(character));
+		list.add(new ChangeJob());
+		return list;
 	}
 }

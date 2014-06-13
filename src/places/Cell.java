@@ -1,6 +1,7 @@
 package places;
 
 
+import characters.AbstractCharacter;
 import logic.Variables;
 import schedule.Steal;
 import schedule.WellBeing;
@@ -17,6 +18,7 @@ public class Cell extends Place
 		sizeY = (int) ((0.156) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		name = "cell";
+		jobName = "cleaning duty";
 		
 		attackSR = 0.6;
 		blackmailSR = 0.3;
@@ -52,7 +54,11 @@ public class Cell extends Place
 		possibleActions.add(new Steal());
 	}
 	
-	
+	public boolean isDoable(AbstractCharacter character)
+	{
+		
+			return true;
+	}
 
 	
 	

@@ -28,6 +28,7 @@ public class OptionButton extends JPanel
 
 	Rectangle2D button;
 	boolean showsCharacters;
+	boolean showsChangeJobMenu;
 	boolean eraseFlag;
 
 	List<Rectangle2D> actionButtonList;
@@ -36,7 +37,9 @@ public class OptionButton extends JPanel
 	List<PrisonAction> possibleActions;
 	List<AICharacter> aiCharacters;
 	List<Rectangle2D> aiCharactersG;
+	List<Rectangle2D> jobButtonsG;
 
+	//would be cleaner with enumeration
 	int index;
 	int showDropMenu;
 
@@ -44,7 +47,8 @@ public class OptionButton extends JPanel
 	{
 		parent = _parent;
 		showsCharacters = false;
-
+		showsChangeJobMenu = false;
+		
 		button = new Rectangle2D.Double();
 
 		actionButtonList = new ArrayList<>();
@@ -53,6 +57,7 @@ public class OptionButton extends JPanel
 		possibleActions = new ArrayList<>();
 		aiCharacters = new ArrayList<>();
 		aiCharactersG = new ArrayList<>();
+		jobButtonsG = new ArrayList<>();
 
 		this.addMouseListener(new MouseAdapter()
 		{
@@ -68,7 +73,7 @@ public class OptionButton extends JPanel
 	protected void mouseOverReaction(MouseEvent e)
 	{
 		e.translatePoint((int) (-parent.getBounds().getX()), 25);
-		if (showsCharacters == false)
+		if (showsCharacters == false && showsChangeJobMenu == false)
 		{
 			for (Rectangle2D rect : actionButtonList)
 			{
@@ -91,7 +96,21 @@ public class OptionButton extends JPanel
 							.fillInfo(possiblePlaces.get(placeIndex));
 				}
 			}
-		} else
+		}
+		else if(showsChangeJobMenu = true)
+		{
+			for(Rectangle2D rect: jobButtonsG)
+			{
+				if (rect.contains(e.getPoint()))
+				{
+					int jobIndex = jobButtonsG.indexOf(rect);
+					Variables.getGameLogic().getUserInterface().getInfoBox()
+							.fillInfo(Job.getJobs()[jobIndex]);
+
+				}
+			}
+		}
+		else
 		{
 			for (Rectangle2D rect : aiCharactersG)
 			{
@@ -110,7 +129,7 @@ public class OptionButton extends JPanel
 
 	protected void mouseClickReaction(MouseEvent me)
 	{
-		if (showsCharacters == false)
+		if (showsCharacters == false && showsChangeJobMenu == false)
 		{
 			for (Rectangle2D rect : actionButtonList)
 			{
@@ -124,7 +143,14 @@ public class OptionButton extends JPanel
 					}
 					setCharacterAction(index, actionIndex);
 					showDropMenu = actionIndex;
+					
+					
+					if((index == 3 || index == 5) && actionIndex == actionButtonList.size()-1)
+					{
+						showsChangeJobMenu = true;
+					}
 				}
+				
 			}
 
 			for (Rectangle2D rect : freePlaceList)
@@ -137,15 +163,27 @@ public class OptionButton extends JPanel
 							.setFreeChoice(possiblePlaces.get(placeIndex));
 				}
 			}
-		} else
+		}
+		else if(showsChangeJobMenu == true)
+		{
+			for(Rectangle2D rect: jobButtonsG)
+			{
+				if(rect.contains(me.getPoint()))
+				{
+					int placeIndex = jobButtonsG.indexOf(rect);
+					Variables.getGameLogic().getCharacter().setNextJob(Job.getJobs()[placeIndex]);
+					showsChangeJobMenu = false;
+				}
+			}
+		}
+		else
 		{
 			for (Rectangle2D rect : aiCharactersG)
 			{
 				if (rect.contains(me.getPoint()))
 				{
 					int characterIndex = aiCharactersG.indexOf(rect);
-					Variables.getPlayerCharacter().setvictim(
-							aiCharacters.get(characterIndex));
+					Variables.getPlayerCharacter().setvictim(aiCharacters.get(characterIndex));
 					showsCharacters = false;
 
 				}
@@ -182,6 +220,26 @@ public class OptionButton extends JPanel
 
 				aiCharactersG.add(characterButton);
 				g1.draw(characterButton);
+
+				spacing++;
+			}
+		}
+		else if(showsChangeJobMenu == true)
+		{
+			int spacing = 1;
+			for(Place place: Job.getJobs())
+			{
+				if(place.isDoable(Variables.getPlayerCharacter()))
+				{
+					g1.drawString(place.getJobName(), 10, (int) button
+							.getBounds2D().getY() + buttonSpacing * spacing);
+					Rectangle2D jobButton = new Rectangle2D.Double(0, button
+							.getBounds2D().getY() + buttonSpacing * (spacing - 1),
+							100, buttonSpacing);
+	
+					jobButtonsG.add(jobButton);
+					g1.draw(jobButton);
+				}
 
 				spacing++;
 			}

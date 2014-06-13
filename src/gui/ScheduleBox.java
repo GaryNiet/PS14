@@ -96,7 +96,6 @@ public class ScheduleBox extends JComponent
 			{
 				if(buttonList.indexOf(rect) == Variables.getGameLogic().getTime() || buttonList.indexOf(rect) == Variables.getGameLogic().getTime()-1)
 				{
-					parent.setInfo(true);
 					qwIndex = buttonList.indexOf(rect);
 					quickWarning.opacity = 500;
 					
