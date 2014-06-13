@@ -112,7 +112,6 @@ public class ScheduleBox extends JComponent
 		
 		optionButton.mouseClickReaction(me);
 
-		setRectangles();
 
 	}
 
@@ -124,16 +123,13 @@ public class ScheduleBox extends JComponent
 		
 		optionButton.paint(g);
 		
-		int index = 1;
+
 		for (ScheduleButton rect : buttonList)
 		{	
 			rect.paint(g);
-			if(qwIndex == index -1)
-			{
-				quickWarning.setBounds(0, index * this.height / (buttonQte), this.width, this.height / (buttonQte));
-				quickWarning.paint(g);
-			}
-			index++;
+			
+			quickWarning.paint(g);
+			
 		}
 		
 		
@@ -143,6 +139,7 @@ public class ScheduleBox extends JComponent
 	private void setRectangles()
 	{
 		int index = 1;
+		int index2 = 1;
 		for (ScheduleButton rect : buttonList)
 		{
 			
@@ -150,17 +147,29 @@ public class ScheduleBox extends JComponent
 			{
 				rect.setBounds(0, index * this.height / (buttonQte),
 						this.width, this.height / (buttonQte));
+				if(qwIndex == index2 -1)
+				{
+					quickWarning.setBounds(0, index * this.height / (buttonQte), this.width, this.height / (buttonQte));
+				}
 				index++;
+				index2++;
 				optionButton.setBounds(0, index * this.height / (buttonQte),
 						this.width, (this.height / (buttonQte)) * 4);
-
+				
+				
+				
 				index += 6;
 
 			} else
 			{
 				rect.setBounds(0, index * this.height / (buttonQte),
 						this.width, this.height / (buttonQte));
+				if(qwIndex == index2 -1)
+				{
+					quickWarning.setBounds(0, index * this.height / (buttonQte), this.width, this.height / (buttonQte));
+				}
 				index++;
+				index2++;
 			}
 		}
 	}
