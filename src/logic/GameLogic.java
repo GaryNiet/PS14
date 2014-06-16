@@ -287,7 +287,11 @@ public class GameLogic
 
 	public void speedUp()
 	{
-		Variables.setGameSpeed(Variables.getGameSpeed() - 1);
+		if(Variables.getGameSpeed() > 1)
+		{
+			Variables.setGameSpeed(Variables.getGameSpeed() - 1);
+		}
+		
 		for (AbstractCharacter character : aiCharacterList)
 		{
 			character.setSpeed();

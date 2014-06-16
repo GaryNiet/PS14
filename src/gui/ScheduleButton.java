@@ -14,6 +14,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import logic.Variables;
+
 @SuppressWarnings("serial")
 public class ScheduleButton extends JPanel
 {
@@ -24,10 +26,11 @@ public class ScheduleButton extends JPanel
 	private Rectangle2D rect;
 	private String label;
 	private boolean highLighted;
+	int index;
 
-	public ScheduleButton(String name)
+	public ScheduleButton(String name, int _index)
 	{
-		
+		index = _index;
 		this.setVisible(true);
 		rect = new Rectangle2D.Double();
 		label = name;
@@ -67,8 +70,23 @@ public class ScheduleButton extends JPanel
 		g1.fillRect((int)rect.getX(), (int)rect.getY(), (int)rect.getWidth(), (int)rect.getHeight());
 		g1.setPaint(Color.white);
 		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-		g1.drawString(label, (int) rect.getBounds2D().getX(),
-				(int) rect.getBounds2D().getY() + 15);
+		
+		if(index == 3 || index == 5)
+		{
+			g1.drawString(label + " - " +  Variables.getPlayerCharacter().getJob().name + " - " + Variables.getPlayerCharacter().getSchedule().getAction(index).name, (int) rect.getBounds2D().getX(),
+					(int) rect.getBounds2D().getY() + 15);
+		}
+		else if (index == 6)
+		{
+			g1.drawString(label + " - " +  Variables.getPlayerCharacter().getSchedule().getAction(index).name + " - " + Variables.getPlayerCharacter().getSchedule().getPlace(index).name, (int) rect.getBounds2D().getX(),
+					(int) rect.getBounds2D().getY() + 15);
+		}
+		else
+		{
+			g1.drawString(label + " - " +  Variables.getPlayerCharacter().getSchedule().getAction(index).name, (int) rect.getBounds2D().getX(),
+					(int) rect.getBounds2D().getY() + 15);
+		}
+		
 		
 	}
 	
