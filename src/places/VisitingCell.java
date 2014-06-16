@@ -23,6 +23,7 @@ public class VisitingCell extends Place
 		digSR = 0.1;
 		
 		digAdvancement = 0;
+		evasionSR = 0.2;
 		
 		
 		name = "visiting cell";
@@ -41,6 +42,7 @@ public class VisitingCell extends Place
 		blackmailSR = _visitingCell.blackmailSR;
 		corruptSR = _visitingCell.corruptSR;
 		digSR = _visitingCell.digSR;
+		evasionSR = _visitingCell.evasionSR;
 		
 		digAdvancement = _visitingCell.digAdvancement;
 		guardAwareness = _visitingCell.guardAwareness;

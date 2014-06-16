@@ -16,7 +16,7 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		legalAdvancement =1;
-		materials = 0;
+		materials = 500;
 		influence = 0;
 		money = 100;
 		weapon = false;
@@ -63,18 +63,18 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		
-		double wellBeingHappiness = (double)health / 25;
+		double wellBeingHappiness = (double)health / 10;
 		if(health > 70)
 		{
 			wellBeingHappiness += 10;
 		}
 		else if(health > 50)
 		{
-			wellBeingHappiness += 15;
+			wellBeingHappiness += 50;
 		}
 		else if(health > 20)
 		{
-			wellBeingHappiness += 20;
+			wellBeingHappiness += 70;
 		}
 		wellBeingHappiness += strength;
 		
@@ -88,9 +88,9 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		double evasionHappiness = (double)strength * 0.7;
-		evasionHappiness += money;
-		evasionHappiness += influence;
-		evasionHappiness += (double)materials * 0.6;
+		evasionHappiness += money * 2;
+		evasionHappiness += influence / 1.4;
+		evasionHappiness += (double)materials * 0.37;
 		if(weapon)
 		{
 			evasionHappiness += 2;
@@ -103,7 +103,7 @@ public class AICharacter extends AbstractCharacter
 		}
 		if(isEscaped == true)
 		{
-			evasionHappiness += 10000;
+			evasionHappiness += 40;
 		}
 		evasionHappiness *= preferences.evasionPreference;
 		
@@ -121,7 +121,7 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		
-		double educationHappiness = (double)intelligence * 7;
+		double educationHappiness = (double)intelligence * 5;
 		educationHappiness = educationHappiness + legalAdvancement * 50;
 		educationHappiness *= preferences.educationPreference;
 		

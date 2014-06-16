@@ -139,11 +139,15 @@ public class GameLogic
 					bestAction.resolve(character, currentTime, true);
 					aiValidator.update(character.getCurrentPlace(),
 							character.getFixedAction());
+					
+
+					checkforEscape(character, iter);
 
 				}
 
 				showTable();
 
+				checkforDeath(playerCharacter);
 				playerCharacter.setCurrentPlace(playerCharacter.getSchedule()
 						.getPlace(currentTime));
 				playerCharacter.getSchedule().getAction(currentTime)
@@ -194,6 +198,27 @@ public class GameLogic
 		if (character.getHealth() < 1)
 		{
 			iter.remove();
+			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(character.getName() + "  died");
+			Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
+	}
+	
+	private void checkforEscape(AICharacter character, Iterator iter)
+	{
+		if (character.isEscaped() == true)
+		{
+			iter.remove();
+			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(character.getName() + " escaped");
+			Variables.getGameLogic().getUserInterface().setInfo(true);
+		}
+	}
+	
+	private void checkforDeath(PlayerCharacter character)
+	{
+		if (character.getHealth() < 1)
+		{
+			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you died");
+			Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
 

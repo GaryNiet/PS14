@@ -295,12 +295,12 @@ public class GameMap extends JPanel{
 		g1.setPaint(Color.cyan);
 		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		
-		g1.drawString("health: " + Variables.getPlayerCharacter().getHealth(), 0, 15);
-		g1.drawString("strength: " + Variables.getPlayerCharacter().getStrength(), 100, 15);
-		g1.drawString("intelligence: " + Variables.getPlayerCharacter().getIntelligence(), 220, 15);
-		g1.drawString("money: " + Variables.getPlayerCharacter().getMoney(), 500, 15);
-		g1.drawString("influence: " + Variables.getPlayerCharacter().getInfluence(), 600, 15);
-		g1.drawString("materials: " + Variables.getPlayerCharacter().getMaterials(), 500, 30);
+		g1.drawString("health: " + (int)Variables.getPlayerCharacter().getHealth(), 0, 15);
+		g1.drawString("strength: " + (int)Variables.getPlayerCharacter().getStrength(), 100, 15);
+		g1.drawString("intelligence: " + (int)Variables.getPlayerCharacter().getIntelligence(), 220, 15);
+		g1.drawString("money: " + (int)Variables.getPlayerCharacter().getMoney(), 500, 15);
+		g1.drawString("influence: " + (int)Variables.getPlayerCharacter().getInfluence(), 600, 15);
+		g1.drawString("materials: " + (int)Variables.getPlayerCharacter().getMaterials(), 500, 30);
 		
 		//draws player
 		g1.draw(player);

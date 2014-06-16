@@ -22,7 +22,7 @@ public class PhoneBooth extends Place
 		blackmailSR = 0.2;
 		corruptSR = 0.2;
 		digSR = 0.1;
-		
+		evasionSR = 0.05;
 		digAdvancement = 0;
 		
 		
@@ -42,6 +42,7 @@ public class PhoneBooth extends Place
 		blackmailSR = _phoneBooth.blackmailSR;
 		corruptSR = _phoneBooth.corruptSR;
 		digSR = _phoneBooth.digSR;
+		evasionSR = _phoneBooth.evasionSR;
 		
 		digAdvancement = _phoneBooth.digAdvancement;
 		guardAwareness = _phoneBooth.guardAwareness;

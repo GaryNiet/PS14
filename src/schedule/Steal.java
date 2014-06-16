@@ -17,11 +17,11 @@ public class Steal extends PrisonAction
 	{
 		if(isReal == false)
 		{
-			character.setMaterials((int) (character.getMaterials() + (character.getIntelligence()/20.0 * character.getStrength()/20.0) * 30));
+			character.setMaterials((int) (character.getMaterials() + (character.getIntelligence()/20.0 * character.getStrength()/20.0) * 60));
 		}
 		else if(isReal == true && success(character, time) == true)
 		{
-			character.setMaterials((int) (character.getMaterials() + (character.getIntelligence()/20 * character.getStrength()/20) * 30));
+			character.setMaterials((int) (character.getMaterials() + (character.getIntelligence()/20 * character.getStrength()/20) * 60));
 			informPlayer(character, time);
 		}
 	}

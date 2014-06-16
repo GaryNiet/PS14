@@ -13,13 +13,13 @@ public class Variables
 
 	final static int weaponBonus = 3;
 	final static int fightRandom = 3;
-	final static int fightWinningsMultiplier = 5;
+	final static int fightWinningsMultiplier = 10;
 	final static int lostInfluenceOnLostFight = 3;
 	final static int lostHealthOnLostFight = 8;
 	final static int weakestWinsFightMultiplier = 3;
 	final static int strongerWinsFightMultiplier = 2;
-	final static double digAdvancementImportance = 0.2;
-	final static double guardAwarenessImportance = 18;
+	final static double digAdvancementImportance = 0.25;
+	final static double guardAwarenessImportance = 35;
 	final static int playerWidth = 15;
 	final static int playerHeight = 20;
 

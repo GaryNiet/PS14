@@ -30,7 +30,7 @@ public class Blackmail extends PrisonAction
 		{
 			character.setInfluence(influence - influenceChange);
 			character.getSchedule().getPlace(time).setGuardAwareness(character.getSchedule().getPlace(time).getGuardAwareness() - guardAwarenessChange);
-			informPlayer(character, time);
+			//informPlayer(character, time);
 			
 		}
 		
@@ -59,7 +59,7 @@ public class Blackmail extends PrisonAction
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		double successRate = character.getSchedule().getPlace(time).getBlackmailSR() * (character.getIntelligence()/20);
+		double successRate = character.getSchedule().getPlace(time).getBlackmailSR() + character.getIntelligence()/20;
 		return successRate;
 	}
 	

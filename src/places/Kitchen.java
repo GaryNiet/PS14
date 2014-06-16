@@ -17,7 +17,7 @@ public class Kitchen extends Place
 		sizeY = (int) ((0.117) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		
-		stealWeaponToolSR = 0.8;
+		stealWeaponToolSR = 0.9;
 		
 		attackSR = 0.7;
 		blackmailSR = 0.7;
@@ -25,6 +25,7 @@ public class Kitchen extends Place
 		digSR = 0.6;
 		
 		digAdvancement = 0;
+		evasionSR = 0.2;
 		
 		
 		name = "kitchen";
@@ -43,6 +44,8 @@ public class Kitchen extends Place
 		blackmailSR = _kitchen.blackmailSR;
 		corruptSR = _kitchen.corruptSR;
 		digSR = _kitchen.digSR;
+
+		evasionSR = _kitchen.evasionSR;
 		
 		digAdvancement = _kitchen.digAdvancement;
 		guardAwareness = _kitchen.guardAwareness;

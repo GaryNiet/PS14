@@ -29,7 +29,7 @@ public class Workshop extends Place
 		blackmailSR = 0.4;
 		corruptSR = 0.4;
 		digSR = 0.2;
-
+		evasionSR = 0.1;
 		digAdvancement = 0;
 
 		name = "workshop";
@@ -48,6 +48,7 @@ public class Workshop extends Place
 		blackmailSR = _workshop.blackmailSR;
 		corruptSR = _workshop.corruptSR;
 		digSR = _workshop.digSR;
+		evasionSR = _workshop.evasionSR;
 
 		digAdvancement = _workshop.digAdvancement;
 		guardAwareness = _workshop.guardAwareness;

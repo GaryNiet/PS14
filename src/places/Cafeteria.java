@@ -17,12 +17,13 @@ public class Cafeteria extends Place
 		
 		name = "cafeteria";
 		
-		stealWeaponToolSR = 0.3;
+		stealWeaponToolSR = 0.6;
 		
 		attackSR = 0.2;
 		blackmailSR = 0.2;
 		corruptSR = 0.2;
 		digSR = 0.1;
+		evasionSR = 0.05;
 		
 		digAdvancement = 0;
 		
@@ -43,6 +44,7 @@ public class Cafeteria extends Place
 		blackmailSR = _cafeteria.blackmailSR;
 		corruptSR = _cafeteria.corruptSR;
 		digSR = _cafeteria.digSR;
+		evasionSR = _cafeteria.evasionSR;
 		
 		guardAwareness = _cafeteria.guardAwareness;
 		digAdvancement = _cafeteria.digAdvancement;

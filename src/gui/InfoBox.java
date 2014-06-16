@@ -80,14 +80,20 @@ public class InfoBox extends JPanel
 		g1.drawString(place.name, 10, 10);
 		g1.drawString(place.getInformation(), 10, 30);
 		int digAdvancement = 0;
+		int guardAwareness = 0;
 		for(Place digPlace: Variables.getPlayerCharacter().getSchedule().getAllPlaces())
 		{
 			if(digPlace.name.equals(place.name))
 			{
 				digAdvancement = digPlace.getDigAdvancement();
+				guardAwareness = digPlace.getGuardAwareness();
 			}
 		}
 		g1.drawString("dig advancement: " + digAdvancement , 10, 50);
+		
+		
+		
+		g1.drawString("guardAwareness: " + guardAwareness + "%", 10, 70);
 	}
 
 	public void paintCharacter(Graphics2D g1)

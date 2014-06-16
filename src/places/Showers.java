@@ -18,13 +18,13 @@ public class Showers extends Place
 		
 		
 		
-		stealSR = 0.8;
+		stealSR = 0.9;
 		
 		attackSR = 0.9;
 		blackmailSR = 0.4;
 		corruptSR = 0.4;
 		digSR = 0.1;
-		
+		evasionSR = 0.05;
 		digAdvancement = 0;
 		
 		
@@ -44,6 +44,7 @@ public class Showers extends Place
 		blackmailSR = _showers.blackmailSR;
 		corruptSR = _showers.corruptSR;
 		digSR = _showers.digSR;
+		evasionSR = _showers.evasionSR;
 		
 		digAdvancement = _showers.digAdvancement;
 		guardAwareness = _showers.guardAwareness;

@@ -52,8 +52,7 @@ public class Attack extends PrisonAction
 			}
 			else
 			{
-				character.setHealth(character.getHealth() - 10);
-				victim.setHealth(victim.getHealth() - 10);
+				character.setHealth(character.getHealth() - 8);
 				informPlayerUnsuccessful(character, time);
 				
 			}
@@ -72,8 +71,7 @@ public class Attack extends PrisonAction
 			else if(isReal == true)
 			{
 				AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
-				character.setHealth(character.getHealth() - 10);
-				victim.setHealth(victim.getHealth() - 10);
+				character.setHealth(character.getHealth() - 8);
 				
 			}
 			
@@ -238,7 +236,7 @@ public class Attack extends PrisonAction
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		double successRate = character.getSchedule().getPlace(time).getAttackSR() * (character.getIntelligence()/20) * (character.getStrength()/20);
+		double successRate = character.getSchedule().getPlace(time).getAttackSR() * (character.getIntelligence() + character.getStrength()) / 40;
 		return successRate;
 	}
 

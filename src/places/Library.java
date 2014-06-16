@@ -21,7 +21,7 @@ public class Library extends Place
 		blackmailSR = 0.6;
 		corruptSR = 0.6;
 		digSR = 0.1;
-		
+		evasionSR = 0.05;
 		digAdvancement = 0;
 		
 		
@@ -38,6 +38,7 @@ public class Library extends Place
 		blackmailSR = _library.blackmailSR;
 		corruptSR = _library.corruptSR;
 		digSR = _library.digSR;
+		evasionSR = _library.evasionSR;
 		
 		digAdvancement = _library.digAdvancement;
 		guardAwareness = _library.guardAwareness;

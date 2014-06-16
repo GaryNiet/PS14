@@ -17,7 +17,7 @@ public class PlayerCharacter extends AbstractCharacter
 		super(_name,_health,_strength,  _intelligence, _posX, _posY);
 		job = this.schedule.getAllPlaces().get(8);
 		this.freeChoice = new Cell();
-		strength = 1;
+
 		
 	}
 	

@@ -1,6 +1,5 @@
 package schedule;
 
-import logic.Variables;
 import characters.AbstractCharacter;
 
 public class Sell extends PrisonAction
@@ -17,17 +16,17 @@ public class Sell extends PrisonAction
 	{
 		if(isReal == false)
 		{
-			int sold = (int) (15 * character.getIntelligence()/20);
-			
+			int sold = (int) (15 * character.getIntelligence()/20) * 5;
+
 			if(character.getMaterials() <= sold)
 			{
-				character.setMoney((int) (character.getMaterials() * 0.5));
+				character.setMoney((int) (character.getMoney() * 0.5));
 				character.setMaterials(0);
 			}
 			else
 			{
 				character.setMaterials(character.getMaterials() - sold);
-				character.setMoney((int) (sold * 0.5));
+				character.setMoney((int) (character.getMoney() + sold * 0.5));
 			}
 			
 		}
@@ -43,7 +42,7 @@ public class Sell extends PrisonAction
 			else
 			{
 				character.setMaterials(character.getMaterials() - sold);
-				character.setMoney((int) (sold * 0.5));
+				character.setMoney((int) (character.getMoney() + sold * 0.5));
 			}
 		}
 		
@@ -65,6 +64,8 @@ public class Sell extends PrisonAction
 	public double successRate(AbstractCharacter character, int time)
 	{
 		double successRate = (character.getIntelligence()/20) * character.getSchedule().getPlace(time).getSellMaterialsSR();
+		System.out.println((character.getIntelligence()/20));
+		System.out.println(character.getSchedule().getPlace(time).getSellMaterialsSR());
 		return successRate;
 	}
 	

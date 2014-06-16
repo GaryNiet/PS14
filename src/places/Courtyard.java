@@ -27,7 +27,8 @@ public class Courtyard extends Place
 		blackmailSR = 0.4;
 		corruptSR = 0.4;
 		digSR = 0.6;
-		sellMaterialsSR = 0.8;
+		sellMaterialsSR = 1.5;
+		evasionSR = 0.2;
 		
 		digAdvancement = 0;
 		
@@ -48,6 +49,7 @@ public class Courtyard extends Place
 		corruptSR = _courtyard.corruptSR;
 		digSR = _courtyard.digSR;
 		sellMaterialsSR = _courtyard.sellMaterialsSR;
+		evasionSR = _courtyard.evasionSR;
 		
 		guardAwareness = _courtyard.guardAwareness;
 		digAdvancement = _courtyard.digAdvancement;
