@@ -2,6 +2,8 @@ package characters;
 
 import gui.Node;
 
+import java.awt.Point;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,6 +20,8 @@ public class Animation
 	double aimY;
 	double norm;
 	boolean moving;
+	boolean pass1;
+	boolean pass2;
 
 	Node firstNode;
 	Node lastNode;
@@ -41,33 +45,35 @@ public class Animation
 		path = new ArrayList<>();
 		firstNode = new Node();
 		lastNode = new Node();
+		pass1 = false;
+		pass2 = false;
+
 	}
 
 	public synchronized void updateRoam(Place place)
 	{
 		if (moving == true)
 		{
-			
-			
+
 			if (path.size() != 0)
 			{
-				aimX = -(character.getCurrentPlace().getPosX() - path.get(0)
-						.getPosX() + ((random.nextFloat()-0.5) * 50));
-				aimY = -(character.getCurrentPlace().getPosY() - path.get(0)
-						.getPosY() + ((random.nextFloat()-0.5) * 50));
+				aimX = -(character.getCurrentPlace().getPosX()
+						- path.get(0).getPosX() + ((random.nextFloat() - 0.5) * 50));
+				aimY = -(character.getCurrentPlace().getPosY()
+						- path.get(0).getPosY() + ((random.nextFloat() - 0.5) * 50));
 			}
 
 			double distX = roamX - (double) aimX;
 			double distY = roamY - (double) aimY;
-			
-			
 
 			norm = Math.sqrt(Math.abs(distX * distX + distY * distY));
 			double divisionX = distX / norm;
 			double divisionY = distY / norm;
 
-			if (norm <= 10 && norm >= -10)
+			if ((pass1 == true && pass2 == true) || (norm >= -10 && norm <= 10))
 			{
+				pass1 = false;
+				pass2 = false;
 				if (path.size() != 0)
 				{
 					path.remove(0);
@@ -76,18 +82,32 @@ public class Animation
 					moving = false;
 				}
 			}
-			
 
+			double finalX = roamX - (divisionX / character.movementPeriod);
+			double finalY = roamY - (divisionY / character.movementPeriod);
 
-			roamX -= divisionX/character.movementPeriod;
-			roamY -= divisionY/character.movementPeriod;
+			if (Math.signum(aimX - roamX) != Math.signum(aimX - finalX))
+			{
+				pass1 = true;
+			} else
+			{
+				if(pass1 == false)
+				roamX -= divisionX / character.movementPeriod;
+			}
+
+			if (Math.signum(roamY - aimY) != Math.signum(finalY - aimY))
+			{
+				pass2 = true;
+			} else
+			{
+				if(pass2 == false)
+				roamY -= divisionY / character.movementPeriod;
+			}
 
 		} else
 		{
 			double distX = roamX - (double) aimX;
 			double distY = roamY - (double) aimY;
-			
-			
 
 			norm = Math.sqrt(Math.abs(distX * distX + distY * distY));
 			double divisionX = distX / norm;
@@ -192,7 +212,6 @@ public class Animation
 
 	private void choseRandomSpot(Place place)
 	{
-		//TODO corriger pour job
 		aimX = random.nextInt(character.currentPlace.getSizeX());
 		aimY = random.nextInt(character.currentPlace.getSizeY());
 	}
@@ -208,10 +227,14 @@ public class Animation
 			int dist = (int) (Math.abs((character.getPosX() + roamX)
 					- node.getPosX()) + Math.abs((character.getPosY() + roamY)
 					- node.getPosY()));
-			if (dist < distance)
+			
+			if (node.getPlaceName().equals(character.getLastPlace().name))
 			{
-				distance = dist;
-				returnNode = node;
+				if (dist < distance)
+				{
+					distance = dist;
+					returnNode = node;
+				}
 			}
 		}
 		return returnNode;

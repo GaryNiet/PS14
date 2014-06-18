@@ -332,4 +332,9 @@ public class OptionButton extends JPanel
 		index = _index;
 	}
 
+	public int getIndex()
+	{
+		return index;
+	}
+
 }

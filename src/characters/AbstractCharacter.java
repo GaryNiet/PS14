@@ -30,6 +30,7 @@ public abstract class AbstractCharacter
 	Schedule schedule;
 	PrisonAction fixedAction;
 	Place currentPlace;
+	Place lastPlace;
 	Place job;
 	Place nextJob;
 	int resetRoam;
@@ -44,7 +45,7 @@ public abstract class AbstractCharacter
 	{
 		random = new Random();
 		
-		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/20;
+		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/35;
 		name = _name;
 		health = 100;
 		strength = random.nextInt(6) + 3;
@@ -64,9 +65,11 @@ public abstract class AbstractCharacter
 		animation = new Animation(this);
 		
 		currentPlace = new Cell();
+		lastPlace = new Cell();
 		
 		job = Job.getRandomJob();
 		nextJob = null;
+		
 		
 		schedule = new Schedule();
 	}
@@ -208,10 +211,10 @@ public abstract class AbstractCharacter
 		return currentPlace;
 	}
 
-	public void setCurrentPlace(Place currentPlace)
+	public void setCurrentPlace(Place _currentPlace)
 	{
-
-		this.currentPlace = currentPlace;
+		this.lastPlace = currentPlace;
+		this.currentPlace = _currentPlace;
 		
 	}
 
@@ -253,5 +256,15 @@ public abstract class AbstractCharacter
 	public void setNextJob(Place nextJob)
 	{
 		this.nextJob = nextJob;
+	}
+
+	public Place getLastPlace()
+	{
+		return lastPlace;
+	}
+
+	public void setLastPlace(Place lastPlace)
+	{
+		this.lastPlace = lastPlace;
 	}
 }

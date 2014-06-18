@@ -72,6 +72,7 @@ public class UserInterface extends JFrame
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
 		timer.scheduleAtFixedRate(timerTask, 0, 16);
+//		timer.scheduleAtFixedRate(timerTask, 0, 1000);
 		
 		
 		this.addMouseListener(new MouseAdapter()

@@ -57,6 +57,15 @@ public class Node extends JPanel
 	{
 		return place;
 	}
+	
+	public String getPlaceName()
+	{
+		if(place == null)
+		{
+			return "";
+		}
+		return place.name;
+	}
 
 	public int getPosX()
 	{

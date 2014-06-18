@@ -94,4 +94,14 @@ public class Job extends Place
 		list.add(new ChangeJob());
 		return list;
 	}
+	
+	public int getPosX()
+	{
+		return Variables.getPlayerCharacter().getJob().getPosX();
+	}
+	
+	public int getPosY()
+	{
+		return Variables.getPlayerCharacter().getJob().getPosY();
+	}
 }

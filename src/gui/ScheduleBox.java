@@ -108,9 +108,18 @@ public class ScheduleBox extends JComponent
 					
 				
 			}
+			
+			
 		}
 		
-		optionButton.mouseClickReaction(me);
+		if(optionButton.getBounds().contains(me.getPoint()) && (optionButton.getIndex() == Variables.getGameLogic().getTime() || optionButton.getIndex() == Variables.getGameLogic().getTime() - 1))
+		{
+			quickWarning.opacity = 500;
+		}
+		else
+		{
+			optionButton.mouseClickReaction(me);
+		}
 
 
 	}

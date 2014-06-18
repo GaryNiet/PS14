@@ -39,7 +39,9 @@ public class Attack extends PrisonAction
 					character.setInfluence(character.getInfluence() + (int)calculateFightWinnings(character, victim));
 					victim.setInfluence(victim.getInfluence() - Variables.getLostinfluenceonlostfight());
 					victim.setHealth(victim.getHealth() - Variables.getLosthealthonlostfight());
-					informPlayerVictory(character, time);
+					character.setStrength(character.getStrength()+(1/(character.getStrength()*0.3)));
+					informPlayerVictory(character, victim, time);
+					
 				}
 				else
 				{
@@ -53,7 +55,7 @@ public class Attack extends PrisonAction
 			else
 			{
 				character.setHealth(character.getHealth() - 8);
-				informPlayerUnsuccessful(character, time);
+				informPlayerUnsuccessful(character, victim,  time);
 				
 			}
 			
@@ -67,6 +69,7 @@ public class Attack extends PrisonAction
 			else if(isReal == true && success(character, time) == true)
 			{
 				attackReaction(character, isReal);
+				character.setStrength(character.getStrength()+(1/(character.getStrength()*0.3)));
 			}
 			else if(isReal == true)
 			{
@@ -81,20 +84,20 @@ public class Attack extends PrisonAction
 		
 	}
 	
-	private void informPlayerVictory(AbstractCharacter character, int time)
+	private void informPlayerVictory(AbstractCharacter character, AbstractCharacter victim, int time)
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("attack successful");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you beat up " + victim.getName() + " without anybody noticing");
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
 	
-	private void informPlayerUnsuccessful(AbstractCharacter character, int time)
+	private void informPlayerUnsuccessful(AbstractCharacter character, AbstractCharacter victim, int time)
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("attack successful");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("Before you get your hand on " + victim.getName() + ", guards notice your intention and push you back violently");
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -103,7 +106,7 @@ public class Attack extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you lost the fight");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you lose the fight and get hurt");
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
