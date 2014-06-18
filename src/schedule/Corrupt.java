@@ -55,7 +55,7 @@ public class Corrupt extends PrisonAction
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		double successRate = character.getSchedule().getPlace(time).getCorruptSR() * (character.getIntelligence()/20);
+		double successRate = character.getSchedule().getPlace(time).getCorruptSR() * (character.getIntelligence()/10);
 		return successRate;
 	}
 	

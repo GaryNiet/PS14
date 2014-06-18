@@ -46,7 +46,7 @@ public class Evasion extends PrisonAction
 		{
 			placeSuccessRate += 0.2;
 		}
-		double successRate = placeSuccessRate * character.getStrength()/20 * character.getIntelligence()/20;
+		double successRate = placeSuccessRate * character.getStrength()/20 * character.getIntelligence()/20 * 0.5;
 		return successRate;
 	}
 	

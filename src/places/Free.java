@@ -15,6 +15,7 @@ public class Free extends Place
 	public Free()
 	{
 		name = "free";
+		resolveLegalSR = 0.8;
 
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());

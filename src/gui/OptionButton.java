@@ -97,7 +97,7 @@ public class OptionButton extends JPanel
 				}
 			}
 		}
-		else if(showsChangeJobMenu = true)
+		else if(showsChangeJobMenu == true)
 		{
 			for(Rectangle2D rect: jobButtonsG)
 			{
@@ -201,7 +201,6 @@ public class OptionButton extends JPanel
 
 	public void paint(Graphics g)
 	{
-
 		Graphics2D g1 = (Graphics2D) g;
 		super.paintComponent(g1);
 		setRect();

@@ -15,7 +15,7 @@ public class WellBeing extends PrisonAction
 	public void resolve(characters.AbstractCharacter character, int time, boolean isReal)
 	{
 		
-		character.setHealth(character.getHealth()+30);
+		character.setHealth(character.getHealth()+15);
 		character.checkHealthIntegrity();
 	}
 

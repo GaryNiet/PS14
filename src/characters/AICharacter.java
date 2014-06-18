@@ -16,7 +16,7 @@ public class AICharacter extends AbstractCharacter
 		
 		
 		legalAdvancement =1;
-		materials = 500;
+		materials = 0;
 		influence = 0;
 		money = 100;
 		weapon = false;
@@ -103,7 +103,7 @@ public class AICharacter extends AbstractCharacter
 		}
 		if(isEscaped == true)
 		{
-			evasionHappiness += 40;
+			evasionHappiness += 30;
 		}
 		evasionHappiness *= preferences.evasionPreference;
 		

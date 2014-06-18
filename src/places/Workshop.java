@@ -28,7 +28,7 @@ public class Workshop extends Place
 		attackSR = 0.2;
 		blackmailSR = 0.4;
 		corruptSR = 0.4;
-		digSR = 0.2;
+		digSR = 0.6;
 		evasionSR = 0.1;
 		digAdvancement = 0;
 
@@ -59,7 +59,7 @@ public class Workshop extends Place
 	
 	public boolean isDoable(AbstractCharacter character)
 	{
-		if(character.getStrength() > 5 && character.getIntelligence() > 5)
+		if(character.getStrength() > 7 && character.getIntelligence() > 7)
 		{
 			return true;
 		}

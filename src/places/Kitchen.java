@@ -56,7 +56,7 @@ public class Kitchen extends Place
 	
 	public boolean isDoable(AbstractCharacter character)
 	{
-		if(character.getStrength() > 5 && character.getIntelligence() > 5)
+		if(character.getIntelligence() > 10)
 		{
 			return true;
 		}

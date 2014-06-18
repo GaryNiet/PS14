@@ -44,7 +44,7 @@ public abstract class AbstractCharacter
 	{
 		random = new Random();
 		
-		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/18;
+		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/20;
 		name = _name;
 		health = 100;
 		strength = random.nextInt(6) + 3;

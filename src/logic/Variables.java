@@ -32,7 +32,7 @@ public class Variables
 	final static int bottomHeight1024 = 192;
 	final static int scheduleHeight1024 = 816;
 	final static int shouldBe0 = -48;
-	final static int digSuccessLimit = 500;
+	final static int digSuccessLimit = 100;
 	
 	
 	static int gameSpeed = 20;

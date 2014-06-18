@@ -24,7 +24,7 @@ public class Cell extends Place
 		attackSR = 0.6;
 		blackmailSR = 0.3;
 		corruptSR = 0.3;
-		digSR = 0.7;
+		digSR = 1;
 		stealSR = 0.8;
 		evasionSR = 0.05;
 		sellMaterialsSR = 1;

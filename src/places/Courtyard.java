@@ -26,7 +26,7 @@ public class Courtyard extends Place
 		attackSR = 0.6;
 		blackmailSR = 0.4;
 		corruptSR = 0.4;
-		digSR = 0.6;
+		digSR = 0.8;
 		sellMaterialsSR = 1.5;
 		evasionSR = 0.2;
 		
@@ -61,7 +61,7 @@ public class Courtyard extends Place
 	
 	public boolean isDoable(AbstractCharacter character)
 	{
-		if(character.getStrength() > 5 && character.getIntelligence() > 5)
+		if(character.getStrength() > 10)
 		{
 			return true;
 		}

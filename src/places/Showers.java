@@ -23,7 +23,7 @@ public class Showers extends Place
 		attackSR = 0.9;
 		blackmailSR = 0.4;
 		corruptSR = 0.4;
-		digSR = 0.1;
+		digSR = 0.8;
 		evasionSR = 0.05;
 		digAdvancement = 0;
 		

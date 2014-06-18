@@ -142,6 +142,15 @@ public class GameLogic
 					
 
 					checkforEscape(character, iter);
+					
+					if(character.getJob().name.equals("cell"))
+					{
+						if(currentTime == 5)
+						{
+							character.setJob(Job.getRandomJob());
+						}
+					}
+
 
 				}
 
@@ -153,8 +162,18 @@ public class GameLogic
 				playerCharacter.getSchedule().getAction(currentTime)
 						.resolve(playerCharacter, currentTime, true);
 				updateVariablesAndCheckIntegrity(playerCharacter);
+				
+				if(playerCharacter.getJob().name.equals("cell"))
+				{
+					if(currentTime == 5)
+					{
+						playerCharacter.setJob(Job.getRandomJob());
+					}
+				}
 
 				userInterface.pulse(currentTime);
+				
+				
 
 				setXY();
 				// System.out.println(playerCharacter.getFreeChoice());
@@ -181,6 +200,7 @@ public class GameLogic
 						}
 					}
 				}
+				
 			}
 			
 			

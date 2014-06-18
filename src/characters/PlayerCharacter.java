@@ -15,9 +15,8 @@ public class PlayerCharacter extends AbstractCharacter
 	public PlayerCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
 	{
 		super(_name,_health,_strength,  _intelligence, _posX, _posY);
-		job = this.schedule.getAllPlaces().get(8);
+		job = this.schedule.getAllPlaces().get(0);
 		this.freeChoice = new Cell();
-
 		
 	}
 	

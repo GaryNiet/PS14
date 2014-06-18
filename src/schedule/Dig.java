@@ -20,6 +20,10 @@ public class Dig extends PrisonAction
 		{
 			character.setHealth((int) (character.getHealth()-(5 / (character.getStrength()/20))));
 			character.getSchedule().getPlace(time).setDigAdvancement((int) (character.getSchedule().getPlace(time).getDigAdvancement() +(character.getStrength())));
+			if(character.isWeapon() == true)
+			{
+				character.getSchedule().getPlace(time).setDigAdvancement((int) (character.getSchedule().getPlace(time).getDigAdvancement() + 5 ));
+			}
 			
 		}
 		else if(isReal == true && success(character, time) == true)
@@ -27,6 +31,11 @@ public class Dig extends PrisonAction
 			character.setHealth((int) (character.getHealth()-(5 / (character.getStrength()/20))));
 			character.getSchedule().getPlace(time).setDigAdvancement((int) (character.getSchedule().getPlace(time).getDigAdvancement() +(character.getStrength())));
 			informPlayer(character, time);
+			
+			if(character.isWeapon() == true)
+			{
+				character.getSchedule().getPlace(time).setDigAdvancement((int) (character.getSchedule().getPlace(time).getDigAdvancement() + 5 ));
+			}
 		}
 	}
 	
@@ -45,7 +54,7 @@ public class Dig extends PrisonAction
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		double successRate = (character.getStrength()/20) * character.getSchedule().getPlace(time).getDigSR();
+		double successRate = (character.getIntelligence()/20) * character.getSchedule().getPlace(time).getDigSR();
 		return successRate;
 	}
 	

@@ -301,6 +301,7 @@ public class GameMap extends JPanel{
 		g1.drawString("money: " + (int)Variables.getPlayerCharacter().getMoney(), 500, 15);
 		g1.drawString("influence: " + (int)Variables.getPlayerCharacter().getInfluence(), 600, 15);
 		g1.drawString("materials: " + (int)Variables.getPlayerCharacter().getMaterials(), 500, 30);
+		g1.drawString("legal advancement: " + Variables.getPlayerCharacter().getLegalAdvancement(), 500, 45);
 		
 		//draws player
 		g1.draw(player);

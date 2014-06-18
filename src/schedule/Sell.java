@@ -63,9 +63,7 @@ public class Sell extends PrisonAction
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		double successRate = (character.getIntelligence()/20) * character.getSchedule().getPlace(time).getSellMaterialsSR();
-		System.out.println((character.getIntelligence()/20));
-		System.out.println(character.getSchedule().getPlace(time).getSellMaterialsSR());
+		double successRate = (character.getIntelligence()/10) * character.getSchedule().getPlace(time).getSellMaterialsSR();
 		return successRate;
 	}
 	

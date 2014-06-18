@@ -15,7 +15,7 @@ public class VisitingCell extends Place
 		sizeX = (int) (0.155 * Variables.getXresolution() * Variables.getResolutionmultiplier());
 		sizeY = (int) ((0.3004) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
-		resolveLegalSR = 0.6;
+		resolveLegalSR = 0.8;
 		
 		attackSR = 0.2;
 		blackmailSR = 0.1;

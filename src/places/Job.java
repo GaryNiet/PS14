@@ -56,7 +56,7 @@ public class Job extends Place
 	{
 		Random random = new Random();
 		
-		return jobs[random.nextInt(3)];
+		return jobs[random.nextInt(jobs.length -1)];
 		
 	}
 	

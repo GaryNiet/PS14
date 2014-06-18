@@ -22,7 +22,7 @@ public class Steal extends PrisonAction
 		else if(isReal == true && success(character, time) == true)
 		{
 			character.setMaterials((int) (character.getMaterials() + (character.getIntelligence()/20 * character.getStrength()/20) * 60));
-			informPlayer(character, time);
+			//informPlayer(character, time);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class Steal extends PrisonAction
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		double successRate = (character.getIntelligence()/20) * character.getSchedule().getPlace(time).getStealSR() * 1.5;
+		double successRate = (character.getIntelligence()/10) * character.getSchedule().getPlace(time).getStealSR();
 		return successRate;
 	}
 	
