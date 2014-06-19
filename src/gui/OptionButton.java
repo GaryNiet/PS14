@@ -5,11 +5,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import characters.AICharacter;
 
@@ -30,6 +32,8 @@ public class OptionButton extends JPanel
 	boolean showsCharacters;
 	boolean showsChangeJobMenu;
 	boolean eraseFlag;
+	
+	int shift;
 
 	List<Rectangle2D> actionButtonList;
 	List<Rectangle2D> freePlaceList;
@@ -45,6 +49,7 @@ public class OptionButton extends JPanel
 
 	OptionButton(ScheduleBox _parent)
 	{
+		shift = 0;
 		parent = _parent;
 		showsCharacters = false;
 		showsChangeJobMenu = false;
@@ -198,6 +203,17 @@ public class OptionButton extends JPanel
 		}
 
 	}
+	
+	protected void mouseWheeled(MouseWheelEvent e)
+	{
+		
+		int nextShift = shift - e.getWheelRotation();
+		System.out.println(shift);
+		if(nextShift <= 0  && nextShift >= -(aiCharacters.size()-15) * buttonSpacing)
+		{
+			shift = nextShift;
+		}
+	}
 
 	public void paint(Graphics g)
 	{
@@ -212,9 +228,9 @@ public class OptionButton extends JPanel
 			{
 
 				g1.drawString(aiCharacter.getName(), 10, (int) button
-						.getBounds2D().getY() + buttonSpacing * spacing);
+						.getBounds2D().getY() + shift + buttonSpacing * spacing);
 				Rectangle2D characterButton = new Rectangle2D.Double(0, button
-						.getBounds2D().getY() + buttonSpacing * (spacing - 1),
+						.getBounds2D().getY() + shift + buttonSpacing * (spacing - 1),
 						100, buttonSpacing);
 
 				aiCharactersG.add(characterButton);

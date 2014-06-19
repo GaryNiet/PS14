@@ -3,7 +3,9 @@ package gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.ScrollPane;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,10 +68,11 @@ public class ScheduleBox extends JComponent
 		button22to23 = new ScheduleButton("Showers", 7);
 		button23to24 = new ScheduleButton("Cell", 8);
 
-
+		
 		optionButton = new OptionButton(this);
+		
 		pressedButton = button23to24;
-
+		
 		buttonList = new ArrayList<>();
 
 		buttonList.add(button0to6);
@@ -122,6 +125,15 @@ public class ScheduleBox extends JComponent
 		}
 
 
+	}
+	
+	protected void mouseWheeled(MouseWheelEvent e)
+	{
+		e.translatePoint(-this.getBounds().x, -this.getBounds().y -25);
+		if(optionButton.getBounds().contains(e.getPoint()))
+		{
+			optionButton.mouseWheeled(e);
+		}
 	}
 
 	public void paint(Graphics g)

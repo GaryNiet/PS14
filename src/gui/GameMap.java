@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.TexturePaint;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
@@ -52,6 +53,7 @@ public class GameMap extends JPanel{
 	private TexturePaint showerTex;
 	private BufferedImage tiles;
 	private TexturePaint tilesTex;
+	private BufferedImage knife;
 	
 	
 	
@@ -206,6 +208,7 @@ public class GameMap extends JPanel{
 			floor = ImageIO.read(new File("paving.png"));
 			shower = ImageIO.read(new File("shower.png"));
 			tiles = ImageIO.read(new File("tile.png"));
+			knife = ImageIO.read(new File("knife.png"));
 
 		} catch (IOException ex)
 		{
@@ -289,6 +292,11 @@ public class GameMap extends JPanel{
 			aiRectangles.get(index).setFrame(ai.getPosX() + ai.getAnimation().getRoamX(), ai.getPosY() + ai.getAnimation().getRoamY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
 			g1.draw(aiRectangles.get(index));
 			index++;
+		}
+		
+		if(Variables.getPlayerCharacter().isWeapon())
+		{
+			g1.drawImage(knife, 700, 0, 50, 50, null);
 		}
 		
 		

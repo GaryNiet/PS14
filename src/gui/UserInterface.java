@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -86,6 +87,15 @@ public class UserInterface extends JFrame
 			
 		});
 		
+		this.addMouseWheelListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e)
+			{
+				mouseWheeled(e);
+			}
+		});
+		
 		this.addMouseMotionListener(new MouseAdapter()
 		{
 			@Override
@@ -93,6 +103,7 @@ public class UserInterface extends JFrame
 			{
 				motion(e);
 			}
+			
 		});
 		
 		this.addKeyListener(new KeyListener()
@@ -127,6 +138,15 @@ public class UserInterface extends JFrame
 			}
 		});
 		
+	}
+	
+	
+	protected void mouseWheeled(MouseWheelEvent e)
+	{
+		if(scheduleBox.getBounds().contains(e.getPoint()))
+		{
+			scheduleBox.mouseWheeled(e);
+		}
 	}
 	
 	protected void motion(MouseEvent e)
