@@ -12,12 +12,12 @@ import schedule.Corrupt;
 import schedule.Dig;
 import schedule.Evasion;
 import schedule.PrisonAction;
+import schedule.Study;
 
 public abstract class Place
 {
 	public String name;
 	public List<PrisonAction> possibleActions;
-	//TODO this is not global
 	public int guardAwareness;
 	public double attackSR, blackmailSR, corruptSR, digSR, evasionSR, resolveLegalSR, stealWeaponToolSR, sellMaterialsSR, stealSR;
 	protected int digAdvancement;
@@ -42,6 +42,7 @@ public abstract class Place
 		possibleActions.add(new Corrupt());
 		possibleActions.add(new Dig());
 		possibleActions.add(new Evasion());
+		possibleActions.add(new Study());
 	}
 	
 

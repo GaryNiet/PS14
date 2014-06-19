@@ -26,13 +26,13 @@ public class OptionButton extends JPanel
 	ScheduleBox parent;
 
 	final int buttonQte = 16;
-	final int buttonSpacing = 20;
+	final int buttonSpacing = 23;
 
 	Rectangle2D button;
 	boolean showsCharacters;
 	boolean showsChangeJobMenu;
 	boolean eraseFlag;
-	
+
 	int shift;
 
 	List<Rectangle2D> actionButtonList;
@@ -43,7 +43,7 @@ public class OptionButton extends JPanel
 	List<Rectangle2D> aiCharactersG;
 	List<Rectangle2D> jobButtonsG;
 
-	//would be cleaner with enumeration
+	// would be cleaner with enumeration
 	int index;
 	int showDropMenu;
 
@@ -53,7 +53,7 @@ public class OptionButton extends JPanel
 		parent = _parent;
 		showsCharacters = false;
 		showsChangeJobMenu = false;
-		
+
 		button = new Rectangle2D.Double();
 
 		actionButtonList = new ArrayList<>();
@@ -101,10 +101,9 @@ public class OptionButton extends JPanel
 							.fillInfo(possiblePlaces.get(placeIndex));
 				}
 			}
-		}
-		else if(showsChangeJobMenu == true)
+		} else if (showsChangeJobMenu == true)
 		{
-			for(Rectangle2D rect: jobButtonsG)
+			for (Rectangle2D rect : jobButtonsG)
 			{
 				if (rect.contains(e.getPoint()))
 				{
@@ -114,8 +113,7 @@ public class OptionButton extends JPanel
 
 				}
 			}
-		}
-		else
+		} else
 		{
 			for (Rectangle2D rect : aiCharactersG)
 			{
@@ -148,14 +146,14 @@ public class OptionButton extends JPanel
 					}
 					setCharacterAction(index, actionIndex);
 					showDropMenu = actionIndex;
-					
-					
-					if((index == 3 || index == 5) && actionIndex == actionButtonList.size()-1)
+
+					if ((index == 3 || index == 5)
+							&& actionIndex == actionButtonList.size() - 1)
 					{
 						showsChangeJobMenu = true;
 					}
 				}
-				
+
 			}
 
 			for (Rectangle2D rect : freePlaceList)
@@ -168,27 +166,27 @@ public class OptionButton extends JPanel
 							.setFreeChoice(possiblePlaces.get(placeIndex));
 				}
 			}
-		}
-		else if(showsChangeJobMenu == true)
+		} else if (showsChangeJobMenu == true)
 		{
-			for(Rectangle2D rect: jobButtonsG)
+			for (Rectangle2D rect : jobButtonsG)
 			{
-				if(rect.contains(me.getPoint()))
+				if (rect.contains(me.getPoint()))
 				{
 					int placeIndex = jobButtonsG.indexOf(rect);
-					Variables.getGameLogic().getCharacter().setNextJob(Job.getJobs()[placeIndex]);
+					Variables.getGameLogic().getCharacter()
+							.setNextJob(Job.getJobs()[placeIndex]);
 					showsChangeJobMenu = false;
 				}
 			}
-		}
-		else
+		} else
 		{
 			for (Rectangle2D rect : aiCharactersG)
 			{
 				if (rect.contains(me.getPoint()))
 				{
 					int characterIndex = aiCharactersG.indexOf(rect);
-					Variables.getPlayerCharacter().setvictim(aiCharacters.get(characterIndex));
+					Variables.getPlayerCharacter().setvictim(
+							aiCharacters.get(characterIndex));
 					showsCharacters = false;
 
 				}
@@ -203,13 +201,13 @@ public class OptionButton extends JPanel
 		}
 
 	}
-	
+
 	protected void mouseWheeled(MouseWheelEvent e)
 	{
-		
+
 		int nextShift = shift - e.getWheelRotation();
-		System.out.println(shift);
-		if(nextShift <= 0  && nextShift >= -(aiCharacters.size()-15) * buttonSpacing)
+		if (nextShift <= 0
+				&& nextShift >= -(aiCharacters.size() - 13) * buttonSpacing)
 		{
 			shift = nextShift;
 		}
@@ -230,36 +228,37 @@ public class OptionButton extends JPanel
 				g1.drawString(aiCharacter.getName(), 10, (int) button
 						.getBounds2D().getY() + shift + buttonSpacing * spacing);
 				Rectangle2D characterButton = new Rectangle2D.Double(0, button
-						.getBounds2D().getY() + shift + buttonSpacing * (spacing - 1),
-						100, buttonSpacing);
+						.getBounds2D().getY()
+						+ shift
+						+ buttonSpacing
+						* (spacing - 1), 100, buttonSpacing);
 
 				aiCharactersG.add(characterButton);
 				g1.draw(characterButton);
 
 				spacing++;
 			}
-		}
-		else if(showsChangeJobMenu == true)
+		} else if (showsChangeJobMenu == true)
 		{
 			int spacing = 1;
-			for(Place place: Job.getJobs())
+			for (Place place : Job.getJobs())
 			{
-				if(place.isDoable(Variables.getPlayerCharacter()))
+				if (place.isDoable(Variables.getPlayerCharacter()))
 				{
 					g1.drawString(place.getJobName(), 10, (int) button
 							.getBounds2D().getY() + buttonSpacing * spacing);
 					Rectangle2D jobButton = new Rectangle2D.Double(0, button
-							.getBounds2D().getY() + buttonSpacing * (spacing - 1),
-							100, buttonSpacing);
-	
+							.getBounds2D().getY()
+							+ buttonSpacing
+							* (spacing - 1), 100, buttonSpacing);
+
 					jobButtonsG.add(jobButton);
 					g1.draw(jobButton);
 				}
 
 				spacing++;
 			}
-		}
-		else
+		} else
 		{
 			int spacing = 1;
 			actionButtonList.clear();
@@ -268,9 +267,21 @@ public class OptionButton extends JPanel
 			{
 				g1.drawString(action.name, 10, (int) button.getBounds2D()
 						.getY() + buttonSpacing * spacing);
-				Rectangle2D actionButton = new Rectangle2D.Double(0, button
-						.getBounds2D().getY() + buttonSpacing * (spacing - 1),
-						100, buttonSpacing);
+				Rectangle2D actionButton = null;
+				if (index == 6)
+				{
+					actionButton = new Rectangle2D.Double(0, button
+							.getBounds2D().getY()
+							+ buttonSpacing
+							* (spacing - 1), 100, buttonSpacing);
+				} else
+				{
+					actionButton = new Rectangle2D.Double(0, button
+							.getBounds2D().getY()
+							+ buttonSpacing
+							* (spacing - 1), this.getBounds().getWidth(),
+							buttonSpacing);
+				}
 				actionButtonList.add(actionButton);
 				if (Variables.getPlayerCharacter().getSchedule()
 						.getAction(index).name.equals(action.name))
@@ -324,11 +335,14 @@ public class OptionButton extends JPanel
 	private void getPossibleActions()
 	{
 		possibleActions = Variables.getGameLogic().getCharacter().getSchedule()
-				.getPlace(index).getPossibleActions(Variables.getGameLogic().getCharacter());
-		
-		if(index == 3 || index == 5)
+				.getPlace(index)
+				.getPossibleActions(Variables.getGameLogic().getCharacter());
+
+		if (index == 3 || index == 5)
 		{
-			possibleActions = ((Job) Variables.getGameLogic().getCharacter().getSchedule().getPlace(index)).jobActions(Variables.getGameLogic().getCharacter());
+			possibleActions = ((Job) Variables.getGameLogic().getCharacter()
+					.getSchedule().getPlace(index)).jobActions(Variables
+					.getGameLogic().getCharacter());
 		}
 	}
 
