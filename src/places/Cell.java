@@ -1,11 +1,10 @@
 package places;
 
 
-import characters.AbstractCharacter;
 import logic.Variables;
-import schedule.Sell;
 import schedule.Steal;
 import schedule.WellBeing;
+import characters.AbstractCharacter;
 
 public class Cell extends Place
 {
@@ -34,7 +33,6 @@ public class Cell extends Place
 		
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());
-		possibleActions.add(new Sell());
 		
 		information = "Most prisonners use their cells for sleeping, sneaking around is way easier this way";
 	}

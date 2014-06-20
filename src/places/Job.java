@@ -7,7 +7,6 @@ import java.util.Random;
 import logic.Variables;
 import schedule.ChangeJob;
 import schedule.PrisonAction;
-import schedule.Sell;
 import schedule.Steal;
 import schedule.StealWeaponTool;
 import schedule.Train;
@@ -30,7 +29,6 @@ public class Job extends Place
 		possibleActions.add(new Steal());
 		possibleActions.add(new StealWeaponTool());
 		possibleActions.add(new Train());
-		possibleActions.add(new Sell());
 		
 		information = "";
 		
@@ -49,7 +47,6 @@ public class Job extends Place
 		possibleActions.add(new Steal());
 		possibleActions.add(new StealWeaponTool());
 		possibleActions.add(new Train());
-		possibleActions.add(new Sell());
 	}
 	
 	public static Place getRandomJob()

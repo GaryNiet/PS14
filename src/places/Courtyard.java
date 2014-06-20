@@ -1,11 +1,10 @@
 package places;
 
 
-import characters.AbstractCharacter;
 import logic.Variables;
-import schedule.Sell;
 import schedule.Train;
 import schedule.WellBeing;
+import characters.AbstractCharacter;
 
 public class Courtyard extends Place
 {
@@ -34,7 +33,6 @@ public class Courtyard extends Place
 		
 		possibleActions.add(new Train());
 		possibleActions.add(new WellBeing());
-		possibleActions.add(new Sell());
 		
 		information = "the courtyard is the only outdoors place in the prison";
 	}
@@ -56,7 +54,6 @@ public class Courtyard extends Place
 		
 		possibleActions.add(new Train());
 		possibleActions.add(new WellBeing());
-		possibleActions.add(new Sell());
 	}
 	
 	public boolean isDoable(AbstractCharacter character)

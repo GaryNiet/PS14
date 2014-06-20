@@ -44,6 +44,8 @@ public class WarningWindow extends JPanel
 		g1.drawString("ok", (int)okButton.getBounds().getX() + 20, (int)okButton.getBounds().getY() + 20);
 		g1.drawString(text, 10, 10);
 		
+		
+		
 	}
 	
 	private void setButtonSpace()

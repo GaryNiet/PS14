@@ -3,7 +3,6 @@ package places;
 import schedule.Learn;
 import schedule.PrisonAction;
 import schedule.ResolveLegal;
-import schedule.Sell;
 import schedule.Steal;
 import schedule.StealWeaponTool;
 import schedule.Train;
@@ -23,7 +22,6 @@ public class Free extends Place
 		possibleActions.add(new ResolveLegal());
 		possibleActions.add(new StealWeaponTool());
 		possibleActions.add(new Train());
-		possibleActions.add(new Sell());
 		
 		information = "";
 	}
@@ -38,7 +36,6 @@ public class Free extends Place
 		possibleActions.add(new ResolveLegal());
 		possibleActions.add(new StealWeaponTool());
 		possibleActions.add(new Train());
-		possibleActions.add(new Sell());
 		
 		information = "";
 	}

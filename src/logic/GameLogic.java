@@ -163,6 +163,8 @@ public class GameLogic
 						.resolve(playerCharacter, currentTime, true);
 				updateVariablesAndCheckIntegrity(playerCharacter);
 				
+				sellMaterials();
+				
 				if(playerCharacter.getJob().name.equals("cell"))
 				{
 					if(currentTime == 5)
@@ -211,6 +213,43 @@ public class GameLogic
 			this.notifyAll();
 		}
 
+	}
+	
+	private void sellMaterials()
+	{
+		int sellingAmount = userInterface.getMarketPlace().getSellingAmount();
+		int canSell = (int) (15 * playerCharacter.getIntelligence()/20) * 5;
+		
+		if(sellingAmount >= 0)
+		{
+			if(sellingAmount >= canSell)
+			{
+				userInterface.getMarketPlace().setSellingAmount(sellingAmount - canSell);
+				playerCharacter.setMaterials(playerCharacter.getMaterials() - canSell);
+				playerCharacter.setMoney((int)(playerCharacter.getMoney() + canSell * 0.025 * Variables.getPlayerCharacter().getIntelligence()));
+			}
+			else
+			{
+				userInterface.getMarketPlace().setSellingAmount(0);
+				playerCharacter.setMaterials(playerCharacter.getMaterials() - sellingAmount);
+				playerCharacter.setMoney((int)(playerCharacter.getMoney() + sellingAmount * 0.025 * Variables.getPlayerCharacter().getIntelligence()));
+			}
+		}
+		else
+		{
+			if(sellingAmount <= canSell)
+			{
+				userInterface.getMarketPlace().setSellingAmount(sellingAmount + canSell);
+				playerCharacter.setMaterials(playerCharacter.getMaterials() + canSell);
+				playerCharacter.setMoney((int)(playerCharacter.getMoney() - canSell * 0.025 * Variables.getPlayerCharacter().getIntelligence()));
+			}
+			else
+			{
+				userInterface.getMarketPlace().setSellingAmount(0);
+				playerCharacter.setMaterials(playerCharacter.getMaterials() + sellingAmount);
+				playerCharacter.setMoney((int)(playerCharacter.getMoney() - sellingAmount * 0.025 * Variables.getPlayerCharacter().getIntelligence()));
+			}
+		}
 	}
 
 	private void checkforDeath(AICharacter character, Iterator iter)

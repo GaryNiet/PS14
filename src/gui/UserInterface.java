@@ -12,6 +12,8 @@ import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import logic.GameLogic;
 import logic.Variables;
@@ -97,6 +99,7 @@ public class UserInterface extends JFrame
 		timer.scheduleAtFixedRate(timerTask, 0, 16);
 		// timer.scheduleAtFixedRate(timerTask, 0, 1000);
 
+		
 		this.addMouseListener(new MouseAdapter()
 		{
 			@Override
@@ -157,6 +160,9 @@ public class UserInterface extends JFrame
 
 			}
 		});
+		
+		
+		
 
 	}
 
@@ -199,7 +205,17 @@ public class UserInterface extends JFrame
 		
 		if(marketRect.getBounds().contains(e.getPoint()))
 		{
+			marketPlace.updateSlider();
 			showMarketPlace = true;
+		}
+		
+
+		if(showMarketPlace)
+		{
+			if( !marketPlace.getBounds().contains(e.getPoint()))
+			{
+				showMarketPlace = false;
+			}
 		}
 
 	}
@@ -275,5 +291,10 @@ public class UserInterface extends JFrame
 	public WarningWindow getWarningWindow()
 	{
 		return warningWindow;
+	}
+
+	public MarketPlace getMarketPlace()
+	{
+		return marketPlace;
 	}
 }
