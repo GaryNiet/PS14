@@ -20,8 +20,8 @@ public class Variables
 	final static int strongerWinsFightMultiplier = 2;
 	final static double digAdvancementImportance = 0.25;
 	final static double guardAwarenessImportance = 35;
-	final static int playerWidth = 15;
-	final static int playerHeight = 20;
+	final static int playerWidth = 20;
+	final static int playerHeight = 30;
 
 	final static int xResolution = 1024;
 	final static int yResolution = 768;
@@ -37,7 +37,7 @@ public class Variables
 	
 	static int gameSpeed = 20;
 
-	final static double resolutionMultiplier = 1;
+	final static double resolutionMultiplier = 1.5;
 
 	final static Schedule schedule = new Schedule();
 
@@ -111,12 +111,12 @@ public class Variables
 
 	public static int getPlayerwidth()
 	{
-		return playerWidth;
+		return (int) (playerWidth * resolutionMultiplier);
 	}
 
 	public static int getPlayerheight()
 	{
-		return playerHeight;
+		return (int) (playerHeight * resolutionMultiplier);
 	}
 
 	public static PlayerCharacter getPlayerCharacter()

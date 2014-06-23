@@ -102,7 +102,7 @@ public class GameLogic
 		Variables.setPlayerCharacter(playerCharacter);
 		Variables.setGameLogic(this);
 
-		for (int i = 0; i < 30; i++)
+		for (int i = 0; i < 15; i++)
 		{
 			AICharacter character1 = new AICharacter(
 					CharacterGenerator.generateName(), 2, 12, 10, 0, 0, characterPieces);
