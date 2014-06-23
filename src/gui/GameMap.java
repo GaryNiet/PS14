@@ -1,10 +1,13 @@
 package gui;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Shape;
+import java.awt.Stroke;
 import java.awt.TexturePaint;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
@@ -53,6 +56,10 @@ public class GameMap extends JPanel{
 	private TexturePaint showerTex;
 	private BufferedImage tiles;
 	private TexturePaint tilesTex;
+	private BufferedImage grass;
+	private TexturePaint grassTex;
+	private BufferedImage cement;
+	private TexturePaint cementTex;
 	private BufferedImage knife;
 	
 	
@@ -206,9 +213,11 @@ public class GameMap extends JPanel{
 		try
 		{
 			floor = ImageIO.read(new File("paving.png"));
-			shower = ImageIO.read(new File("shower.png"));
+			shower = ImageIO.read(new File("shower.jpeg"));
 			tiles = ImageIO.read(new File("tile.png"));
 			knife = ImageIO.read(new File("knife.png"));
+			grass = ImageIO.read(new File("grass.png"));
+			cement = ImageIO.read(new File("cement.JPG"));
 
 		} catch (IOException ex)
 		{
@@ -237,7 +246,6 @@ public class GameMap extends JPanel{
 			
 			if(characterRect.contains(me.getPoint()))
 			{
-				System.out.println("clicked");
 				int characterIndex = aiRectangles.indexOf(characterRect);
 				infoBox.fillInfo((AbstractCharacter)Variables.getCharacterList().get(characterIndex));
 				//System.out.println(characterIndex);
@@ -248,13 +256,15 @@ public class GameMap extends JPanel{
 	
 	public synchronized void paint(Graphics g)
 	{
-		placePlayer();
+		
 		
 		Graphics2D g1 = (Graphics2D)g;
 		super.paintComponent(g1);
 		
 		floorTex = new TexturePaint(floor, new Rectangle2D.Double(0,0,50,50));
-		g1.setPaint(floorTex);
+		grassTex = new TexturePaint(grass, new Rectangle2D.Double(0,0,300,300));
+		cementTex = new TexturePaint(cement, new Rectangle2D.Double(0,0,300,300));
+		g1.setPaint(grassTex);
 		g1.fill(this.getBounds());
 		
 		
@@ -275,6 +285,12 @@ public class GameMap extends JPanel{
 			}
 			
 			g1.fill(place);
+			
+			Stroke stroke = g1.getStroke();
+			Shape strokedOutline = stroke.createStrokedShape(place);
+			g1.setPaint(cementTex);
+			
+			g1.fill(strokedOutline);
 			i++;
 		}
 		
@@ -290,7 +306,6 @@ public class GameMap extends JPanel{
 			g1.setPaint(Color.white);
 			ai.updateRoam();
 			aiRectangles.get(index).setFrame(ai.getPosX() + ai.getAnimation().getRoamX(), ai.getPosY() + ai.getAnimation().getRoamY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
-			g1.draw(aiRectangles.get(index));
 			ai.getCharacterLook().paint(g, aiRectangles.get(index).getFrame());
 			index++;
 		}
@@ -314,14 +329,18 @@ public class GameMap extends JPanel{
 		
 		//draws player
 		g1.draw(player);
+		placePlayer(g);
+		
 		
 	}
 	
-	public void placePlayer()
+	public void placePlayer(Graphics g)
 	{
+		
+		
 		getPlayer().getAnimation().updateRoam(getCurrentPlace());
 		player.setFrame( getPlayer().getPosX() + getPlayer().getAnimation().getRoamX() , getPlayer().getPosY() + getPlayer().getAnimation().getRoamY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
-		
+		getPlayer().getCharacterLook().paint(g, player.getFrame());
 	}
 	
 	public List<Place> allPlaces()

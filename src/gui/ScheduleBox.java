@@ -102,6 +102,9 @@ public class ScheduleBox extends JComponent
 					qwIndex = buttonList.indexOf(rect);
 					quickWarning.opacity = 500;
 					
+					Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you beat up " + " without anybody noticing");
+					Variables.getGameLogic().getUserInterface().setInfo(true);
+					
 				}
 				else
 				{

@@ -5,9 +5,14 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.TexturePaint;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -17,12 +22,24 @@ public class WarningWindow extends JPanel
 	Rectangle2D okButton;
 	String text;
 	
+
+	private BufferedImage toiletPaper;
+	private TexturePaint toiletPaperTex;
+	
 	public WarningWindow(UserInterface _parent)
 	{
 		parent = _parent;
 		okButton = new Rectangle2D.Double();
 		text = "";
 		
+
+		try
+		{
+			toiletPaper = ImageIO.read(new File("toiletPaper.jpg"));
+		} catch (IOException e)
+		{
+			System.out.println("file not found");
+		}
 		
 		
 		
@@ -35,13 +52,16 @@ public class WarningWindow extends JPanel
 		
 		setButtonSpace();
 		
-		g1.setPaint(Color.blue);
-		g1.fill(new Rectangle.Double(0,0, 500,500));
+		toiletPaperTex = new TexturePaint(toiletPaper, new Rectangle2D.Double(0,0,400,400));
+		
+		g1.setPaint(toiletPaperTex);
+		g1.fill(new Rectangle.Double(0,0, 1000,1000));
 		g1.setPaint(Color.black);
 		g1.fill(okButton);
-		g1.setPaint(Color.white);
 		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+		g1.setPaint(Color.white);
 		g1.drawString("ok", (int)okButton.getBounds().getX() + 20, (int)okButton.getBounds().getY() + 20);
+		g1.setPaint(Color.black);
 		g1.drawString(text, 10, 10);
 		
 		
