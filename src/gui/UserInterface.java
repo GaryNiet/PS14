@@ -207,6 +207,7 @@ public class UserInterface extends JFrame
 		{
 			marketPlace.updateSlider();
 			showMarketPlace = true;
+			gameLogic.setMakeWait(true);
 		}
 		
 
@@ -215,6 +216,7 @@ public class UserInterface extends JFrame
 			if( !marketPlace.getBounds().contains(e.getPoint()))
 			{
 				showMarketPlace = false;
+				gameLogic.setMakeWait(false);
 			}
 		}
 

@@ -1,5 +1,7 @@
 package characters;
 
+import gui.CharacterPieces;
+
 import java.util.Iterator;
 
 import places.Cell;
@@ -12,9 +14,9 @@ public class PlayerCharacter extends AbstractCharacter
 	Place freeChoice;
 	AICharacter victim;
 	
-	public PlayerCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
+	public PlayerCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY, CharacterPieces characterPieces)
 	{
-		super(_name,_health,_strength,  _intelligence, _posX, _posY);
+		super(_name,_health,_strength,  _intelligence, _posX, _posY, characterPieces);
 		job = this.schedule.getAllPlaces().get(0);
 		this.freeChoice = new Cell();
 		materials = 1000;

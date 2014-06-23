@@ -117,7 +117,7 @@ public class Attack extends PrisonAction
 		
 		if(!isReal)
 		{
-			victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY());
+			victim = new AICharacter(victim.getName(), victim.getHealth(), (int)victim.getStrength(), (int)victim.getIntelligence(), victim.getPosX(), victim.getPosY(), null);
 		}
 		
 		AbstractCharacter winner = calculateWinner(character, victim);

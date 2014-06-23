@@ -1,5 +1,6 @@
 package characters;
 
+import gui.CharacterPieces;
 import logic.Variables;
 import places.Cell;
 import places.Place;
@@ -10,9 +11,9 @@ public class AICharacter extends AbstractCharacter
 
 	Preferences preferences;
 	
-	public AICharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
+	public AICharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY, CharacterPieces characterPieces)
 	{
-		super(_name,_health,_strength,  _intelligence, _posX, _posY);
+		super(_name,_health,_strength,  _intelligence, _posX, _posY, characterPieces);
 		
 		
 		legalAdvancement =1;
@@ -32,7 +33,7 @@ public class AICharacter extends AbstractCharacter
 	public AICharacter(AICharacter _character)
 	{
 		
-		super(_character.name, _character.health, (int)_character.strength, (int)_character.intelligence, _character.posX, _character.posY);
+		super(_character.name, _character.health, (int)_character.strength, (int)_character.intelligence, _character.posX, _character.posY, null);
 		
 		
 		name = _character.name;

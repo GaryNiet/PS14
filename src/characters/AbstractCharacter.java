@@ -1,5 +1,8 @@
 package characters;
 
+import gui.CharacterLook;
+import gui.CharacterPieces;
+
 import java.util.Iterator;
 import java.util.Random;
 
@@ -37,11 +40,12 @@ public abstract class AbstractCharacter
 	Random random;
 	Animation animation;
 	double movementPeriod;
+	CharacterLook characterLook;
 	
 	boolean isEscaped;
 	
 	
-	public AbstractCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY)
+	public AbstractCharacter(String _name, int _health, int _strength, int _intelligence, int _posX, int _posY, CharacterPieces characterPieces)
 	{
 		random = new Random();
 		
@@ -70,7 +74,7 @@ public abstract class AbstractCharacter
 		job = Job.getRandomJob();
 		nextJob = null;
 		
-		
+		characterLook = new CharacterLook(characterPieces);
 		schedule = new Schedule();
 	}
 	
@@ -266,5 +270,10 @@ public abstract class AbstractCharacter
 	public void setLastPlace(Place lastPlace)
 	{
 		this.lastPlace = lastPlace;
+	}
+
+	public CharacterLook getCharacterLook()
+	{
+		return characterLook;
 	}
 }

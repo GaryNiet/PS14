@@ -1,5 +1,6 @@
 package logic;
 
+import gui.CharacterPieces;
 import gui.UserInterface;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class GameLogic
 	Random random;
 	UserInterface userInterface;
 	OnTimer timerTask;
+	CharacterPieces characterPieces;
 
 	boolean makeWait;
 
@@ -41,7 +43,7 @@ public class GameLogic
 	public GameLogic()
 	{
 		init();
-
+		
 		double resolutionMultiplier = Variables.getResolutionmultiplier();
 
 		userInterface = new UserInterface(this, resolutionMultiplier);
@@ -94,7 +96,8 @@ public class GameLogic
 
 	private void init()
 	{
-		playerCharacter = new PlayerCharacter("player", 100, 100, 100, 50, 50);
+		characterPieces = new CharacterPieces();
+		playerCharacter = new PlayerCharacter("player", 100, 100, 100, 50, 50, characterPieces);
 
 		Variables.setPlayerCharacter(playerCharacter);
 		Variables.setGameLogic(this);
@@ -102,7 +105,7 @@ public class GameLogic
 		for (int i = 0; i < 30; i++)
 		{
 			AICharacter character1 = new AICharacter(
-					CharacterGenerator.generateName(), 2, 12, 10, 0, 0);
+					CharacterGenerator.generateName(), 2, 12, 10, 0, 0, characterPieces);
 			aiCharacterList.add(character1);
 		}
 
@@ -286,7 +289,7 @@ public class GameLogic
 		if (random.nextInt(30) == 0)
 		{
 			AICharacter newCharacter = new AICharacter(
-					CharacterGenerator.generateName(), 100, 100, 100, 0, 0);
+					CharacterGenerator.generateName(), 100, 100, 100, 0, 0, characterPieces);
 			aiCharacterList.add(newCharacter);
 			userInterface.getGameMap().addCharacter(newCharacter);
 		}
@@ -408,5 +411,10 @@ public class GameLogic
 	public void setMakeWait(boolean makeWait)
 	{
 		this.makeWait = makeWait;
+	}
+
+	public CharacterPieces getCharacterPieces()
+	{
+		return characterPieces;
 	}
 }

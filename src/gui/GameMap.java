@@ -291,6 +291,7 @@ public class GameMap extends JPanel{
 			ai.updateRoam();
 			aiRectangles.get(index).setFrame(ai.getPosX() + ai.getAnimation().getRoamX(), ai.getPosY() + ai.getAnimation().getRoamY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
 			g1.draw(aiRectangles.get(index));
+			ai.getCharacterLook().paint(g, aiRectangles.get(index).getFrame());
 			index++;
 		}
 		
