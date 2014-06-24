@@ -15,9 +15,9 @@ public class Courtyard extends Place
 		
 		
 		posX = (int) (0.2441 * Variables.getXresolution() * Variables.getResolutionmultiplier());
-		posY = (int) (0.013 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.033 * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		sizeX = (int) (0.3441 * Variables.getXresolution() * Variables.getResolutionmultiplier());
-		sizeY = (int) ((0.1953) * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		sizeY = (int) ((0.1753) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
 		name = "courtyard";
 		jobName = "stock management";

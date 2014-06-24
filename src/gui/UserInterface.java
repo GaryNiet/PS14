@@ -55,8 +55,8 @@ public class UserInterface extends JFrame
 		warningWindow = new WarningWindow(this);
 		marketPlace = new MarketPlace(this);
 		
-		marketRect = new Rectangle2D.Double(0,0,50,50);
-		
+		//marketRect = new Rectangle2D.Double(0,0,50,50);
+		marketRect = new Rectangle2D.Double((725* resolutionMultiplier), 0, (35* resolutionMultiplier), (35* resolutionMultiplier));
 
 		panel.add(gameMap, "w 75%, h 75%");
 
@@ -88,6 +88,7 @@ public class UserInterface extends JFrame
 				+ Variables.getYresolution() / 3 * resolutionMultiplier;
 		panel.add(warningWindow, string);
 		panel.add(marketPlace, "x 0, y 0, w 300, h 300");
+		marketPlace.setVisible(false);
 		
 		
 		
@@ -210,22 +211,27 @@ public class UserInterface extends JFrame
 			scheduleBox.mouseClickReaction(e);
 		}
 		
-		if(marketRect.getBounds().contains(e.getPoint()))
-		{
-			marketPlace.updateSlider();
-			showMarketPlace = true;
-			gameLogic.setMakeWait(true);
-		}
-		
-
 		if(showMarketPlace)
 		{
 			if( !marketPlace.getBounds().contains(e.getPoint()))
 			{
+				marketPlace.setVisible(false);
 				showMarketPlace = false;
-				gameLogic.setMakeWait(false);
+				gameLogic.getTimerTask().free();
 			}
 		}
+		
+		if(marketRect.getBounds().contains(e.getPoint()))
+		{
+			marketPlace.updateSlider();
+			marketPlace.setVisible(true);
+			showMarketPlace = true;
+			gameLogic.setMakeWait(true);
+			
+		}
+		
+
+		
 
 	}
 

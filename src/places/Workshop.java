@@ -20,7 +20,7 @@ public class Workshop extends Place
 				.getResolutionmultiplier());
 		sizeX = (int) (0.2441 * Variables.getXresolution() * Variables
 				.getResolutionmultiplier());
-		sizeY = (int) ((0.206) * Variables.getYresolution() * Variables
+		sizeY = (int) ((0.18) * Variables.getYresolution() * Variables
 				.getResolutionmultiplier());
 
 		stealWeaponToolSR = 0.9;

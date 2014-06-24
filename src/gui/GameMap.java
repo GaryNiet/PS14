@@ -10,6 +10,8 @@ import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.TexturePaint;
 import java.awt.event.MouseEvent;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -39,6 +41,7 @@ import characters.AbstractCharacter;
 @SuppressWarnings("serial")
 public class GameMap extends JPanel{
 	
+	double mult;
 	Border border;
 	UserInterface parent;
 	InfoBox infoBox;
@@ -75,6 +78,7 @@ public class GameMap extends JPanel{
 	private BufferedImage cement;
 	private TexturePaint cementTex;
 	private BufferedImage knife;
+	private BufferedImage dollar;
 	
 	
 	
@@ -82,6 +86,7 @@ public class GameMap extends JPanel{
 	
 	public GameMap(UserInterface _parent)
 	{
+		mult = Variables.getResolutionmultiplier();
 		parent = _parent;
 		infoBox = parent.getInfoBox();
 		
@@ -121,58 +126,58 @@ public class GameMap extends JPanel{
 	
 	private void initNodes()
 	{
-		Node newNode = new Node((int) (0.192 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Cell());
+		Node newNode = new Node((int) (0.192 * Variables.getXresolution() * mult),(int)(0.07 * Variables.getYresolution() * mult), new Cell());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.26 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Courtyard());
+		newNode = new Node((int) (0.26 * Variables.getXresolution() * mult),(int)(0.07 * Variables.getYresolution() * mult), new Courtyard());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.28 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.18 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Courtyard());
+		newNode = new Node((int) (0.28 * Variables.getXresolution() * mult),(int)(0.18 * Variables.getYresolution() * mult), new Courtyard());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.18 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Courtyard());
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * mult),(int)(0.18 * Variables.getYresolution() * mult), new Courtyard());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.565 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Courtyard());
+		newNode = new Node((int) (0.565 * Variables.getXresolution() * mult),(int)(0.12 * Variables.getYresolution() * mult), new Courtyard());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.65 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.07 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Showers());
+		newNode = new Node((int) (0.65 * Variables.getXresolution() * mult),(int)(0.12 * Variables.getYresolution() * mult), new Showers());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.28 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), null);
+		newNode = new Node((int) (0.28 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), null);
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.335 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Library());
+		newNode = new Node((int) (0.335 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), new Library());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.24 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new PhoneBooth());
+		newNode = new Node((int) (0.24 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), new PhoneBooth());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.21 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new PhoneBooth());
+		newNode = new Node((int) (0.21 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), new PhoneBooth());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.12 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.30 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Cafeteria());
+		newNode = new Node((int) (0.12 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), new Cafeteria());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.20 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Kitchen());
+		newNode = new Node((int) (0.20 * Variables.getXresolution() * mult),(int)(0.41 * Variables.getYresolution() * mult), new Kitchen());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.12 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Cafeteria());
+		newNode = new Node((int) (0.12 * Variables.getXresolution() * mult),(int)(0.41 * Variables.getYresolution() * mult), new Cafeteria());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), null);
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * mult),(int)(0.41 * Variables.getYresolution() * mult), null);
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.47 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Library());
+		newNode = new Node((int) (0.47 * Variables.getXresolution() * mult),(int)(0.41 * Variables.getYresolution() * mult), new Library());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.585 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.41 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new VisitingCell());
+		newNode = new Node((int) (0.585 * Variables.getXresolution() * mult),(int)(0.62 * Variables.getYresolution() * mult), new VisitingCell());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.53 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()), null);
+		newNode = new Node((int) (0.53 * Variables.getXresolution() * mult),(int)(0.62 * Variables.getYresolution() * mult), null);
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.43 * Variables.getXresolution() * Variables.getResolutionmultiplier()),(int)(0.62 * Variables.getYresolution() * Variables.getResolutionmultiplier()), new Workshop());
+		newNode = new Node((int) (0.43 * Variables.getXresolution() * mult),(int)(0.62 * Variables.getYresolution() * mult), new Workshop());
 		nodes.add(newNode);
 		
 		nodes.get(0).addNode(nodes.get(1));
@@ -233,6 +238,7 @@ public class GameMap extends JPanel{
 			grass = ImageIO.read(new File("grass.png"));
 			kitchen = ImageIO.read(new File("kitchen.png"));
 			cement = ImageIO.read(new File("cement.JPG"));
+			dollar = ImageIO.read(new File("dollar.png"));
 
 		} catch (IOException ex)
 		{
@@ -336,6 +342,10 @@ public class GameMap extends JPanel{
 			
 			g1.fill(place);
 			
+			drawName(g1, place, i);
+		   
+			
+		   
 			Stroke stroke = new BasicStroke(10);
 			Shape strokedOutline = stroke.createStrokedShape(place);
 			g1.setPaint(cementTex);
@@ -372,22 +382,48 @@ public class GameMap extends JPanel{
 		}
 		
 		
-		g1.setPaint(Color.cyan);
+		g1.setPaint(Color.black);
+		g1.fillRect(0, 0, this.getWidth(), (int)(mult * 15));
+		g1.fillRect((int)(5.3 * (this.getWidth()/10)*mult), 0, (int)(mult * 170), (int)(mult * 45));
+		
+		g1.setPaint(Color.green);
 		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		
-		g1.drawString("health: " + (int)Variables.getPlayerCharacter().getHealth(), 0, 15);
-		g1.drawString("strength: " + (int)Variables.getPlayerCharacter().getStrength(), 100, 15);
-		g1.drawString("intelligence: " + (int)Variables.getPlayerCharacter().getIntelligence(), 220, 15);
-		g1.drawString("money: " + (int)Variables.getPlayerCharacter().getMoney(), 500, 15);
-		g1.drawString("influence: " + (int)Variables.getPlayerCharacter().getInfluence(), 600, 15);
-		g1.drawString("materials: " + (int)Variables.getPlayerCharacter().getMaterials(), 500, 30);
-		g1.drawString("legal advancement: " + Variables.getPlayerCharacter().getLegalAdvancement(), 500, 45);
+		
+		
+		g1.drawString("health: " + (int)Variables.getPlayerCharacter().getHealth(), (int)(0 * mult) , (int)(13* mult));
+		g1.drawString("strength: " + (int)Variables.getPlayerCharacter().getStrength(), (int)(70* mult), (int)(13* mult));
+		g1.drawString("intelligence: " + (int)Variables.getPlayerCharacter().getIntelligence(), (int)(140* mult), (int)(13* mult));
+		g1.drawString("money: " + (int)Variables.getPlayerCharacter().getMoney(), (int)(620* mult), (int)(15* mult));
+		g1.drawString("influence: " + (int)Variables.getPlayerCharacter().getInfluence(), (int)(400* mult), (int)(13* mult));
+		g1.drawString("materials: " + (int)Variables.getPlayerCharacter().getMaterials(),(int)(620* mult), (int)(35* mult));
+		g1.drawString("legal advancement: " + Variables.getPlayerCharacter().getLegalAdvancement(), (int)(250* mult), (int)(13* mult));
+		
+		g1.drawImage(dollar, (int)(725* mult), 6, (int)(35* mult), (int)(35* mult), null);
 		
 		//draws player
 		g1.draw(player);
 		placePlayer(g);
 		
 		
+	}
+	
+	private void drawName(Graphics2D g1, Rectangle2D place, int i)
+	{
+		Font font = new Font("Arial Black", Font.PLAIN, 25);
+		FontRenderContext frc = g1.getFontRenderContext();
+		TextLayout layout = new TextLayout(allPlaces().get(i).name, font, frc);
+		   
+		   
+		Stroke outline = new BasicStroke(2);
+		Shape blackOutline = outline.createStrokedShape(layout.getOutline(null));
+			
+		g1.setPaint(Color.white);
+		g1.translate(place.getX() + 5, place.getY() + 30);
+		g1.fill(blackOutline);
+		g1.translate(-place.getX() -5, -place.getY() -30);
+
+		   
 	}
 	
 	public void placePlayer(Graphics g)

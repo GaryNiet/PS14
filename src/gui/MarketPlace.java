@@ -104,6 +104,16 @@ public class MarketPlace extends JPanel
 		return slider;
 	}
 	
+	public void come()
+	{
+		
+	}
+	
+	public void go()
+	{
+		
+	}
+	
 	
 	
 

@@ -12,7 +12,7 @@ public class Showers extends Place
 		
 		
 		posX = (int) (0.637 * Variables.getXresolution() * Variables.getResolutionmultiplier());
-		posY = (int) (0.052 * Variables.getYresolution() * Variables.getResolutionmultiplier());
+		posY = (int) (0.082 * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		sizeX = (int) (0.0878 * Variables.getXresolution() * Variables.getResolutionmultiplier());
 		sizeY = (int) ((0.2604) * Variables.getYresolution() * Variables.getResolutionmultiplier());
 		
