@@ -1,15 +1,20 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.TexturePaint;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
@@ -32,11 +37,14 @@ public class UserInterface extends JFrame
 	MarketPlace marketPlace;
 	Rectangle2D marketRect;
 	
+	
+	
 	boolean showMarketPlace;
 	boolean info;
 
 	public UserInterface(GameLogic _gameLogic, double resolutionMultiplier)
 	{
+		this.setUndecorated(true);
 		info = false;
 		showMarketPlace = false;
 		gameLogic = _gameLogic;
@@ -82,15 +90,14 @@ public class UserInterface extends JFrame
 		panel.add(marketPlace, "x 0, y 0, w 300, h 300");
 		
 		
-
-		gameMap.setBackground(Color.green);
-		infoBox.setBackground(Color.red);
-		scheduleBox.setBackground(Color.black);
+		
 
 		this.add(panel);
 
 		pack();
 		scheduleBox.set();
+		
+		
 		
 		
 

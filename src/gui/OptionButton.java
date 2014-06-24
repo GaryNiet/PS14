@@ -77,7 +77,7 @@ public class OptionButton extends JPanel
 
 	protected void mouseOverReaction(MouseEvent e)
 	{
-		e.translatePoint((int) (-parent.getBounds().getX()), 25);
+		e.translatePoint((int) (-parent.getBounds().getX()),0);
 		if (showsCharacters == false && showsChangeJobMenu == false)
 		{
 			for (Rectangle2D rect : actionButtonList)

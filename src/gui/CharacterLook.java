@@ -36,7 +36,7 @@ public class CharacterLook extends JPanel
 		
 		g1.drawImage(CharacterPieces.getBody(body), (int)frame.getX() - (int)(frame.getWidth()/1.4), (int)frame.getY() , (int)(frame.getWidth() * 2.5), (int)frame.getHeight(), null);
 		g1.drawImage(CharacterPieces.getHead(head), (int)frame.getX(), (int)frame.getY(), (int)frame.getWidth(), (int)frame.getWidth(), null);
-		g1.drawImage(CharacterPieces.getFace(face), (int)frame.getX(), (int)frame.getY() + 3, (int)frame.getWidth(), (int)frame.getWidth(), null);
+		g1.drawImage(CharacterPieces.getFace(face), (int)frame.getX(), (int)frame.getY(), (int)frame.getWidth(), (int)frame.getWidth(), null);
 		
 	}
 

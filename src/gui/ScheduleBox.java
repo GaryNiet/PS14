@@ -92,7 +92,7 @@ public class ScheduleBox extends JComponent
 	void mouseClickReaction(MouseEvent me)
 	{
 		//System.out.println(me.getPoint().getX());
-		me.translatePoint(-this.getBounds().x, -this.getBounds().y -25);
+		me.translatePoint(-this.getBounds().x, -this.getBounds().y);
 		for (ScheduleButton rect : buttonList)
 		{
 			if (rect.getBounds().contains(me.getPoint()))
@@ -132,7 +132,7 @@ public class ScheduleBox extends JComponent
 	
 	protected void mouseWheeled(MouseWheelEvent e)
 	{
-		e.translatePoint(-this.getBounds().x, -this.getBounds().y -25);
+		e.translatePoint(-this.getBounds().x, -this.getBounds().y);
 		if(optionButton.getBounds().contains(e.getPoint()))
 		{
 			optionButton.mouseWheeled(e);

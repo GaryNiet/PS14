@@ -83,9 +83,6 @@ public class WarningWindow extends JPanel
 	public void mouseClickReaction(MouseEvent me)
 	{
 		
-		
-		me.translatePoint(-this.getBounds().x, -this.getBounds().y - 25);
-		
 		if(okButton.getBounds().contains(me.getPoint()))
 		{
 			parent.setInfo(false);

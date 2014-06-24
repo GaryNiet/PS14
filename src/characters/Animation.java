@@ -212,8 +212,8 @@ public class Animation
 
 	private void choseRandomSpot(Place place)
 	{
-		aimX = random.nextInt(character.currentPlace.getSizeX());
-		aimY = random.nextInt(character.currentPlace.getSizeY());
+		aimX = random.nextInt(character.currentPlace.getSizeX() - 40);
+		aimY = random.nextInt(character.currentPlace.getSizeY() -40 );
 	}
 
 	public Node findFirstNode()

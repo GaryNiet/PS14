@@ -58,6 +58,20 @@ public class GameMap extends JPanel{
 	private TexturePaint tilesTex;
 	private BufferedImage grass;
 	private TexturePaint grassTex;
+	private BufferedImage kitchen;
+	private TexturePaint kitchenTex;
+	private BufferedImage library;
+	private TexturePaint libraryTex;
+	private BufferedImage cafeteria;
+	private TexturePaint cafeteriaTex;
+	private BufferedImage cell;
+	private TexturePaint cellTex;
+	private BufferedImage phoneBooth;
+	private TexturePaint phoneBoothTex;
+	private BufferedImage visitingCell;
+	private TexturePaint visitingCellTex;
+	private BufferedImage workshop;
+	private TexturePaint workshopTex;
 	private BufferedImage cement;
 	private TexturePaint cementTex;
 	private BufferedImage knife;
@@ -217,6 +231,7 @@ public class GameMap extends JPanel{
 			tiles = ImageIO.read(new File("tile.png"));
 			knife = ImageIO.read(new File("knife.png"));
 			grass = ImageIO.read(new File("grass.png"));
+			kitchen = ImageIO.read(new File("kitchen.png"));
 			cement = ImageIO.read(new File("cement.JPG"));
 
 		} catch (IOException ex)
@@ -228,7 +243,6 @@ public class GameMap extends JPanel{
 	
 	public void mouseClickReaction(MouseEvent me)
 	{
-		me.translatePoint(0, -25);
 		
 		for(Rectangle2D place: placeList)
 		{
@@ -264,6 +278,7 @@ public class GameMap extends JPanel{
 		floorTex = new TexturePaint(floor, new Rectangle2D.Double(0,0,50,50));
 		grassTex = new TexturePaint(grass, new Rectangle2D.Double(0,0,300,300));
 		cementTex = new TexturePaint(cement, new Rectangle2D.Double(0,0,300,300));
+		kitchenTex = new TexturePaint(kitchen, new Rectangle2D.Double(0,0,30,30));
 		g1.setPaint(grassTex);
 		g1.fill(this.getBounds());
 		
@@ -273,7 +288,22 @@ public class GameMap extends JPanel{
 		for(Rectangle2D place: placeList)
 		{
 			g1.setPaint(Color.black);
-			if(i==3)
+			if(i==0)
+			{
+				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+				g1.setPaint(showerTex);
+			}
+			else if(i==1)
+			{
+				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+				g1.setPaint(showerTex);
+			}
+			else if(i==2)
+			{
+				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+				g1.setPaint(showerTex);
+			}
+			else if(i==3)
 			{
 				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(showerTex);
@@ -283,14 +313,40 @@ public class GameMap extends JPanel{
 				tilesTex = new TexturePaint(tiles, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(tilesTex);
 			}
+			else if(i==5)
+			{
+				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+				g1.setPaint(showerTex);
+			}
+			else if(i==6)
+			{
+				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+				g1.setPaint(showerTex);
+			}
+			else if(i==7)
+			{
+				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+				g1.setPaint(kitchenTex);
+			}
+			else if(i==8)
+			{
+				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+				g1.setPaint(showerTex);
+			}
 			
 			g1.fill(place);
 			
-			Stroke stroke = g1.getStroke();
+			Stroke stroke = new BasicStroke(10);
 			Shape strokedOutline = stroke.createStrokedShape(place);
 			g1.setPaint(cementTex);
 			
 			g1.fill(strokedOutline);
+			
+			Stroke outline = new BasicStroke(2);
+			Shape blackOutline = outline.createStrokedShape(strokedOutline);
+			g1.setPaint(Color.black);
+			g1.fill(blackOutline);
+			
 			i++;
 		}
 		

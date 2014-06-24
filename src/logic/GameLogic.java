@@ -47,7 +47,6 @@ public class GameLogic
 		double resolutionMultiplier = Variables.getResolutionmultiplier();
 
 		userInterface = new UserInterface(this, resolutionMultiplier);
-		userInterface.setTitle("Prison Simulator");
 		userInterface.setSize(
 				(int) (Variables.getXresolution() * resolutionMultiplier),
 				(int) (Variables.getYresolution() * resolutionMultiplier));
