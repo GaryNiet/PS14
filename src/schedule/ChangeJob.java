@@ -65,7 +65,7 @@ public class ChangeJob extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("jobs changed");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("jobs changed", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

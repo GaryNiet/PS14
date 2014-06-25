@@ -360,11 +360,11 @@ public class GameMap extends JPanel{
 			i++;
 		}
 		
-		g1.setPaint(Color.red);
-		for(Node node: nodes)
-		{
-			node.paint(g);
-		}
+//		g1.setPaint(Color.red);
+//		for(Node node: nodes)
+//		{
+//			node.paint(g);
+//		}
 		
 		int index = 0;
 		for(AICharacter ai: Variables.getCharacterList())

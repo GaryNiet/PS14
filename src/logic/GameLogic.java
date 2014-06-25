@@ -34,6 +34,7 @@ public class GameLogic
 	UserInterface userInterface;
 	OnTimer timerTask;
 	CharacterPieces characterPieces;
+	int dayCounter;
 
 	boolean makeWait;
 
@@ -43,6 +44,7 @@ public class GameLogic
 	public GameLogic()
 	{
 		init();
+		
 		
 		double resolutionMultiplier = Variables.getResolutionmultiplier();
 
@@ -95,13 +97,14 @@ public class GameLogic
 
 	private void init()
 	{
+		dayCounter = 0;
 		characterPieces = new CharacterPieces();
 		playerCharacter = new PlayerCharacter("player", 100, 100, 100, 50, 50, characterPieces);
 
 		Variables.setPlayerCharacter(playerCharacter);
 		Variables.setGameLogic(this);
 
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			AICharacter character1 = new AICharacter(
 					CharacterGenerator.generateName(), 2, 12, 10, 0, 0, characterPieces);
@@ -259,7 +262,7 @@ public class GameLogic
 		if (character.getHealth() < 1)
 		{
 			iter.remove();
-			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(character.getName() + "  died");
+			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(character.getName() + "  died", false);
 			Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -269,7 +272,7 @@ public class GameLogic
 		if (character.isEscaped() == true)
 		{
 			iter.remove();
-			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(character.getName() + " escaped");
+			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(character.getName() + " escaped", false);
 			Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -278,7 +281,7 @@ public class GameLogic
 	{
 		if (character.getHealth() < 1)
 		{
-			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you died");
+			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you died after " + Variables.getGameLogic().getDayCounter() + " days", true);
 			Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -329,6 +332,7 @@ public class GameLogic
 		currentTime += 1;
 		if (currentTime > timeZones - 1)
 		{
+			dayCounter++;
 			currentTime = 0;
 		}
 	}
@@ -415,5 +419,15 @@ public class GameLogic
 	public CharacterPieces getCharacterPieces()
 	{
 		return characterPieces;
+	}
+
+	public int getDayCounter()
+	{
+		return dayCounter;
+	}
+
+	public void setDayCounter(int dayCounter)
+	{
+		this.dayCounter = dayCounter;
 	}
 }

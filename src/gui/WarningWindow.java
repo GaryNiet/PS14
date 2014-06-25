@@ -15,6 +15,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import logic.Variables;
+
 @SuppressWarnings("serial")
 public class WarningWindow extends JPanel
 {
@@ -25,12 +27,14 @@ public class WarningWindow extends JPanel
 
 	private BufferedImage toiletPaper;
 	private TexturePaint toiletPaperTex;
+	boolean end;
 	
 	public WarningWindow(UserInterface _parent)
 	{
 		parent = _parent;
 		okButton = new Rectangle2D.Double();
 		text = "";
+		end = false;
 		
 
 		try
@@ -73,10 +77,13 @@ public class WarningWindow extends JPanel
 		okButton.setFrame(this.getWidth()*6/8, this.getHeight()*6/8, this.getWidth()/8, this.getHeight()/8);
 	}
 	
-	public void setImage(String string)
+	public void setImage(String string, boolean endGame)
 	{
 		text = string;
 		parent.setInfo(true);
+		
+
+		end = endGame;
 		
 	}
 
@@ -86,6 +93,10 @@ public class WarningWindow extends JPanel
 		if(okButton.getBounds().contains(me.getPoint()))
 		{
 			parent.setInfo(false);
+			if(end == true)
+			{
+				System.exit(0);
+			}
 		}
 		
 	}

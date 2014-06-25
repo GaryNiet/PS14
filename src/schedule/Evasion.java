@@ -54,7 +54,7 @@ public class Evasion extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you are out");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you escaped prison after being locked up for " + Variables.getGameLogic().getDayCounter() + " days", true);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

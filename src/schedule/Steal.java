@@ -47,7 +47,7 @@ public class Steal extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("stole materials");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("stole materials", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

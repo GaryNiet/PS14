@@ -88,7 +88,7 @@ public class Attack extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you beat up " + victim.getName() + " without anybody noticing");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you beat up " + victim.getName() + " without anybody noticing", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -97,7 +97,7 @@ public class Attack extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("Before you get your hand on " + victim.getName() + ", guards notice your intention and push you back violently");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("Before you get your hand on " + victim.getName() + ", guards notice your intention and push you back violently", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -106,7 +106,7 @@ public class Attack extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you lose the fight and get hurt");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you lose the fight and get hurt", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -159,6 +159,8 @@ public class Attack extends PrisonAction
 	
 	private int fightCapacity(characters.AbstractCharacter character)
 	{
+		System.out.println(character.getName());
+		
 		if(character.isWeapon())
 		{
 			return (int) (character.getStrength() + Variables.getWeaponBonus() + random.nextInt(Variables.getFightRandom()));

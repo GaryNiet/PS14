@@ -37,7 +37,7 @@ public class Corrupt extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("corruption successful");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("corruption successful", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

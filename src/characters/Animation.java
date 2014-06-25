@@ -22,6 +22,8 @@ public class Animation
 	boolean moving;
 	boolean pass1;
 	boolean pass2;
+	int randomX;
+	int randomY;
 
 	Node firstNode;
 	Node lastNode;
@@ -47,6 +49,9 @@ public class Animation
 		lastNode = new Node();
 		pass1 = false;
 		pass2 = false;
+		
+		randomX = (int) ((random.nextDouble()-0.5) * 40);
+		randomY = (int) ((random.nextDouble()-0.5) * 40);
 
 	}
 
@@ -58,22 +63,32 @@ public class Animation
 			if (path.size() != 0)
 			{
 				aimX = -(character.getCurrentPlace().getPosX()
-						- path.get(0).getPosX() + ((random.nextFloat() - 0.5) * 50));
+						- path.get(0).getPosX() + randomX);
 				aimY = -(character.getCurrentPlace().getPosY()
-						- path.get(0).getPosY() + ((random.nextFloat() - 0.5) * 50));
+						- path.get(0).getPosY() + randomY);
 			}
 
 			double distX = roamX - (double) aimX;
 			double distY = roamY - (double) aimY;
 
-			norm = Math.sqrt(Math.abs(distX * distX + distY * distY));
+			norm = Math.sqrt(distX * distX + distY * distY);
 			double divisionX = distX / norm;
 			double divisionY = distY / norm;
+			
+			
 
-			if ((pass1 == true && pass2 == true) || (norm >= -10 && norm <= 10))
+
+
+			double speedX = (divisionX / character.movementPeriod);
+			double speedY = (divisionY / character.movementPeriod);
+			double speedNorm = (speedX * speedX + speedY * speedY);
+			
+			roamX -= speedX;
+			roamY -= speedY;
+			
+			
+			if(speedNorm >= norm)
 			{
-				pass1 = false;
-				pass2 = false;
 				if (path.size() != 0)
 				{
 					path.remove(0);
@@ -83,26 +98,6 @@ public class Animation
 				}
 			}
 
-			double finalX = roamX - (divisionX / character.movementPeriod);
-			double finalY = roamY - (divisionY / character.movementPeriod);
-
-			if (Math.signum(aimX - roamX) != Math.signum(aimX - finalX))
-			{
-				pass1 = true;
-			} else
-			{
-				if(pass1 == false)
-				roamX -= divisionX / character.movementPeriod;
-			}
-
-			if (Math.signum(roamY - aimY) != Math.signum(finalY - aimY))
-			{
-				pass2 = true;
-			} else
-			{
-				if(pass2 == false)
-				roamY -= divisionY / character.movementPeriod;
-			}
 
 		} else
 		{

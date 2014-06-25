@@ -41,7 +41,7 @@ public class Blackmail extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("blackmail successful");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("blackmail successful", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

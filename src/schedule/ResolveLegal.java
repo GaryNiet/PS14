@@ -53,7 +53,7 @@ public class ResolveLegal extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you are free to go");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("after " + Variables.getGameLogic().getDayCounter() + " in prison, you are free to go", true);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

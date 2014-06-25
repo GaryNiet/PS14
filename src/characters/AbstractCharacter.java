@@ -49,7 +49,7 @@ public abstract class AbstractCharacter
 	{
 		random = new Random();
 		
-		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/35;
+		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/(50 * Variables.getResolutionmultiplier());
 		name = _name;
 		health = 100;
 		strength = random.nextInt(6) + 3;

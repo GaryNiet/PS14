@@ -55,7 +55,6 @@ public class UserInterface extends JFrame
 		warningWindow = new WarningWindow(this);
 		marketPlace = new MarketPlace(this);
 		
-		//marketRect = new Rectangle2D.Double(0,0,50,50);
 		marketRect = new Rectangle2D.Double((725* resolutionMultiplier), 0, (35* resolutionMultiplier), (35* resolutionMultiplier));
 
 		panel.add(gameMap, "w 75%, h 75%");

@@ -44,7 +44,7 @@ public class StealWeaponTool extends PrisonAction
 	{
 		if(character instanceof PlayerCharacter)
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you now own a weapon");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you now own a weapon", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

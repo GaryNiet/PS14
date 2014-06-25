@@ -64,7 +64,7 @@ public class Dig extends PrisonAction
 		{
 			if(character.getSchedule().getPlace(time).getDigAdvancement() >= Variables.getDigsuccesslimit())
 			{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("there's a hole in the wall now");
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("there's a hole in the wall now", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 			}
 		}
