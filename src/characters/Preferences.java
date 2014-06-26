@@ -1,8 +1,9 @@
 package characters;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Preferences
+public class Preferences implements Serializable
 {
 	double wellBeingPreference;
 	double evasionPreference;

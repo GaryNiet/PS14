@@ -1,5 +1,7 @@
 package logic;
 
+import gui.CharacterPieces;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +48,7 @@ public class Variables
 	static List<AbstractCharacter> allCharacters;
 
 	static GameLogic gameLogic;
+	static CharacterPieces characterPieces;
 	
 	
 	public static int getGameSpeed()
@@ -210,5 +213,15 @@ public class Variables
 	public static void setGameSpeed(int gameSpeed)
 	{
 		Variables.gameSpeed = gameSpeed;
+	}
+
+	public static CharacterPieces getCharacterPieces()
+	{
+		return characterPieces;
+	}
+
+	public static void setCharacterPieces(CharacterPieces characterPieces)
+	{
+		Variables.characterPieces = characterPieces;
 	}
 }

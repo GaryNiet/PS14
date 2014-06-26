@@ -3,12 +3,13 @@ package gui;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 
-public class CharacterPieces
+public class CharacterPieces implements Serializable
 {
 	//head&face 154x225
 	static List<BufferedImage> bodyList;

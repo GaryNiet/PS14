@@ -1,5 +1,6 @@
 package schedule;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,7 +9,7 @@ import logic.Variables;
 import places.Place;
 import characters.AbstractCharacter;
 
-public abstract class PrisonAction
+public abstract class PrisonAction implements Serializable
 {
 	public String name;
 	public abstract void resolve(AbstractCharacter character, int time, boolean isReal);

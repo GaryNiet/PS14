@@ -1,6 +1,7 @@
 package schedule;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import places.Showers;
 import places.VisitingCell;
 import places.Workshop;
 
-public class Schedule
+public class Schedule implements Serializable
 {
 	Place[] timeTable;
 	PrisonAction[] actionTimeTable;

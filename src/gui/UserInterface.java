@@ -16,9 +16,13 @@ import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import save.Deserialize;
+import save.SerializeCharacter;
 
 import logic.GameLogic;
 import logic.Variables;
@@ -36,9 +40,7 @@ public class UserInterface extends JFrame
 	WarningWindow warningWindow;
 	MarketPlace marketPlace;
 	Rectangle2D marketRect;
-	
-	
-	
+
 	boolean showMarketPlace;
 	boolean info;
 
@@ -54,8 +56,9 @@ public class UserInterface extends JFrame
 		scheduleBox = new ScheduleBox(this);
 		warningWindow = new WarningWindow(this);
 		marketPlace = new MarketPlace(this);
-		
-		marketRect = new Rectangle2D.Double((725* resolutionMultiplier), 0, (35* resolutionMultiplier), (35* resolutionMultiplier));
+
+		marketRect = new Rectangle2D.Double((725 * resolutionMultiplier), 0,
+				(35 * resolutionMultiplier), (35 * resolutionMultiplier));
 
 		panel.add(gameMap, "w 75%, h 75%");
 
@@ -88,25 +91,17 @@ public class UserInterface extends JFrame
 		panel.add(warningWindow, string);
 		panel.add(marketPlace, "x 0, y 0, w 300, h 300");
 		marketPlace.setVisible(false);
-		
-		
-		
 
 		this.add(panel);
 
 		pack();
 		scheduleBox.set();
-		
-		
-		
-		
 
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
 		timer.scheduleAtFixedRate(timerTask, 0, 16);
 		// timer.scheduleAtFixedRate(timerTask, 0, 1000);
 
-		
 		this.addMouseListener(new MouseAdapter()
 		{
 			@Override
@@ -135,7 +130,7 @@ public class UserInterface extends JFrame
 			}
 
 		});
-
+		final UserInterface parrot = this;
 		this.addKeyListener(new KeyListener()
 		{
 
@@ -164,12 +159,29 @@ public class UserInterface extends JFrame
 				{
 					gameLogic.speedDown();
 				}
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+				{
+					Object[] options =
+					{ "Save", "Load", "Cancel" };
+					int n = JOptionPane.showOptionDialog(parrot,
+							"Would you like to save/load your game?",
+							"Option menu", JOptionPane.YES_NO_CANCEL_OPTION,
+							JOptionPane.QUESTION_MESSAGE, null, options,
+							options[2]);
+					if(n == 0)
+					{
+						SerializeCharacter.save();
+					}
+					else if(n==1)
+					{
+						Deserialize.load();
+					}
+				}
+
+				
 
 			}
 		});
-		
-		
-		
 
 	}
 
@@ -209,28 +221,25 @@ public class UserInterface extends JFrame
 		{
 			scheduleBox.mouseClickReaction(e);
 		}
-		
-		if(showMarketPlace)
+
+		if (showMarketPlace)
 		{
-			if( !marketPlace.getBounds().contains(e.getPoint()))
+			if (!marketPlace.getBounds().contains(e.getPoint()))
 			{
 				marketPlace.setVisible(false);
 				showMarketPlace = false;
 				gameLogic.getTimerTask().free();
 			}
 		}
-		
-		if(marketRect.getBounds().contains(e.getPoint()))
+
+		if (marketRect.getBounds().contains(e.getPoint()))
 		{
 			marketPlace.updateSlider();
 			marketPlace.setVisible(true);
 			showMarketPlace = true;
 			gameLogic.setMakeWait(true);
-			
-		}
-		
 
-		
+		}
 
 	}
 
@@ -254,19 +263,15 @@ public class UserInterface extends JFrame
 			{
 
 				warningWindow.repaint();
-			}
-			else if(showMarketPlace == true)
+			} else if (showMarketPlace == true)
 			{
 				marketPlace.repaint();
-			}
-			else
+			} else
 			{
 				gameMap.repaint();
 				infoBox.repaint();
 				scheduleBox.repaint();
 			}
-			
-			
 
 		}
 

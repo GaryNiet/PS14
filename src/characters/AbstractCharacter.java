@@ -3,6 +3,7 @@ package characters;
 import gui.CharacterLook;
 import gui.CharacterPieces;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -15,7 +16,7 @@ import places.Place;
 import schedule.PrisonAction;
 import schedule.Schedule;
 
-public abstract class AbstractCharacter
+public abstract class AbstractCharacter implements Serializable
 {
 	String name;
 

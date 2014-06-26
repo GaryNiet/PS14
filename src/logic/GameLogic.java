@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 
 import places.Free;
 import places.Job;
+import save.Deserialize;
+import save.SerializeCharacter;
 import schedule.PrisonAction;
 import aiMachine.AIValidator;
 import aiMachine.ActionCalculator;
@@ -61,6 +63,8 @@ public class GameLogic
 		aiValidator = new AIValidator();
 		currentTime = 0;
 		makeWait = false;
+		
+
 
 		timerTask.start();
 
@@ -69,36 +73,42 @@ public class GameLogic
 	private void showTable()
 	{
 
-		String leftAlignFormat = "| %-20s | %-6d | %-10d | %-4d | %-10s | %-9s | %-10s | %-7d | %-5d | %-9d |%n";
-
-		System.out
-				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
-		System.out
-				.printf("|         name         |strength|intelligence|health|   action   | schedule  |currentPlace|influence| money | materials |%n");
-		System.out
-				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
-		for (AbstractCharacter character : aiCharacterList)
-		{
-
-			System.out.format(leftAlignFormat, character.getName(),
-					(int) character.getStrength(), (int) character
-							.getIntelligence(), character.getHealth(),
-					character.getFixedAction().name, character.getSchedule()
-							.getPlace(currentTime).name, character
-							.getCurrentPlace().name, character.getInfluence(),
-					character.getMoney(), character.getMaterials());
-
-		}
-		System.out
-				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
+//		String leftAlignFormat = "| %-20s | %-6d | %-10d | %-4d | %-10s | %-9s | %-10s | %-7d | %-5d | %-9d |%n";
+//
+//		System.out
+//				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
+//		System.out
+//				.printf("|         name         |strength|intelligence|health|   action   | schedule  |currentPlace|influence| money | materials |%n");
+//		System.out
+//				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
+//		for (AbstractCharacter character : aiCharacterList)
+//		{
+//
+//			System.out.format(leftAlignFormat, character.getName(),
+//					(int) character.getStrength(), (int) character
+//							.getIntelligence(), character.getHealth(),
+//					character.getFixedAction().name, character.getSchedule()
+//							.getPlace(currentTime).name, character
+//							.getCurrentPlace().name, character.getInfluence(),
+//					character.getMoney(), character.getMaterials());
+//
+//		}
+//		System.out
+//				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
 		// aiValidator.showUsage();
 
 	}
 
 	private void init()
 	{
+		
+		
+		
+		
 		dayCounter = 0;
 		characterPieces = new CharacterPieces();
+		Variables.setCharacterPieces(characterPieces);
+		
 		playerCharacter = new PlayerCharacter("player", 100, 100, 100, 50, 50, characterPieces);
 
 		Variables.setPlayerCharacter(playerCharacter);
@@ -114,6 +124,8 @@ public class GameLogic
 		// aiCharacterList.add(character8);
 
 		Variables.setCharacterList(aiCharacterList);
+		
+		
 
 	}
 
@@ -127,7 +139,7 @@ public class GameLogic
 			while (true)
 			{
 				checkForNewPrisoner();
-				Iterator iter = aiCharacterList.iterator();
+				Iterator iter = Variables.getCharacterList().iterator();
 
 				while (iter.hasNext())
 				{
@@ -262,6 +274,7 @@ public class GameLogic
 		if (character.getHealth() < 1)
 		{
 			iter.remove();
+			Variables.getCharacterList().remove(character);
 			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(character.getName() + "  died", false);
 			Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
@@ -272,6 +285,7 @@ public class GameLogic
 		if (character.isEscaped() == true)
 		{
 			iter.remove();
+			Variables.getCharacterList().remove(character);
 			Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(character.getName() + " escaped", false);
 			Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
@@ -292,7 +306,7 @@ public class GameLogic
 		{
 			AICharacter newCharacter = new AICharacter(
 					CharacterGenerator.generateName(), 100, 100, 100, 0, 0, characterPieces);
-			aiCharacterList.add(newCharacter);
+			Variables.getCharacterList().add(newCharacter);
 			userInterface.getGameMap().addCharacter(newCharacter);
 		}
 	}
@@ -304,7 +318,7 @@ public class GameLogic
 
 	private void setXY()
 	{
-		for (AICharacter ai : aiCharacterList)
+		for (AICharacter ai : Variables.getCharacterList())
 		{
 			if (ai.getPosX() != ai.getCurrentPlace().getPosX())
 			{
@@ -362,7 +376,7 @@ public class GameLogic
 
 	public List<AICharacter> getAICharacters()
 	{
-		return aiCharacterList;
+		return Variables.getCharacterList();
 	}
 
 	public int getTime()
@@ -382,7 +396,7 @@ public class GameLogic
 			Variables.setGameSpeed(Variables.getGameSpeed() - 1);
 		}
 		
-		for (AbstractCharacter character : aiCharacterList)
+		for (AbstractCharacter character : Variables.getCharacterList())
 		{
 			character.setSpeed();
 		}
@@ -393,7 +407,7 @@ public class GameLogic
 	public void speedDown()
 	{
 		Variables.setGameSpeed(Variables.getGameSpeed() + 1);
-		for (AbstractCharacter character : aiCharacterList)
+		for (AbstractCharacter character : Variables.getCharacterList())
 		{
 			character.setSpeed();
 		}

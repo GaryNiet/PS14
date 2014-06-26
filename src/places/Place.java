@@ -1,5 +1,6 @@
 package places;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import schedule.Evasion;
 import schedule.PrisonAction;
 import schedule.Study;
 
-public abstract class Place
+public abstract class Place implements Serializable
 {
 	public String name;
 	public List<PrisonAction> possibleActions;
