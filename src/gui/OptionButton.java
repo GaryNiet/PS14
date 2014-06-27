@@ -230,7 +230,7 @@ public class OptionButton extends JPanel
 
 		int nextShift = shift - e.getWheelRotation();
 		if (nextShift <= 0
-				&& nextShift >= -(aiCharacters.size() - 13) * buttonSpacing)
+				&& nextShift >= -(aiCharacters.size() - 13) * buttonSpacing * Variables.getResolutionmultiplier())
 		{
 			shift = nextShift;
 		}
@@ -256,11 +256,10 @@ public class OptionButton extends JPanel
 				if(spacing % 2 == 1)
 				{
 					
-					
 					characterButton = new Rectangle2D.Double(0, button
 							.getBounds2D().getY()
 							+ buttonSpacing * 3
-							* (spacing - 1)/2, this.getBounds().getWidth(),
+							* (spacing - 1)/2 +shift, this.getBounds().getWidth(),
 							buttonSpacing * 3);
 					
 					drawCharacterButton(g1, aiCharacter, characterButton);
@@ -269,7 +268,7 @@ public class OptionButton extends JPanel
 					g1.drawString(aiCharacter.getName(), 10, (int) (button
 							.getBounds2D().getY()
 							+ buttonSpacing * 3
-							* (spacing)/2));
+							* (spacing)/2) + shift);
 				}
 				else
 				{
@@ -278,7 +277,7 @@ public class OptionButton extends JPanel
 					characterButton = new Rectangle2D.Double(this.getWidth()/2, button
 							.getBounds2D().getY()
 							+ buttonSpacing * 3
-							* (int)((spacing - 1)/2), this.getBounds().getWidth(),
+							* (int)((spacing - 1)/2) + shift, this.getBounds().getWidth(),
 							buttonSpacing * 3);
 					
 					drawCharacterButton(g1, aiCharacter, characterButton);
@@ -287,7 +286,7 @@ public class OptionButton extends JPanel
 					g1.drawString(aiCharacter.getName(), 10 + this.getWidth()/2, (int) (button
 							.getBounds2D().getY()
 							+ buttonSpacing * 3
-							* (spacing - 1)/2));
+							* (spacing - 1)/2) + shift);
 				}
 
 
@@ -322,20 +321,28 @@ public class OptionButton extends JPanel
 			actionButtonList.clear();
 			getPossibleActions();
 			g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+			
 			for (PrisonAction action : possibleActions)
 			{
 				
 				Rectangle2D actionButton = null;
 				if (index == 6)
 				{
-					g1.drawString(action.name, 10, (int) button.getBounds2D()
-							.getY() + buttonSpacing * spacing);
+					
 					actionButton = new Rectangle2D.Double(0, button
 							.getBounds2D().getY()
-							+ buttonSpacing
-							* (spacing - 1), 100, buttonSpacing);
+							+ buttonSpacing*2
+							* (spacing - 1), button.getBounds2D().getWidth() / 2, buttonSpacing * 2);
 					
 					drawActionButton(g1, action.name, actionButton);
+					
+					g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+					g1.setColor(Color.white);
+					
+					g1.drawString(action.name, 10, (int)(button
+							.getBounds2D().getY()
+							+ buttonSpacing*2
+							* (spacing) - 10));
 				} else
 				{
 					if(spacing % 2 == 1)
@@ -389,15 +396,14 @@ public class OptionButton extends JPanel
 					{
 
 						possiblePlaces.add(place);
-						Rectangle2D newRect = new Rectangle2D.Double(100,
-								button.getBounds2D().getY() + buttonSpacing
+						Rectangle2D newRect = new Rectangle2D.Double(button.getBounds().getWidth() / 2 + 5,
+								button.getBounds2D().getY() + buttonSpacing * 2
 										* (spacing - 1) + spacing2
-										* buttonSpacing, 100, buttonSpacing);
+										* buttonSpacing, button.getBounds().getWidth() / 2 - 10, buttonSpacing);
 						g1.draw(newRect);
-						g1.drawString(place.name, 100, (int) button
-								.getBounds2D().getY()
-								+ buttonSpacing
-								* (spacing) + spacing2 * buttonSpacing);
+						g1.drawString(place.name, (int) (button.getBounds().getWidth() / 2 + 10), (int) (button.getBounds2D().getY() + buttonSpacing * 2
+								* (spacing - 0.5) + spacing2
+								* buttonSpacing));
 						freePlaceList.add(newRect);
 						spacing2++;
 					}
