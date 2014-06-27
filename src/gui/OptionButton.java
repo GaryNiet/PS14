@@ -1,15 +1,24 @@
 package gui;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.Stroke;
+import java.awt.TexturePaint;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -42,6 +51,9 @@ public class OptionButton extends JPanel
 	List<AICharacter> aiCharacters;
 	List<Rectangle2D> aiCharactersG;
 	List<Rectangle2D> jobButtonsG;
+	
+	private BufferedImage buttonImage;
+	private TexturePaint buttonTex;
 
 	// would be cleaner with enumeration
 	int index;
@@ -63,6 +75,17 @@ public class OptionButton extends JPanel
 		aiCharacters = new ArrayList<>();
 		aiCharactersG = new ArrayList<>();
 		jobButtonsG = new ArrayList<>();
+		
+		
+		try
+		{
+			buttonImage = ImageIO.read(new File("floor.jpg"));
+		} catch (IOException e)
+		{
+			System.out.println("floor not found");
+		}
+		
+		buttonTex = new TexturePaint(buttonImage, new Rectangle2D.Double(0,0,200,200));
 
 		this.addMouseListener(new MouseAdapter()
 		{
@@ -218,23 +241,58 @@ public class OptionButton extends JPanel
 		Graphics2D g1 = (Graphics2D) g;
 		super.paintComponent(g1);
 		setRect();
+		
+		g1.setPaint(Color.black);
+		g1.fillRect(0, 0, 2000, 2000);
 
 		if (showsCharacters == true)
 		{
 			int spacing = 1;
 			for (AICharacter aiCharacter : aiCharacters)
 			{
+				g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+				Rectangle2D characterButton = null;
+				
+				if(spacing % 2 == 1)
+				{
+					
+					
+					characterButton = new Rectangle2D.Double(0, button
+							.getBounds2D().getY()
+							+ buttonSpacing * 3
+							* (spacing - 1)/2, this.getBounds().getWidth(),
+							buttonSpacing * 3);
+					
+					drawCharacterButton(g1, aiCharacter, characterButton);
+					
+					g1.setPaint(Color.white);
+					g1.drawString(aiCharacter.getName(), 10, (int) (button
+							.getBounds2D().getY()
+							+ buttonSpacing * 3
+							* (spacing)/2));
+				}
+				else
+				{
+					
+					
+					characterButton = new Rectangle2D.Double(this.getWidth()/2, button
+							.getBounds2D().getY()
+							+ buttonSpacing * 3
+							* (int)((spacing - 1)/2), this.getBounds().getWidth(),
+							buttonSpacing * 3);
+					
+					drawCharacterButton(g1, aiCharacter, characterButton);
+					
+					g1.setPaint(Color.white);
+					g1.drawString(aiCharacter.getName(), 10 + this.getWidth()/2, (int) (button
+							.getBounds2D().getY()
+							+ buttonSpacing * 3
+							* (spacing - 1)/2));
+				}
 
-				g1.drawString(aiCharacter.getName(), 10, (int) button
-						.getBounds2D().getY() + shift + buttonSpacing * spacing);
-				Rectangle2D characterButton = new Rectangle2D.Double(0, button
-						.getBounds2D().getY()
-						+ shift
-						+ buttonSpacing
-						* (spacing - 1), 100, buttonSpacing);
 
 				aiCharactersG.add(characterButton);
-				g1.draw(characterButton);
+				
 
 				spacing++;
 			}
@@ -263,37 +321,64 @@ public class OptionButton extends JPanel
 			int spacing = 1;
 			actionButtonList.clear();
 			getPossibleActions();
+			g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 			for (PrisonAction action : possibleActions)
 			{
-				g1.drawString(action.name, 10, (int) button.getBounds2D()
-						.getY() + buttonSpacing * spacing);
+				
 				Rectangle2D actionButton = null;
 				if (index == 6)
 				{
+					g1.drawString(action.name, 10, (int) button.getBounds2D()
+							.getY() + buttonSpacing * spacing);
 					actionButton = new Rectangle2D.Double(0, button
 							.getBounds2D().getY()
 							+ buttonSpacing
 							* (spacing - 1), 100, buttonSpacing);
+					
+					drawActionButton(g1, action.name, actionButton);
 				} else
 				{
-					actionButton = new Rectangle2D.Double(0, button
-							.getBounds2D().getY()
-							+ buttonSpacing
-							* (spacing - 1), this.getBounds().getWidth(),
-							buttonSpacing);
+					if(spacing % 2 == 1)
+					{
+						
+						
+						actionButton = new Rectangle2D.Double(0, button
+								.getBounds2D().getY()
+								+ buttonSpacing * 3
+								* (spacing - 1)/2, this.getBounds().getWidth(),
+								buttonSpacing * 3);
+						
+						drawActionButton(g1, action.name, actionButton);
+						
+						g1.setPaint(Color.white);
+						g1.drawString(action.name, 10, (int) (button
+								.getBounds2D().getY()
+								+ buttonSpacing * 3
+								* (spacing)/2));
+					}
+					else
+					{
+						
+						
+						actionButton = new Rectangle2D.Double(this.getWidth()/2, button
+								.getBounds2D().getY()
+								+ buttonSpacing * 3
+								* (int)((spacing - 1)/2), this.getBounds().getWidth(),
+								buttonSpacing * 3);
+						
+						drawActionButton(g1, action.name, actionButton);
+						
+						g1.setPaint(Color.white);
+						g1.drawString(action.name, 10 + this.getWidth()/2, (int) (button
+								.getBounds2D().getY()
+								+ buttonSpacing * 3
+								* (spacing - 1)/2));
+					}
+					
 				}
-				actionButtonList.add(actionButton);
-				if (Variables.getPlayerCharacter().getSchedule()
-						.getAction(index).name.equals(action.name))
-				{
-					g1.setPaint(Color.red);
-				} else
-				{
-					g1.setPaint(Color.black);
-				}
-				g1.draw(actionButton);
+				
 
-				g1.setPaint(Color.black);
+				g1.setPaint(Color.white);
 
 				if (index == 6 && showDropMenu == spacing - 1)
 				{
@@ -323,6 +408,44 @@ public class OptionButton extends JPanel
 			}
 		}
 
+	}
+
+	private void drawCharacterButton(Graphics2D g1, AICharacter aiCharacter,
+			Rectangle2D characterButton)
+	{
+		actionButtonList.add(characterButton);
+		
+		g1.setPaint(buttonTex);
+		
+		g1.fill(characterButton);
+		
+		Stroke stroke = new BasicStroke(10);
+		Shape strokedOutline = stroke.createStrokedShape(characterButton);
+		g1.setPaint(Color.black);
+		
+		g1.fill(strokedOutline);
+		
+	}
+
+	private void drawActionButton(Graphics2D g1, String name,
+			Rectangle2D actionButton)
+	{
+		actionButtonList.add(actionButton);
+		if (Variables.getPlayerCharacter().getSchedule()
+				.getAction(index).name.equals(name))
+		{
+			g1.setPaint(Color.red);
+		} else
+		{
+			g1.setPaint(buttonTex);
+		}
+		g1.fill(actionButton);
+		
+		Stroke stroke = new BasicStroke(10);
+		Shape strokedOutline = stroke.createStrokedShape(actionButton);
+		g1.setPaint(Color.black);
+		
+		g1.fill(strokedOutline);
 	}
 
 	private void setCharacterAction(int scheduleIndex, int actionIndex)
