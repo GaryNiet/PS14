@@ -35,7 +35,7 @@ public class OptionButton extends JPanel
 	ScheduleBox parent;
 
 	final int buttonQte = 16;
-	final int buttonSpacing = 23;
+	int buttonSpacing = 23;
 
 	Rectangle2D button;
 	boolean showsCharacters;
@@ -229,8 +229,7 @@ public class OptionButton extends JPanel
 	{
 
 		int nextShift = shift - e.getWheelRotation();
-		if (nextShift <= 0
-				&& nextShift >= -(aiCharacters.size() - 13) * buttonSpacing * Variables.getResolutionmultiplier())
+		if (nextShift <= 0)
 		{
 			shift = nextShift;
 		}
@@ -244,6 +243,7 @@ public class OptionButton extends JPanel
 		
 		g1.setPaint(Color.black);
 		g1.fillRect(0, 0, 2000, 2000);
+		buttonSpacing = this.getHeight()/10;
 
 		if (showsCharacters == true)
 		{
@@ -326,13 +326,15 @@ public class OptionButton extends JPanel
 			{
 				
 				Rectangle2D actionButton = null;
+				
+				//draws free optionButton
 				if (index == 6)
 				{
 					
 					actionButton = new Rectangle2D.Double(0, button
 							.getBounds2D().getY()
 							+ buttonSpacing*2
-							* (spacing - 1), button.getBounds2D().getWidth() / 2, buttonSpacing * 2);
+							* (spacing - 1) + shift, button.getBounds2D().getWidth() / 2, buttonSpacing * 2);
 					
 					drawActionButton(g1, action.name, actionButton);
 					
@@ -342,7 +344,7 @@ public class OptionButton extends JPanel
 					g1.drawString(action.name, 10, (int)(button
 							.getBounds2D().getY()
 							+ buttonSpacing*2
-							* (spacing) - 10));
+							* (spacing) - 10) + shift);
 				} else
 				{
 					if(spacing % 2 == 1)
@@ -387,6 +389,7 @@ public class OptionButton extends JPanel
 
 				g1.setPaint(Color.white);
 
+				//draws places for the free time-period
 				if (index == 6 && showDropMenu == spacing - 1)
 				{
 					int spacing2 = 0;
@@ -399,11 +402,11 @@ public class OptionButton extends JPanel
 						Rectangle2D newRect = new Rectangle2D.Double(button.getBounds().getWidth() / 2 + 5,
 								button.getBounds2D().getY() + buttonSpacing * 2
 										* (spacing - 1) + spacing2
-										* buttonSpacing, button.getBounds().getWidth() / 2 - 10, buttonSpacing);
+										* buttonSpacing + shift, button.getBounds().getWidth() / 2 - 10, buttonSpacing);
 						g1.draw(newRect);
 						g1.drawString(place.name, (int) (button.getBounds().getWidth() / 2 + 10), (int) (button.getBounds2D().getY() + buttonSpacing * 2
 								* (spacing - 0.5) + spacing2
-								* buttonSpacing));
+								* buttonSpacing) + shift);
 						freePlaceList.add(newRect);
 						spacing2++;
 					}

@@ -43,11 +43,13 @@ public class UserInterface extends JFrame
 
 	boolean showMarketPlace;
 	boolean info;
+	boolean paused;
 
 	public UserInterface(GameLogic _gameLogic, double resolutionMultiplier)
 	{
 		this.setUndecorated(true);
 		info = false;
+		paused = false;
 		showMarketPlace = false;
 		gameLogic = _gameLogic;
 		panel = new JPanel(new MigLayout("fill"));
@@ -137,14 +139,14 @@ public class UserInterface extends JFrame
 			@Override
 			public void keyTyped(KeyEvent e)
 			{
-				// TODO Auto-generated method stub
+				
 
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e)
 			{
-				// TODO Auto-generated method stub
+				
 
 			}
 
@@ -162,12 +164,12 @@ public class UserInterface extends JFrame
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 				{
 					Object[] options =
-					{ "Save", "Load", "Cancel" };
+					{ "Save", "Load", "Cancel", "Quit game" };
 					int n = JOptionPane.showOptionDialog(parrot,
 							"Would you like to save/load your game?",
 							"Option menu", JOptionPane.YES_NO_CANCEL_OPTION,
 							JOptionPane.QUESTION_MESSAGE, null, options,
-							options[2]);
+							options[3]);
 					if(n == 0)
 					{
 						SerializeCharacter.save();
@@ -176,13 +178,39 @@ public class UserInterface extends JFrame
 					{
 						Deserialize.load();
 					}
+					else if(n == 3)
+					{
+						System.exit(0);
+					}
+				}
+				if(e.getKeyCode() == KeyEvent.VK_SPACE)
+				{
+					pause();
 				}
 
 				
 
 			}
+
+			
 		});
 
+	}
+	
+	private void pause()
+	{
+		if(paused == false)
+		{
+			paused = true;
+			gameLogic.setMakeWait(true);
+		}
+		else
+		{
+			paused = false;
+			gameLogic.getTimerTask().free();
+		}
+		
+		
 	}
 
 	protected void mouseWheeled(MouseWheelEvent e)
@@ -268,7 +296,10 @@ public class UserInterface extends JFrame
 				marketPlace.repaint();
 			} else
 			{
-				gameMap.repaint();
+				if(!paused)
+				{
+					gameMap.repaint();
+				}
 				infoBox.repaint();
 				scheduleBox.repaint();
 			}

@@ -20,6 +20,8 @@ public class PlayerCharacter extends AbstractCharacter
 		job = this.schedule.getAllPlaces().get(0);
 		this.freeChoice = new Cell();
 		materials = 1000;
+		intelligence = 6;
+		strength = 6;
 		
 	}
 	

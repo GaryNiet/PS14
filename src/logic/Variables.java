@@ -39,7 +39,7 @@ public class Variables
 	
 	static int gameSpeed = 20;
 
-	final static double resolutionMultiplier = 1.5;
+	final static double resolutionMultiplier = 1;
 
 	final static Schedule schedule = new Schedule();
 

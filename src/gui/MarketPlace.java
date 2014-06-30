@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
@@ -98,7 +99,9 @@ public class MarketPlace extends JPanel
 		slider.paint(g1);
 		
 		g1.setPaint(Color.white);
-		g1.drawString(amount, 80, 20);
+		Font font = new Font("Arial Black", Font.PLAIN, 25);
+		g1.setFont(font);
+		g1.drawString(amount, 60, 30);
 		
 		
 		
@@ -109,7 +112,7 @@ public class MarketPlace extends JPanel
 	{
 		if(slider.getValue() >= 0)
 		{
-			amount = "sell " + slider.getValue() + " materials for " + slider.getValue() * 0.025 * Variables.getPlayerCharacter().getIntelligence() + "$";
+			amount = "sell " + slider.getValue() + " materials for " + String.format("%.2g%n", slider.getValue() * 0.025 * Variables.getPlayerCharacter().getIntelligence()) + "$";
 			
 		}
 		else

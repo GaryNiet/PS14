@@ -81,6 +81,11 @@ public class InfoBox extends JPanel
 
 		Graphics2D g1 = (Graphics2D) g;
 		super.paintComponent(g1);
+		
+		brickTex = new TexturePaint(brick, new Rectangle2D.Double(0,0,500,500));
+		g1.setPaint(brickTex);
+		
+		drawBackground(g1);
 
 		if (state == states.ACTION)
 		{
@@ -97,18 +102,14 @@ public class InfoBox extends JPanel
 
 	public void paintAction(Graphics2D g1)
 	{
-		brickTex = new TexturePaint(brick, new Rectangle2D.Double(0,0,500,500));
-		g1.setPaint(brickTex);
-		drawBackground(g1);
+		
 		g1.drawString(action.name, 10, 40);
 		g1.drawString(action.getInformation(), 10, 80);
 	}
 
 	public void paintPlace(Graphics2D g1)
 	{
-		brickTex = new TexturePaint(brick, new Rectangle2D.Double(0,0,500,500));
-		g1.setPaint(brickTex);
-		drawBackground(g1);
+		
 		
 		g1.drawString(place.name, 10, 40);
 		g1.drawString(place.getInformation(), 10, 80);
@@ -131,10 +132,7 @@ public class InfoBox extends JPanel
 
 	public void paintCharacter(Graphics2D g1)
 	{
-		brickTex = new TexturePaint(brick, new Rectangle2D.Double(0,0,500,500));
-		g1.setPaint(brickTex);
 		
-		drawBackground(g1);
 		
 		
 		g1.drawImage(CharacterPieces.getBody(character.getCharacterLook().body), 20,20 , (int)(135 * Variables.getResolutionmultiplier()), (int)(135* Variables.getResolutionmultiplier()), null);
@@ -157,7 +155,7 @@ public class InfoBox extends JPanel
 		g1.fill(strokedOutline);
 		
 		g1.setPaint(Color.black);
-		g1.setFont(new Font("Arial Black", Font.PLAIN, 30));
+		g1.setFont(new Font("Arial Black", Font.PLAIN, (int)(20 * Variables.getResolutionmultiplier())));
 	}
 
 }

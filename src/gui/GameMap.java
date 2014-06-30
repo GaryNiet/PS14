@@ -383,11 +383,13 @@ public class GameMap extends JPanel{
 		
 		
 		g1.setPaint(Color.black);
+		//long banner
 		g1.fillRect(0, 0, this.getWidth(), (int)(mult * 15));
-		g1.fillRect((int)(5.3 * (this.getWidth()/10)*mult), 0, (int)(mult * 170), (int)(mult * 45));
+		//short banner
+		g1.fillRect((int)(this.getWidth()-(mult * 170)), 0, (int)(mult * 170), (int)(mult * 45));
 		
 		g1.setPaint(Color.green);
-		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+		g1.setFont(new Font("TimesRoman", Font.PLAIN, (int)(15 * Variables.getResolutionmultiplier())));
 		
 		
 		
@@ -410,7 +412,7 @@ public class GameMap extends JPanel{
 	
 	private void drawName(Graphics2D g1, Rectangle2D place, int i)
 	{
-		Font font = new Font("Arial Black", Font.PLAIN, 25);
+		Font font = new Font("Arial Black", Font.PLAIN, (int)(20 * Variables.getResolutionmultiplier()));
 		FontRenderContext frc = g1.getFontRenderContext();
 		TextLayout layout = new TextLayout(allPlaces().get(i).name, font, frc);
 		   
