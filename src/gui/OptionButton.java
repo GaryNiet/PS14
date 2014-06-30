@@ -167,7 +167,11 @@ public class OptionButton extends JPanel
 						showsCharacters = true;
 						aiCharacters = Variables.getCharacterList();
 					}
-					setCharacterAction(index, actionIndex);
+					else
+					{
+						setCharacterAction(index, actionIndex);
+					}
+					
 					showDropMenu = actionIndex;
 
 					if ((index == 3 || index == 5)
@@ -211,6 +215,7 @@ public class OptionButton extends JPanel
 					Variables.getPlayerCharacter().setvictim(
 							aiCharacters.get(characterIndex));
 					showsCharacters = false;
+					setCharacterAction(index, 0);
 
 				}
 

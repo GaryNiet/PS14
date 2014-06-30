@@ -9,7 +9,7 @@ public class Evasion extends PrisonAction
 	{
 		name = "evasion";
 		
-		information = "with the right combination of luck, skill and preparation you might ba able to leave this place";
+		information = "with the right combination of luck, skill and preparation \n you might ba able to leave this place";
 	}
 
 	@Override

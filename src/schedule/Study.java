@@ -9,7 +9,7 @@ public class Study extends PrisonAction
 	{
 		name = "study";
 		
-		information = "study the materials you have, you would suprised how much you can learn just from trying and understanding how every day objects work.";
+		information = "study the materials you have, you would suprised how much \n you can learn just from trying and understanding \n how every day objects work.";
 	}
 
 	@Override

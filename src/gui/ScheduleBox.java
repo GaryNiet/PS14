@@ -110,6 +110,8 @@ public class ScheduleBox extends JComponent
 				{
 					pressedButton = rect;
 					optionButton.setIndex(buttonList.indexOf(rect));
+					optionButton.showsChangeJobMenu = false;
+					optionButton.showsCharacters = false;
 				}
 					
 				

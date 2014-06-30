@@ -34,7 +34,7 @@ public class Cell extends Place
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new Steal());
 		
-		information = "Most prisonners use their cells for sleeping, sneaking around is way easier this way";
+		information = "Most prisonners use their cells for sleeping, \n sneaking around is way easier this way";
 	}
 	
 	public Cell(Cell _cell)

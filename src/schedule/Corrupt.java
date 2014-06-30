@@ -3,6 +3,7 @@ package schedule;
 import logic.Variables;
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public class Corrupt extends PrisonAction
 {
 	final int guardAwarenessChange = 5;
@@ -12,7 +13,7 @@ public class Corrupt extends PrisonAction
 	{
 		name = "corrupt";
 		
-		information = "this lowers the guard awareness in the current location at the cost of money";
+		information = "this lowers the guard awareness in the current location \n at the cost of money";
 	}
 
 	@Override

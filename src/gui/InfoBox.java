@@ -103,16 +103,16 @@ public class InfoBox extends JPanel
 	public void paintAction(Graphics2D g1)
 	{
 		
-		g1.drawString(action.name, 10, 40);
-		g1.drawString(action.getInformation(), 10, 80);
+		g1.drawString(action.name, 10, (int)(30 * Variables.getResolutionmultiplier()));
+		drawText(action.getInformation(),g1, 10, (int)(50 * Variables.getResolutionmultiplier()));
 	}
 
 	public void paintPlace(Graphics2D g1)
 	{
 		
 		
-		g1.drawString(place.name, 10, 40);
-		g1.drawString(place.getInformation(), 10, 80);
+		g1.drawString(place.name, 10, (int)(30 * Variables.getResolutionmultiplier()));
+		drawText(place.getInformation(),g1, 10, (int)(40* Variables.getResolutionmultiplier()));
 		int digAdvancement = 0;
 		int guardAwareness = 0;
 		for(Place digPlace: Variables.getPlayerCharacter().getSchedule().getAllPlaces())
@@ -123,11 +123,11 @@ public class InfoBox extends JPanel
 				guardAwareness = digPlace.getGuardAwareness();
 			}
 		}
-		g1.drawString("dig advancement: " + digAdvancement , 10, 120);
+		g1.drawString("dig advancement: " + digAdvancement , 10, (int)(130 * Variables.getResolutionmultiplier()));
 		
 		
 		
-		g1.drawString("guardAwareness: " + guardAwareness + "%", 10, 160);
+		g1.drawString("guardAwareness: " + guardAwareness + "%", 10, (int)(160 * Variables.getResolutionmultiplier()));
 	}
 
 	public void paintCharacter(Graphics2D g1)
@@ -156,6 +156,12 @@ public class InfoBox extends JPanel
 		
 		g1.setPaint(Color.black);
 		g1.setFont(new Font("Arial Black", Font.PLAIN, (int)(20 * Variables.getResolutionmultiplier())));
+	}
+	
+	public void drawText(String text, Graphics2D g1, int x , int y)
+	{
+		for (String line : text.split("\n"))
+            g1.drawString(line, x, y += g1.getFontMetrics().getHeight());
 	}
 
 }
