@@ -64,7 +64,7 @@ public class MarketPlace extends JPanel
 		});
         
         slider.setFocusable(false);
-        
+        slider.setOpaque(false);
         this.add(slider, "w 100%, h 100%");
         
         try
