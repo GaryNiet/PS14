@@ -39,7 +39,7 @@ public class Variables
 	
 	static int gameSpeed = 20;
 
-	final static double resolutionMultiplier = 1.5;
+	static double resolutionMultiplier = 1;
 
 	final static Schedule schedule = new Schedule();
 
@@ -223,5 +223,15 @@ public class Variables
 	public static void setCharacterPieces(CharacterPieces characterPieces)
 	{
 		Variables.characterPieces = characterPieces;
+	}
+
+	public static double getResolutionMultiplier()
+	{
+		return resolutionMultiplier;
+	}
+
+	public static void setResolutionMultiplier(double resolutionMultiplier)
+	{
+		Variables.resolutionMultiplier = resolutionMultiplier;
 	}
 }
