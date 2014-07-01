@@ -277,7 +277,6 @@ public class GameMap extends JPanel{
 	public synchronized void paint(Graphics g)
 	{
 		
-		
 		Graphics2D g1 = (Graphics2D)g;
 		super.paintComponent(g1);
 		

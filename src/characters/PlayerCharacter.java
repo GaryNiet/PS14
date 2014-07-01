@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import places.Cell;
 import places.Free;
+import places.Job;
 import places.Place;
 
 public class PlayerCharacter extends AbstractCharacter
@@ -33,7 +34,19 @@ public class PlayerCharacter extends AbstractCharacter
 		}
 		else
 		{
-			this.currentPlace = currentPlace;
+			if(currentPlace instanceof Job)
+			{
+				System.out.println(job.name);
+				this.lastPlace = this.currentPlace;
+				this.currentPlace = job;
+				
+			}
+			else
+			{
+				this.lastPlace = this.currentPlace;
+				this.currentPlace = currentPlace;
+			}
+			
 		}
 		
 	}

@@ -50,6 +50,8 @@ public class Variables
 	static GameLogic gameLogic;
 	static CharacterPieces characterPieces;
 	
+	static int framesPerSecond = 60;
+	
 	
 	public static int getGameSpeed()
 	{
@@ -233,5 +235,15 @@ public class Variables
 	public static void setResolutionMultiplier(double resolutionMultiplier)
 	{
 		Variables.resolutionMultiplier = resolutionMultiplier;
+	}
+
+	public static int getFramesPerSecond()
+	{
+		return framesPerSecond;
+	}
+
+	public static void setFramesPerSecond(int framesPerSecond)
+	{
+		Variables.framesPerSecond = framesPerSecond;
 	}
 }

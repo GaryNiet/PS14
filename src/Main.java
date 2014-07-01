@@ -32,7 +32,7 @@ public class Main
 				"2048x1536" };
 		final JComboBox combo = new JComboBox(resStrings);
 
-		panel.add(combo, "x 10%,y 10%,w 80%, h 80%");
+		panel.add(combo, "x 10%,y 40%,w 80%, h 10%");
 
 		frame.setVisible(true);
 

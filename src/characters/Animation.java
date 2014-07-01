@@ -76,12 +76,12 @@ public class Animation implements Serializable
 			double divisionX = distX / norm;
 			double divisionY = distY / norm;
 			
+
 			
-
-
-
-			double speedX = (divisionX / character.movementPeriod);
-			double speedY = (divisionY / character.movementPeriod);
+			double speedMultiplier = (60.0/((double)Variables.getFramesPerSecond() + 1));
+			
+			double speedX = speedMultiplier * ((double)divisionX / (double)character.movementPeriod);
+			double speedY = speedMultiplier * ((double)divisionY / (double)character.movementPeriod);
 			double speedNorm = (speedX * speedX + speedY * speedY);
 			
 			roamX -= speedX;
@@ -143,6 +143,8 @@ public class Animation implements Serializable
 				}
 			}
 
+			
+			
 			Node child = getUnvisitedChildNode(n, lastNode);
 
 			if (child != null)
@@ -171,6 +173,8 @@ public class Animation implements Serializable
 	{
 
 		List<Node> nodes = new ArrayList<>();
+		
+		
 		for (Node childNode : node.getNodes())
 		{
 			if (childNode.isExplored() == false)
@@ -178,6 +182,7 @@ public class Animation implements Serializable
 				nodes.add(childNode);
 			}
 		}
+			
 		if (nodes.size() > 0)
 		{
 			int distance = 10000;

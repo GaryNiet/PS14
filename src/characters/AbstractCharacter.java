@@ -50,7 +50,7 @@ public abstract class AbstractCharacter implements Serializable
 	{
 		random = new Random();
 		
-		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/(50 * Variables.getResolutionmultiplier());
+		movementPeriod = ((random.nextDouble() + 2) / 1.7) * Variables.getGameSpeed()/(100 * Variables.getResolutionmultiplier());
 		name = _name;
 		health = 100;
 		strength = random.nextInt(6) + 3;

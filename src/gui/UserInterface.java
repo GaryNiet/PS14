@@ -44,6 +44,8 @@ public class UserInterface extends JFrame
 	boolean showMarketPlace;
 	boolean info;
 	boolean paused;
+	
+	int frame;
 
 	public UserInterface(GameLogic _gameLogic, double resolutionMultiplier)
 	{
@@ -58,6 +60,8 @@ public class UserInterface extends JFrame
 		scheduleBox = new ScheduleBox(this);
 		warningWindow = new WarningWindow(this);
 		marketPlace = new MarketPlace(this);
+		
+		frame = 0;
 
 		marketRect = new Rectangle2D.Double((725 * resolutionMultiplier), 0,
 				(35 * resolutionMultiplier), (35 * resolutionMultiplier));
@@ -98,11 +102,14 @@ public class UserInterface extends JFrame
 
 		pack();
 		scheduleBox.set();
+		
+		Chronometer fpsCounter = new Chronometer();
+		Timer fpsTimer = new Timer("Second");
+		fpsTimer.scheduleAtFixedRate(fpsCounter, 0, 1000);
 
 		OnTimer timerTask = new OnTimer();
 		Timer timer = new Timer("Clock");
 		timer.scheduleAtFixedRate(timerTask, 0, 16);
-		// timer.scheduleAtFixedRate(timerTask, 0, 1000);
 
 		this.addMouseListener(new MouseAdapter()
 		{
@@ -287,6 +294,7 @@ public class UserInterface extends JFrame
 		@Override
 		public synchronized void run()
 		{
+			frame ++;
 			if (info == true)
 			{
 
@@ -306,6 +314,19 @@ public class UserInterface extends JFrame
 
 		}
 
+	}
+	
+	public class Chronometer extends TimerTask
+	{
+
+		@Override
+		public void run()
+		{
+			Variables.setFramesPerSecond(frame);
+			frame = 0;
+			
+		}
+		
 	}
 
 	public void pulse(int currentTime)
