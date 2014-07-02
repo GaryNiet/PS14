@@ -37,7 +37,7 @@ public class Variables
 	final static int digSuccessLimit = 100;
 	
 	
-	static int gameSpeed = 20;
+	static int gameSpeed = 1;
 
 	static double resolutionMultiplier = 1;
 
@@ -54,6 +54,26 @@ public class Variables
 	
 	
 	public static int getGameSpeed()
+	{
+		if(gameSpeed == 1)
+		{
+			return 20;
+		}
+		else if( gameSpeed == 2)
+		{
+			return 15;
+		}
+		else if(gameSpeed == 3)
+		{
+			return 10;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	
+	public static int getRealGameSpeed()
 	{
 		return gameSpeed;
 	}
@@ -215,6 +235,16 @@ public class Variables
 	public static void setGameSpeed(int gameSpeed)
 	{
 		Variables.gameSpeed = gameSpeed;
+	}
+	
+	public static void gameSpeedPlus()
+	{
+		gameSpeed++;
+	}
+	
+	public static void gameSpeedMinus()
+	{
+		gameSpeed--;
 	}
 
 	public static CharacterPieces getCharacterPieces()

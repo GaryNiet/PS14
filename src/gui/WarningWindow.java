@@ -1,10 +1,13 @@
 package gui;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.Stroke;
 import java.awt.TexturePaint;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
@@ -59,14 +62,21 @@ public class WarningWindow extends JPanel
 		toiletPaperTex = new TexturePaint(toiletPaper, new Rectangle2D.Double(0,0,400,400));
 		
 		g1.setPaint(toiletPaperTex);
-		g1.fill(new Rectangle.Double(0,0, 1000,1000));
+		Rectangle rect = new Rectangle(0,0,(int)(this.getBounds().getWidth()),(int)(this.getBounds().getHeight()));
+		g1.fill(rect);
+		
+		Stroke outline = new BasicStroke(5);
+		Shape blackOutline = outline.createStrokedShape(rect);
+		g1.setPaint(Color.red);
+		g1.fill(blackOutline);
+		
 		g1.setPaint(Color.black);
 		g1.fill(okButton);
 		g1.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		g1.setPaint(Color.white);
 		g1.drawString("ok", (int)okButton.getBounds().getX() + 20, (int)okButton.getBounds().getY() + 20);
 		g1.setPaint(Color.black);
-		g1.drawString(text, 10, 10);
+		drawText(text,g1, 10, 10);
 		
 		
 		
@@ -99,5 +109,11 @@ public class WarningWindow extends JPanel
 			}
 		}
 		
+	}
+	
+	public void drawText(String text, Graphics2D g1, int x , int y)
+	{
+		for (String line : text.split("\n"))
+            g1.drawString(line, x, y += g1.getFontMetrics().getHeight());
 	}
 }

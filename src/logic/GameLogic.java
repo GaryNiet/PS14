@@ -393,7 +393,7 @@ public class GameLogic
 	{
 		if(Variables.getGameSpeed() > 1)
 		{
-			Variables.setGameSpeed(Variables.getGameSpeed() - 1);
+			Variables.gameSpeedPlus();
 		}
 		
 		for (AbstractCharacter character : Variables.getCharacterList())
@@ -406,7 +406,11 @@ public class GameLogic
 
 	public void speedDown()
 	{
-		Variables.setGameSpeed(Variables.getGameSpeed() + 1);
+		if(Variables.getGameSpeed() < 20)
+		{
+			Variables.gameSpeedMinus();
+		}
+		
 		for (AbstractCharacter character : Variables.getCharacterList())
 		{
 			character.setSpeed();

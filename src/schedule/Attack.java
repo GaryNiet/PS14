@@ -97,7 +97,7 @@ public class Attack extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("Before you get your hand on " + victim.getName() + ", guards notice your intention and push you back violently", false);
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("Before you get your hand on " + victim.getName() + ",\n guards notice your intention and push \n you back violently", false);
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}

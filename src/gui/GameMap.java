@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.TexturePaint;
@@ -239,6 +240,13 @@ public class GameMap extends JPanel{
 			kitchen = ImageIO.read(new File("kitchen.png"));
 			cement = ImageIO.read(new File("cement.JPG"));
 			dollar = ImageIO.read(new File("dollar.png"));
+			
+			floorTex = new TexturePaint(floor, new Rectangle2D.Double(0,0,50,50));
+			grassTex = new TexturePaint(grass, new Rectangle2D.Double(0,0,300,300));
+			cementTex = new TexturePaint(cement, new Rectangle2D.Double(0,0,300,300));
+			kitchenTex = new TexturePaint(kitchen, new Rectangle2D.Double(0,0,30,30));
+			showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+			tilesTex = new TexturePaint(tiles, new Rectangle2D.Double(0,0,50,50));
 
 		} catch (IOException ex)
 		{
@@ -280,10 +288,7 @@ public class GameMap extends JPanel{
 		Graphics2D g1 = (Graphics2D)g;
 		super.paintComponent(g1);
 		
-		floorTex = new TexturePaint(floor, new Rectangle2D.Double(0,0,50,50));
-		grassTex = new TexturePaint(grass, new Rectangle2D.Double(0,0,300,300));
-		cementTex = new TexturePaint(cement, new Rectangle2D.Double(0,0,300,300));
-		kitchenTex = new TexturePaint(kitchen, new Rectangle2D.Double(0,0,30,30));
+		
 		g1.setPaint(grassTex);
 		g1.fill(this.getBounds());
 		
@@ -295,47 +300,40 @@ public class GameMap extends JPanel{
 			g1.setPaint(Color.black);
 			if(i==0)
 			{
-				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(showerTex);
 			}
 			else if(i==1)
 			{
-				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(showerTex);
 			}
 			else if(i==2)
 			{
-				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(showerTex);
 			}
 			else if(i==3)
 			{
-				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(showerTex);
 			}
 			else if(i==4)
 			{
-				tilesTex = new TexturePaint(tiles, new Rectangle2D.Double(0,0,50,50));
+				
 				g1.setPaint(tilesTex);
 			}
 			else if(i==5)
 			{
-				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(showerTex);
 			}
 			else if(i==6)
 			{
-				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(showerTex);
 			}
 			else if(i==7)
 			{
-				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
 				g1.setPaint(kitchenTex);
 			}
 			else if(i==8)
 			{
-				showerTex = new TexturePaint(shower, new Rectangle2D.Double(0,0,50,50));
+				
 				g1.setPaint(showerTex);
 			}
 			
@@ -406,9 +404,39 @@ public class GameMap extends JPanel{
 		g1.draw(player);
 		placePlayer(g);
 		
+		drawSpeed(g1);
+		
 		
 	}
 	
+	private void drawSpeed(Graphics2D g1)
+	{
+		for(int i = 0; i< Variables.getRealGameSpeed(); i++)
+		{
+			drawTriangle(g1, (int)(this.getWidth() * 0.9) + i*10, (int)(this.getHeight() * 0.95));
+		}
+		
+		
+	}
+
+	private void drawTriangle(Graphics2D g1, int x, int y)
+	{
+		double mult = Variables.getResolutionMultiplier();
+		int[] arrayX = {(int)(x * mult), (int)(x * mult), (int)((x  + 20) * mult)};
+		int[] arrayY = {(int)(y * mult), (int)((y + 20) * mult), (int)((y + 10)*mult)};
+		
+		Polygon triangle = new Polygon(arrayX, arrayY, 3);
+		
+		Stroke outline = new BasicStroke(2);
+		Shape blackOutline = outline.createStrokedShape(triangle);
+		
+		g1.setColor(Color.green);
+		g1.fillPolygon(triangle);
+		g1.setPaint(Color.black);
+		g1.fill(blackOutline);
+		
+	}
+
 	private void drawName(Graphics2D g1, Rectangle2D place, int i)
 	{
 		Font font = new Font("Arial Black", Font.PLAIN, (int)(20 * Variables.getResolutionmultiplier()));
