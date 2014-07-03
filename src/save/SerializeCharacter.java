@@ -27,7 +27,6 @@ public class SerializeCharacter
 				out.writeObject(character);
 				out.close();
 				fileOut.close();
-				System.out.printf("Serialized data is saved in saves/" + filename + ".sav\n");
 			} catch (IOException i)
 			{
 				i.printStackTrace();
@@ -44,7 +43,6 @@ public class SerializeCharacter
 			out.writeObject(playerCharacter);
 			out.close();
 			fileOut.close();
-			System.out.printf("Serialized data is saved in saves/player.sav");
 		} catch (IOException i)
 		{
 			i.printStackTrace();

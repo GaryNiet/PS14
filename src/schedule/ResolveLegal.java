@@ -43,9 +43,6 @@ public class ResolveLegal extends PrisonAction
 	public double successRate(AbstractCharacter character, int time)
 	{
 		double successRate = (character.getIntelligence()/10) * character.getSchedule().getPlace(time).getResolveLegalSR();
-		System.out.println(character.getIntelligence()/20);
-		System.out.println(character.getSchedule().getPlace(time).getResolveLegalSR());
-		System.out.println(successRate);
 		return successRate;
 	}
 	

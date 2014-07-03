@@ -24,11 +24,7 @@ public class ActionCalculator
 		for(PrisonAction prisonAction: character.getSchedule().getPlace(currentTime).getPossibleActions(character))
 		{
 			{
-				System.out.println("------------------------------"+ prisonAction.name + "--------------------------------------");
-				//System.out.println(character.getSchedule().getPlace(currentTime).possibleActions);
-//				System.out.println("stop");
 				
-				//System.out.println(prisonAction.name);
 				
 				dummyCharacter = new AICharacter(character);
 				copyCharacter = new AICharacter(character);
@@ -37,7 +33,6 @@ public class ActionCalculator
 				
 				
 				double currentHappiness = calculateHappiness(copyCharacter, dummyCharacter, prisonAction, currentTime);
-				System.out.println("result " + currentHappiness);
 				if(currentHappiness > best)
 				{
 					
@@ -50,7 +45,6 @@ public class ActionCalculator
 
 			
 		}
-		//System.out.println(best);
 		return bestAction;		
 	}
 	

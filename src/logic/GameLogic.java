@@ -171,7 +171,7 @@ public class GameLogic
 
 				}
 
-				showTable();
+				//showTable();
 
 				checkforDeath(playerCharacter);
 				playerCharacter.setCurrentPlace(playerCharacter.getSchedule()

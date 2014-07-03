@@ -159,7 +159,6 @@ public class Attack extends PrisonAction
 	
 	private int fightCapacity(characters.AbstractCharacter character)
 	{
-		System.out.println(character.getName());
 		
 		if(character.isWeapon())
 		{

@@ -43,8 +43,7 @@ public class Deserialize
 					c.printStackTrace();
 					return;
 				}
-				System.out.println("Deserialized Employee...");
-				System.out.println("Name: " + character.getName());
+				
 				Variables.setPlayerCharacter(character);
 			}
 			else if (!listOfFiles[i].isHidden())
@@ -69,8 +68,6 @@ public class Deserialize
 					c.printStackTrace();
 					return;
 				}
-				System.out.println("Deserialized Employee...");
-				System.out.println("Name: " + character.getName());
 				replacementList.add(character);
 				
 			}
