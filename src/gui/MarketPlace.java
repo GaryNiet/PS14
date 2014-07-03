@@ -69,7 +69,7 @@ public class MarketPlace extends JPanel
         
         try
 		{
-			backgroundImage = ImageIO.read(new File("marketPlace.png"));
+			backgroundImage = ImageIO.read(new File("ressources/textures/marketPlace.png"));
 		} catch (IOException e1)
 		{
 			System.out.println("marketplace not found");

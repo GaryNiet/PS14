@@ -42,10 +42,10 @@ public class WarningWindow extends JPanel
 
 		try
 		{
-			toiletPaper = ImageIO.read(new File("toiletPaper.jpg"));
+			toiletPaper = ImageIO.read(new File("ressources/textures/toiletPaper.jpg"));
 		} catch (IOException e)
 		{
-			System.out.println("file not found");
+			System.out.println("toilet paper not found");
 		}
 		
 		

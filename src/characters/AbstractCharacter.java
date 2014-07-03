@@ -277,4 +277,16 @@ public abstract class AbstractCharacter implements Serializable
 	{
 		return characterLook;
 	}
+
+	public int getDirection()
+	{
+		if(animation.aimX > animation.roamX)
+		{
+			return 1;
+		}
+		else
+		{
+			return -1;
+		}
+	}
 }

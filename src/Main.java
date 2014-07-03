@@ -1,4 +1,3 @@
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -6,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,10 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.miginfocom.swing.MigLayout;
-
 import logic.GameLogic;
 import logic.Variables;
+import net.miginfocom.swing.MigLayout;
 
 public class Main
 {
@@ -38,11 +35,10 @@ public class Main
 		
 		try
 		{
-			logo = ImageIO.read(new File("logo.png"));
+			logo = ImageIO.read(new File("ressources/logo.png"));
 		} catch (IOException e1)
 		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("he-arc logo not found");
 		}
 		
 		

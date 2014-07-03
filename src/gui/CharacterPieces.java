@@ -85,33 +85,33 @@ public class CharacterPieces implements Serializable
 	{
 		try
 		{
-			mediumBody = ImageIO.read(new File("mediumBody.png"));
-			fat1 = ImageIO.read(new File("fat1.png"));
-			medium2 = ImageIO.read(new File("medium2.png"));
-			strong1 = ImageIO.read(new File("strong1.png"));
-			slim = ImageIO.read(new File("slim.png"));
-			fatty = ImageIO.read(new File("fatty.png"));
-			head1 = ImageIO.read(new File("head1.png"));
-			head2 = ImageIO.read(new File("head2.png"));
-			head3 = ImageIO.read(new File("head3.png"));
-			head4 = ImageIO.read(new File("head4.png"));
-			head5 = ImageIO.read(new File("head5.png"));
-			head6 = ImageIO.read(new File("head6.png"));
-			head7 = ImageIO.read(new File("head7.png"));
-			beard1 = ImageIO.read(new File("beard1.png"));
-			beard2 = ImageIO.read(new File("beard2.png"));
-			beard3 = ImageIO.read(new File("beard3.png"));
-			beard4 = ImageIO.read(new File("beard4.png"));
-			beard5 = ImageIO.read(new File("beard5.png"));
-			beard6 = ImageIO.read(new File("beard6.png"));
-			scar1 = ImageIO.read(new File("scar1.png"));
-			scar2 = ImageIO.read(new File("scar2.png"));
-			moustache = ImageIO.read(new File("moustache.png"));
-			hair1 = ImageIO.read(new File("hair1.png"));
-			hair2 = ImageIO.read(new File("hair2.png"));
-			hair3 = ImageIO.read(new File("hair3.png"));
-			hair4 = ImageIO.read(new File("hair4.png"));
-			nose = ImageIO.read(new File("nose.png"));
+			mediumBody = ImageIO.read(new File("ressources/bodyParts/mediumBody.png"));
+			fat1 = ImageIO.read(new File("ressources/bodyParts/fat1.png"));
+			medium2 = ImageIO.read(new File("ressources/bodyParts/medium2.png"));
+			strong1 = ImageIO.read(new File("ressources/bodyParts/strong1.png"));
+			slim = ImageIO.read(new File("ressources/bodyParts/slim.png"));
+			fatty = ImageIO.read(new File("ressources/bodyParts/fatty.png"));
+			head1 = ImageIO.read(new File("ressources/bodyParts/head1.png"));
+			head2 = ImageIO.read(new File("ressources/bodyParts/head2.png"));
+			head3 = ImageIO.read(new File("ressources/bodyParts/head3.png"));
+			head4 = ImageIO.read(new File("ressources/bodyParts/head4.png"));
+			head5 = ImageIO.read(new File("ressources/bodyParts/head5.png"));
+			head6 = ImageIO.read(new File("ressources/bodyParts/head6.png"));
+			head7 = ImageIO.read(new File("ressources/bodyParts/head7.png"));
+			beard1 = ImageIO.read(new File("ressources/bodyParts/beard1.png"));
+			beard2 = ImageIO.read(new File("ressources/bodyParts/beard2.png"));
+			beard3 = ImageIO.read(new File("ressources/bodyParts/beard3.png"));
+			beard4 = ImageIO.read(new File("ressources/bodyParts/beard4.png"));
+			beard5 = ImageIO.read(new File("ressources/bodyParts/beard5.png"));
+			beard6 = ImageIO.read(new File("ressources/bodyParts/beard6.png"));
+			scar1 = ImageIO.read(new File("ressources/bodyParts/scar1.png"));
+			scar2 = ImageIO.read(new File("ressources/bodyParts/scar2.png"));
+			moustache = ImageIO.read(new File("ressources/bodyParts/moustache.png"));
+			hair1 = ImageIO.read(new File("ressources/bodyParts/hair1.png"));
+			hair2 = ImageIO.read(new File("ressources/bodyParts/hair2.png"));
+			hair3 = ImageIO.read(new File("ressources/bodyParts/hair3.png"));
+			hair4 = ImageIO.read(new File("ressources/bodyParts/hair4.png"));
+			nose = ImageIO.read(new File("ressources/bodyParts/nose.png"));
 
 		} catch (IOException ex)
 		{

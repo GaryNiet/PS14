@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.Stroke;
@@ -54,8 +53,6 @@ public class GameMap extends JPanel{
 	
 	List<Node> nodes;
 	
-	private BufferedImage floor;
-	private TexturePaint floorTex;
 	private BufferedImage shower;
 	private TexturePaint showerTex;
 	private BufferedImage tiles;
@@ -232,16 +229,14 @@ public class GameMap extends JPanel{
 	{
 		try
 		{
-			floor = ImageIO.read(new File("paving.png"));
-			shower = ImageIO.read(new File("shower.jpeg"));
-			tiles = ImageIO.read(new File("tile.png"));
-			knife = ImageIO.read(new File("knife.png"));
-			grass = ImageIO.read(new File("grass.png"));
-			kitchen = ImageIO.read(new File("kitchen.png"));
-			cement = ImageIO.read(new File("cement.JPG"));
-			dollar = ImageIO.read(new File("dollar.png"));
+			shower = ImageIO.read(new File("ressources/textures/shower.jpeg"));
+			tiles = ImageIO.read(new File("ressources/textures/tile.png"));
+			knife = ImageIO.read(new File("ressources/textures/knife.png"));
+			grass = ImageIO.read(new File("ressources/textures/grass.png"));
+			kitchen = ImageIO.read(new File("ressources/textures/kitchen.png"));
+			cement = ImageIO.read(new File("ressources/textures/cement.JPG"));
+			dollar = ImageIO.read(new File("ressources/textures/dollar.png"));
 			
-			floorTex = new TexturePaint(floor, new Rectangle2D.Double(0,0,50,50));
 			grassTex = new TexturePaint(grass, new Rectangle2D.Double(0,0,300,300));
 			cementTex = new TexturePaint(cement, new Rectangle2D.Double(0,0,300,300));
 			kitchenTex = new TexturePaint(kitchen, new Rectangle2D.Double(0,0,30,30));
@@ -369,7 +364,7 @@ public class GameMap extends JPanel{
 			g1.setPaint(Color.white);
 			ai.updateRoam();
 			aiRectangles.get(index).setFrame(ai.getPosX() + ai.getAnimation().getRoamX(), ai.getPosY() + ai.getAnimation().getRoamY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
-			ai.getCharacterLook().paint(g, aiRectangles.get(index).getFrame());
+			ai.getCharacterLook().paint(g, aiRectangles.get(index).getFrame(), ai.getDirection());
 			index++;
 		}
 		
@@ -461,7 +456,7 @@ public class GameMap extends JPanel{
 		
 		getPlayer().getAnimation().updateRoam(getCurrentPlace());
 		player.setFrame( getPlayer().getPosX() + getPlayer().getAnimation().getRoamX() , getPlayer().getPosY() + getPlayer().getAnimation().getRoamY(), Variables.getPlayerwidth(), Variables.getPlayerheight());
-		getPlayer().getCharacterLook().paint(g, player.getFrame());
+		getPlayer().getCharacterLook().paint(g, player.getFrame(), getPlayer().getDirection());
 	}
 	
 	public List<Place> allPlaces()

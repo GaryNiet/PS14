@@ -79,7 +79,7 @@ public class OptionButton extends JPanel
 		
 		try
 		{
-			buttonImage = ImageIO.read(new File("floor.jpg"));
+			buttonImage = ImageIO.read(new File("ressources/textures/floor.jpg"));
 		} catch (IOException e)
 		{
 			System.out.println("floor not found");

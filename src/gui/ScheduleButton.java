@@ -42,7 +42,7 @@ public class ScheduleButton extends JPanel
 	{
 		try
 		{
-			paper = ImageIO.read(new File("paper.jpg"));
+			paper = ImageIO.read(new File("ressources/textures/paper.jpg"));
 
 		} catch (IOException ex)
 		{

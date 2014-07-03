@@ -47,8 +47,8 @@ public class InfoBox extends JPanel
 	{
 		try
 		{
-			brick = ImageIO.read(new File("brick.jpg"));
-			metal = ImageIO.read(new File("metal2.jpg"));
+			brick = ImageIO.read(new File("ressources/textures/brick.jpg"));
+			metal = ImageIO.read(new File("ressources/textures/metal2.jpg"));
 		} catch (IOException e1)
 		{
 			System.out.println("brick not found");
