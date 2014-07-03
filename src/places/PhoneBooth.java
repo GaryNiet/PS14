@@ -5,6 +5,7 @@ import logic.Variables;
 import schedule.ResolveLegal;
 import schedule.WellBeing;
 
+@SuppressWarnings("serial")
 public class PhoneBooth extends Place
 {
 	public PhoneBooth()

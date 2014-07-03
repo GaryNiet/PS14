@@ -6,6 +6,7 @@ import schedule.Steal;
 import schedule.WellBeing;
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public class Cell extends Place
 {
 	public Cell()

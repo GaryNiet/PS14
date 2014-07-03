@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 import logic.Variables;
-
-import gui.CharacterPieces;
 import characters.AICharacter;
 import characters.PlayerCharacter;
 
@@ -14,7 +12,6 @@ public class SerializeCharacter
 {
 	public static void save()
 	{
-		CharacterPieces characterPieces = Variables.getCharacterPieces();
 		
 		int index = 1;
 		for(AICharacter character: Variables.getCharacterList())

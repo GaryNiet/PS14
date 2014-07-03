@@ -3,6 +3,7 @@ package schedule;
 import logic.Variables;
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public class ResolveLegal extends PrisonAction
 {
 	public ResolveLegal()

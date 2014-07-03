@@ -2,6 +2,7 @@ package schedule;
 
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public class Train extends PrisonAction
 {
 	public Train()

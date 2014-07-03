@@ -3,6 +3,7 @@ package schedule;
 import logic.Variables;
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public class Blackmail extends PrisonAction
 {
 	
@@ -37,6 +38,7 @@ public class Blackmail extends PrisonAction
 		
 	}
 	
+	@SuppressWarnings("unused")
 	private void informPlayer(AbstractCharacter character, int time)
 	{
 		if(character == Variables.getPlayerCharacter())

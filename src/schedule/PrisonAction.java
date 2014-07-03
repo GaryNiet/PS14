@@ -9,6 +9,7 @@ import logic.Variables;
 import places.Place;
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public abstract class PrisonAction implements Serializable
 {
 	public String name;

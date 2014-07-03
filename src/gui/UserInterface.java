@@ -1,32 +1,23 @@
 package gui;
 
-import java.awt.Color;
-import java.awt.TexturePaint;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import save.Deserialize;
-import save.SerializeCharacter;
 
 import logic.GameLogic;
 import logic.Variables;
 import net.miginfocom.swing.MigLayout;
+import save.Deserialize;
+import save.SerializeCharacter;
 
 @SuppressWarnings("serial")
 public class UserInterface extends JFrame

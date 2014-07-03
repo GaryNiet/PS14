@@ -9,6 +9,7 @@ import schedule.Train;
 import schedule.WellBeing;
 import characters.AICharacter;
 
+@SuppressWarnings("serial")
 public class Free extends Place
 {
 	public Free()

@@ -6,6 +6,7 @@ import places.Cell;
 import places.Place;
 import schedule.Schedule;
 
+@SuppressWarnings("serial")
 public class AICharacter extends AbstractCharacter
 {
 

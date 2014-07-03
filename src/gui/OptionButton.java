@@ -20,14 +20,12 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
-import characters.AICharacter;
 
 import logic.Variables;
 import places.Job;
 import places.Place;
 import schedule.PrisonAction;
+import characters.AICharacter;
 
 @SuppressWarnings("serial")
 public class OptionButton extends JPanel

@@ -16,6 +16,7 @@ import characters.AbstractCharacter;
 
 
 	
+@SuppressWarnings("serial")
 public class Job extends Place
 {
 	

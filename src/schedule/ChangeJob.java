@@ -4,8 +4,8 @@ import logic.Variables;
 import places.Job;
 import places.Place;
 import characters.AbstractCharacter;
-import characters.PlayerCharacter;
 
+@SuppressWarnings("serial")
 public class ChangeJob extends PrisonAction
 {
 	
@@ -73,14 +73,12 @@ public class ChangeJob extends PrisonAction
 	@Override
 	protected boolean success(AbstractCharacter character, int time)
 	{
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public double successRate(AbstractCharacter character, int time)
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }

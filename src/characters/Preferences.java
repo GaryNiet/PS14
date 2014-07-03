@@ -3,6 +3,7 @@ package characters;
 import java.io.Serializable;
 import java.util.Random;
 
+@SuppressWarnings("serial")
 public class Preferences implements Serializable
 {
 	double wellBeingPreference;

@@ -1,8 +1,8 @@
 package schedule;
 
-import logic.Variables;
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public class Steal extends PrisonAction
 {
 	public Steal()
@@ -43,14 +43,7 @@ public class Steal extends PrisonAction
 		return successRate;
 	}
 	
-	private void informPlayer(AbstractCharacter character, int time)
-	{
-		if(character == Variables.getPlayerCharacter())
-		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("stole materials", false);
-				Variables.getGameLogic().getUserInterface().setInfo(true);
-		}
-	}
+	
 
 
 

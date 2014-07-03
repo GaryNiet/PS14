@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import characters.AbstractCharacter;
-import characters.PlayerCharacter;
-
 import schedule.Attack;
 import schedule.Blackmail;
 import schedule.Corrupt;
@@ -14,7 +11,9 @@ import schedule.Dig;
 import schedule.Evasion;
 import schedule.PrisonAction;
 import schedule.Study;
+import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public abstract class Place implements Serializable
 {
 	public String name;

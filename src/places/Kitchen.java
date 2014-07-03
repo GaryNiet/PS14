@@ -5,6 +5,7 @@ import characters.AbstractCharacter;
 import logic.Variables;
 import schedule.StealWeaponTool;
 
+@SuppressWarnings("serial")
 public class Kitchen extends Place
 {
 	public Kitchen()

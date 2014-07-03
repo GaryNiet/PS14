@@ -9,6 +9,7 @@ import characters.AICharacter;
 import characters.AbstractCharacter;
 import characters.PlayerCharacter;
 
+@SuppressWarnings("serial")
 public class Attack extends PrisonAction
 {
 	Random random;
@@ -73,7 +74,6 @@ public class Attack extends PrisonAction
 			}
 			else if(isReal == true)
 			{
-				AbstractCharacter victim = choseVictim(character, Variables.getAllCharacters());
 				character.setHealth(character.getHealth() - 8);
 				
 			}

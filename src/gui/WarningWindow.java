@@ -18,8 +18,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import logic.Variables;
-
 @SuppressWarnings("serial")
 public class WarningWindow extends JPanel
 {

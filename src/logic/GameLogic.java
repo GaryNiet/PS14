@@ -7,15 +7,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JFrame;
 
 import places.Free;
 import places.Job;
-import save.Deserialize;
-import save.SerializeCharacter;
 import schedule.PrisonAction;
 import aiMachine.AIValidator;
 import aiMachine.ActionCalculator;
@@ -70,32 +66,36 @@ public class GameLogic
 
 	}
 
+	/**
+	 * method used for balancing, it shows,  in console, which places are used by which characters
+	 */
+	@SuppressWarnings("unused")
 	private void showTable()
 	{
 
-//		String leftAlignFormat = "| %-20s | %-6d | %-10d | %-4d | %-10s | %-9s | %-10s | %-7d | %-5d | %-9d |%n";
-//
-//		System.out
-//				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
-//		System.out
-//				.printf("|         name         |strength|intelligence|health|   action   | schedule  |currentPlace|influence| money | materials |%n");
-//		System.out
-//				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
-//		for (AbstractCharacter character : aiCharacterList)
-//		{
-//
-//			System.out.format(leftAlignFormat, character.getName(),
-//					(int) character.getStrength(), (int) character
-//							.getIntelligence(), character.getHealth(),
-//					character.getFixedAction().name, character.getSchedule()
-//							.getPlace(currentTime).name, character
-//							.getCurrentPlace().name, character.getInfluence(),
-//					character.getMoney(), character.getMaterials());
-//
-//		}
-//		System.out
-//				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
-		// aiValidator.showUsage();
+		String leftAlignFormat = "| %-20s | %-6d | %-10d | %-4d | %-10s | %-9s | %-10s | %-7d | %-5d | %-9d |%n";
+
+		System.out
+				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
+		System.out
+				.printf("|         name         |strength|intelligence|health|   action   | schedule  |currentPlace|influence| money | materials |%n");
+		System.out
+				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
+		for (AbstractCharacter character : aiCharacterList)
+		{
+
+			System.out.format(leftAlignFormat, character.getName(),
+					(int) character.getStrength(), (int) character
+							.getIntelligence(), character.getHealth(),
+					character.getFixedAction().name, character.getSchedule()
+							.getPlace(currentTime).name, character
+							.getCurrentPlace().name, character.getInfluence(),
+					character.getMoney(), character.getMaterials());
+
+		}
+		System.out
+				.format("+-----------------------------------------------------------------------------------------------------------------------+%n");
+		aiValidator.showUsage();
 
 	}
 
@@ -139,6 +139,7 @@ public class GameLogic
 			while (true)
 			{
 				checkForNewPrisoner();
+				@SuppressWarnings("rawtypes")
 				Iterator iter = Variables.getCharacterList().iterator();
 
 				while (iter.hasNext())
@@ -269,7 +270,12 @@ public class GameLogic
 		}
 	}
 
-	private void checkforDeath(AICharacter character, Iterator iter)
+	/**
+	 * @param character
+	 * @param iter
+	 * checks if the health of an aiCharacter drops under 1. if so, the character dies
+	 */
+	private void checkforDeath(AICharacter character, @SuppressWarnings("rawtypes") Iterator iter)
 	{
 		if (character.getHealth() < 1)
 		{
@@ -280,7 +286,7 @@ public class GameLogic
 		}
 	}
 	
-	private void checkforEscape(AICharacter character, Iterator iter)
+	private void checkforEscape(AICharacter character, @SuppressWarnings("rawtypes") Iterator iter)
 	{
 		if (character.isEscaped() == true)
 		{
@@ -300,6 +306,9 @@ public class GameLogic
 		}
 	}
 
+	/**
+	 * in some random occurences, new characters may appear
+	 */
 	private synchronized void checkForNewPrisoner()
 	{
 		if (random.nextInt(30) == 0)
@@ -316,6 +325,9 @@ public class GameLogic
 		character.naturalHealthLoss();
 	}
 
+	/**
+	 * when a character changes spot, this method sets his new position
+	 */
 	private void setXY()
 	{
 		for (AICharacter ai : Variables.getCharacterList())

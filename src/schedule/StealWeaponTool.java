@@ -4,6 +4,7 @@ import logic.Variables;
 import characters.AbstractCharacter;
 import characters.PlayerCharacter;
 
+@SuppressWarnings("serial")
 public class StealWeaponTool extends PrisonAction
 {
 	public StealWeaponTool()

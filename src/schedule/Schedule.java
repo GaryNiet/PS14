@@ -18,6 +18,7 @@ import places.Showers;
 import places.VisitingCell;
 import places.Workshop;
 
+@SuppressWarnings("serial")
 public class Schedule implements Serializable
 {
 	Place[] timeTable;

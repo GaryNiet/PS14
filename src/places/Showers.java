@@ -5,6 +5,7 @@ import logic.Variables;
 import schedule.Steal;
 import schedule.WellBeing;
 
+@SuppressWarnings("serial")
 public class Showers extends Place
 {
 	public Showers()

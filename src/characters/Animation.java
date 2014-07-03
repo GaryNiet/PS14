@@ -2,8 +2,6 @@ package characters;
 
 import gui.Node;
 
-import java.awt.Point;
-import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +11,7 @@ import java.util.Stack;
 import logic.Variables;
 import places.Place;
 
+@SuppressWarnings("serial")
 public class Animation implements Serializable
 {
 	double roamX;

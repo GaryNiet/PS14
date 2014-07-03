@@ -61,18 +61,6 @@ public class GameMap extends JPanel{
 	private TexturePaint grassTex;
 	private BufferedImage kitchen;
 	private TexturePaint kitchenTex;
-	private BufferedImage library;
-	private TexturePaint libraryTex;
-	private BufferedImage cafeteria;
-	private TexturePaint cafeteriaTex;
-	private BufferedImage cell;
-	private TexturePaint cellTex;
-	private BufferedImage phoneBooth;
-	private TexturePaint phoneBoothTex;
-	private BufferedImage visitingCell;
-	private TexturePaint visitingCellTex;
-	private BufferedImage workshop;
-	private TexturePaint workshopTex;
 	private BufferedImage cement;
 	private TexturePaint cementTex;
 	private BufferedImage knife;
@@ -252,7 +240,7 @@ public class GameMap extends JPanel{
 	
 	public void mouseClickReaction(MouseEvent me)
 	{
-		
+		// if a place is clicked
 		for(Rectangle2D place: placeList)
 		{
 			if(place.contains(me.getPoint()))
@@ -263,7 +251,7 @@ public class GameMap extends JPanel{
 			
 		}
 		
-		
+		//if a character is clicked
 		for(Rectangle2D characterRect: aiRectangles)
 		{
 			
@@ -352,13 +340,10 @@ public class GameMap extends JPanel{
 			i++;
 		}
 		
-//		g1.setPaint(Color.red);
-//		for(Node node: nodes)
-//		{
-//			node.paint(g);
-//		}
 		
 		int index = 0;
+		
+		//paints every character
 		for(AICharacter ai: Variables.getCharacterList())
 		{
 			g1.setPaint(Color.white);
@@ -404,6 +389,10 @@ public class GameMap extends JPanel{
 		
 	}
 	
+	/**
+	 * @param g1
+	 * draws the triangles that show the game speed
+	 */
 	private void drawSpeed(Graphics2D g1)
 	{
 		for(int i = 0; i< Variables.getRealGameSpeed(); i++)
@@ -414,6 +403,13 @@ public class GameMap extends JPanel{
 		
 	}
 
+	
+	/**
+	 * @param g1
+	 * @param x
+	 * @param y
+	 *  creates and draws triangles
+	 */
 	private void drawTriangle(Graphics2D g1, int x, int y)
 	{
 		double mult = Variables.getResolutionMultiplier();
@@ -432,6 +428,13 @@ public class GameMap extends JPanel{
 		
 	}
 
+	
+	/**
+	 * @param g1
+	 * @param place
+	 * @param i
+	 * draws the names of the places
+	 */
 	private void drawName(Graphics2D g1, Rectangle2D place, int i)
 	{
 		Font font = new Font(Messages.getString("GameMap.16"), Font.PLAIN, (int)(20 * Variables.getResolutionmultiplier())); //$NON-NLS-1$
@@ -439,17 +442,23 @@ public class GameMap extends JPanel{
 		TextLayout layout = new TextLayout(allPlaces().get(i).name, font, frc);
 		   
 		   
-		Stroke outline = new BasicStroke(2);
+		Stroke outline = new BasicStroke(1);
 		Shape blackOutline = outline.createStrokedShape(layout.getOutline(null));
 			
 		g1.setPaint(Color.white);
 		g1.translate(place.getX() + 5, place.getY() + 30);
-		g1.fill(blackOutline);
+		g1.fill(layout.getOutline(null));
+		g1.setPaint(Color.black);
+		g1.draw(blackOutline);
 		g1.translate(-place.getX() -5, -place.getY() -30);
 
 		   
 	}
 	
+	/**
+	 * @param g
+	 * puts the character in the right position
+	 */
 	public void placePlayer(Graphics g)
 	{
 		

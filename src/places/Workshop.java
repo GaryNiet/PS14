@@ -4,6 +4,7 @@ import characters.AbstractCharacter;
 import logic.Variables;
 import schedule.Steal;
 
+@SuppressWarnings("serial")
 public class Workshop extends Place
 {
 	public Workshop()

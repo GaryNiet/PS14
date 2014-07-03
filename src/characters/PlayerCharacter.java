@@ -1,14 +1,12 @@
 package characters;
 
 import gui.CharacterPieces;
-
-import java.util.Iterator;
-
 import places.Cell;
 import places.Free;
 import places.Job;
 import places.Place;
 
+@SuppressWarnings("serial")
 public class PlayerCharacter extends AbstractCharacter
 {
 	

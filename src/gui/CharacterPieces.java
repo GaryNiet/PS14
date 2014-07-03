@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+@SuppressWarnings("serial")
 public class CharacterPieces implements Serializable
 {
 	//head&face 154x225

@@ -48,6 +48,7 @@ public class Main
 		String[] resStrings =
 		{ Messages.getString("Main.10"), Messages.getString("Main.11"), Messages.getString("Main.12"), Messages.getString("Main.13"), Messages.getString("Main.14"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 				Messages.getString("Main.15") }; //$NON-NLS-1$
+		@SuppressWarnings({ "rawtypes", "unchecked" })
 		final JComboBox combo = new JComboBox(resStrings);
 
 		panel.add(combo, Messages.getString("Main.16")); //$NON-NLS-1$

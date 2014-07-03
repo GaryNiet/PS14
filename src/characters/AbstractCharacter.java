@@ -4,18 +4,16 @@ import gui.CharacterLook;
 import gui.CharacterPieces;
 
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.Random;
 
-import logic.GameLogic;
 import logic.Variables;
-
 import places.Cell;
 import places.Job;
 import places.Place;
 import schedule.PrisonAction;
 import schedule.Schedule;
 
+@SuppressWarnings("serial")
 public abstract class AbstractCharacter implements Serializable
 {
 	String name;

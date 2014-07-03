@@ -5,6 +5,7 @@ import logic.Variables;
 import schedule.StealWeaponTool;
 import schedule.WellBeing;
 
+@SuppressWarnings("serial")
 public class Cafeteria extends Place
 {
 	

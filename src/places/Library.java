@@ -4,6 +4,7 @@ package places;
 import logic.Variables;
 import schedule.Learn;
 
+@SuppressWarnings("serial")
 public class Library extends Place
 {
 	public Library()

@@ -6,6 +6,7 @@ import schedule.Train;
 import schedule.WellBeing;
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public class Courtyard extends Place
 {
 	

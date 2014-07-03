@@ -2,6 +2,7 @@ package schedule;
 
 import characters.AbstractCharacter;
 
+@SuppressWarnings("serial")
 public class Learn extends PrisonAction
 {
 	public Learn()
