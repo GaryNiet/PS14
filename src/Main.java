@@ -26,31 +26,31 @@ public class Main
 		JFrame frame = new JFrame();
 		frame.setSize(500, 500);
 		
-		JPanel panel = new JPanel(new MigLayout("fill"));
+		JPanel panel = new JPanel(new MigLayout(Messages.getString("Main.0"))); //$NON-NLS-1$
 		frame.add(panel);
-		final JButton button = new JButton("ok");
-		panel.add(button, "x 80%,y 80%,w 10%,h 5%");
-		panel.add(new JLabel("Welcome to Prison Simulator"), "x 10, y 10, w 80% , h 40%");
-		panel.add(new JLabel(" Please chose a resolution at which to run the game: "), "x 10, y 60, w 80% , h 40%");
+		final JButton button = new JButton(Messages.getString("Main.1")); //$NON-NLS-1$
+		panel.add(button, Messages.getString("Main.2")); //$NON-NLS-1$
+		panel.add(new JLabel(Messages.getString("Main.3")), Messages.getString("Main.4")); //$NON-NLS-1$ //$NON-NLS-2$
+		panel.add(new JLabel(Messages.getString("Main.5")), Messages.getString("Main.6")); //$NON-NLS-1$ //$NON-NLS-2$
 		
 		try
 		{
-			logo = ImageIO.read(new File("ressources/logo.png"));
+			logo = ImageIO.read(new File(Messages.getString("Main.7"))); //$NON-NLS-1$
 		} catch (IOException e1)
 		{
-			System.out.println("he-arc logo not found");
+			System.out.println(Messages.getString("Main.8")); //$NON-NLS-1$
 		}
 		
 		
 		JLabel picLabel = new JLabel(new ImageIcon(logo));
-		panel.add(picLabel, "x 0 ,y 395, w 50%, h 20%");
+		panel.add(picLabel, Messages.getString("Main.9")); //$NON-NLS-1$
 
 		String[] resStrings =
-		{ "1024x768", "1152x864", "1280x960", "1440x1080", "1600x1200",
-				"2048x1536" };
+		{ Messages.getString("Main.10"), Messages.getString("Main.11"), Messages.getString("Main.12"), Messages.getString("Main.13"), Messages.getString("Main.14"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+				Messages.getString("Main.15") }; //$NON-NLS-1$
 		final JComboBox combo = new JComboBox(resStrings);
 
-		panel.add(combo, "x 10%,y 40%,w 80%, h 10%");
+		panel.add(combo, Messages.getString("Main.16")); //$NON-NLS-1$
 
 		frame.setVisible(true);
 

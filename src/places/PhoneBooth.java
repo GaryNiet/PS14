@@ -26,7 +26,7 @@ public class PhoneBooth extends Place
 		digAdvancement = 0;
 		
 		
-		name = "phone booth";
+		name = "phone";
 		possibleActions.add(new WellBeing());
 		possibleActions.add(new ResolveLegal());
 		

@@ -229,13 +229,13 @@ public class GameMap extends JPanel{
 	{
 		try
 		{
-			shower = ImageIO.read(new File("ressources/textures/shower.jpeg"));
-			tiles = ImageIO.read(new File("ressources/textures/tile.png"));
-			knife = ImageIO.read(new File("ressources/textures/knife.png"));
-			grass = ImageIO.read(new File("ressources/textures/grass.png"));
-			kitchen = ImageIO.read(new File("ressources/textures/kitchen.png"));
-			cement = ImageIO.read(new File("ressources/textures/cement.JPG"));
-			dollar = ImageIO.read(new File("ressources/textures/dollar.png"));
+			shower = ImageIO.read(new File(Messages.getString("GameMap.0"))); //$NON-NLS-1$
+			tiles = ImageIO.read(new File(Messages.getString("GameMap.1"))); //$NON-NLS-1$
+			knife = ImageIO.read(new File(Messages.getString("GameMap.2"))); //$NON-NLS-1$
+			grass = ImageIO.read(new File(Messages.getString("GameMap.3"))); //$NON-NLS-1$
+			kitchen = ImageIO.read(new File(Messages.getString("GameMap.4"))); //$NON-NLS-1$
+			cement = ImageIO.read(new File(Messages.getString("GameMap.5"))); //$NON-NLS-1$
+			dollar = ImageIO.read(new File(Messages.getString("GameMap.6"))); //$NON-NLS-1$
 			
 			grassTex = new TexturePaint(grass, new Rectangle2D.Double(0,0,300,300));
 			cementTex = new TexturePaint(cement, new Rectangle2D.Double(0,0,300,300));
@@ -246,7 +246,7 @@ public class GameMap extends JPanel{
 		} catch (IOException ex)
 		{
 
-			System.out.println("file not found");
+			System.out.println(Messages.getString("GameMap.7")); //$NON-NLS-1$
 		}
 	}
 	
@@ -381,17 +381,17 @@ public class GameMap extends JPanel{
 		g1.fillRect((int)(this.getWidth()-(mult * 170)), 0, (int)(mult * 170), (int)(mult * 45));
 		
 		g1.setPaint(Color.green);
-		g1.setFont(new Font("TimesRoman", Font.PLAIN, (int)(15 * Variables.getResolutionmultiplier())));
+		g1.setFont(new Font(Messages.getString("GameMap.8"), Font.PLAIN, (int)(15 * Variables.getResolutionmultiplier()))); //$NON-NLS-1$
 		
 		
 		
-		g1.drawString("health: " + (int)Variables.getPlayerCharacter().getHealth(), (int)(0 * mult) , (int)(13* mult));
-		g1.drawString("strength: " + (int)Variables.getPlayerCharacter().getStrength(), (int)(70* mult), (int)(13* mult));
-		g1.drawString("intelligence: " + (int)Variables.getPlayerCharacter().getIntelligence(), (int)(140* mult), (int)(13* mult));
-		g1.drawString("money: " + (int)Variables.getPlayerCharacter().getMoney(), (int)(620* mult), (int)(15* mult));
-		g1.drawString("influence: " + (int)Variables.getPlayerCharacter().getInfluence(), (int)(400* mult), (int)(13* mult));
-		g1.drawString("materials: " + (int)Variables.getPlayerCharacter().getMaterials(),(int)(620* mult), (int)(35* mult));
-		g1.drawString("legal advancement: " + Variables.getPlayerCharacter().getLegalAdvancement(), (int)(250* mult), (int)(13* mult));
+		g1.drawString(Messages.getString("GameMap.9") + (int)Variables.getPlayerCharacter().getHealth(), (int)(0 * mult) , (int)(13* mult)); //$NON-NLS-1$
+		g1.drawString(Messages.getString("GameMap.10") + (int)Variables.getPlayerCharacter().getStrength(), (int)(70* mult), (int)(13* mult)); //$NON-NLS-1$
+		g1.drawString(Messages.getString("GameMap.11") + (int)Variables.getPlayerCharacter().getIntelligence(), (int)(140* mult), (int)(13* mult)); //$NON-NLS-1$
+		g1.drawString(Messages.getString("GameMap.12") + (int)Variables.getPlayerCharacter().getMoney(), (int)(620* mult), (int)(15* mult)); //$NON-NLS-1$
+		g1.drawString(Messages.getString("GameMap.13") + (int)Variables.getPlayerCharacter().getInfluence(), (int)(400* mult), (int)(13* mult)); //$NON-NLS-1$
+		g1.drawString(Messages.getString("GameMap.14") + (int)Variables.getPlayerCharacter().getMaterials(),(int)(620* mult), (int)(35* mult)); //$NON-NLS-1$
+		g1.drawString(Messages.getString("GameMap.15") + Variables.getPlayerCharacter().getLegalAdvancement(), (int)(250* mult), (int)(13* mult)); //$NON-NLS-1$
 		
 		g1.drawImage(dollar, (int)(725* mult), 6, (int)(35* mult), (int)(35* mult), null);
 		
@@ -434,7 +434,7 @@ public class GameMap extends JPanel{
 
 	private void drawName(Graphics2D g1, Rectangle2D place, int i)
 	{
-		Font font = new Font("Arial Black", Font.PLAIN, (int)(20 * Variables.getResolutionmultiplier()));
+		Font font = new Font(Messages.getString("GameMap.16"), Font.PLAIN, (int)(20 * Variables.getResolutionmultiplier())); //$NON-NLS-1$
 		FontRenderContext frc = g1.getFontRenderContext();
 		TextLayout layout = new TextLayout(allPlaces().get(i).name, font, frc);
 		   

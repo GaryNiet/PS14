@@ -17,10 +17,10 @@ public class Attack extends PrisonAction
 	
 	public Attack()
 	{
-		name = "attack";
+		name = Messages.getString("Attack.0"); //$NON-NLS-1$
 		random = new Random();
 		
-		information = "this lets you attack another player";
+		information = Messages.getString("Attack.1"); //$NON-NLS-1$
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class Attack extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you beat up " + victim.getName() + " without anybody noticing", false);
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(Messages.getString("Attack.2") + victim.getName() + Messages.getString("Attack.3"), false); //$NON-NLS-1$ //$NON-NLS-2$
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -97,7 +97,7 @@ public class Attack extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("Before you get your hand on " + victim.getName() + ",\n guards notice your intention and push \n you back violently", false);
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(Messages.getString("Attack.4") + victim.getName() + Messages.getString("Attack.5"), false); //$NON-NLS-1$ //$NON-NLS-2$
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -106,7 +106,7 @@ public class Attack extends PrisonAction
 	{
 		if(character == Variables.getPlayerCharacter())
 		{
-				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage("you lose the fight and get hurt", false);
+				Variables.getGameLogic().getUserInterface().getWarningWindow().setImage(Messages.getString("Attack.6"), false); //$NON-NLS-1$
 				Variables.getGameLogic().getUserInterface().setInfo(true);
 		}
 	}
@@ -122,10 +122,6 @@ public class Attack extends PrisonAction
 		
 		AbstractCharacter winner = calculateWinner(character, victim);
 		
-		if(isReal)
-		{
-			//System.out.println("--------------------------------------------" + character.getName() + " attacks " + victim.getName() + " and " + winner.getName() + " is the winner");
-		}
 		
 		if(winner == character)
 		{
@@ -203,7 +199,6 @@ public class Attack extends PrisonAction
 	
 	private static double calculateFightWinnings(characters.AbstractCharacter winner, characters.AbstractCharacter loser)
 	{
-		//System.out.println("attacker: " + winner.getName() + " victim: " + loser.getName());
 		double rewardMultiplier;
 		
 		if(winner.getStrength() == loser.getStrength())
@@ -223,7 +218,6 @@ public class Attack extends PrisonAction
 			
 			
 		}
-		//System.out.println("in the hopes of winning " + rewardMultiplier * Variables.getfightWinningsMultiplier());
 		return rewardMultiplier * Variables.getfightWinningsMultiplier();
 	}
 
