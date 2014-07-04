@@ -199,13 +199,22 @@ public class UserInterface extends JFrame
 	{
 		if(paused == false)
 		{
-			paused = true;
-			gameLogic.setMakeWait(true);
+			System.out.println("pass4");
+			
+			if(info == false)
+			{
+				paused = true;
+				gameLogic.setMakeWait(true);
+			}
+			
+			
 		}
 		else
 		{
 			paused = false;
 			gameLogic.getTimerTask().free();
+				
+			
 		}
 		
 		
