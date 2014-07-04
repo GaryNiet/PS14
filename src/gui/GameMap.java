@@ -413,8 +413,8 @@ public class GameMap extends JPanel{
 	private void drawTriangle(Graphics2D g1, int x, int y)
 	{
 		double mult = Variables.getResolutionMultiplier();
-		int[] arrayX = {(int)(x * mult), (int)(x * mult), (int)((x  + 20) * mult)};
-		int[] arrayY = {(int)(y * mult), (int)((y + 20) * mult), (int)((y + 10)*mult)};
+		int[] arrayX = {(int)(x ), (int)(x ), (int)((x  )+ 20 * mult)};
+		int[] arrayY = {(int)(y ), (int)(y + 20*mult), (int)((y) + 10*mult)};
 		
 		Polygon triangle = new Polygon(arrayX, arrayY, 3);
 		

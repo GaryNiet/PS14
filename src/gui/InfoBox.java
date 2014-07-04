@@ -18,7 +18,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import logic.Variables;
-
 import places.Place;
 import schedule.PrisonAction;
 import characters.AbstractCharacter;
@@ -105,6 +104,7 @@ public class InfoBox extends JPanel
 		
 		g1.drawString(action.name, 10, (int)(30 * Variables.getResolutionmultiplier()));
 		drawText(action.getInformation(),g1, 10, (int)(50 * Variables.getResolutionmultiplier()));
+		
 	}
 
 	public void paintPlace(Graphics2D g1)
