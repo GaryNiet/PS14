@@ -300,19 +300,22 @@ public class OptionButton extends JPanel
 			}
 		} else if (showsChangeJobMenu == true)
 		{
+			g1.setPaint(Color.white);
 			int spacing = 1;
 			for (Place place : Job.getJobs())
 			{
+				
 				if (place.isDoable(Variables.getPlayerCharacter()))
 				{
 					g1.drawString(place.getJobName(), 10, (int) button
-							.getBounds2D().getY() + buttonSpacing * spacing);
+							.getBounds2D().getY() + buttonSpacing * 2 * spacing);
 					Rectangle2D jobButton = new Rectangle2D.Double(0, button
 							.getBounds2D().getY()
-							+ buttonSpacing
-							* (spacing - 1), 100, buttonSpacing);
+							+ buttonSpacing * 2
+							* (spacing - 1), this.getWidth() - 4, buttonSpacing * 2);
 
 					jobButtonsG.add(jobButton);
+					
 					g1.draw(jobButton);
 				}
 

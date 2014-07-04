@@ -110,6 +110,7 @@ public class MarketPlace extends JPanel
 	
 	public void update()
 	{
+		slider.setMaximum(Variables.getPlayerCharacter().getMaterials());
 		if(slider.getValue() >= 0)
 		{
 			amount = "sell " + slider.getValue() + " materials for " + String.format("%.2g%n", slider.getValue() * 0.025 * Variables.getPlayerCharacter().getIntelligence()) + "$";
