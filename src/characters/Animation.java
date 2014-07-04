@@ -79,8 +79,8 @@ public class Animation implements Serializable
 			
 			double speedMultiplier = (60.0/((double)Variables.getFramesPerSecond() + 1));
 			
-			double speedX = speedMultiplier * ((double)divisionX / (double)character.movementPeriod);
-			double speedY = speedMultiplier * ((double)divisionY / (double)character.movementPeriod);
+			double speedX = (2*Variables.getResolutionmultiplier()) * speedMultiplier * ((double)divisionX / (double)character.movementPeriod);
+			double speedY = (Variables.getResolutionmultiplier()*2) * speedMultiplier * ((double)divisionY / (double)character.movementPeriod);
 			double speedNorm = (speedX * speedX + speedY * speedY);
 			
 			roamX -= speedX;
