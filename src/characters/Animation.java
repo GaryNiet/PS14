@@ -94,6 +94,8 @@ public class Animation implements Serializable
 					path.remove(0);
 				} else
 				{
+					roamX -= roamX;
+					roamY -= roamY;
 					moving = false;
 				}
 			}

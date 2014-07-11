@@ -110,6 +110,9 @@ public class GameMap extends JPanel{
 		
 	}
 	
+	/**
+	 * instanciates all the needed nodes
+	 */
 	private void initNodes()
 	{
 		Node newNode = new Node((int) (0.192 * Variables.getXresolution() * mult),(int)(0.07 * Variables.getYresolution() * mult), new Cell());
@@ -136,10 +139,10 @@ public class GameMap extends JPanel{
 		newNode = new Node((int) (0.335 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), new Library());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.24 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), new PhoneBooth());
+		newNode = new Node((int) (0.24 * Variables.getXresolution() * mult),(int)(0.28 * Variables.getYresolution() * mult), new PhoneBooth());
 		nodes.add(newNode);
 		
-		newNode = new Node((int) (0.21 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), new PhoneBooth());
+		newNode = new Node((int) (0.21 * Variables.getXresolution() * mult),(int)(0.28 * Variables.getYresolution() * mult), new PhoneBooth());
 		nodes.add(newNode);
 		
 		newNode = new Node((int) (0.12 * Variables.getXresolution() * mult),(int)(0.30 * Variables.getYresolution() * mult), new Cafeteria());
@@ -265,6 +268,10 @@ public class GameMap extends JPanel{
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
+	 * sets the right texture and draws the all the places
+	 */
 	public synchronized void paint(Graphics g)
 	{
 		
@@ -353,10 +360,7 @@ public class GameMap extends JPanel{
 			index++;
 		}
 		
-		if(Variables.getPlayerCharacter().isWeapon())
-		{
-			g1.drawImage(knife, 700, 0, 50, 50, null);
-		}
+		
 		
 		
 		g1.setPaint(Color.black);
@@ -368,6 +372,11 @@ public class GameMap extends JPanel{
 		g1.setPaint(Color.green);
 		g1.setFont(new Font(Messages.getString("GameMap.8"), Font.PLAIN, (int)(15 * Variables.getResolutionmultiplier()))); //$NON-NLS-1$
 		
+		
+		if(Variables.getPlayerCharacter().isWeapon())
+		{
+			g1.drawImage(knife, 700, (int)(mult * 45), 50, 50, null);
+		}
 		
 		
 		g1.drawString(Messages.getString("GameMap.9") + (int)Variables.getPlayerCharacter().getHealth(), (int)(0 * mult) , (int)(13* mult)); //$NON-NLS-1$

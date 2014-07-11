@@ -82,6 +82,9 @@ public class CharacterPieces implements Serializable
 	}
 
 	
+	/**
+	 * loads all the useful images for this class
+	 */
 	private void loadImages()
 	{
 		try
@@ -113,6 +116,7 @@ public class CharacterPieces implements Serializable
 			hair3 = ImageIO.read(new File("ressources/bodyParts/hair3.png"));
 			hair4 = ImageIO.read(new File("ressources/bodyParts/hair4.png"));
 			nose = ImageIO.read(new File("ressources/bodyParts/nose.png"));
+			
 
 		} catch (IOException ex)
 		{
